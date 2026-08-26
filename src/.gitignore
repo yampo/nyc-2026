@@ -1,0 +1,6 @@
+# Salidas intermedias del build. Los entregables buenos los sube build_all.py a la raiz.
+pages/
+NYC_2026_Itinerario.html
+NYC_2026_Planificador.xlsx
+NYC_2026_web.html
+__pycache__/

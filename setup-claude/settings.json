@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git show:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git pull:*)",
+      "Bash(git tag:*)",
+      "Bash(git checkout:*)",
+      "Bash(git revert:*)",
+      "Bash(python3 -V)",
+      "Bash(python3 -m venv:*)",
+      "Bash(python3 src/build_all.py:*)",
+      "Bash(python3 src/test_app.py:*)",
+      "Bash(python3 src/test_marca.py:*)",
+      "Bash(python3 src/recalc_report.py:*)",
+      "Bash(python3 src/check_hours.py:*)",
+      "Bash(python3 src/merge_export.py:*)",
+      "Bash(pip install openpyxl:*)",
+      "Bash(pip install playwright:*)",
+      "Bash(pip3 install openpyxl:*)",
+      "Bash(pip3 install playwright:*)",
+      "Bash(playwright install:*)",
+      "Bash(bash taggear_versiones_publicadas.sh)"
+    ]
+  }
+}

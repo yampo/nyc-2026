@@ -1,0 +1,568 @@
+{
+ "bhpromenade": {
+  "jp": 2,
+  "th": 2,
+  "must": true
+ },
+ "domino": {
+  "jp": 2,
+  "th": 2
+ },
+ "edge": {
+  "jp": 0,
+  "th": 0
+ },
+ "esb": {
+  "jp": 0,
+  "th": 0
+ },
+ "forttryon": {
+  "jp": 2,
+  "th": 0
+ },
+ "gantry": {
+  "jp": 1,
+  "th": 1
+ },
+ "valentino": {
+  "jp": 0,
+  "th": 0
+ },
+ "owo": {
+  "jp": 2,
+  "th": 0,
+  "must": true
+ },
+ "tram": {
+  "jp": 2,
+  "th": 2,
+  "must": true
+ },
+ "summit": {
+  "jp": 2,
+  "th": 2,
+  "must": true
+ },
+ "siferry": {
+  "jp": 2,
+  "th": 2
+ },
+ "sunsetparkview": {
+  "jp": 1,
+  "th": 1
+ },
+ "thecrown": {
+  "jp": 2,
+  "th": 2
+ },
+ "topofrock": {
+  "jp": 2,
+  "th": 0,
+  "must": true
+ },
+ "westlight": {
+  "jp": 1,
+  "th": 1
+ },
+ "911museum": {
+  "jp": 2,
+  "th": 0,
+  "must": true
+ },
+ "amnh": {
+  "jp": 2,
+  "th": 0,
+  "must": true
+ },
+ "bkmuseum": {
+  "jp": 0,
+  "th": 0
+ },
+ "diabeacon": {
+  "jp": 0,
+  "th": 0
+ },
+ "guggenheim": {
+  "jp": 2,
+  "th": 2,
+  "must": true
+ },
+ "intrepid": {
+  "jp": 2,
+  "th": 0
+ },
+ "moma": {
+  "jp": 2,
+  "th": 0,
+  "must": true
+ },
+ "momaps1": {
+  "jp": 2,
+  "th": 2,
+  "must": true
+ },
+ "mcny": {
+  "jp": 0,
+  "th": 0
+ },
+ "momi": {
+  "jp": 2,
+  "th": 2,
+  "must": true
+ },
+ "transitmuseum": {
+  "jp": 2,
+  "th": 2
+ },
+ "studiomuseum": {
+  "jp": 2,
+  "th": 2
+ },
+ "tenement": {
+  "jp": 0,
+  "th": 0
+ },
+ "cityreliquary": {
+  "jp": 1,
+  "th": 1
+ },
+ "frick": {
+  "jp": 1,
+  "th": 0
+ },
+ "cloisters": {
+  "jp": 2,
+  "th": 0
+ },
+ "met": {
+  "jp": 2,
+  "th": 0,
+  "must": true
+ },
+ "morgan": {
+  "jp": 2,
+  "th": 2,
+  "must": true
+ },
+ "noguchi": {
+  "jp": 0,
+  "th": 0
+ },
+ "whitney": {
+  "jp": 1,
+  "th": 1
+ },
+ "arthurave": {
+  "jp": 2,
+  "th": 2
+ },
+ "astoria": {
+  "jp": 2,
+  "th": 2
+ },
+ "bayridge": {
+  "jp": 1,
+  "th": 1
+ },
+ "chinatown": {
+  "jp": 2,
+  "th": 2,
+  "must": true
+ },
+ "dumbo": {
+  "jp": 2,
+  "th": 1,
+  "must": true
+ },
+ "flushing": {
+  "jp": 1,
+  "th": 1
+ },
+ "govisland": {
+  "jp": 1,
+  "th": 1
+ },
+ "greenpoint": {
+  "jp": 1,
+  "th": 1
+ },
+ "harlem": {
+  "jp": 2,
+  "th": 2
+ },
+ "inwood": {
+  "jp": 2,
+  "th": 0
+ },
+ "jacksonheights": {
+  "jp": 0,
+  "th": 0
+ },
+ "les": {
+  "jp": 2,
+  "th": 2
+ },
+ "redhook": {
+  "jp": 1,
+  "th": 1
+ },
+ "ridgewood": {
+  "jp": 1,
+  "th": 1
+ },
+ "rooseveltisland": {
+  "jp": 2,
+  "th": 2
+ },
+ "sunsetpark": {
+  "jp": 1,
+  "th": 1
+ },
+ "westvillage": {
+  "jp": 2,
+  "th": 0
+ },
+ "arthurmarket": {
+  "jp": 1,
+  "th": 1
+ },
+ "bosbagels": {
+  "jp": 2,
+  "th": 2,
+  "must": true
+ },
+ "casadellamozz": {
+  "jp": 2,
+  "th": 2
+ },
+ "chelseamarket": {
+  "jp": 2,
+  "th": 2,
+  "must": true
+ },
+ "cosenza": {
+  "jp": 0,
+  "th": 0
+ },
+ "dekalb": {
+  "jp": 1,
+  "th": 1
+ },
+ "essexmarket": {
+  "jp": 2,
+  "th": 2,
+  "must": true
+ },
+ "frankels": {
+  "jp": 2,
+  "th": 2
+ },
+ "henan": {
+  "jp": 0,
+  "th": 0
+ },
+ "jalapenoking": {
+  "jp": 0,
+  "th": 0
+ },
+ "karczma": {
+  "jp": 0,
+  "th": 0
+ },
+ "katzs": {
+  "jp": 2,
+  "th": 2
+ },
+ "lbspumoni": {
+  "jp": 2,
+  "th": 2
+ },
+ "lhasa": {
+  "jp": 0,
+  "th": 0
+ },
+ "lostacos": {
+  "jp": 2,
+  "th": 1
+ },
+ "lucali": {
+  "jp": 0,
+  "th": 0
+ },
+ "malecon": {
+  "jp": 0,
+  "th": 0
+ },
+ "manos": {
+  "jp": 0,
+  "th": 0
+ },
+ "nepalibhanchha": {
+  "jp": 0,
+  "th": 0
+ },
+ "uyghur": {
+  "jp": 0,
+  "th": 0
+ },
+ "newworldmall": {
+  "jp": 0,
+  "th": 0
+ },
+ "pierozek": {
+  "jp": 0,
+  "th": 0
+ },
+ "rudys": {
+  "jp": 0,
+  "th": 0
+ },
+ "russdaughters": {
+  "jp": 2,
+  "th": 2
+ },
+ "splunch": {
+  "jp": 2,
+  "th": 2
+ },
+ "elbronco": {
+  "jp": 0,
+  "th": 0
+ },
+ "tanoreen": {
+  "jp": 2,
+  "th": 2
+ },
+ "kyclades": {
+  "jp": 0,
+  "th": 0
+ },
+ "timeoutmarket": {
+  "jp": 1,
+  "th": 1
+ },
+ "totonnos": {
+  "jp": 2,
+  "th": 2
+ },
+ "barbayeux": {
+  "jp": 2,
+  "th": 2
+ },
+ "lunatico": {
+  "jp": 2,
+  "th": 2
+ },
+ "barbes": {
+  "jp": 2,
+  "th": 2
+ },
+ "birdland": {
+  "jp": 2,
+  "th": 2,
+  "must": true
+ },
+ "bluenote": {
+  "jp": 2,
+  "th": 2
+ },
+ "dizzys": {
+  "jp": 2,
+  "th": 2
+ },
+ "mezzrow": {
+  "jp": 2,
+  "th": 2
+ },
+ "nublu": {
+  "jp": 2,
+  "th": 2
+ },
+ "ornithology": {
+  "jp": 2,
+  "th": 2
+ },
+ "smalls": {
+  "jp": 2,
+  "th": 2
+ },
+ "vanguard": {
+  "jp": 2,
+  "th": 2
+ },
+ "fdrpark": {
+  "jp": 2,
+  "th": 2
+ },
+ "fordfoundation": {
+  "jp": 2,
+  "th": 2,
+  "must": true
+ },
+ "grandcentral": {
+  "jp": 2,
+  "th": 0,
+  "must": true
+ },
+ "littleisland": {
+  "jp": 2,
+  "th": 1
+ },
+ "chrysler": {
+  "jp": 2,
+  "th": 1,
+  "must": true
+ },
+ "eldridge": {
+  "jp": 2,
+  "th": 2
+ },
+ "nypl": {
+  "jp": 2,
+  "th": 0,
+  "must": true
+ },
+ "oculus": {
+  "jp": 2,
+  "th": 0,
+  "must": true
+ },
+ "striversrow": {
+  "jp": 0,
+  "th": 0
+ },
+ "twahotel": {
+  "jp": 0,
+  "th": 0
+ },
+ "onderdonk": {
+  "jp": 0,
+  "th": 0
+ },
+ "astoriapark": {
+  "jp": 1,
+  "th": 1
+ },
+ "brooklynbridgepark": {
+  "jp": 2,
+  "th": 2,
+  "must": true
+ },
+ "bryantpark": {
+  "jp": 2,
+  "th": 0,
+  "must": true
+ },
+ "centralpark": {
+  "jp": 2,
+  "th": 2,
+  "must": true
+ },
+ "greenwood": {
+  "jp": 0,
+  "th": 0
+ },
+ "inwoodhill": {
+  "jp": 2,
+  "th": 0
+ },
+ "socrates": {
+  "jp": 0,
+  "th": 0
+ },
+ "highline": {
+  "jp": 2,
+  "th": 2,
+  "must": true
+ },
+ "washingtonsq": {
+  "jp": 2,
+  "th": 0
+ },
+ "wavehill": {
+  "jp": 1,
+  "th": 1
+ },
+ "charlieparker30": {
+  "jp": 0,
+  "th": 0
+ },
+ "charlieparker29": {
+  "jp": 2,
+  "th": 2,
+  "must": true
+ },
+ "greenwoodtrolley": {
+  "jp": 0,
+  "th": 0
+ },
+ "carnival": {
+  "jp": 1,
+  "th": 1
+ },
+ "summerstage": {
+  "jp": 2,
+  "th": 0,
+  "must": true
+ },
+ "usopen": {
+  "jp": 0,
+  "th": 0
+ },
+ "hamilton": {
+  "jp": 0,
+  "th": 0
+ },
+ "littleshop": {
+  "jp": 0,
+  "th": 0
+ },
+ "maybehappy": {
+  "jp": 0,
+  "th": 0
+ },
+ "moulinrouge": {
+  "jp": 1,
+  "th": 1
+ },
+ "opmincemeat": {
+  "jp": 0,
+  "th": 0
+ },
+ "tkts": {
+  "jp": 2,
+  "th": 2
+ },
+ "ink48": {
+  "jp": 2,
+  "th": 2
+ },
+ "beacon": {
+  "jp": 2,
+  "th": 2
+ },
+ "residenceinn": {
+  "jp": 2,
+  "th": 2
+ },
+ "cafewha": {
+  "jp": 2,
+  "th": 2,
+  "must": true
+ },
+ "hamburgerica": {
+  "jp": 2,
+  "th": 1,
+  "must": true
+ },
+ "vessel": {
+  "jp": 2,
+  "th": 0,
+  "must": true
+ },
+ "peterluger": {
+  "jp": 2,
+  "th": 2,
+  "must": true
+ }
+}

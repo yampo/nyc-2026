@@ -1,0 +1,1283 @@
+{
+ "days": [
+  {
+   "n": 1,
+   "date": "2026-08-29",
+   "dow": "Sábado",
+   "who": "both",
+   "base": "Ink48",
+   "title": "Harlem + Arthur Avenue + festival (2h) + Hudson VU",
+   "note": "La reserva de Hudson VU (rooftop del propio Ink48) NO es modificable y exige estar en el hotel 19:20, así que el festival queda en la franja 16:30-18:30 — dos horas justas, con salida obligada 20-30 min antes del cierre. La tarde liberada la ocupa ARTHUR AVENUE, la Little Italy real del Bronx — los dos la marcaron 2 y no entraba en ningún día. Desde Harlem es un tiro de subte D (~20 min), y el sábado es EL día: el mercado cierra ~18h y los domingos no abre. Bogotá está a una hora de NYC: no hay jet lag, solo noche corta de avión. PEDIR EARLY CHECK-IN a Ink48 por mail.",
+   "blocks": [
+    {
+     "t": "06:00",
+     "txt": "Aterrizaje en EWR. Migraciones + equipaje de vuelo internacional: 45-75 min.",
+     "pid": "",
+     "who": "both",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "07:15",
+     "txt": "AirTrain al Newark Airport Station (~10 min). Comprar el ticket en la app MyTix: a bordo cobran $5 extra.",
+     "pid": "",
+     "who": "both",
+     "kind": "logistica",
+     "note": "El AirTrain opera normal los fines de semana; la obra afecta solo días hábiles 5-15h."
+    },
+    {
+     "t": "07:39",
+     "txt": "NJ Transit EWR → New York Penn Station. $17,25 (incluye el fee del AirTrain). Llega 8:07.",
+     "pid": "",
+     "who": "both",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "08:20",
+     "txt": "Taxi/Uber Penn Station → Ink48 ($12-18). Dejar valijas y, si consiguieron el early check-in, ducha y ropa limpia.",
+     "pid": "ink48",
+     "who": "both",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "09:15",
+     "txt": "Desayuno rápido en Hell's Kitchen.",
+     "pid": "",
+     "who": "both",
+     "kind": "comida",
+     "note": ""
+    },
+    {
+     "t": "10:00",
+     "txt": "Subte A o D express desde 42 St hasta 125 St: 12 minutos y ya están en Harlem.",
+     "pid": "",
+     "who": "both",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "10:30",
+     "txt": "Caminata por Harlem: 125th St, Adam Clayton Powell Blvd y las brownstones del Mount Morris Park Historic District.",
+     "pid": "harlem",
+     "who": "both",
+     "kind": "destacado",
+     "note": ""
+    },
+    {
+     "t": "11:30",
+     "txt": "Bo's Bagels (235 W 116th St) — bagel rápido, sin sentarse mucho: hoy el almuerzo fuerte es italiano en el Bronx.",
+     "pid": "bosbagels",
+     "who": "both",
+     "kind": "comida",
+     "note": "",
+     "trav": "🚶 ~15 min a pie · 1.1 km · estimado"
+    },
+    {
+     "t": "12:00",
+     "txt": "★ STUDIO MUSEUM IN HARLEM — reabrió en noviembre 2025 en el edificio nuevo de David Adjaye. La novedad arquitectónica y curatorial más relevante de la ciudad. Pay-what-you-can, sugerido $16.",
+     "pid": "studiomuseum",
+     "who": "both",
+     "kind": "destacado",
+     "note": "",
+     "trav": "🚶 ~14 min a pie · 1.0 km · estimado"
+    },
+    {
+     "t": "13:30",
+     "txt": "Subte D desde 125 St hasta Fordham Rd (~20 min). Alternativa: Metro-North desde Harlem-125th a Fordham, 12 minutos.",
+     "pid": "",
+     "who": "both",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "14:00",
+     "txt": "★★ ARTHUR AVENUE (Belmont) — la Little Italy real: carnicerías, panaderos de 1918 y el enclave albanés. Almuerzo: el sándwich de mozzarella fresca de Casa Della Mozzarella (E 187th St) y el Arthur Avenue Retail Market con Mike's Deli adentro. El mercado cierra ~18h y los DOMINGOS no abre: hoy es el único día del viaje que sirve.",
+     "pid": "arthurave",
+     "who": "both",
+     "kind": "destacado",
+     "note": ""
+    },
+    {
+     "t": "15:40",
+     "txt": "Subte D desde Fordham Rd de vuelta a 125 St (~25 min) y caminar a Marcus Garvey Park.",
+     "pid": "",
+     "who": "both",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "16:30",
+     "txt": "★★ CHARLIE PARKER JAZZ FESTIVAL — franja 16:30-18:30 (2 horas justas): la reserva de Hudson VU no es modificable y manda. ⚠️ SALIDA OBLIGADA 18:30: el festival sigue hasta las 19, así que pueden perderse el final del set de cierre de Joshua Redman. El orden por artista no está publicado — VERIFICAR el día anterior en cityparksfoundation.org: si Redman arranca ~17:15, lo ven casi entero.",
+     "pid": "charlieparker29",
+     "who": "both",
+     "kind": "destacado",
+     "note": ""
+    },
+    {
+     "t": "18:30",
+     "txt": "UBER desde Marcus Garvey Park al Ink48 (~20-25 min un sábado a la tarde, ~$25-30). Es lo que garantiza llegar 19:00-19:05. Plan B en subte: salir 18:10, 2/3 desde 125-Lenox hasta Times Sq y 15 min a pie — total ~45 min.",
+     "pid": "",
+     "who": "both",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "19:20",
+     "txt": "EN EL HOTEL — margen para dejar cosas y subir.",
+     "pid": "",
+     "who": "both",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "19:30",
+     "txt": "★★ HUDSON VU — drinks y comida, RESERVA NO MODIFICABLE, en el rooftop de SU PROPIO hotel (Ink48). La mesa es de MÁXIMO 90 MINUTOS: cierran ~21:00. Pedir sin vueltas y disfrutar la vista — lo que sigue está a 8 cuadras.",
+     "pid": "ink48",
+     "who": "both",
+     "kind": "destacado",
+     "note": ""
+    },
+    {
+     "t": "21:00",
+     "txt": "Caminata Ink48 → Birdland (315 W 44th): 8 cuadras, 10-12 min. Llegan ~21:15, justo para las puertas del set de las 21:30.",
+     "pid": "",
+     "who": "both",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "21:30",
+     "txt": "★★ BIRDLAND — set de las 21:30: DAVID DEJESUS & THE BOPTET, 'Celebrating Charlie Parker'. El 29/8 es el CUMPLEAÑOS de Bird y Birdland es el club que lleva su nombre: el día cierra en círculo — festival Charlie Parker de día, tributo a Parker de noche. RESERVAR en birdlandjazz.com (cartelera ya publicada). Si prefieren más tarde: Makoto Ozone Trio a las 22:30 en el mismo club. Y si el cansancio de un día que empezó 6 AM en un avión manda, saltearlo no es pecado.",
+     "pid": "birdland",
+     "who": "both",
+     "kind": "destacado",
+     "note": ""
+    }
+   ],
+   "alt": "Si llegan fundidos del vuelo, ARTHUR AVENUE es lo primero que se cae: salteenla, descansen en el hotel 13-16h y lleguen al festival 16:30. El festival y la reserva de Hudson VU son lo irrenunciable del día. OJO: Bill's Place se movió al VIERNES 4/9 por esta reserva — el set del sábado ya no aplica. // Sobre agregar cosas AL LUNES con este recorte: el lunes ya está lleno de 8:45 a 22:48 con dos anclas fijas (Ford Foundation solo abre días hábiles y el 9/11 gratis es 17:30-19:00) — no hay hueco real. El tiempo que libera el festival es del SÁBADO, y Arthur Avenue era lo mejor que quedaba sin agendar de lo que marcaron los dos."
+  },
+  {
+   "n": 2,
+   "date": "2026-08-30",
+   "dow": "Domingo",
+   "who": "both",
+   "base": "Ink48",
+   "title": "Lower East Side, Chinatown y el Brooklyn Bridge a pie",
+   "note": "SALIÓ el día 2 del festival Charlie Parker: los dos lo marcaron 0 en la app (ver dos días seguidos de festival no les cerró). La mañana del Lower East Side queda igual — el domingo sigue siendo el ÚNICO día que sirve para Eldridge Street, que cierra los sábados. La tarde liberada la ocupa el CRUCE DEL BROOKLYN BRIDGE A PIE, que no estaba en ningún día del viaje y desde Chinatown se arranca caminando: la entrada peatonal está en City Hall, a diez minutos de Mott St.",
+   "blocks": [
+    {
+     "t": "08:30",
+     "txt": "Desayuno rápido y subte F hasta 2 Av.",
+     "pid": "",
+     "who": "both",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "09:15",
+     "txt": "★ Russ & Daughters — appetizing store de 1914, cuarta generación de la misma familia. Salmón curado cortado a mano sobre bagel. El mostrador es mejor experiencia que el café de al lado.",
+     "pid": "russdaughters",
+     "who": "both",
+     "kind": "destacado",
+     "note": ""
+    },
+    {
+     "t": "10:30",
+     "txt": "★ Museum at Eldridge Street — sinagoga de 1887 restaurada por $20 millones, con un rosetón nuevo de Kiki Smith. Que hoy esté en el medio de Chinatown es la mitad del punto. CIERRA LOS SÁBADOS: hoy es el día.",
+     "pid": "eldridge",
+     "who": "both",
+     "kind": "destacado",
+     "note": "",
+     "trav": "🚶 ~20 min a pie (1.3 km) o 🚇 ~15 min · estimado"
+    },
+    {
+     "t": "11:45",
+     "txt": "Essex Market — mercado municipal desde 1940. Sigue teniendo carniceros y pescaderos de verdad, no solo puestos para turistas.",
+     "pid": "essexmarket",
+     "who": "both",
+     "kind": "paseo",
+     "note": "",
+     "trav": "🚶 ~11 min a pie · 0.8 km · estimado"
+    },
+    {
+     "t": "12:45",
+     "txt": "Caminata por el Lower East Side: Orchard, Ludlow, Rivington. Tres capas de inmigración en la misma cuadra.",
+     "pid": "les",
+     "who": "both",
+     "kind": "paseo",
+     "note": ""
+    },
+    {
+     "t": "13:15",
+     "txt": "Almuerzo en Chinatown: Mott St y las pescaderías de la calle. El paisaje urbano es el plato fuerte.",
+     "pid": "chinatown",
+     "who": "both",
+     "kind": "comida",
+     "note": "",
+     "trav": "🚶 ~14 min a pie · 1.0 km · estimado"
+    },
+    {
+     "t": "14:15",
+     "txt": "Columbus Park (tai chi y partidas de xiangqi) y Doyers Street, la cuadra torcida que era 'the Bloody Angle'. Diez minutos y de ahí se sale caminando hacia City Hall.",
+     "pid": "",
+     "who": "both",
+     "kind": "paseo",
+     "note": ""
+    },
+    {
+     "t": "14:45",
+     "txt": "★★ CRUZAR EL BROOKLYN BRIDGE A PIE — entrada peatonal frente a City Hall. 30-45 minutos hasta Brooklyn con paradas de foto: el skyline de Lower Manhattan de un lado y el Manhattan Bridge del otro. GRATIS y es una de las cosas que un first-timer no debería saltearse.",
+     "pid": "",
+     "who": "both",
+     "kind": "destacado",
+     "note": ""
+    },
+    {
+     "t": "16:00",
+     "txt": "Bajar en DUMBO: la foto del Manhattan Bridge encuadrado en Washington St, el waterfront, y una parada en TIME OUT MARKET (está ahí mismo y JP lo marcó 2): un vermut con el skyline de frente. OJO: el sábado 5 vuelven de día — no repetir de más.",
+     "pid": "dumbo",
+     "who": "both",
+     "kind": "paseo",
+     "note": ""
+    },
+    {
+     "t": "17:05",
+     "txt": "Subte A/C desde High St hasta Fulton St (2 paradas, ~10 min) y 5 min a pie hasta Dey St.",
+     "pid": "",
+     "who": "both",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "17:30",
+     "txt": "★★ MERCER LABS (21 Dey St, frente al Oculus) — 15 salas inmersivas de arte y tecnología de Roy Nachum: proyecciones, sonido espacial, salas interactivas, a su ritmo. Hasta $57 según franja; TIMED TICKET por Fever, reservar el slot de 17:30 antes de viajar. Los domingos abre hasta las 22.",
+     "pid": "mercerlabs",
+     "who": "both",
+     "kind": "destacado",
+     "note": ""
+    },
+    {
+     "t": "18:50",
+     "txt": "Caminar a The Crown: 1,6 km derecho por Park Row hacia Bowery (~20 min) — o R/W City Hall → Canal St si llueve.",
+     "pid": "",
+     "who": "both",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "19:15",
+     "txt": "★ The Crown (50 Bowery, piso 21) — rooftop sin cover, EN EL ATARDECER (~19:27): el Manhattan Bridge que acaban de cruzar se enciende de frente mientras cae el sol. Es el ángulo que no da ningún observatorio pago — luz, atardecer y noche en un solo trago.",
+     "pid": "thecrown",
+     "who": "both",
+     "kind": "destacado",
+     "note": ""
+    },
+    {
+     "t": "20:45",
+     "txt": "Cena en el East Village / LES: Katz's abre hasta tarde (a esta hora la cola del domingo ya bajó).",
+     "pid": "katzs",
+     "who": "both",
+     "kind": "comida",
+     "note": "",
+     "trav": "🚶 ~20 min a pie (1.3 km) o 🚇 ~15 min · estimado"
+    },
+    {
+     "t": "22:15",
+     "txt": "Opcional: Nublu (Avenue C) — jazz experimental y afrobeat hasta tarde. A 14 minutos A PIE de Katz's. Lo marcaron 2 los dos.",
+     "pid": "nublu",
+     "who": "both",
+     "kind": "musica",
+     "note": "",
+     "trav": "🚶 ~14 min a pie · 1.1 km · estimado"
+    }
+   ],
+   "alt": "Si cambian de idea con el festival: Ravi Coltrane toca GRATIS en Tompkins Square de 15 a 19h, a cinco cuadras del almuerzo — pueden ir un rato y cruzar el puente otro día. Y ojo: hoy es la ÚLTIMA función de Moulin Rouge! en Broadway, si la quieren hay que decidir ya. // El cruce del puente conviene NO hacerlo más tarde: después de las 16h de un domingo de verano la pasarela se llena."
+  },
+  {
+   "n": 3,
+   "date": "2026-08-31",
+   "dow": "Lunes",
+   "who": "jp",
+   "base": "Ink48 → JGStay SoHo (las valijas viajan con Thais)",
+   "title": "JP solo · Midtown total: MoMA, Top of the Rock y Birdland",
+   "note": "⚠️ DÍA DE JP SOLO. Thais viaja temprano a New Jersey porque EMPIEZA A TRABAJAR — trabaja del 31 de agosto al 3 de septiembre y no participa de nada de NYC en esos días. Ella hace el checkout y se lleva las dos valijas, así que JP arranca libre y sin equipaje desde las 8. El lunes, que suele ser el peor día en NYC, acá es el mejor: el lobby del Chrysler y el Ford Foundation SOLO abren días hábiles, y Birdland tiene su programa de lunes. El MoMA y Top of the Rock encajan justo hoy porque Thais los marcó 0. El 9/11 se MOVIÓ al jueves para hacerlo completo (memorial + museo + One World Observatory en una sola bajada) — se paga la entrada que el lunes era gratis, pero el circuito queda entero y este día gana el observatorio con luz de tarde. CERRADOS hoy: Morgan, Noguchi, Brooklyn Museum, Studio Museum, Transit Museum. Y LA GRAN NOVEDAD: JP ya no duerme en New Jersey — la noche termina en el JGStay SoHo, y la vuelta nocturna a NJ quedó reducida a UNA sola (el miércoles).",
+   "blocks": [
+    {
+     "t": "08:00",
+     "txt": "THAIS: checkout de Ink48 y tren temprano a New Jersey con LAS DOS valijas — hoy EMPIEZA A TRABAJAR. No participa de nada de este día. JP sale solo con su bolso de dos noches.",
+     "pid": "ink48",
+     "who": "th",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "08:10",
+     "txt": "JP: checkout y subte N/R/W desde 49 St derecho por Broadway hasta Canal St (~15 min).",
+     "pid": "",
+     "who": "jp",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "08:35",
+     "txt": "Dejar el bolso en la CONSIGNA del JGSTAY SOHO (recepción 24 h; el check-in formal es a la tarde — confirmar la consigna por mensaje). Liviano el resto del día.",
+     "pid": "jgstay",
+     "who": "jp",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "09:00",
+     "txt": "Subte 6 desde Canal St directo hasta Grand Central (~20 min).",
+     "pid": "",
+     "who": "jp",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "09:20",
+     "txt": "Desayuno adentro de Grand Central, en el dining concourse o en el Grand Central Market — ya estás dentro del edificio que venís a ver.",
+     "pid": "grandcentral",
+     "who": "jp",
+     "kind": "comida",
+     "note": ""
+    },
+    {
+     "t": "09:45",
+     "txt": "Grand Central Terminal: el techo celeste pintado al revés y la Whispering Gallery frente al Oyster Bar.",
+     "pid": "grandcentral",
+     "who": "jp",
+     "kind": "destacado",
+     "note": ""
+    },
+    {
+     "t": "10:15",
+     "txt": "Lobby del Chrysler Building — art déco puro. SOLO lun-vie 8-18h.",
+     "pid": "chrysler",
+     "who": "jp",
+     "kind": "paseo",
+     "note": "",
+     "trav": "🚶 ~4 min a pie · 0.2 km · estimado"
+    },
+    {
+     "t": "11:00",
+     "txt": "Ford Foundation Atrium — jardín de 12 pisos dentro de un edificio de oficinas. PREINSCRIPCIÓN online antes de las 17h de ayer. Solo se puede del 31/8 al 3/9.",
+     "pid": "fordfoundation",
+     "who": "jp",
+     "kind": "destacado",
+     "note": "",
+     "trav": "🚶 ~9 min a pie · 0.6 km · estimado"
+    },
+    {
+     "t": "11:55",
+     "txt": "New York Public Library: Rose Main Reading Room — se ve perfecta por libre (los tours gratuitos son 11:00 y 14:00 y no coinciden con esta pasada; no hacen falta).",
+     "pid": "nypl",
+     "who": "jp",
+     "kind": "paseo",
+     "note": "",
+     "trav": "🚶 ~20 min a pie (1.4 km) o 🚇 ~15 min · estimado"
+    },
+    {
+     "t": "12:55",
+     "txt": "Almuerzo cerca de Bryant Park.",
+     "pid": "bryantpark",
+     "who": "jp",
+     "kind": "comida",
+     "note": ""
+    },
+    {
+     "t": "13:45",
+     "txt": "★ MoMA — a cinco cuadras de la biblioteca. Van Gogh, Picasso, Rothko, Warhol. El cine está INCLUIDO en la entrada.",
+     "pid": "moma",
+     "who": "jp",
+     "kind": "destacado",
+     "note": "",
+     "trav": "🚶 ~20 min a pie (1.3 km) o 🚇 ~15 min · estimado"
+    },
+    {
+     "t": "16:30",
+     "txt": "Caminar cuatro cuadras: Rockefeller Center a nivel de calle — la plaza, Atlas y St. Patrick's enfrente, sobre la Quinta.",
+     "pid": "",
+     "who": "jp",
+     "kind": "paseo",
+     "note": ""
+    },
+    {
+     "t": "17:15",
+     "txt": "Cena TEMPRANA en Midtown. Hoy se cena ANTES de subir: la noche está tomada por el arco del observatorio y Birdland. Las valijas viajan con Thais y el bolso ya espera en SoHo.",
+     "pid": "",
+     "who": "jp",
+     "kind": "comida",
+     "note": ""
+    },
+    {
+     "t": "18:15",
+     "txt": "★★ TOP OF THE ROCK — EL ARCO COMPLETO que pidieron: entrada 18:15 con luz plena, el atardecer ~19:28 desde arriba, y la ciudad encendiéndose hasta ~20:05. Es el ÚNICO observatorio con el Empire State dentro del encuadre y Central Park del otro lado. ⚠️ La franja de atardecer es la cara (~$57-65) y la que primero se agota: reservar YA. Thais lo marcó 0: es de hoy.",
+     "pid": "topofrock",
+     "who": "jp",
+     "kind": "destacado",
+     "note": ""
+    },
+    {
+     "t": "20:10",
+     "txt": "Caminar a Birdland: 12 minutos (50th y 6ª → 44th entre 8ª y 9ª).",
+     "pid": "",
+     "who": "jp",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "20:30",
+     "txt": "★ BIRDLAND: Vince Giordano & the Nighthawks — jazz de los años 20 y 30 con instrumentos de época. Institución de los lunes, y el lunes Broadway está oscuro. Birdland está a 8 cuadras de Penn Station.",
+     "pid": "birdland",
+     "who": "jp",
+     "kind": "destacado",
+     "note": ""
+    },
+    {
+     "t": "22:40",
+     "txt": "Birdland ENTERO y sin mirar el reloj: ya NO hay tren que atrapar. Subte A/C/E desde 42 St-Port Authority hasta Canal St (~15 min) y check-in en el JGStay. La noche pasó de terminar 00:35 en New Jersey a ~23:30 en SoHo.",
+     "pid": "jgstay",
+     "who": "jp",
+     "kind": "logistica",
+     "note": ""
+    }
+   ],
+   "alt": "SIN TREN, el lunes cambió de naturaleza: Birdland completo, sobremesa incluida. Si queda pila, el JGStay está a 15-20 min a pie del Village y Smalls tiene jam de lunes hasta tarde. Y si el día pesó, SoHo a las 23:30 es una hora y cinco más de sueño que el plan viejo."
+  },
+  {
+   "n": 4,
+   "date": "2026-09-01",
+   "dow": "Martes",
+   "who": "jp",
+   "base": "JGStay SoHo",
+   "title": "JP solo · el MET, The Cloisters y la noche del Village",
+   "note": "Thais marcó el MET y The Cloisters en 0, así que este es EL día para hacerlos — y el martes es de los pocos que sirven: cierran los miércoles. El mismo ticket de $30 cubre los dos museos el mismo día, así que The Cloisters sale gratis. Thais sigue trabajando en New Jersey, así que hoy también es día de JP solo. CERRADOS hoy: Whitney, Frick, Noguchi, Brooklyn Museum, 9/11, MoMA PS1, Transit Museum y Studio Museum — por eso el martes es día de MET, que abre.",
+   "blocks": [
+    {
+     "t": "08:20",
+     "txt": "Desayuno INCLUIDO en el JGStay (7-9 AM) — primera mañana del viaje sin tren ni madrugón: el MET abre 10:00 y Canal St está en la puerta.",
+     "pid": "jgstay",
+     "who": "jp",
+     "kind": "comida",
+     "note": ""
+    },
+    {
+     "t": "09:10",
+     "txt": "Subte 6 directo desde Canal St hasta 86 St (~35 min): se llega justo a la apertura del MET.",
+     "pid": "",
+     "who": "jp",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "10:00",
+     "txt": "★★ THE METROPOLITAN MUSEUM OF ART — es inagotable, así que elegí DOS alas y hacelas bien: egipcio + pintura europea, o armas y armaduras + arte islámico. $30 (el pay-what-you-wish es solo para residentes de NY y estudiantes de NY/NJ/CT).",
+     "pid": "met",
+     "who": "jp",
+     "kind": "destacado",
+     "note": ""
+    },
+    {
+     "t": "13:15",
+     "txt": "Almuerzo RÁPIDO cerca del MET (30-40 min): hoy la tarde tiene museo con hora de cierre.",
+     "pid": "",
+     "who": "jp",
+     "kind": "comida",
+     "note": ""
+    },
+    {
+     "t": "13:50",
+     "txt": "Al Cloisters: NO hay tren A en el lado este — la ruta real en subte es M86-SBS cruzando el parque + B/C hasta 168 St + A hasta 190 St (~55 min). El taxi/Uber directo (~25 min, $28-35) compra 40 minutos de museo: hoy se justifica.",
+     "pid": "",
+     "who": "jp",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "14:30",
+     "txt": "★ THE MET CLOISTERS — arte medieval en un edificio armado con claustros franceses reales, sobre un acantilado del Hudson. INCLUIDO en el ticket del MET del mismo día: guardá el sticker.",
+     "pid": "cloisters",
+     "who": "jp",
+     "kind": "destacado",
+     "note": ""
+    },
+    {
+     "t": "17:00",
+     "txt": "Fort Tryon Park — el Hudson y los Palisades sin un solo edificio a la vista. Media hora honesta: el parque ya rodea al Cloisters, y la noche de hoy tiene tres paradas.",
+     "pid": "forttryon",
+     "who": "jp",
+     "kind": "paseo",
+     "note": "",
+     "trav": "🚶 ~5 min a pie · 0.3 km · estimado"
+    },
+    {
+     "t": "17:30",
+     "txt": "Tren A desde 190 St directo hasta W 4 St-Washington Sq (~35 min).",
+     "pid": "",
+     "who": "jp",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "18:10",
+     "txt": "Washington Square Park (JP lo marcó 2): el arco, los músicos y las mesas de ajedrez al caer la tarde. Veinte minutos.",
+     "pid": "washingtonsq",
+     "who": "jp",
+     "kind": "paseo",
+     "note": ""
+    },
+    {
+     "t": "18:35",
+     "txt": "Bajar MacDougal St — la cuadra folk de los 60s (Caffe Reggio, el viejo Gaslight) — hasta Houston: 8-10 min y es paseo, no traslado.",
+     "pid": "",
+     "who": "jp",
+     "kind": "paseo",
+     "note": ""
+    },
+    {
+     "t": "18:45",
+     "txt": "★★ HAMBURGER AMERICA (155 W Houston St) — MUST de JP: el counter de George Motz, el historiador de la hamburguesa americana. Pedir la fried-onion burger estilo Oklahoma y mirar el griddle trabajar. ~$15-20. SIN RESERVAS, orden de llegada — un martes 18:45 la fila es manejable, y el counter rota rápido.",
+     "pid": "hamburgerica",
+     "who": "jp",
+     "kind": "destacado",
+     "note": "",
+     "trav": "🚶 ~10 min a pie · 0.8 km · estimado"
+    },
+    {
+     "t": "19:40",
+     "txt": "Paseo por el West Village sin plan: Bleecker, Grove, Bedford. La única grilla rota de Manhattan, y de noche es cuando mejor está.",
+     "pid": "westvillage",
+     "who": "jp",
+     "kind": "paseo",
+     "note": "",
+     "trav": "🚶 ~11 min a pie · 0.8 km · estimado"
+    },
+    {
+     "t": "20:30",
+     "txt": "★ SMALLS JAZZ CLUB (183 W 10th St) — sótano de 60 asientos, la escena real de Nueva York tocando para el barrio. $25 con un trago; la jam de madrugada es de las mejores de la ciudad. Se entra por orden de llegada: llegar 20:15 asegura lugar. Mezzrow está enfrente si Smalls está lleno.",
+     "pid": "smalls",
+     "who": "jp",
+     "kind": "destacado",
+     "note": ""
+    },
+    {
+     "t": "22:30",
+     "txt": "Caminar al JGStay: 20-25 min cruzando el Village y SoHo, que a esta hora es el mejor paseo del viaje. O subte 1 desde Christopher St a Canal.",
+     "pid": "jgstay",
+     "who": "jp",
+     "kind": "logistica",
+     "note": ""
+    }
+   ],
+   "alt": "El MET y The Cloisters el mismo día son ~6 horas de museo. Si es demasiado: hacé solo el MET hasta las 15h y usá la tarde para Inwood Hill Park (el único bosque primario que queda en Manhattan, con cuevas de los Lenape), que está tres paradas más al norte. El Tenement Museum quedó afuera: los dos lo bajaron a 'quizás'."
+  },
+  {
+   "n": 5,
+   "date": "2026-09-02",
+   "dow": "Miércoles",
+   "who": "jp",
+   "base": "JGStay SoHo → New Jersey (la ÚNICA vuelta nocturna)",
+   "title": "JP solo · Historia Natural, Frick gratis y McBride en Central Park",
+   "note": "Thais trabaja en New Jersey hasta mañana, así que sigue siendo día de JP solo, y se aprovecha para lo que ella marcó 0: el Museo de Historia Natural y el Frick. El miércoles el Frick es pay-what-you-wish de 13:30 a 17:30, así que sale casi nada. Cierra el MET, pero hoy no hace falta: ya se hizo ayer. El teleférico a Roosevelt Island se fue al domingo: lo marcaron 2 los dos, así que corresponde a un día de a dos. ⚠️ OJO CON LA NOCHE: hoy es LA ÚNICA vuelta a New Jersey que quedó en el viaje (para volver mañana con las maletas), y mañana se madruga 5:45. Cenar TEMPRANO y no perder el tren de las 22:48.",
+   "blocks": [
+    {
+     "t": "08:15",
+     "txt": "Desayuno incluido en el JGStay y CHECKOUT: el bolso queda en la CONSIGNA — se retira a la tarde, en el hueco libre del día.",
+     "pid": "jgstay",
+     "who": "jp",
+     "kind": "comida",
+     "note": ""
+    },
+    {
+     "t": "09:15",
+     "txt": "Subte A o C desde Canal St hasta 81 St-Museum of Natural History (~30 min).",
+     "pid": "",
+     "who": "jp",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "10:00",
+     "txt": "★ AMERICAN MUSEUM OF NATURAL HISTORY — dinosaurios, la ballena azul y el Gilder Center nuevo de Studio Gang. $37. Thais lo marcó 0: es de hoy.",
+     "pid": "amnh",
+     "who": "jp",
+     "kind": "destacado",
+     "note": ""
+    },
+    {
+     "t": "12:45",
+     "txt": "Almuerzo y cruzar Central Park de oeste a este (20 min a pie).",
+     "pid": "",
+     "who": "jp",
+     "kind": "comida",
+     "note": ""
+    },
+    {
+     "t": "13:45",
+     "txt": "★ THE FRICK COLLECTION — pay-what-you-wish los miércoles 13:30-17:30. Vermeer, Rembrandt y Bellini colgados como en una casa, porque era una casa. Online el mínimo es $5; para pagar menos hay que ir en persona y no hay garantía de lugar.",
+     "pid": "frick",
+     "who": "jp",
+     "kind": "destacado",
+     "note": "",
+     "trav": "🚶 ~25 min a pie (1.6 km) o 🚇 ~15 min · estimado"
+    },
+    {
+     "t": "16:30",
+     "txt": "El hueco libre ahora tiene una función: subte 6 desde 68 St hasta Canal St, RETIRAR EL BOLSO de la consigna del JGStay, y 6 de vuelta hasta 68 St (~1h10 el circuito completo). El bolso viaja esta noche a New Jersey. La cena temprana de las 17:45 sigue en pie.",
+     "pid": "jgstay",
+     "who": "jp",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "17:45",
+     "txt": "Subte 6 al sur. Cena TEMPRANA cerca de Central Park: hoy no hay cena tardía posible, el tren manda.",
+     "pid": "",
+     "who": "jp",
+     "kind": "comida",
+     "note": ""
+    },
+    {
+     "t": "18:45",
+     "txt": "Entrar a Rumsey Playfield. Puertas 18:00 y con este cartel se llena: cuanto antes, mejor lugar.",
+     "pid": "",
+     "who": "jp",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "19:00",
+     "txt": "★★ SUMMERSTAGE: Christian McBride + SAMARA JOY + Mei Semones — Verve 70 aniversario y Getz/Gilberto. GRATIS, sin ticket, Rumsey Playfield, 19:00-22:00.",
+     "pid": "summerstage",
+     "who": "jp",
+     "kind": "destacado",
+     "note": ""
+    },
+    {
+     "t": "22:00",
+     "txt": "Salir del parque por la 72 y subte 1/2/3 hasta 34 St-Penn Station. Son 25-30 min puerta a puerta: llegás a Penn 22:25-22:30, con 18-23 min de colchón.",
+     "pid": "",
+     "who": "jp",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "22:48",
+     "txt": "NJ Transit DIRECTO Penn → Raritan (tren 5197), llega 00:04. $18,50. ⚠️ ES EL TREN CRÍTICO: si lo perdés, la próxima llegada a Raritan es 01:31.",
+     "pid": "",
+     "who": "jp",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "00:15",
+     "txt": "Uber Raritan → Residence Inn (pedirlo antes de subir al tren). Mañana: despertador 5:45 para el tren de las 6:55 con las maletas.",
+     "pid": "residenceinn",
+     "who": "jp",
+     "kind": "logistica",
+     "note": ""
+    }
+   ],
+   "alt": "Si el AMNH es demasiado museo dos días seguidos (ayer fueron el MET y The Cloisters), salteálo y usá la mañana para Inwood Hill Park o para caminar el Upper West Side sin plan. El Frick y el SummerStage son los dos anclas del día: uno es casi gratis solo hoy, el otro pasa una sola vez. // ⚠️ LA DECISIÓN DE LA NOCHE, con los horarios ya verificados: el directo de las 21:48 llega a Raritan 23:10 y al hotel ~23:30, o sea UNA HORA MÁS DE SUEÑO antes de un jueves que arranca 5:45 con maletas. Pero para tomarlo hay que salir del SummerStage a las 21:05 — el colchón es de 3 a 8 minutos, no hay margen — y te perdés el final de Christian McBride y Samara Joy, que es el plato fuerte y pasa una sola vez. Mi recomendación: quedate hasta el final y tomá el de las 22:48. La hora de sueño no convierte el jueves en un día fácil, y el show no se repite."
+  },
+  {
+   "n": 6,
+   "date": "2026-09-03",
+   "dow": "Jueves",
+   "who": "jp",
+   "base": "New Jersey → The Beacon",
+   "title": "Traslado + World Trade Center completo + ferry con Thais",
+   "note": "La mañana y la primera tarde son el World Trade Center completo — memorial, museo y One World Observatory en una sola bajada. OJO: One World es EL MIRADOR DE DÍA a propósito — su vista es el puerto y el agua, que de noche es negra; los arcos de atardecer van en Top of the Rock (lunes) y SUMMIT (viernes). THAIS ESTÁ EN NYC CON SU EQUIPO este jueves y SE LIBERA A LAS 16:00: se encuentran por Manhattan y se van juntos al Museum of the Moving Image, que es GRATIS los jueves de 14 a 18 — estaba caído del plan y ustedes lo tienen 2/2: RECUPERADO. El día cierra con check-in, cena y Dizzy's. Siguen afuera MoMA PS1, Astoria y Gantry (no hay hueco), y el Staten Island Ferry pasó a la alternativa nocturna de hoy.",
+   "blocks": [
+    {
+     "t": "06:20",
+     "txt": "Uber desde el Residence Inn a la estación Raritan (~20 min, $14-20). PEDIRLO LA NOCHE ANTERIOR: Branchburg es semi-rural y a esa hora puede no haber autos.",
+     "pid": "residenceinn",
+     "who": "jp",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "06:55",
+     "txt": "NJ Transit Raritan → NY Penn Station. Llega 8:20. $18,50. Con maletas, ir al vagón con espacio de equipaje.",
+     "pid": "",
+     "who": "jp",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "08:30",
+     "txt": "Subte 1/2/3 desde 34 St-Penn Station hasta 72 St. Diez minutos, directo.",
+     "pid": "",
+     "who": "jp",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "08:45",
+     "txt": "★ THE BEACON — dejar las maletas en el bell desk. El check-in formal es a la tarde, con Thais, pero el equipaje se puede dejar desde temprano. Confirmalo por mail antes de viajar.",
+     "pid": "beacon",
+     "who": "jp",
+     "kind": "destacado",
+     "note": ""
+    },
+    {
+     "t": "09:15",
+     "txt": "Subte 1 directo desde 72 St hasta WTC Cortlandt (~30 min). Alternativa: 2/3 express hasta Chambers St y 5 min a pie.",
+     "pid": "",
+     "who": "jp",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "09:50",
+     "txt": "★ 9/11 MEMORIAL (la plaza) — las dos fuentes en las huellas de las torres y el Survivor Tree. Gratis, abierto desde las 8:00. Verlo ANTES del museo ordena la visita.",
+     "pid": "",
+     "who": "jp",
+     "kind": "destacado",
+     "note": ""
+    },
+    {
+     "t": "10:30",
+     "txt": "★★ 9/11 MEMORIAL MUSEUM — $36, TIMED TICKET OBLIGATORIO comprado online antes (el museo no vende en puerta sin reserva). 2 horas largas; es duro y muy bien hecho. Thais lo marcó 0: por eso va en la mañana de JP solo.",
+     "pid": "911museum",
+     "who": "jp",
+     "kind": "destacado",
+     "note": ""
+    },
+    {
+     "t": "12:45",
+     "txt": "Almuerzo cruzando West St: Hudson Eats o Le District, en Brookfield Place, con el yate harbor de fondo.",
+     "pid": "",
+     "who": "jp",
+     "kind": "comida",
+     "note": ""
+    },
+    {
+     "t": "13:45",
+     "txt": "★★ ONE WORLD OBSERVATORY — piso 102, el punto más alto del hemisferio occidental, con el puerto y Brooklyn dominando la vista. $44+fee, ventana de entrada de 15 min: sacar el timed ticket online. JP lo subió a 2 en la última pasada.",
+     "pid": "owo",
+     "who": "jp",
+     "kind": "destacado",
+     "note": "",
+     "trav": "🚶 ~4 min a pie · 0.2 km · estimado"
+    },
+    {
+     "t": "15:15",
+     "txt": "El Oculus en un VISTAZO (5 min — ya estás ahí, y el tiempo no da para más) y R/W desde Cortlandt St hacia el norte.",
+     "pid": "oculus",
+     "who": "jp",
+     "kind": "paseo",
+     "note": "",
+     "trav": "🚶 ~4 min a pie · 0.3 km · estimado"
+    },
+    {
+     "t": "16:00",
+     "txt": "★ ENCUENTRO CON THAIS. Lo que MÁS rinde: verse DIRECTO en la puerta del MoMI a las 16:20 (36-01 35 Ave, N/W hasta 36 Av) — cada uno llega por su lado y el museo gana 10-15 min. Si prefieren encontrarse antes en Manhattan: Lexington Av-59 St 16:00 y N/W juntos (JP puede llegar 16:05-16:10 si el WTC se estiró: avisale que es ±10).",
+     "pid": "",
+     "who": "both",
+     "kind": "destacado",
+     "note": ""
+    },
+    {
+     "t": "16:30",
+     "txt": "★★ MUSEUM OF THE MOVING IMAGE — GRATIS los jueves 14-18, sus únicas horas del jueves. RECUPERADO: había quedado afuera del plan y ustedes lo tienen 2/2. Una hora y media alcanza para Behind the Screen y los Muppets originales de Jim Henson. Cierra 18:00 EN PUNTO. (N/W hasta 36 Av + 8 min a pie.)",
+     "pid": "momi",
+     "who": "both",
+     "kind": "destacado",
+     "note": "",
+     "trav": "🚇 ~40 min en subte · 11.5 km (a pie 155 min) · estimado"
+    },
+    {
+     "t": "18:05",
+     "txt": "Subte N/W desde 36 Av hasta Times Sq y 1/2/3 hasta 72 St (~45 min).",
+     "pid": "",
+     "who": "both",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "18:55",
+     "txt": "The Beacon: check-in formal y subir las maletas.",
+     "pid": "beacon",
+     "who": "both",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "19:15",
+     "txt": "Cena RÁPIDA en el Upper West Side, bajando por Broadway o Columbus. Hoy se come temprano y liviano: la noche tiene tres paradas y todas valen.",
+     "pid": "",
+     "who": "both",
+     "kind": "comida",
+     "note": ""
+    },
+    {
+     "t": "19:55",
+     "txt": "★ LINCOLN CENTER DE NOCHE (gratis, 20 min) — la plaza de Revson con la fuente iluminada, los chandeliers del Met Opera a través del vidrio y el espejo de agua con el Henry Moore. Las salas grandes están entre temporadas (la Filarmónica de Dudamel abre el 10/9), así que ESTO es Lincoln Center esta semana.",
+     "pid": "lincolncenter",
+     "who": "both",
+     "kind": "destacado",
+     "note": "",
+     "trav": "🚶 ~20 min a pie (1.3 km) o 🚇 ~15 min · estimado"
+    },
+    {
+     "t": "20:20",
+     "txt": "Caminar seis cuadras por Broadway hasta Columbus Circle (~8 min).",
+     "pid": "",
+     "who": "both",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "20:30",
+     "txt": "★★ MO LOUNGE, PISO 35 DEL MANDARIN ORIENTAL (80 Columbus Circle) — el dato del amigo de Juan, con una corrección: es el piso 35, no el 60 (el hotel ocupa del 35 al 54). Ventanales de piso a techo sobre Central Park con la ciudad encendida abajo. Coctel ~$26-32, sin cover. RESERVAR por SevenRooms desde su web. Si prefieren algo más íntimo, en ese MISMO piso está The Bar (ex speakeasy The Office, 45 asientos, mar-sáb 17-1h).",
+     "pid": "molounge",
+     "who": "both",
+     "kind": "destacado",
+     "note": ""
+    },
+    {
+     "t": "20:55",
+     "txt": "Bajar en ascensor: Dizzy's está EN EL MISMO EDIFICIO (10 Columbus Circle, piso 5). Cero calle, cero frío.",
+     "pid": "",
+     "who": "both",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "21:00",
+     "txt": "★ Dizzy's Club — ventanales sobre Central Park detrás del escenario, un piso abajo del cóctel. SEAMOS HONESTOS: JP lleva ~17 horas en pie con 5 de sueño. Decidan A LAS 20:00, arriba en el Mandarin: si están enteros, bajan; si no, se quedan con la vista y el trago, que ya es un cierre precioso. El set Late Night (~22:45) cuesta una fracción — variante para valientes.",
+     "pid": "dizzys",
+     "who": "both",
+     "kind": "musica",
+     "note": ""
+    }
+   ],
+   "alt": "⚠️ EL PROBLEMA DE LA NOCHE ANTERIOR: si JP viaja desde New Jersey el jueves, significa que durmió allá el miércoles — y el miércoles el SummerStage termina a las 22:00 en Central Park. Llegando a Penn ~22:25 se toma el directo de las 22:48, que deja en Raritan ~0:04, más Uber: llegada al hotel ~0:25 y despertador a las 5:45. Son cinco horas de sueño antes de un día completo. Tres salidas: (a) salir del SummerStage a las 21:15, después del set principal; (b) quedarse una noche más en el JGStay y que Thais lleve las maletas el jueves (implica tocar la reserva); (c) tomar el tren de las 7:13 en vez del de 6:55 y arrancar 20 minutos más tarde. Verificá los horarios exactos de la tarde-noche en njtransit.com: solo tengo confirmado el directo de las 22:48. // EL FERRY, SI LES DUELE (lo tienen 2/2): al salir del MoMI, W directo hasta Whitehall (~50 min), ferry ~19:15 — el atardecer (~19:22) de ida y la Estatua y el skyline ILUMINADOS de vuelta; check-in ~21:15, cena tarde cerca del hotel, y Dizzy's tiene set Late Night los jueves ~22:45 como consuelo. Es MÁS día: elíjanlo solo si llegan enteros. // Siguen afuera: MoMA PS1, Astoria y Gantry (sin hueco); ya habían salido Noguchi, Astoria Park y Socrates por interés bajo."
+  },
+  {
+   "n": 7,
+   "date": "2026-09-04",
+   "dow": "Viernes",
+   "who": "both",
+   "base": "The Beacon",
+   "title": "Vessel + High Line, SUMMIT al atardecer y el VANGUARD de a dos",
+   "note": "Salieron el West Village, Washington Square y el Whitney; entraron el High Line, THE VESSEL (al pie del arranque, $10 y 45 min), la Morgan (hoy GRATIS 17-20) y SUMMIT — que se movió AL ATARDECER por el pedido de ustedes: entrada 18:10, luz plena, la puesta ~19:21 multiplicada por los espejos de Kusama (es EL lugar de la ciudad para ese momento) y la noche encendida hasta las 20:15. EL PAGO, dicho honesto: la Morgan se hace en una hora entrando 17:00 en punto, y la cena de hoy es un bocado rápido — por eso el almuerzo en Chelsea Market es EL fuerte del día.",
+   "blocks": [
+    {
+     "t": "09:15",
+     "txt": "Subte a Hudson Yards.",
+     "pid": "",
+     "who": "both",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "09:40",
+     "txt": "La plaza de Hudson Yards mientras abre el Vessel: The Shops y el Shed desde afuera. Sacar el timed ticket de las 10:00 online antes.",
+     "pid": "",
+     "who": "both",
+     "kind": "paseo",
+     "note": ""
+    },
+    {
+     "t": "10:00",
+     "txt": "★ THE VESSEL — la escalera infinita de Heatherwick: 154 tramos, 2.500 escalones, $10. Reabierto con redes; algunos tramos altos hacia el Hudson siguen cerrados, y hay ascensor cada 15 min. Subir es la única forma de entenderla. Si Thais prefiere no subir, la plaza está al pie.",
+     "pid": "vessel",
+     "who": "both",
+     "kind": "destacado",
+     "note": ""
+    },
+    {
+     "t": "10:50",
+     "txt": "★ THE HIGH LINE completo, de norte a sur (2,3 km) — arranca ahí mismo, en 30th y 10ª. Vía ferroviaria elevada convertida en parque lineal. Incluye el Buda de arenisca de 9 metros de Tuan Andrew Nguyen.",
+     "pid": "highline",
+     "who": "both",
+     "kind": "destacado",
+     "note": "",
+     "trav": "🚶 ~12 min a pie · 0.9 km · estimado"
+    },
+    {
+     "t": "12:20",
+     "txt": "Little Island — el parque flotante de Heatherwick sobre 132 macetas de hormigón, al final del High Line. Gratis.",
+     "pid": "littleisland",
+     "who": "both",
+     "kind": "paseo",
+     "note": "",
+     "trav": "🚶 ~15 min a pie · 1.1 km · estimado"
+    },
+    {
+     "t": "13:00",
+     "txt": "Galerías de Chelsea COMPLETAS — W 19th a W 27th entre la 10ª y la 11ª, concentradas en W 24th y W 21st (Gagosian, Pace, Zwirner). Gratis, se entra y se sale. El recorte del Vessel se devolvió: SUMMIT pasó al atardecer y la tarde se estiró.",
+     "pid": "",
+     "who": "both",
+     "kind": "destacado",
+     "note": "Abren mar-sáb ~10-18h."
+    },
+    {
+     "t": "14:30",
+     "txt": "Almuerzo en Chelsea Market — COMER FUERTE: es la comida grande del día, la cena de hoy es un bocado rápido entre el SUMMIT y el Vanguard. Los Tacos No.1 o Very Fresh Noodles.",
+     "pid": "chelseamarket",
+     "who": "both",
+     "kind": "comida",
+     "note": "",
+     "trav": "🚶 ~7 min a pie · 0.5 km · estimado"
+    },
+    {
+     "t": "15:50",
+     "txt": "A Grand Central SIN desandar: L desde 14 St-8 Av hasta Union Sq y 4/5 exprés hasta Grand Central (~20 min puerta a puerta). Volver caminando a Hudson Yards sería 1,9 km al revés.",
+     "pid": "",
+     "who": "both",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "16:20",
+     "txt": "Grand Central PARA THAIS: el techo celeste, la Whispering Gallery y el mercado — JP ya lo vio el lunes, ella no, y está literalmente abajo del SUMMIT.",
+     "pid": "grandcentral",
+     "who": "both",
+     "kind": "paseo",
+     "note": ""
+    },
+    {
+     "t": "17:00",
+     "txt": "★ MORGAN LIBRARY — GRATIS los viernes 17-20h: entrar 17:00 EN PUNTO y hacerla en una hora — la biblioteca son tres salas gloriosas (estanterías de nogal, la Biblia de Gutenberg): alcanza. RESERVA OBLIGATORIA, se libera el viernes 28 de agosto. Está a 8 min a pie de One Vanderbilt.",
+     "pid": "morgan",
+     "who": "both",
+     "kind": "destacado",
+     "note": "",
+     "trav": "🚶 ~9 min a pie · 0.7 km · estimado"
+    },
+    {
+     "t": "18:00",
+     "txt": "Caminar de vuelta las seis cuadras a One Vanderbilt (~8-10 min).",
+     "pid": "",
+     "who": "both",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "18:10",
+     "txt": "★★ SUMMIT ONE VANDERBILT — EL ARCO COMPLETO: entrada 18:10 con luz, el atardecer ~19:21 multiplicado por los espejos infinitos de Kusama, y la noche encendida hasta ~20:15. Ticket ATARDECER $57-63 — es la franja que primero se agota: reservar YA. NO está en ningún pase.",
+     "pid": "summit",
+     "who": "both",
+     "kind": "destacado",
+     "note": ""
+    },
+    {
+     "t": "20:20",
+     "txt": "Bajar AL VILLAGE PRIMERO y cenar allá: 4/5/6 o 7 hasta 14 St-Union Sq y 1 hasta Christopher St (~25 min). Cenar cerca de Grand Central y bajar después llega justo; hacerlo al revés deja margen.",
+     "pid": "",
+     "who": "both",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "20:50",
+     "txt": "Cena en el West Village, a cinco minutos del club. El Vanguard NO sirve NADA de comida (lo dicen así: 'ni un maní') y no se permite entrar comida: lo que no cenen ahora, no se cena. 40 minutos alcanzan.",
+     "pid": "",
+     "who": "both",
+     "kind": "comida",
+     "note": ""
+    },
+    {
+     "t": "21:30",
+     "txt": "EN LA PUERTA DEL VANGUARD a las 21:30 EN PUNTO: el acomodo del segundo set arranca a esa hora y los asientos son POR ORDEN DE LLEGADA — la entrada es General Admission, no numerada. Con 123 asientos, los diez minutos de diferencia son estar frente al piano o contra la columna. El ticket lo dice: el acomodo tardío, con entrada o sin ella, queda a criterio del encargado.",
+     "pid": "",
+     "who": "both",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "22:00",
+     "txt": "★★ VILLAGE VANGUARD — JOHN PATITUCCI TRIO con Chris Potter y Brian Blade, SET DE LAS 22:00. Movido acá desde el martes para que vayan LOS DOS (pedido de Juan). El sótano triangular de 1935, 123 asientos, la acústica que grabó a Coltrane. ✔ ENTRADAS COMPRADAS el 26/8: 2 × General Admission $45 (#18741454 y #18741456), a nombre de Juan Pablo Garicoïts. Falta solo el mínimo de UNA CONSUMICIÓN por cabeza en la mesa (vale gaseosa, jugo o agua) — se paga ahí, aceptan tarjeta.",
+     "pid": "vanguard",
+     "who": "both",
+     "kind": "destacado",
+     "note": ""
+    }
+   ],
+   "alt": "EL CANJE DE ESTA NOCHE: para meter el Vanguard con Thais, SALIÓ BILL'S PLACE. No hay otra noche donde entre (Bill Saxton toca solo viernes y sábado, y el sábado está tomado por Peter Luger + el play + el Café Wha). Con las entradas ya compradas y sin cambios ni transferencias, el canje quedó CERRADO: Bill's Place sale del viaje. // El Whitney es gratis hoy de 17 a 22h, pero choca con la Morgan y ustedes lo bajaron a 'quizás' mientras que la Morgan quedó en 2. Si igual lo prefieren, el ticket gratis es OBLIGATORIO y el Whitney ahora cierra los martes. SI ALGO SALIERA MAL con el acomodo (llegar tarde y que no haya lugar): Mezzrow o Smalls quedan a cuatro cuadras ($25 con bebida, Smalls tiene jam de madrugada los viernes desde la 1:00), o el Blue Note — el 4 y 5 de septiembre toca Chief Adjuah."
+  },
+  {
+   "n": 8,
+   "date": "2026-09-05",
+   "dow": "Sábado",
+   "who": "both",
+   "base": "The Beacon",
+   "title": "Brooklyn, Peter Luger, un PLAY y Café Wha hasta la madrugada",
+   "note": "La gran noche del viaje, rearmada a pedido: el musical SALIÓ y entraron un PLAY de Broadway a las 19:30 y el CAFÉ WHA a las 23:45 — el sótano del Village donde debutaron Dylan y Hendrix, con reserva gratis ya pedida por Eventbrite. La cena temprana en Peter Luger (17:00) ahora existe exactamente para esto: porterhouse → telón → medianoche de soul y funk. Frankel's sigue afuera (a un porterhouse no se llega con un pastrami encima) y Westlight sigue opcional. ⚠️ La noche termina ~1:15-1:30: el domingo no tiene NADA fijo hasta las 16:00.",
+   "blocks": [
+    {
+     "t": "08:15",
+     "txt": "Salir 8:15: 1/2/3 desde 72 St + transbordo a A/C hasta High St son ~40-45 min REALES. Llegar temprano a DUMBO es la diferencia entre la foto y la cola de fotos.",
+     "pid": "",
+     "who": "both",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "09:00",
+     "txt": "★ Brooklyn Bridge Park y DUMBO — muelles reconvertidos con el skyline de Lower Manhattan de frente, y la foto del Manhattan Bridge encuadrado en Washington y Water.",
+     "pid": "brooklynbridgepark",
+     "who": "both",
+     "kind": "destacado",
+     "note": ""
+    },
+    {
+     "t": "10:30",
+     "txt": "Brooklyn Heights Promenade — la postal clásica del skyline sobre el BQE.",
+     "pid": "bhpromenade",
+     "who": "both",
+     "kind": "paseo",
+     "note": "",
+     "trav": "🚶 ~8 min a pie · 0.6 km · estimado"
+    },
+    {
+     "t": "11:15",
+     "txt": "★ NEW YORK TRANSIT MUSEUM — una estación de subte clausurada de 1936 con 20 vagones históricos en las vías originales; se puede subir a todos. $10. Cierra lunes y martes, así que hoy es el día.",
+     "pid": "transitmuseum",
+     "who": "both",
+     "kind": "destacado",
+     "note": ""
+    },
+    {
+     "t": "12:45",
+     "txt": "Almuerzo en Downtown Brooklyn.",
+     "pid": "",
+     "who": "both",
+     "kind": "comida",
+     "note": ""
+    },
+    {
+     "t": "13:45",
+     "txt": "Subte a Williamsburg.",
+     "pid": "",
+     "who": "both",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "14:15",
+     "txt": "★ Domino Park — ex refinería de azúcar; el paseo elevado pasa entre la maquinaria industrial conservada, con el Williamsburg Bridge y Midtown enfrente.",
+     "pid": "domino",
+     "who": "both",
+     "kind": "destacado",
+     "note": ""
+    },
+    {
+     "t": "15:15",
+     "txt": "Paseo por Williamsburg: Bedford Ave, disquerías y vintage. OPCIONAL si quieren la panorámica: Westlight (piso 22, sin cover, un trago) — lo bajaron a 'quizás', así que es prescindible. NO comer nada: lo que viene lo merece.",
+     "pid": "",
+     "who": "both",
+     "kind": "paseo",
+     "note": ""
+    },
+    {
+     "t": "16:45",
+     "txt": "Caminar por Bedford/Driggs hasta el pie del Williamsburg Bridge (~15 min).",
+     "pid": "",
+     "who": "both",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "17:00",
+     "txt": "★★ PETER LUGER (178 Broadway) — el porterhouse for two de 1887, dry-aged en el sótano, con la tocineta gruesa de entrada. ~$160-200 los dos con sides y propina. ⚠️ SIN TARJETAS DE CRÉDITO: efectivo, débito US o cheque — llevar cash. Cena temprana a propósito: el teatro espera. RESERVA EN RESY YA.",
+     "pid": "peterluger",
+     "who": "both",
+     "kind": "destacado",
+     "note": ""
+    },
+    {
+     "t": "18:45",
+     "txt": "A la zona de teatros: subte J desde Marcy Av hasta Essex St y F hasta 42 St-Bryant Park (~35 min con transbordo), o directamente Uber al teatro (~20-25 min, $25-35 — un sábado a la noche el puente puede estar cargado).",
+     "pid": "",
+     "who": "both",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "19:30",
+     "txt": "★★ PLAY DE BROADWAY — mi recomendación: STRANGER THINGS: THE FIRST SHADOW (Marquis, desde ~$76): la maquinaria escénica que ganó el Tony — para quien viene de Mercer Labs, el mismo músculo llevado al teatro. Alternativas esa semana: Harry Potter and the Cursed Child, Paranormal Activity, The Imaginary Invalid. COMPRA FIRME esta semana y verificar el horario real de la función (19:00/19:30/20:00): tiene que terminar ~22:00 para lo que sigue.",
+     "pid": "strangerthings",
+     "who": "both",
+     "kind": "destacado",
+     "note": ""
+    },
+    {
+     "t": "22:00",
+     "txt": "Subte 1 desde Times Sq hasta Christopher St (~15 min) y caminar al corazón del Village.",
+     "pid": "",
+     "who": "both",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "22:30",
+     "txt": "Paseo sin apuro por Bleecker y MacDougal — la esquina folk de los 60s de noche, un café o un trago corto. El único objetivo real: estar en la puerta del Wha a las 23:10.",
+     "pid": "",
+     "who": "both",
+     "kind": "paseo",
+     "note": ""
+    },
+    {
+     "t": "23:15",
+     "txt": "★★ CAFÉ WHA — LLEGAR 23:10-23:15: la reserva de Eventbrite NO garantiza admisión y a las 23:30 EN PUNTO liberan los asientos vacíos al standby. TODOS los de la reserva presentes. Set 2 de la house band 23:45-~1:15: soul y funk a máquina en el sótano donde debutaron Dylan, Hendrix y Springsteen. $20 por cabeza van a la cuenta + consumo. Vuelta: subte 1 Christopher St → 72 St (~25 min) o taxi.",
+     "pid": "cafewha",
+     "who": "both",
+     "kind": "destacado",
+     "note": ""
+    }
+   ],
+   "alt": "SOBRE PETER LUGER: la mesa de las 17:00 es la realista — y ahora es la única que funciona: el play manda. PLAN B si no hay mesa: correr Peter Luger al ALMUERZO del mismo día (12:45). // SI EL CANSANCIO GANA A LAS 22:00: el Café Wha es la pieza sacrificable — la reserva es gratis y no penaliza no ir; el play, pagado, no. // Sigue afuera: Bar LunÀtico y Barbès (Bed-Stuy/Park Slope), sin noche posible."
+  },
+  {
+   "n": 9,
+   "date": "2026-09-06",
+   "dow": "Domingo",
+   "who": "both",
+   "base": "The Beacon (checkout) → EWR",
+   "title": "Checkout, Central Park, Roosevelt Island y vuelo",
+   "note": "El día arranca con el CHECKOUT de The Beacon: hacerlo temprano y dejar las valijas en el bell desk libera el día entero. El vuelo sale 23:40, así que hay margen — pero es el domingo del fin de semana largo de Labor Day, la noche de mayor tráfico del año, y EWR va a estar cargado. Por eso todo queda dentro del eje Central Park - Upper East Side, a diez minutos de subte del hotel, y se sale con 2h45 de anticipación.",
+   "blocks": [
+    {
+     "t": "09:00",
+     "txt": "Desayuno SIN despertador temprano: anoche terminó ~1:30 en el Village y lo único con hora fija hoy es el Guggenheim a las 16:00. Dormir un poco más está permitido.",
+     "pid": "",
+     "who": "both",
+     "kind": "comida",
+     "note": ""
+    },
+    {
+     "t": "09:45",
+     "txt": "★ CHECKOUT de The Beacon y dejar las valijas en el bell desk. El checkout formal suele ser 11:00-12:00, pero hacerlo antes libera el día.",
+     "pid": "beacon",
+     "who": "both",
+     "kind": "destacado",
+     "note": ""
+    },
+    {
+     "t": "10:15",
+     "txt": "★ CENTRAL PARK cruzando de oeste a este: Bethesda Terrace, el Ramble, Bow Bridge. Se entra por la 72 desde Broadway, a tres cuadras del hotel.",
+     "pid": "centralpark",
+     "who": "both",
+     "kind": "destacado",
+     "note": "",
+     "trav": "🚶 ~20 min a pie (1.5 km) o 🚇 ~15 min · estimado"
+    },
+    {
+     "t": "12:30",
+     "txt": "Almuerzo en el Upper East Side, saliendo del parque por la Quinta.",
+     "pid": "",
+     "who": "both",
+     "kind": "comida",
+     "note": ""
+    },
+    {
+     "t": "13:30",
+     "txt": "Bajar a 59 St y 2ª Av: subte 6 desde 68 St-Hunter College (el 4/5 exprés NO para ahí), o caminando por la Quinta si el día está lindo.",
+     "pid": "",
+     "who": "both",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "13:50",
+     "txt": "★ ROOSEVELT ISLAND TRAMWAY ($3, OMNY) — cruza el East River a 76 metros de altura con el Queensboro Bridge al lado. Es la vista de $50 por el precio de un viaje de subte.",
+     "pid": "tram",
+     "who": "both",
+     "kind": "destacado",
+     "note": ""
+    },
+    {
+     "t": "14:25",
+     "txt": "FDR Four Freedoms Park — del teleférico son ~20 min a pie por el borde del río. La última obra de Louis Kahn: granito, plátanos y una sala abierta al río apuntando a Manhattan. Gratis y vacía. Se pasa por las ruinas del Smallpox Hospital.",
+     "pid": "fdrpark",
+     "who": "both",
+     "kind": "paseo",
+     "note": ""
+    },
+    {
+     "t": "15:05",
+     "txt": "SALIR 15:05 (no más tarde): caminata al teleférico + cruce + subte 4/5/6 de 59 St a 86 St suman ~50 min, y la ventana pay-what-you-wish del Guggenheim arranca 16:00 y el museo cierra 17:30 — llegar puntuales ES la visita.",
+     "pid": "",
+     "who": "both",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "16:00",
+     "txt": "★ GUGGENHEIM — pay-what-you-wish domingos 16:00-17:30 (sugerido $10, mínimo $1). El edificio de Frank Lloyd Wright vale la visita solo: se sube en ascensor y se baja caminando la rampa. ⚠️ LLAMAR ANTES: la rotonda estaría en montaje hasta el 18 de septiembre y el pay-what-you-wish no está confirmado en fuente oficial.",
+     "pid": "guggenheim",
+     "who": "both",
+     "kind": "destacado",
+     "note": ""
+    },
+    {
+     "t": "17:45",
+     "txt": "Volver caminando por Central Park hasta el hotel (~25 min) o subte 86 St → 1 a 79 St.",
+     "pid": "beacon",
+     "who": "both",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "18:30",
+     "txt": "Retirar las valijas del bell desk. Cena tranquila cerca del hotel: es la última.",
+     "pid": "",
+     "who": "both",
+     "kind": "comida",
+     "note": ""
+    },
+    {
+     "t": "19:40",
+     "txt": "Salir de The Beacon. Subte 1/2/3 desde 72 St hasta 34 St-Penn Station: ~10 min, $3.",
+     "pid": "",
+     "who": "both",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "20:14",
+     "txt": "NJ Transit Penn Station → EWR, llega 20:38. $17,25 (incluye el AirTrain). VERIFICAR el horario dominical en njtransit.com unos días antes.",
+     "pid": "",
+     "who": "both",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "20:45",
+     "txt": "AirTrain hasta la terminal: 10-15 min.",
+     "pid": "",
+     "who": "both",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "20:55",
+     "txt": "En terminal. Faltan 2h45 para el vuelo de las 23:40 — correcto para un internacional en el domingo de Labor Day, que es la noche de más tráfico del año en EWR.",
+     "pid": "",
+     "who": "both",
+     "kind": "logistica",
+     "note": ""
+    }
+   ],
+   "alt": "COLCHÓN: si algo se atrasa, el tren siguiente sale 20:55 y llega a EWR 21:16, o sea terminal ~21:35 y 2h05 antes del vuelo. Es el último que yo tomaría. // Si prefieren un último día sin moverse, salteen el teleférico y estiren Central Park hasta el Guggenheim: el parque solo da para toda la mañana y la tarde. Y si el Guggenheim tiene la rotonda cerrada, el Whitney abre los domingos. Lo que NO conviene hoy es meter algo nuevo y grande."
+  }
+ ],
+ "trip": {
+  "from": "2026-08-29",
+  "to": "2026-09-06",
+  "travelers": [
+   "Juan Pablo",
+   "Thais"
+  ],
+  "generated": "2026-08-17",
+  "nota": "Recalculado con los intereses de NYC_2026_Planificador_thais.xlsx"
+ }
+}
