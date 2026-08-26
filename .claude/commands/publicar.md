@@ -7,7 +7,7 @@ disable-model-invocation: true
 Publicá el estado actual.
 
 1. `git status` y `git diff --stat`: mostrá qué cambió antes de tocar nada.
-2. `python3 src/build_all.py --test`. Si falla un chequeo, PARÁ. No se publica en rojo.
+2. `.venv/bin/python src/build_all.py --test`. Si falla un chequeo, PARÁ. No se publica en rojo.
 3. Commiteá con un mensaje que diga **qué cambia para el que usa la app**, no qué archivo tocaste,
    y con el sello de versión entre corchetes — `build_all.py` lo imprime al final.
    Taggeá con `git tag -a v-<verId> -m "<sello>"`.

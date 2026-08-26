@@ -17,7 +17,7 @@ castellano rioplatense qué pasó y qué quedó pendiente, sin recitar cada coma
    resuelve. Agregá `.venv/` al `.gitignore` de la raíz si no está.
    `playwright` es opcional (solo para los tests, ~150 MB): preguntá antes de bajarlo.
 
-3. `python3 src/build_all.py --test` — o sin `--test` si no hay playwright.
+3. `.venv/bin/python src/build_all.py --test` — o sin `--test` si no hay playwright.
    Tiene que cerrar con `25 ok · 0 fallas` y `16 ok · 0 fallas`. Si algo falla, PARÁ y mostrá qué.
 
 4. Si el build dejó cambios sin commitear, commiteá el fuente:

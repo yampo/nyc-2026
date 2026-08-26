@@ -1,9 +1,5 @@
 # NYC 2026 — contexto para trabajar este proyecto
 
-> **PRIMERA VEZ — borrar este bloque cuando esté hecho.**
-> Si existe la carpeta `setup-claude/`, el proyecto todavía no está instalado.
-> Leé `setup-claude/INSTALAR.md` y hacelo vos, sin pedirle comandos a Juan.
-
 Planificador del viaje de **Juan Pablo (yampo) y Thais a Nueva York, 29 ago – 6 sep 2026**.
 No es una app genérica: es *este* viaje, con *estas* reservas y *estos* dos criterios de interés.
 Cuando dudes entre "hacerlo general" y "hacerlo correcto para este viaje", elegí lo segundo.
@@ -31,8 +27,8 @@ GitHub Pages sirve el de la raíz.
 ## Cómo se construye
 
 ```bash
-python3 src/build_all.py            # cadena completa
-python3 src/build_all.py --test     # cadena + las dos suites de Playwright
+.venv/bin/python src/build_all.py            # cadena completa
+.venv/bin/python src/build_all.py --test     # cadena + las dos suites de Playwright
 ```
 
 El orden **no es negociable** — cada paso lee el JSON que escribió el anterior:
@@ -49,7 +45,9 @@ build_xlsx.py       → NYC_2026_Planificador.xlsx
 Si un paso falla, `build_all.py` corta la cadena en ese punto a propósito: seguir haría que los
 pasos siguientes publiquen datos viejos sin avisar.
 
-**Dependencias:** `pip install openpyxl playwright && playwright install chromium`.
+**Dependencias:** viven en `.venv/` (ignorado por git). El `python3` del sistema **no** las tiene:
+si ves `ModuleNotFoundError: openpyxl`, estás corriendo el intérprete equivocado. Para rearmarlo:
+`python3 -m venv .venv && .venv/bin/pip install openpyxl playwright && .venv/bin/playwright install chromium`.
 Sin red no se puede: `build_places.py` geocodifica contra Nominatim, pero cachea en
 `data/geocode_cache.json`, así que con el caché presente el build corre offline.
 
@@ -215,7 +213,7 @@ git checkout <sha> -- index.html && git commit -m "vuelvo a <verId>" && git push
 volvé el fuente y reconstruí — así lo publicado y lo que lo produce siguen siendo lo mismo:
 
 ```bash
-git checkout <sha> -- src/ && python3 src/build_all.py --test && git commit -am "..." && git push
+git checkout <sha> -- src/ && .venv/bin/python src/build_all.py --test && git commit -am "..." && git push
 ```
 
 **Para mirar antes de decidir:**
@@ -257,7 +255,7 @@ Está en `~/.claude/skills/coe-defaults/` si lo tenés instalado. Lo que más pe
 ```bash
 git pull                              # SIEMPRE primero
 # … editar src/build_*.py o src/app_template.html …
-python3 src/build_all.py --test       # build + 41 chequeos
+.venv/bin/python src/build_all.py --test       # build + 41 chequeos
 git add -A && git commit -m "..." && git push     # esto publica
 ```
 
