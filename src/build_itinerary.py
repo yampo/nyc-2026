@@ -221,7 +221,10 @@ day(7, "2026-09-04", "Viernes", "both", "The Beacon",
     "$10 y 45 min), la Morgan (hoy GRATIS 17-20) y SUMMIT — que se movió AL ATARDECER por el pedido de ustedes: "
     "entrada 18:10, luz plena, la puesta ~19:21 multiplicada por los espejos de Kusama (es EL lugar de la ciudad para ese "
     "momento) y la noche encendida hasta las 20:15. EL PAGO, dicho honesto: la Morgan se hace en una hora entrando 17:00 "
-    "en punto, y la cena de hoy es un bocado rápido — por eso el almuerzo en Chelsea Market es EL fuerte del día.",
+    "en punto, y la cena de hoy es un bocado rápido — por eso el almuerzo en Chelsea Market es EL fuerte del día. "
+    "SALIÓ GRAND CENTRAL: estaba a las 16:20 con el argumento de que JP ya lo vio el lunes y Thais no — pero ella lo "
+    "tiene en 0, así que eran 40 minutos para alguien que no lo quiere. Sin esa parada tampoco hace falta cortar "
+    "Chelsea a las 15:50: se sale 16:25 derecho a la Morgan y la tarde de galerías y almuerzo gana una hora larga.",
     [
      b("09:15", "Subte a Hudson Yards.", "", "both", "logistica"),
      b("09:40", "La plaza de Hudson Yards mientras abre el Vessel: The Shops y el Shed desde afuera. Sacar el timed ticket de las 10:00 online antes.", "", "both", "paseo"),
@@ -230,11 +233,10 @@ day(7, "2026-09-04", "Viernes", "both", "The Beacon",
      b("12:20", "Little Island — el parque flotante de Heatherwick sobre 132 macetas de hormigón, al final del High Line. Gratis.", "littleisland", "both", "paseo"),
      b("13:00", "Galerías de Chelsea COMPLETAS — W 19th a W 27th entre la 10ª y la 11ª, concentradas en W 24th y W 21st (Gagosian, Pace, Zwirner). Gratis, se entra y se sale. El recorte del Vessel se devolvió: SUMMIT pasó al atardecer y la tarde se estiró.", "", "both", "destacado",
        "Abren mar-sáb ~10-18h."),
-     b("14:30", "Almuerzo en Chelsea Market — COMER FUERTE: es la comida grande del día, la cena de hoy es un bocado rápido entre el SUMMIT y el Vanguard. Los Tacos No.1 o Very Fresh Noodles.", "chelseamarket", "both", "comida"),
-     b("15:50", "A Grand Central SIN desandar: L desde 14 St-8 Av hasta Union Sq y 4/5 exprés hasta Grand Central (~20 min puerta a puerta). Volver caminando a Hudson Yards sería 1,9 km al revés.", "", "both", "logistica"),
-     b("16:20", "Grand Central PARA THAIS: el techo celeste, la Whispering Gallery y el mercado — JP ya lo vio el lunes, ella no, y está literalmente abajo del SUMMIT.", "grandcentral", "both", "paseo"),
+     b("14:30", "Almuerzo en Chelsea Market — COMER FUERTE: es la comida grande del día, la cena de hoy es un bocado rápido entre el SUMMIT y el Vanguard. Los Tacos No.1 o Very Fresh Noodles. Ahora hay casi DOS HORAS: sin apuro, y si quedaron galerías de Chelsea sin ver, se vuelve.", "chelseamarket", "both", "comida"),
+     b("16:25", "A la Morgan: L desde 14 St-8 Av hasta Union Sq y 6 hasta 33 St, o A/C/E hasta 34 St-Penn y siete cuadras a pie (~30 min). Salir 16:25 deja margen para entrar 17:00 EN PUNTO.", "", "both", "logistica"),
      b("17:00", "★ MORGAN LIBRARY — GRATIS los viernes 17-20h: entrar 17:00 EN PUNTO y hacerla en una hora — la biblioteca son tres salas gloriosas (estanterías de nogal, la Biblia de Gutenberg): alcanza. RESERVA OBLIGATORIA, se libera el viernes 28 de agosto. Está a 8 min a pie de One Vanderbilt.", "morgan", "both", "destacado"),
-     b("18:00", "Caminar de vuelta las seis cuadras a One Vanderbilt (~8-10 min).", "", "both", "logistica"),
+     b("18:00", "Caminar las seis cuadras de la Morgan a One Vanderbilt (~8-10 min).", "", "both", "logistica"),
      b("18:10", "★★ SUMMIT ONE VANDERBILT — EL ARCO COMPLETO: entrada 18:10 con luz, el atardecer ~19:21 multiplicado por los espejos infinitos de Kusama, y la noche encendida hasta ~20:15. Ticket ATARDECER $57-63 — es la franja que primero se agota: reservar YA. NO está en ningún pase.", "summit", "both", "destacado"),
      b("20:20", "Bajar AL VILLAGE PRIMERO y cenar allá: 4/5/6 o 7 hasta 14 St-Union Sq y 1 hasta Christopher St (~25 min). Cenar cerca de Grand Central y bajar después llega justo; hacerlo al revés deja margen.", "", "both", "logistica"),
      b("20:50", "Cena en el West Village, a cinco minutos del club. El Vanguard NO sirve NADA de comida (lo dicen así: 'ni un maní') y no se permite entrar comida: lo que no cenen ahora, no se cena. 40 minutos alcanzan.", "", "both", "comida"),

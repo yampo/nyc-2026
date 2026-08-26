@@ -866,7 +866,7 @@
    "who": "both",
    "base": "The Beacon",
    "title": "Vessel + High Line, SUMMIT al atardecer y el VANGUARD de a dos",
-   "note": "Salieron el West Village, Washington Square y el Whitney; entraron el High Line, THE VESSEL (al pie del arranque, $10 y 45 min), la Morgan (hoy GRATIS 17-20) y SUMMIT — que se movió AL ATARDECER por el pedido de ustedes: entrada 18:10, luz plena, la puesta ~19:21 multiplicada por los espejos de Kusama (es EL lugar de la ciudad para ese momento) y la noche encendida hasta las 20:15. EL PAGO, dicho honesto: la Morgan se hace en una hora entrando 17:00 en punto, y la cena de hoy es un bocado rápido — por eso el almuerzo en Chelsea Market es EL fuerte del día.",
+   "note": "Salieron el West Village, Washington Square y el Whitney; entraron el High Line, THE VESSEL (al pie del arranque, $10 y 45 min), la Morgan (hoy GRATIS 17-20) y SUMMIT — que se movió AL ATARDECER por el pedido de ustedes: entrada 18:10, luz plena, la puesta ~19:21 multiplicada por los espejos de Kusama (es EL lugar de la ciudad para ese momento) y la noche encendida hasta las 20:15. EL PAGO, dicho honesto: la Morgan se hace en una hora entrando 17:00 en punto, y la cena de hoy es un bocado rápido — por eso el almuerzo en Chelsea Market es EL fuerte del día. SALIÓ GRAND CENTRAL: estaba a las 16:20 con el argumento de que JP ya lo vio el lunes y Thais no — pero ella lo tiene en 0, así que eran 40 minutos para alguien que no lo quiere. Sin esa parada tampoco hace falta cortar Chelsea a las 15:50: se sale 16:25 derecho a la Morgan y la tarde de galerías y almuerzo gana una hora larga.",
    "blocks": [
     {
      "t": "09:15",
@@ -920,7 +920,7 @@
     },
     {
      "t": "14:30",
-     "txt": "Almuerzo en Chelsea Market — COMER FUERTE: es la comida grande del día, la cena de hoy es un bocado rápido entre el SUMMIT y el Vanguard. Los Tacos No.1 o Very Fresh Noodles.",
+     "txt": "Almuerzo en Chelsea Market — COMER FUERTE: es la comida grande del día, la cena de hoy es un bocado rápido entre el SUMMIT y el Vanguard. Los Tacos No.1 o Very Fresh Noodles. Ahora hay casi DOS HORAS: sin apuro, y si quedaron galerías de Chelsea sin ver, se vuelve.",
      "pid": "chelseamarket",
      "who": "both",
      "kind": "comida",
@@ -928,19 +928,11 @@
      "trav": "🚶 ~7 min a pie · 0.5 km · estimado"
     },
     {
-     "t": "15:50",
-     "txt": "A Grand Central SIN desandar: L desde 14 St-8 Av hasta Union Sq y 4/5 exprés hasta Grand Central (~20 min puerta a puerta). Volver caminando a Hudson Yards sería 1,9 km al revés.",
+     "t": "16:25",
+     "txt": "A la Morgan: L desde 14 St-8 Av hasta Union Sq y 6 hasta 33 St, o A/C/E hasta 34 St-Penn y siete cuadras a pie (~30 min). Salir 16:25 deja margen para entrar 17:00 EN PUNTO.",
      "pid": "",
      "who": "both",
      "kind": "logistica",
-     "note": ""
-    },
-    {
-     "t": "16:20",
-     "txt": "Grand Central PARA THAIS: el techo celeste, la Whispering Gallery y el mercado — JP ya lo vio el lunes, ella no, y está literalmente abajo del SUMMIT.",
-     "pid": "grandcentral",
-     "who": "both",
-     "kind": "paseo",
      "note": ""
     },
     {
@@ -949,12 +941,11 @@
      "pid": "morgan",
      "who": "both",
      "kind": "destacado",
-     "note": "",
-     "trav": "🚶 ~9 min a pie · 0.7 km · estimado"
+     "note": ""
     },
     {
      "t": "18:00",
-     "txt": "Caminar de vuelta las seis cuadras a One Vanderbilt (~8-10 min).",
+     "txt": "Caminar las seis cuadras de la Morgan a One Vanderbilt (~8-10 min).",
      "pid": "",
      "who": "both",
      "kind": "logistica",
