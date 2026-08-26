@@ -8,10 +8,12 @@ No reescribe el itinerario solo: produce el informe para decidir con criterio.
 """
 import json
 from collections import defaultdict
+import os
+_R = os.path.dirname(os.path.abspath(__file__))   # todo se resuelve relativo a este archivo, no a donde se corra
 
-places = json.load(open("data/places.json"))["places"]
+places = json.load(open(os.path.join(_R, "data/places.json")))["places"]
 P = {p["id"]: p for p in places}
-days = json.load(open("data/itinerary.json"))["days"]
+days = json.load(open(os.path.join(_R, "data/itinerary.json")))["days"]
 
 # Zona geográfica de cada día, para sugerir dónde encaja un lugar nuevo.
 ZONA = {

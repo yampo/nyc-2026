@@ -2,8 +2,10 @@
 # -*- coding: utf-8 -*-
 """Valida cada bloque del itinerario contra el horario real de apertura del lugar."""
 import json, sys
-P = {p["id"]: p for p in json.load(open("data/places.json"))["places"]}
-days = json.load(open("data/itinerary.json"))["days"]
+import os
+_R = os.path.dirname(os.path.abspath(__file__))   # todo se resuelve relativo a este archivo, no a donde se corra
+P = {p["id"]: p for p in json.load(open(os.path.join(_R, "data/places.json")))["places"]}
+days = json.load(open(os.path.join(_R, "data/itinerary.json")))["days"]
 DOW = {"Lunes":0,"Martes":1,"Miércoles":2,"Jueves":3,"Viernes":4,"Sábado":5,"Domingo":6}
 def m(t):
     try: h,mi = t.split(":"); return int(h)*60+int(mi)

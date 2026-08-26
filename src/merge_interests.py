@@ -12,13 +12,15 @@ La columna IMPRESCINDIBLE (SÍ / vacío) se lee si está presente.
 """
 import sys, json, unicodedata, re
 from openpyxl import load_workbook
+import os
+_R = os.path.dirname(os.path.abspath(__file__))   # todo se resuelve relativo a este archivo, no a donde se corra
 
 def norm(s):
     s = unicodedata.normalize("NFKD", str(s or "")).encode("ascii", "ignore").decode()
     return re.sub(r"[^a-z0-9]+", "", s.lower())
 
 src = sys.argv[1] if len(sys.argv) > 1 else "/mnt/user-data/uploads/NYC_2026_Planificador_thais.xlsx"
-places = json.load(open("data/places.json"))["places"]
+places = json.load(open(os.path.join(_R, "data/places.json")))["places"]
 by_norm = {norm(p["n"]): p for p in places}
 
 wb = load_workbook(src, data_only=True)
@@ -109,5 +111,5 @@ for etiqueta, grupo, quien in (("THAIS ↑", subidas_th, "th"), ("THAIS ↓", ba
     for p, o in sorted(grupo, key=lambda x: x[0]["n"]):
         print(f"   {p['n'][:42]:44s} {p[quien]} → {o[quien]}")
 
-json.dump(ov, open("data/overrides.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+json.dump(ov, open(os.path.join(_R, "data/overrides.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 print(f"\n✓ data/overrides.json escrito ({len(ov)} lugares)")
