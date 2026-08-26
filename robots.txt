@@ -1,0 +1,5 @@
+# Este sitio es un planificador de viaje personal.
+# GitHub Pages en cuenta gratuita obliga a que el repo sea publico, asi que
+# pedimos explicitamente a los buscadores que no lo indexen.
+User-agent: *
+Disallow: /
