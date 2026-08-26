@@ -41,10 +41,22 @@ cambios_marca, cambios_int, desconocidos = [], [], []
 _NOM = {1: "★ imprescindible", -1: "✕ no imprescindible", 0: "sin marcar"}
 
 # ── MARCA (tres estados) ──
-# La app guarda 1 / -1, y la clave ausente = sin marcar. Ojo con el historial: la version
-# vieja guardaba 0 al DES-marcar una estrella, o sea "esto no es imprescindible" = -1.
+# S.must del navegador es un DELTA sobre el catalogo, no el estado completo: markOf() usa
+# el valor del catalogo cuando la clave no esta (ver app_template.html). Por eso un lugar
+# AUSENTE del export significa "no lo toco", NUNCA "lo desmarco" — desmarcar escribe la
+# clave con 0 o -1. Barrer los ausentes borraba las estrellas que Juan no habia tocado.
+#
+# El 0 cambio de sentido entre versiones y la app lo estampa en s.mv:
+#   mv >= 2  → 0 es "sin marcar"        (semantica actual)
+#   mv < 2   → 0 era "des-marcar", o sea "no es imprescindible" = -1
+_MV = exp.get("mv") or 0
 def _norm(v):
-    return 1 if v is True or (isinstance(v, (int, float)) and v > 0) else -1
+    if v is True: return 1
+    if isinstance(v, (int, float)):
+        if v > 0: return 1
+        if v < 0: return -1
+        return 0 if _MV >= 2 else -1
+    return 0 if _MV >= 2 else -1
 
 marcas = exp.get("must") or {}
 for pid, v in marcas.items():
@@ -55,11 +67,6 @@ for pid, v in marcas.items():
     if quiere != tiene:
         fila(pid)["must"] = quiere
         cambios_marca.append((places[pid]["n"], tiene, quiere))
-# lo que el navegador ya no tiene marcado vuelve a "sin marcar"
-for pid, p in places.items():
-    if (p.get("must") or 0) and pid not in marcas:
-        fila(pid)["must"] = 0
-        cambios_marca.append((p["n"], p["must"], 0))
 
 # ── INTERESES ──
 for pid, v in (exp.get("interest") or {}).items():
