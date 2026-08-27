@@ -312,6 +312,30 @@ Versión visible en la app en **⋯ → Versión del plan**.
 
 ---
 
+## Cuando el deploy de Pages se cuelga
+
+El 27/8 a la tarde el sitio quedó dos horas sin actualizarse: `build` pasaba en 20 segundos y
+`deploy` moría a los 10 minutos exactos con `Timeout reached, aborting!`, repitiendo
+`Current status: updating_pages` y después `Current status:` vacío. Qué se aprendió:
+
+- **`duration: 0ms` en `gh api repos/yampo/nyc-2026/pages/builds/latest` = el build ni arrancó.**
+  Si fuera el contenido, construiría algo y fallaría con un error concreto. Ese cero apunta a
+  infraestructura, no a nuestro HTML.
+- **No reintentes con `gh run rerun`.** Deja un run en `queued` que no se puede cancelar
+  (`Cannot cancel a workflow re-run that has not yet queued`, HTTP 409) y encima ensucia el
+  estado. La salida buena es **un commit nuevo**: SHA distinto, deployment limpio, sin arrastrar
+  los deployments fallidos del SHA anterior.
+- El sitio **sigue sirviendo la última versión buena** mientras tanto. No hay urgencia real:
+  lo publicado no se rompe, solo no se actualiza.
+- Diagnóstico rápido: `gh api repos/yampo/nyc-2026/pages --jq .status` (`built` vs `errored`) y
+  `gh api repos/yampo/nyc-2026/pages/builds` para ver el historial con duraciones.
+
+Desde entonces el repo tiene **`.nojekyll`** en la raíz. El sitio es HTML estático con todo
+embebido y no usa Jekyll para nada, así que procesarlo era 40 segundos de trabajo inútil y una
+etapa más donde fallar.
+
+---
+
 ## Versionado — cómo volver a un push anterior
 
 Cada push a `main` es una versión completa y recuperable. Nada se pisa: GitHub Pages sirve
