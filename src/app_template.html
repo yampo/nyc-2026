@@ -127,6 +127,16 @@ main{max-width:1180px;margin:0 auto;padding:16px 14px 40px}
 .chip.paso1{background:#fff;border:1px dashed var(--line);font-size:11px;padding:2px 8px;
   font-weight:600;cursor:pointer;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .chip.paso1 i{font-style:normal;color:var(--mut);font-weight:500;margin-left:5px}
+/* Lo que hay dentro de un barrio que se camina: ficha corta, no chip — acá sí
+   hace falta el porqué y los links, porque la decisión se toma leyendo. */
+.hood{margin-top:8px;border:1px dashed var(--line);border-radius:11px;padding:9px 11px;background:#fbf9f5}
+.hoodlb{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);margin-bottom:7px}
+.hoodit{padding:7px 0;border-top:1px dashed var(--line)}
+.hoodit:first-of-type{border-top:0;padding-top:0}
+.hoodn{display:flex;gap:6px;flex-wrap:wrap;align-items:center;font-size:13px}
+.hoodn b{cursor:pointer;text-decoration:underline;text-decoration-style:dotted}
+.hoodd{font-size:11px;color:var(--mut)}
+.hoodw{font-size:12px;color:var(--mut);line-height:1.45;margin:3px 0 5px}
 .bbody{flex:1;min-width:0}
 .btxt{font-size:14px;line-height:1.5}
 .bmeta{margin-top:6px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
@@ -585,6 +595,27 @@ function dePasoDelDia(d){
   });
   return out;
 }
+/* ── Qué hay dentro de un barrio ──────────────────────────────────────────────
+   Un bloque de "caminar un barrio" no es una parada: son horas sueltas en un
+   polígono. Ahí la pregunta no es "qué queda en el camino" —no hay camino— sino
+   "qué tengo alrededor mientras camino".
+   Se toma por barrio Y por radio: el `hood` del catálogo es la definición
+   administrativa y no siempre coincide con lo que uno camina. */
+const BARRIO_RADIO = 700;     /* m alrededor del punto del barrio */
+const BARRIO_TOP = 6;
+function enElBarrio(pb){
+  if (!pb || pb.cat !== 'barrio' || !pb.lat) return [];
+  const usados = {};
+  S.itin.forEach(x => x.blocks.forEach(b => { if (b.pid) usados[b.pid] = 1; }));
+  const c = [pb.lat, pb.lng];
+  return PLACES
+    .filter(p => p.lat && p.id !== pb.id && !usados[p.id] && !PASO_FUERA[p.cat]
+                 && (p.jp > 0 || p.th > 0))
+    .map(p => ({p, d: hav(c, [p.lat, p.lng])}))
+    .filter(x => x.d <= BARRIO_RADIO || x.p.hood === pb.hood)
+    .sort((x, y) => x.d - y.d)
+    .slice(0, BARRIO_TOP);
+}
 /* Los mismos lugares, planos, para pintarlos en el mapa del día. */
 function dePasoPlano(d){
   return Object.values(dePasoDelDia(d)).flat();
@@ -649,8 +680,9 @@ function go(t){
 
 /* ═══════════ VISTA: ITINERARIO ═══════════ */
 const OPEN_NOTES = new Set();   // estado de UI transitorio, no se persiste
+const OPEN_HOODS = new Set();   // idem: qué barrios están desplegados
 function rItin(){
-  const d = S.itin.find(x => x.n === S.day) || S.itin[0];
+  const d = S.itin.find(x => x.n === S.day) || S.itin[0], d2 = d;
   const days = S.itin.map(x => {
     const dd = x.date.slice(8) + '/' + x.date.slice(5,7);
     return `<button class="dbtn${x.n===S.day?' on':''}${x.date===TODAY?' today':''}" data-d="${x.n}">
@@ -702,6 +734,30 @@ function rItin(){
         ${(b.mynote || OPEN_NOTES.has(b.id))
           ? `<textarea class="bnote" data-act="note" placeholder="mis notas…">${esc(b.mynote||'')}</textarea>`
           : `<button class="notebtn" data-act="opennote">＋ nota</button>`}
+        ${(() => {                       /* caminar un barrio: qué hay adentro */
+          if (!p || p.cat !== 'barrio') return '';
+          const enb = enElBarrio(p);
+          if (!enb.length) return '';
+          if (!OPEN_HOODS.has(b.id))
+            return `<button class="notebtn" data-act="openhood">＋ ${enb.length} lugar${enb.length>1?'es':''} en ${esc(p.hood)}</button>`;
+          return `<div class="hood">
+            <div class="hoodlb">En ${esc(p.hood)}, mientras caminan
+              <button class="notebtn" data-act="closehood" style="margin-left:6px;padding:1px 7px">ocultar</button></div>
+            ${enb.map(({p:q, d}) => `<div class="hoodit">
+              <div class="hoodn"><b data-paso="${q.id}">${esc(q.n)}</b>
+                <span class="chip" style="background:${CAT[q.cat].c}1a;color:${CAT[q.cat].c}">${esc(q.typ)}</span>
+                <span class="chip">${money(q.cost)}</span>
+                <span class="hoodd">a ${d < 950 ? Math.round(d/10)*10 + ' m' : (d/1000).toFixed(1) + ' km'}</span></div>
+              <div class="hoodw">${esc(q.why.slice(0,150))}${q.why.length>150?'…':''}</div>
+              <div class="bmeta">
+                <a class="chip b" href="${gmaps(q)}" target="_blank" rel="noopener">↗ Maps</a>
+                <a class="chip g" data-nav="apple" href="${amRuta([q],'walking')}" target="_blank" rel="noopener">→ Apple</a>
+                <a class="chip g" data-nav="google" href="${gmRuta([q],'walking')}" target="_blank" rel="noopener">→ Google</a>
+                ${q.hrs ? (()=>{ const hh = horario(q, DOW_IDX[d2.dow]);
+                  return `<span class="chip ${hh==='CERRADO'?'r':'b'}">🕐 ${hh}</span>`; })() : ''}
+              </div></div>`).join('')}
+          </div>`;
+        })()}
       </div>
       <div class="bact">
         <button class="ck${b.done?' on':''}" data-act="done">✓</button>
@@ -760,6 +816,8 @@ $('#v-itin').addEventListener('click', e => {
   if (act === 'up' && i > 0){ day.blocks.splice(i-1,0,day.blocks.splice(i,1)[0]); save(); rItin(); }
   if (act === 'down' && i < day.blocks.length-1){ day.blocks.splice(i+1,0,day.blocks.splice(i,1)[0]); save(); rItin(); }
   if (act === 'info' && b.pid) showPlace(b.pid);
+  if (act === 'openhood'){ OPEN_HOODS.add(b.id); rItin(); return; }
+  if (act === 'closehood'){ OPEN_HOODS.delete(b.id); rItin(); return; }
   if (act === 'opennote'){ OPEN_NOTES.add(b.id); rItin();
     const ta = document.querySelector(`.blk[data-b="${b.id}"] .bnote`); if (ta) ta.focus(); }
 });

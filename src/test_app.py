@@ -155,6 +155,49 @@ with sync_playwright() as pw:
         assert not malos, "referencias que necesitan entrada o caen a deshora: " + " · ".join(malos)
     check("nada de Broadway ni música con entrada en los desvíos", paso_sin_entradas)
 
+    def barrio_lista_lo_de_adentro():
+        """Un bloque de caminar un barrio no tiene «camino»: son horas sueltas en un
+        polígono. Ahí hay que listar lo que hay ADENTRO, con su porqué y sus links,
+        no solo lo que queda entre parada y parada."""
+        vistos, abiertos = 0, 0
+        for d in range(1, 10):
+            pg.click(f'.dbtn[data-d="{d}"]'); pg.wait_for_timeout(160)
+            btns = pg.locator('#v-itin [data-act="openhood"]')
+            vistos += btns.count()
+            if btns.count() and not abiertos:
+                btns.first.click(); pg.wait_for_timeout(400)
+                its = pg.locator('#v-itin .hoodit')
+                assert its.count() >= 1, "el panel abrió vacío"
+                # cada ficha necesita el porqué y los tres mapas, que es lo que se pidió
+                r = pg.evaluate("""() => [...document.querySelectorAll('.hoodit')].map(e => ({
+                      why: (e.querySelector('.hoodw')?.textContent || '').trim().length,
+                      gmaps: !!e.querySelector('a[href*="google.com/maps/search"]'),
+                      apple: !!e.querySelector('a[data-nav="apple"]'),
+                      google: !!e.querySelector('a[data-nav="google"]')}))""")
+                for i, x in enumerate(r):
+                    assert x["why"] > 20, f"ficha {i} sin descripción"
+                    assert x["gmaps"] and x["apple"] and x["google"], f"ficha {i} sin los tres mapas"
+                abiertos = 1
+                pg.locator('#v-itin [data-act="closehood"]').first.click(); pg.wait_for_timeout(300)
+        assert vistos >= 4, f"solo {vistos} bloques de barrio ofrecen lugares"
+        assert abiertos, "no se pudo abrir ninguno"
+    check("los barrios que se caminan listan lo que hay adentro", barrio_lista_lo_de_adentro)
+
+    def barrio_no_repite_lo_agendado():
+        pg.click('.dbtn[data-d="2"]'); pg.wait_for_timeout(250)
+        pg.locator('#v-itin [data-act="openhood"]').first.click(); pg.wait_for_timeout(400)
+        r = pg.evaluate("""() => {
+          const usados = {}; S.itin.forEach(x => x.blocks.forEach(b => { if (b.pid) usados[b.pid]=1; }));
+          const ids = [...document.querySelectorAll('.hoodit [data-paso]')].map(e => e.dataset.paso);
+          return {ids, malos: ids.filter(i => usados[i]),
+                  ceros: ids.filter(i => PBY[i].jp === 0 && PBY[i].th === 0)};
+        }""")
+        assert r["ids"], "no listó nada"
+        assert not r["malos"], f"lugares que YA están en el itinerario: {r['malos']}"
+        assert not r["ceros"], f"lugares que los dos marcaron 0: {r['ceros']}"
+        pg.locator('#v-itin [data-act="closehood"]').first.click(); pg.wait_for_timeout(250)
+    check("el barrio no repite lo que ya está agendado", barrio_no_repite_lo_agendado)
+
     def paso_abre_ficha():
         pg.locator('#v-itin [data-paso]').first.click(); pg.wait_for_timeout(500)
         assert pg.locator('#ov.on').count() == 1, "no abrió la ficha del lugar"

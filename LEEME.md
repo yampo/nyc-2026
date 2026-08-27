@@ -31,6 +31,24 @@ de noche. De resto entra todo: comida, museos, bares, parques, arquitectura.
 
 ## 27 de agosto de 2026 · más tarde
 
+**Los barrios que se caminan ahora dicen qué tienen adentro.** Los bloques que son recorrer un
+barrio —Harlem, Arthur Avenue, el Lower East Side, Chinatown, DUMBO y el West Village— tienen
+abajo un botón tipo **"＋ 3 lugares en Lower East Side"**. Al tocarlo se abre una lista con lo
+que hay ahí: qué es cada uno, cuánto sale, a cuántos metros está, **por qué vale la pena**, y
+los tres botones de siempre para abrirlo en el mapa.
+
+Es distinto de los "de paso": aquellos son lo que queda entre una parada y la siguiente; esto
+es lo que tenés alrededor mientras caminás sin rumbo fijo por un barrio.
+
+**Un dato que salió de mirar esto**: si un barrio muestra poco, casi siempre es porque el plan
+ya se lo comió. En el Lower East Side, de los 10 lugares del catálogo que hay a 800 metros,
+**6 ya están en el itinerario de ese mismo domingo** — Essex Market, Katz's, Russ & Daughters,
+Eldridge Street, The Crown y Chinatown. No es que falten datos: es que ese barrio ya está bien
+recorrido.
+
+---
+
+
 **Se bajaron al plan las marcas nuevas de Juan**: 21 cambios de interés y 4 estrellas nuevas
 (MO Lounge, Roosevelt Island, Stone St y el Village Vanguard). Ahora hay **38 imprescindibles**
 y **ya no queda ningún desacuerdo** en los días que van juntos — antes había dos.

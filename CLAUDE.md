@@ -171,6 +171,26 @@ falla si la cuenta de bloques cambia al recorrer los días.
 - En el mapa van como **anillo hueco** (`.mkpaso`) y **no entran en la polilínea** del recorrido:
   la línea une paradas, no referencias.
 
+### Caminar un barrio es otra cosa
+
+Un bloque cuyo lugar tiene `cat === 'barrio'` —Harlem, Arthur Avenue, Lower East Side,
+Chinatown, DUMBO, West Village: son seis en el viaje— **no tiene "camino"**. Son horas sueltas
+dentro de un polígono, así que la pregunta no es "qué queda entre A y B" sino "qué tengo
+alrededor mientras camino". Por eso esos bloques llevan su propio panel plegable (`enElBarrio`)
+en vez de chips de paso.
+
+- Se toma **por radio Y por barrio**: `BARRIO_RADIO` (700 m) del punto **o** mismo `hood`. El
+  `hood` del catálogo es la definición administrativa y no siempre coincide con lo que uno
+  camina — Pier 35 está a 940 m del punto del LES y sin embargo es del barrio.
+- Cada ficha lleva **descripción y los tres mapas**, no un chip: acá la decisión se toma
+  leyendo, no mirando un nombre. Hay un test que falla si a alguna le falta el `why` o
+  cualquiera de los tres links.
+- Excluye lo mismo que los de paso, y eso importa: en el Lower East Side, **6 de los 10
+  lugares del catálogo en 800 m ya están en el itinerario de ese día**. Que un barrio muestre
+  poco suele significar que el plan ya lo cubrió, no que falten datos.
+- Va plegado por defecto (`OPEN_HOODS`, transitorio como `OPEN_NOTES`): desplegado siempre
+  inflaría el itinerario.
+
 ---
 
 ## Ruta del día a Apple Maps
@@ -343,7 +363,7 @@ Está en `~/.claude/skills/coe-defaults/` si lo tenés instalado. Lo que más pe
 ```bash
 git pull                              # SIEMPRE primero
 # … editar src/build_*.py o src/app_template.html …
-.venv/bin/python src/build_all.py --test       # build + 59 chequeos
+.venv/bin/python src/build_all.py --test       # build + 61 chequeos
 git add -A && git commit -m "..." && git push     # esto publica
 ```
 
