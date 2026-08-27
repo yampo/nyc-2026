@@ -171,6 +171,29 @@ falla si la cuenta de bloques cambia al recorrer los días.
 - En el mapa van como **anillo hueco** (`.mkpaso`) y **no entran en la polilínea** del recorrido:
   la línea une paradas, no referencias.
 
+### La tanda de exploración
+
+47 lugares del catálogo llevan `tags=["exploracion"]`: **no salieron de ninguna de las dos
+listas**, los propuse yo para que las filas de paso y los paneles de barrio tengan qué ofrecer
+cuando el propio itinerario ya se comió la zona. Llevaron las referencias de paso de 71 a 105.
+
+Reglas que se pusieron para no ensuciar los 210 verificados, y que un test hace cumplir:
+
+- **Interés 1/1 fijo.** Son sugerencias, no plan: con 2 se colarían en "lo que quieren ver" y
+  contaminarían el reporte. Juan les sube o baja el interés en la app como a cualquier otro.
+- **Coordenadas de Nominatim, validadas contra el centroide del barrio.** No es un trámite:
+  a `488 Broadway` (el Haughwout) Nominatim lo mandó a **Staten Island**, y `Pier 84` no
+  resolvió hasta reformular la búsqueda. Los dos se corrigieron a mano.
+- **Sin `hrs`, a propósito.** Los horarios no están verificados contra la fuente y es mejor no
+  tenerlos que tenerlos mal — el test falla si alguien le agrega horarios a uno de estos.
+- **Los costos son estimados y lo dicen** en `costN`. 26 de los 47 son gratis, que sí es dato
+  firme (calles, plazas, iglesias, parques).
+
+Para agregar más: mismo procedimiento. Geocodificar contra Nominatim, **mirar dónde cayó cada
+uno**, y no inventar horarios.
+
+---
+
 ### Caminar un barrio es otra cosa
 
 Un bloque cuyo lugar tiene `cat === 'barrio'` —Harlem, Arthur Avenue, Lower East Side,
@@ -363,7 +386,7 @@ Está en `~/.claude/skills/coe-defaults/` si lo tenés instalado. Lo que más pe
 ```bash
 git pull                              # SIEMPRE primero
 # … editar src/build_*.py o src/app_template.html …
-.venv/bin/python src/build_all.py --test       # build + 61 chequeos
+.venv/bin/python src/build_all.py --test       # build + 62 chequeos
 git add -A && git commit -m "..." && git push     # esto publica
 ```
 

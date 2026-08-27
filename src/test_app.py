@@ -90,6 +90,30 @@ with sync_playwright() as pw:
             f"{c} (U+{ord(c):04X}, {malos[c]} usos)" for c in malos)
     check("sin símbolos que el aparato pueda no tener", simbolos_seguros)
 
+    def exploracion_es_honesta():
+        """Los lugares de la tanda de exploración no salieron de ninguna de las dos
+        listas: los propuse yo. Por eso tienen que cumplir lo que se prometió — pin
+        dentro de NYC, sin horarios inventados y con un porqué de verdad."""
+        r = pg.evaluate("""() => {
+          const ex = PLACES.filter(p => (p.tags||[]).includes('exploracion'));
+          const caja = p => p.lat >= 40.49 && p.lat <= 40.92 && p.lng >= -74.27 && p.lng <= -73.68;
+          return {n: ex.length,
+                  fuera: ex.filter(p => !p.lat || !caja(p)).map(p => p.n),
+                  conHrs: ex.filter(p => p.hrs).map(p => p.n),
+                  sinPorque: ex.filter(p => !p.why || p.why.length < 40).map(p => p.n),
+                  costoSinNota: ex.filter(p => p.cost > 0 && !p.costN).map(p => p.n),
+                  interes: ex.filter(p => p.jp !== 1 || p.th !== 1).map(p => p.n)};
+        }""")
+        assert r["n"] >= 40, f"solo {r['n']} lugares de exploración"
+        assert not r["fuera"], f"pin fuera de Nueva York: {r['fuera']}"
+        # horarios sin verificar es peor que no tener horarios: que nadie los invente después
+        assert not r["conHrs"], f"horarios sin verificar: {r['conHrs']}"
+        assert not r["sinPorque"], f"sin un porqué que sirva: {r['sinPorque']}"
+        assert not r["costoSinNota"], f"cobran y no dicen que el precio es estimado: {r['costoSinNota']}"
+        # 1/1 = sugerencia. Si alguno arranca en 2 se cuela en «lo que quieren ver».
+        assert not r["interes"], f"no arrancan en interés 1/1: {r['interes']}"
+    check("la tanda de exploración cumple lo que promete", exploracion_es_honesta)
+
     print("── lugares de paso ──")
     pg.click('.tab[data-t="itin"]'); pg.wait_for_timeout(250)
 

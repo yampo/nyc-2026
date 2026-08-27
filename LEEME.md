@@ -29,7 +29,37 @@ de noche. De resto entra todo: comida, museos, bares, parques, arquitectura.
 
 ---
 
-## 27 de agosto de 2026 · más tarde
+## 27 de agosto de 2026 · al final del día
+
+**47 lugares nuevos, para que haya qué mirar entre parada y parada.**
+
+Hasta ahora las referencias de paso solo podían ofrecer lo que ya estaba en la lista de ustedes,
+y en varios barrios eso ya estaba todo agendado. Agregué **47 lugares que no estaban en ninguna
+de las dos listas**: joyas escondidas e imperdibles conocidos, elegidos porque caen justo sobre
+los caminos que ya van a hacer.
+
+Algunos ejemplos: **Paley Park**, el patio con cascada de la calle 53 que tapa el ruido de
+Midtown; **Greenacre Park**, su hermano escondido y casi siempre vacío; el **Nicholas Roerich
+Museum**, una casa con 200 cuadros del Himalaya, gratis y sin nadie adentro; el **Elevated
+Acre**, un parque un piso arriba de Water Street que no se ve desde la calle; **Grove Court**,
+seis casitas de 1854 en un patio del West Village; **Economy Candy**, un kiosco de 1937 con las
+paredes cubiertas hasta el techo.
+
+Con esto las referencias pasaron de 71 a **105**, y los barrios que caminan tienen más para
+ofrecer: el Lower East Side pasó de 3 lugares a 5, Harlem de 1 a 4, el West Village de 4 a 6.
+
+**Entran todos como "quizás" para los dos**, a propósito: son sugerencias mías, no cosas que
+ustedes eligieron. Aparecen como referencia de paso, pero no cuentan como lugares que quieren
+visitar ni ensucian las cuentas del plan. Si alguno les gusta, súbanle el interés en la app; si
+molesta, bájenlo a cero y desaparece.
+
+**Dos advertencias honestas.** Las direcciones están verificadas —de hecho el buscador mandó uno
+a Staten Island y hubo que corregirlo a mano— pero **no les cargué horarios**, porque no los pude
+verificar contra la fuente oficial y prefiero no tenerlos a tenerlos mal. Y los precios que
+figuran son estimados. Antes de desviarse a alguno que cobre o que cierre temprano, chequeen.
+
+---
+
 
 **Los barrios que se caminan ahora dicen qué tienen adentro.** Los bloques que son recorrer un
 barrio —Harlem, Arthur Avenue, el Lower East Side, Chinatown, DUMBO y el West Village— tienen

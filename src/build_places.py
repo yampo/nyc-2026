@@ -879,19 +879,274 @@ for (_pid, _n, _cat, _hood, _boro, _sub, _addr, _cost, _dur, _why, _main, _typ) 
       tags=["lista-google"] + (["gratis"] if _cost == 0 else []))
     _GSUB.setdefault(_typ, []).append(_pid)
 
+
+# ══════════════════════════════════════════════════════════════════════════
+#  EXPLORACIÓN — lugares que NO salieron de ninguna de las dos listas.
+#  Joyas escondidas e imperdibles que caen sobre los corredores del viaje,
+#  para que las filas «de paso» y los paneles de barrio tengan qué ofrecer
+#  cuando el propio itinerario ya se comió el barrio.
+#  Entran con interés 1/1 a propósito: son sugerencias, no plan. Juan les
+#  sube o baja el interés en la app y merge_export.py lo baja al catálogo.
+#  Las coordenadas salieron de Nominatim y se validaron contra el centroide
+#  del barrio — ojo, que a «488 Broadway» Nominatim lo manda a Staten Island.
+#  NO llevan `hrs`: los horarios no están verificados contra la fuente, y es
+#  mejor no tenerlos que tenerlos mal. Los costos son estimados y lo dicen.
+# ══════════════════════════════════════════════════════════════════════════
+a(id="mcnallyjackson", n="McNally Jackson Books", cat="arq", hood="SoHo", boro="Manhattan",
+  sub="Prince St (N,R,W)", lat=40.72549, lng=-74.00051, addr="134 Prince St",
+  cost=0, costN="", dur=0.5,
+  why="La libreria independiente que definio el SoHo literario: mesas curadas a mano y una seccion de traduccion que no tiene nadie.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="elizabethgarden", n="Elizabeth Street Garden", cat="parque", hood="Nolita", boro="Manhattan",
+  sub="Spring St (6)", lat=40.72217, lng=-73.99481, addr="Elizabeth St entre Prince y Spring",
+  cost=0, costN="", dur=0.4,
+  why="Jardin de esculturas metido entre edificios, con estatuas victorianas entre los yuyos. Gratis y lleno de vecinos, no de turistas.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="haughwout", n="Haughwout Building", cat="arq", hood="SoHo", boro="Manhattan",
+  sub="Canal St (N,Q,R,W,6)", lat=40.72185, lng=-73.99967, addr="488 Broadway",
+  cost=0, costN="", dur=0.2,
+  why="1857: el primer edificio del mundo con ascensor Otis. Fachada de hierro fundido que parece un palacio veneciano y casi nadie levanta la vista.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="dipalos", n="Di Palo's Fine Foods", cat="comida", hood="Little Italy", boro="Manhattan",
+  sub="Canal St (J,N,Q,R,W,6)", lat=40.71923, lng=-73.99665, addr="200 Grand St",
+  cost=15, costN="estimado, sin verificar contra la fuente", dur=0.5,
+  why="Cuatro generaciones cortando mozzarella desde 1925. Es la Little Italy que queda cuando se van los turistas.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="firemuseum", n="New York City Fire Museum", cat="museo", hood="SoHo", boro="Manhattan",
+  sub="Spring St (C,E)", lat=40.7256, lng=-74.00693, addr="278 Spring St",
+  cost=12, costN="estimado, sin verificar contra la fuente", dur=1.0,
+  why="Cuartel de bomberos de 1904 con carros a caballo y el memorial del 11-S hecho por los propios bomberos.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="vesuvio", n="Vesuvio Bakery", cat="comida", hood="SoHo", boro="Manhattan",
+  sub="Prince St (N,R,W)", lat=40.72591, lng=-74.00145, addr="160 Prince St",
+  cost=8, costN="estimado, sin verificar contra la fuente", dur=0.3,
+  why="La fachada verde mas fotografiada del SoHo, panaderia desde 1920.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="stonewall", n="Stonewall National Monument", cat="arq", hood="West Village", boro="Manhattan",
+  sub="Christopher St (1)", lat=40.73384, lng=-74.00216, addr="53 Christopher St",
+  cost=0, costN="", dur=0.4,
+  why="Donde arranco todo en 1969. Primer monumento nacional de EE.UU. dedicado a los derechos LGBT; el bar sigue funcionando al lado.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="jeffersonmkt", n="Jefferson Market Library", cat="museo", hood="Greenwich Village", boro="Manhattan",
+  sub="W 4 St (A,C,E,B,D,F,M)", lat=40.73459, lng=-73.99919, addr="425 6th Ave",
+  cost=0, costN="", dur=0.4,
+  why="Gotico victoriano de 1877 que fue tribunal y carcel de mujeres. Se entra gratis y la escalera de caracol vale el desvio.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="grovecourt", n="Grove Court", cat="arq", hood="West Village", boro="Manhattan",
+  sub="Christopher St (1)", lat=40.73225, lng=-74.00584, addr="10-12 Grove St",
+  cost=0, costN="", dur=0.2,
+  why="Seis casitas de 1854 alrededor de un patio privado. La postal del West Village que no sale en las guias.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="washingtonmews", n="Washington Mews", cat="arq", hood="Greenwich Village", boro="Manhattan",
+  sub="8 St-NYU (N,R,W)", lat=40.73144, lng=-73.99566, addr="Washington Mews, entre 5th Ave y University Pl",
+  cost=0, costN="", dur=0.2,
+  why="Callejon adoquinado de caballerizas reconvertidas, cerrado al transito. Dos minutos de desvio desde Washington Square.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="murrays", n="Murray's Cheese", cat="comida", hood="West Village", boro="Manhattan",
+  sub="Christopher St (1)", lat=40.731, lng=-74.00303, addr="254 Bleecker St",
+  cost=15, costN="estimado, sin verificar contra la fuente", dur=0.4,
+  why="Queseria desde 1940, la mas vieja de la ciudad. Te hacen probar antes de comprar.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="cornerbistro", n="Corner Bistro", cat="comida", hood="West Village", boro="Manhattan",
+  sub="14 St (A,C,E)", lat=40.73804, lng=-74.00377, addr="331 W 4th St",
+  cost=12, costN="estimado, sin verificar contra la fuente", dur=1.0,
+  why="Hamburguesa en plato de papel, cerveza barata y boxes de madera desde 1961. Nada de artesanal.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="paleypark", n="Paley Park", cat="parque", hood="Midtown", boro="Manhattan",
+  sub="5 Av-53 St (E,M)", lat=40.76026, lng=-73.97505, addr="3 E 53rd St",
+  cost=0, costN="", dur=0.3,
+  why="Pocket park de 1967 con una cascada que tapa el ruido de la calle. El mejor invento urbano de Nueva York y entra en media cuadra.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="greenacre", n="Greenacre Park", cat="parque", hood="Midtown East", boro="Manhattan",
+  sub="51 St (6), Lexington Av-53 St (E,M)", lat=40.75619, lng=-73.96941, addr="217 E 51st St",
+  cost=0, costN="", dur=0.3,
+  why="El hermano escondido de Paley: cascada de 8 metros en un hueco entre edificios. Casi siempre vacio.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="stbarts", n="St. Bartholomew's Church", cat="arq", hood="Midtown East", boro="Manhattan",
+  sub="51 St (6)", lat=40.75726, lng=-73.97304, addr="325 Park Ave",
+  cost=0, costN="", dur=0.4,
+  why="Bizantino en pleno Park Avenue, con el portico que sobrevivio a la iglesia anterior. La terraza del cafe da a la avenida.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="leverhouse", n="Lever House", cat="arq", hood="Midtown East", boro="Manhattan",
+  sub="51 St (6)", lat=40.75958, lng=-73.97269, addr="390 Park Ave",
+  cost=0, costN="", dur=0.2,
+  why="1952: el primer rascacielos de muro cortina de vidrio de Park Avenue. Cambio como se construye una ciudad.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="seagram", n="Seagram Building", cat="arq", hood="Midtown East", boro="Manhattan",
+  sub="51 St (6)", lat=40.75841, lng=-73.97198, addr="375 Park Ave",
+  cost=0, costN="", dur=0.3,
+  why="Mies van der Rohe, 1958. La plaza vacia de adelante fue tan influyente como el edificio.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="campbell", n="The Campbell", cat="mirador", hood="Midtown East", boro="Manhattan",
+  sub="Grand Central-42 St (4,5,6,7,S)", lat=40.75261, lng=-73.97785, addr="15 Vanderbilt Ave",
+  cost=22, costN="estimado, sin verificar contra la fuente", dur=1.0,
+  why="Oficina privada de un magnate de los anos 20 dentro de Grand Central, con techo artesonado. Esta abajo del SUMMIT.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="stpatricks", n="St. Patrick's Cathedral", cat="arq", hood="Midtown", boro="Manhattan",
+  sub="5 Av-53 St (E,M), 47-50 Sts (B,D,F,M)", lat=40.75836, lng=-73.97693, addr="5th Ave y E 50th St",
+  cost=0, costN="", dur=0.5,
+  why="Neogotica de 1878 entre rascacielos, restaurada por 180 millones. Gratis y siempre abierta.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="amysbread", n="Amy's Bread", cat="comida", hood="Hell's Kitchen", boro="Manhattan",
+  sub="50 St (C,E)", lat=40.76122, lng=-73.99028, addr="672 9th Ave",
+  cost=8, costN="estimado, sin verificar contra la fuente", dur=0.3,
+  why="Panaderia de barrio desde 1992, antes de que el pan artesanal fuera moda. A cuadras del Ink48.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="hkflea", n="Hell's Kitchen Flea Market", cat="arq", hood="Hell's Kitchen", boro="Manhattan",
+  sub="42 St-Port Authority (A,C,E)", lat=40.75676, lng=-73.99456, addr="W 39th St entre 9th y 10th Ave",
+  cost=0, costN="", dur=0.8,
+  why="Feria de antiguedades al aire libre, sabados y domingos. Vinilos, camaras y cosas que no vas a encontrar en otro lado.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="pier84", n="Hudson River Park Pier 84", cat="parque", hood="Hell's Kitchen", boro="Manhattan",
+  sub="42 St-Port Authority (A,C,E)", lat=40.76413, lng=-74.00207, addr="W 44th St y 12th Ave",
+  cost=0, costN="", dur=0.5,
+  why="El muelle publico mas grande del rio, con el Intrepid al lado y el atardecer sobre New Jersey de frente.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="barneygreengrass", n="Barney Greengrass", cat="comida", hood="Upper West Side", boro="Manhattan",
+  sub="86 St (1)", lat=40.78797, lng=-73.97455, addr="541 Amsterdam Ave",
+  cost=25, costN="estimado, sin verificar contra la fuente", dur=1.0,
+  why="'El rey del esturion' desde 1908, con el mismo linoleo. Huevos con salmon y cebolla en una mesa de formica.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="stjohndivine", n="Cathedral of St. John the Divine", cat="arq", hood="Morningside Heights", boro="Manhattan",
+  sub="Cathedral Pkwy-110 St (1)", lat=40.80377, lng=-73.96178, addr="1047 Amsterdam Ave",
+  cost=5, costN="estimado, sin verificar contra la fuente", dur=1.0,
+  why="La catedral gotica mas grande del mundo, y todavia sin terminar. La nave es mas larga que dos canchas de futbol.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="levain", n="Levain Bakery", cat="comida", hood="Upper West Side", boro="Manhattan",
+  sub="79 St (1)", lat=40.78147, lng=-73.97914, addr="351 Amsterdam Ave",
+  cost=6, costN="estimado, sin verificar contra la fuente", dur=0.3,
+  why="La cookie de 170 gramos que hizo cola durante veinte anos. Cruda por dentro a proposito.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="roerich", n="Nicholas Roerich Museum", cat="museo", hood="Upper West Side", boro="Manhattan",
+  sub="103 St (1)", lat=40.80292, lng=-73.96901, addr="319 W 107th St",
+  cost=0, costN="", dur=0.8,
+  why="Casa de piedra rojiza con 200 cuadros del Himalaya de un pintor ruso mistico. Gratis, vacio y rarisimo.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="grayspapaya", n="Gray's Papaya", cat="comida", hood="Upper West Side", boro="Manhattan",
+  sub="72 St (1,2,3)", lat=40.77838, lng=-73.98157, addr="2090 Broadway",
+  cost=6, costN="estimado, sin verificar contra la fuente", dur=0.2,
+  why="Pancho y jugo de papaya de parado, luz de neon, abierto toda la noche desde 1973.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="neuegalerie", n="Neue Galerie", cat="museo", hood="Upper East Side", boro="Manhattan",
+  sub="86 St (4,5,6)", lat=40.78122, lng=-73.96024, addr="1048 5th Ave",
+  cost=28, costN="estimado, sin verificar contra la fuente", dur=1.5,
+  why="Klimt y Schiele en una mansion de 1914, con el cafe vienes mas creible de la ciudad. La 'Dama de oro' esta aca.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="lexcandy", n="Lexington Candy Shop", cat="comida", hood="Upper East Side", boro="Manhattan",
+  sub="86 St (4,5,6)", lat=40.77743, lng=-73.95727, addr="1226 Lexington Ave",
+  cost=18, costN="estimado, sin verificar contra la fuente", dur=0.8,
+  why="Luncheonette de 1925 sin un solo cambio: malteadas hechas a mano y Coca-Cola mezclada en el mostrador.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="carlschurz", n="Carl Schurz Park", cat="parque", hood="Upper East Side", boro="Manhattan",
+  sub="86 St (4,5,6) + M86 al este", lat=40.77517, lng=-73.94353, addr="East End Ave y E 86th St",
+  cost=0, costN="", dur=0.6,
+  why="Promenade sobre el East River con Gracie Mansion adentro, la casa del intendente. Lo usan los vecinos, no los turistas.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="elevatedacre", n="Elevated Acre", cat="mirador", hood="Financial District", boro="Manhattan",
+  sub="Wall St (2,3), Broad St (J,Z)", lat=40.70323, lng=-74.00907, addr="55 Water St",
+  cost=0, costN="", dur=0.4,
+  why="Un acre de parque escondido un piso arriba de Water St, con vista al puerto. Se sube por una escalera que nadie ve.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="skyscrapermuseum", n="Skyscraper Museum", cat="museo", hood="Financial District", boro="Manhattan",
+  sub="Bowling Green (4,5)", lat=40.70575, lng=-74.01769, addr="39 Battery Pl",
+  cost=5, costN="estimado, sin verificar contra la fuente", dur=0.8,
+  why="Chico y monotematico: como y por que Nueva York crecio para arriba. Piso de acero pulido que duplica la altura.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="chargingbull", n="Charging Bull", cat="arq", hood="Financial District", boro="Manhattan",
+  sub="Bowling Green (4,5)", lat=40.70599, lng=-74.01312, addr="Broadway y Morris St",
+  cost=0, costN="", dur=0.2,
+  why="El toro de 1989 que aparecio una noche sin permiso. Con Fearless Girl enfrente, a dos cuadras.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="hotelchelsea", n="Hotel Chelsea", cat="arq", hood="Chelsea", boro="Manhattan",
+  sub="23 St (1,C,E,F,M)", lat=40.74437, lng=-73.99682, addr="222 W 23rd St",
+  cost=0, costN="", dur=0.3,
+  why="Donde vivieron Dylan, Patti Smith, Warhol y Leonard Cohen. Reabrio como hotel; el lobby se puede ver.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="gansevoortmkt", n="Gansevoort Market", cat="comida", hood="Meatpacking", boro="Manhattan",
+  sub="14 St (A,C,E), 8 Av (L)", lat=40.74096, lng=-74.00463, addr="353 W 14th St",
+  cost=15, costN="estimado, sin verificar contra la fuente", dur=0.8,
+  why="Food hall en un galpon del Meatpacking, mucho menos turistico que Chelsea Market y a cuatro cuadras del High Line.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="apollo", n="Apollo Theater", cat="arq", hood="Harlem", boro="Manhattan",
+  sub="125 St (A,B,C,D)", lat=40.81009, lng=-73.94999, addr="253 W 125th St",
+  cost=0, costN="", dur=0.3,
+  why="1934: la Amateur Night que lanzo a Ella Fitzgerald y James Brown. La marquesina se ve desde la vereda.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="sylvias", n="Sylvia's", cat="comida", hood="Harlem", boro="Manhattan",
+  sub="125 St (2,3)", lat=40.80863, lng=-73.94452, addr="328 Malcolm X Blvd",
+  cost=30, costN="estimado, sin verificar contra la fuente", dur=1.2,
+  why="Soul food desde 1962, la mesa donde comieron todos los que pasaron por Harlem.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="hamiltongrange", n="Hamilton Grange", cat="museo", hood="Harlem", boro="Manhattan",
+  sub="145 St (A,B,C,D), 137 St (1)", lat=40.82136, lng=-73.9473, addr="414 W 141st St",
+  cost=0, costN="", dur=0.7,
+  why="La unica casa que tuvo Alexander Hamilton, mudada dos veces de lugar. Gratis.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="nomwah", n="Nom Wah Tea Parlor", cat="comida", hood="Chinatown", boro="Manhattan",
+  sub="Canal St (J,N,Q,R,W,6)", lat=40.71446, lng=-73.9982, addr="13 Doyers St",
+  cost=20, costN="estimado, sin verificar contra la fuente", dur=1.0,
+  why="1920, en la cuadra torcida de Doyers. El dim sum mas viejo de Nueva York, con los boxes rojos originales.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="mahayana", n="Mahayana Buddhist Temple", cat="arq", hood="Chinatown", boro="Manhattan",
+  sub="Canal St (J,N,Q,R,W,6)", lat=40.71614, lng=-73.99537, addr="133 Canal St",
+  cost=0, costN="", dur=0.3,
+  why="El Buda dorado mas grande de la ciudad, 5 metros, en lo que era un cine porno al pie del puente de Manhattan.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="economycandy", n="Economy Candy", cat="arq", hood="Lower East Side", boro="Manhattan",
+  sub="Delancey St-Essex St (F,J,M,Z)", lat=40.72012, lng=-73.98785, addr="108 Rivington St",
+  cost=0, costN="", dur=0.4,
+  why="Kiosco de golosinas de 1937 con las paredes cubiertas hasta el techo. Es un museo donde se puede comprar.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="merchantshouse", n="Merchant's House Museum", cat="museo", hood="East Village", boro="Manhattan",
+  sub="Bleecker St (6), Broadway-Lafayette (B,D,F,M)", lat=40.72766, lng=-73.99234, addr="29 E 4th St",
+  cost=15, costN="estimado, sin verificar contra la fuente", dur=1.0,
+  why="La unica casa del siglo XIX de Nueva York intacta por dentro y por fuera, con los muebles de la familia.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="janescarousel", n="Jane's Carousel", cat="arq", hood="DUMBO", boro="Brooklyn",
+  sub="High St (A,C), York St (F)", lat=40.70443, lng=-73.99238, addr="Brooklyn Bridge Park, Old Dock St",
+  cost=2, costN="estimado, sin verificar contra la fuente", dur=0.4,
+  why="Calesita de 1922 restaurada, dentro de una caja de vidrio de Jean Nouvel frente al skyline. Dos dolares.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="plymouthchurch", n="Plymouth Church", cat="arq", hood="Brooklyn Heights", boro="Brooklyn",
+  sub="Clark St (2,3), High St (A,C)", lat=40.69928, lng=-73.99309, addr="57 Orange St, Brooklyn",
+  cost=0, costN="", dur=0.4,
+  why="Parada del Ferrocarril Subterraneo: aca Beecher remataba esclavos para liberarlos, y hablo Lincoln.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="booksaremagic", n="Books Are Magic", cat="arq", hood="Brooklyn Heights", boro="Brooklyn",
+  sub="Court St (R), Borough Hall (2,3,4,5)", lat=40.69466, lng=-73.9946, addr="122 Montague St, Brooklyn",
+  cost=0, costN="", dur=0.4,
+  why="La libreria de Emma Straub, con el mural que es la foto obligada de Brooklyn.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="cityreliquary2", n="City Reliquary", cat="museo", hood="Williamsburg", boro="Brooklyn",
+  sub="Lorimer St (L), Metropolitan Av (G)", lat=40.7139, lng=-73.95572, addr="370 Metropolitan Ave, Brooklyn",
+  cost=7, costN="estimado, sin verificar contra la fuente", dur=0.7,
+  why="Museo de vitrina dedicado a la basura historica de Nueva York: fichas de subte, agua del grifo, Miss Subways.",
+  jp=1, th=1, tags=["exploracion"])
+a(id="nybg", n="New York Botanical Garden", cat="parque", hood="Bronx Park", boro="Bronx",
+  sub="Metro-North a Botanical Garden, o Bx26", lat=40.86224, lng=-73.87715, addr="2900 Southern Blvd, Bronx",
+  cost=35, costN="estimado, sin verificar contra la fuente", dur=3.0,
+  why="Un bosque original de 20 hectareas que nunca se talo, mas el invernadero victoriano. A diez cuadras de Arthur Avenue.",
+  jp=1, th=1, tags=["exploracion"])
+
 SUB = {
  # ── MIRADOR ──
  "Observatorio pago":   ["summit", "topofrock", "edge", "esb", "owo"],
- "Rooftop bar":         ["westlight", "thecrown", "molounge"],
- "Mirador gratis":      ["bhpromenade", "gantry", "domino", "forttryon", "sunsetparkview", "valentino"],
+ "Rooftop bar":         ["westlight", "thecrown", "molounge",
+                         "campbell"],
+ "Mirador gratis":      ["bhpromenade", "gantry", "domino", "forttryon", "sunsetparkview", "valentino",
+                         "elevatedacre"],
  "Ferry y teleférico":  ["siferry", "tram"],
  # ── MUSEO ──
  "Museo de arte":       ["met", "cloisters", "moma", "whitney", "guggenheim", "frick", "bkmuseum",
-                         "momaps1", "studiomuseum", "noguchi", "diabeacon"],
- "Museo de historia":   ["mcny", "tenement", "911museum", "cityreliquary", "transitmuseum"],
+                         "momaps1", "studiomuseum", "noguchi", "diabeacon",
+                         "roerich", "neuegalerie"],
+ "Museo de historia":   ["mcny", "tenement", "911museum", "cityreliquary", "transitmuseum",
+                         "hamiltongrange", "merchantshouse"],
  "Museo de ciencia":    ["amnh"],
- "Museo temático":      ["momi", "intrepid", "mercerlabs"],
- "Biblioteca histórica":["morgan"],
+ "Museo temático":      ["momi", "intrepid", "mercerlabs",
+                         "firemuseum", "skyscrapermuseum", "cityreliquary2"],
+ "Biblioteca histórica":["morgan",
+                         "jeffersonmkt"],
  # ── BARRIO ──
  "Barrio étnico":       ["jacksonheights", "astoria", "greenpoint", "sunsetpark", "arthurave",
                          "ridgewood", "bayridge", "flushing", "chinatown"],
@@ -899,14 +1154,20 @@ SUB = {
  "Waterfront":          ["redhook", "dumbo"],
  "Isla":                ["govisland", "rooseveltisland"],
  # ── COMIDA ──
- "Mercado y food hall": ["essexmarket", "chelseamarket", "arthurmarket", "newworldmall", "dekalb", "timeoutmarket"],
- "Deli y pastrami":     ["katzs", "splunch", "russdaughters", "frankels"],
- "Hamburguesería":      ["hamburgerica"],
+ "Mercado y food hall": ["essexmarket", "chelseamarket", "arthurmarket", "newworldmall", "dekalb", "timeoutmarket",
+                         "gansevoortmkt"],
+ "Deli y pastrami":     ["katzs", "splunch", "russdaughters", "frankels",
+                         "barneygreengrass"],
+ "Hamburguesería":      ["hamburgerica",
+                         "cornerbistro"],
  "Pizzería":            ["lbspumoni", "totonnos", "lucali", "manos"],
  "Restaurante étnico":  ["lhasa", "nepalibhanchha", "jalapenoking", "elbronco", "henan", "uyghur",
-                         "pierozek", "karczma", "malecon", "tanoreen", "kyclades"],
- "Comida al paso":      ["casadellamozz", "cosenza", "lostacos"],
- "Panadería y bagels":  ["rudys", "bosbagels"],
+                         "pierozek", "karczma", "malecon", "tanoreen", "kyclades",
+                         "nomwah"],
+ "Comida al paso":      ["casadellamozz", "cosenza", "lostacos",
+                         "dipalos", "murrays", "grayspapaya"],
+ "Panadería y bagels":  ["rudys", "bosbagels",
+                         "vesuvio", "amysbread"],
  # ── MÚSICA ──
  "Club de jazz":        ["vanguard", "smalls", "mezzrow", "birdland", "dizzys", "bluenote", "ornithology", "billsplace"],
  "Play de Broadway":    ["strangerthings"],
@@ -915,15 +1176,21 @@ SUB = {
  "Venue alternativo":   ["nublu"],
  # ── ARQUITECTURA ──
  "Interior monumental": ["grandcentral", "nypl", "chrysler", "fordfoundation"],
- "Arquitectura moderna":["littleisland", "fdrpark", "oculus", "twahotel", "vessel", "lincolncenter"],
+ "Arquitectura moderna":["littleisland", "fdrpark", "oculus", "twahotel", "vessel", "lincolncenter",
+                         "haughwout", "leverhouse", "seagram"],
  "Steakhouse clásico":  ["peterluger"],
- "Templo":              ["eldridge"],
- "Casa y calle histórica": ["onderdonk", "striversrow"],
+ "Templo":              ["eldridge",
+                         "stbarts", "stpatricks", "stjohndivine", "mahayana", "plymouthchurch"],
+ "Casa y calle histórica": ["onderdonk", "striversrow",
+                         "stonewall", "grovecourt", "washingtonmews", "chargingbull", "hotelchelsea", "apollo", "janescarousel"],
  # ── PARQUE ──
- "Parque urbano":       ["centralpark", "bryantpark", "washingtonsq", "brooklynbridgepark", "astoriapark"],
+ "Parque urbano":       ["centralpark", "bryantpark", "washingtonsq", "brooklynbridgepark", "astoriapark",
+                         "paleypark", "greenacre", "pier84", "carlschurz"],
  "Paseo elevado":       ["highline"],
- "Parque de esculturas":["socrates"],
- "Naturaleza":          ["inwoodhill", "wavehill"],
+ "Parque de esculturas":["socrates",
+                         "elizabethgarden"],
+ "Naturaleza":          ["inwoodhill", "wavehill",
+                         "nybg"],
  "Cementerio-jardín":   ["greenwood"],
  # ── EVENTO ──
  "Festival gratis":     ["charlieparker29", "charlieparker30", "summerstage"],
@@ -936,6 +1203,11 @@ SUB = {
  "Tickets con descuento": ["tkts"],
  # ── LOGÍSTICA ──
  "Hotel":               ["ink48", "jgstay", "beacon", "residenceinn"],
+ # ── de la tanda de exploración ──
+ "Diner clásico":         ["lexcandy"],
+ "Heladería y dulces":    ["levain"],
+ "Restaurante americano": ["sylvias"],
+ "Tienda con historia":   ["mcnallyjackson", "hkflea", "economycandy", "booksaremagic"],
 }
 
 # subcategorías de los lugares de la lista de Google: se suman a las existentes o crean una nueva
