@@ -321,6 +321,27 @@ Versión visible en la app en **⋯ → Versión del plan**.
 
 ---
 
+## Los informes de exploración (docs/informe_*.md)
+
+Tres agentes barrieron la web el 27/8 y dejaron **124 propuestas verificadas con URL**, ninguna
+repetida de las que ya están en el catálogo:
+
+| archivo | qué trae |
+|---|---|
+| `informe_1_agenda_29ago_6sep.md` | qué pasa esos nueve días: muestras temporales, ópera gratis, festivales, cierres |
+| `informe_2_joyas_por_barrio.md` | 56 lugares poco conocidos en los barrios del recorrido |
+| `informe_3_comida.md` | 35 lugares de comida, atados a los huecos reales del itinerario |
+
+**Son material crudo para revisar, no catálogo.** Lo que se apruebe entra por el mismo camino
+que la tanda de exploración: `a(...)` en `build_places.py`, interés 1/1, coordenadas
+geocodificadas y validadas, sin `hrs` salvo verificación contra fuente oficial.
+
+Cada ítem trae su **nivel de confianza** y la URL. Lo que los agentes no pudieron confirmar está
+marcado como tal en vez de omitido — varios sitios (Dizzy's, Birdland, Smalls) cargan la
+cartelera por JavaScript y no se dejan leer.
+
+---
+
 ## Cuando el deploy de Pages se cuelga
 
 El 27/8 a la tarde el sitio quedó dos horas sin actualizarse: `build` pasaba en 20 segundos y
