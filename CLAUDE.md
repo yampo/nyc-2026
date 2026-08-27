@@ -332,6 +332,12 @@ repetida de las que ya están en el catálogo:
 | `informe_2_joyas_por_barrio.md` | 56 lugares poco conocidos en los barrios del recorrido |
 | `informe_3_comida.md` | 35 lugares de comida, atados a los huecos reales del itinerario |
 
+`build_informe.py` los convierte en `informe_exploracion.html`: una sola página con las 124
+fichas, filtros por informe y por texto, y la **misma mecánica de tres estados que la app**
+(★ / ✕ / sin marcar) guardada en `localStorage`, con un botón que copia la selección al
+portapapeles. Es una herramienta de decisión, no un documento de lectura — se revisa desde el
+celular y lo que sale se pega en el chat.
+
 **Son material crudo para revisar, no catálogo.** Lo que se apruebe entra por el mismo camino
 que la tanda de exploración: `a(...)` en `build_places.py`, interés 1/1, coordenadas
 geocodificadas y validadas, sin `hrs` salvo verificación contra fuente oficial.
