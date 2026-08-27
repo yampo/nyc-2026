@@ -119,6 +119,14 @@ main{max-width:1180px;margin:0 auto;padding:16px 14px 40px}
 .tmend{font-size:10.5px;color:var(--mut);margin-top:2px;white-space:nowrap}
 .trav{padding:5px 14px 5px 62px;font-size:11.5px;color:var(--mut);
   border-bottom:1px dashed var(--line);background:#fbf9f5}
+/* Lugares de paso: van con el traslado, no con el bloque — no son visitas.
+   Tono apagado a propósito: son referencia, no plan. */
+.paso{padding:4px 14px 6px 62px;display:flex;gap:5px;flex-wrap:wrap;align-items:center;
+  border-bottom:1px dashed var(--line);background:#fbf9f5}
+.pasolb{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);flex:none}
+.chip.paso1{background:#fff;border:1px dashed var(--line);font-size:11px;padding:2px 8px;
+  font-weight:600;cursor:pointer;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.chip.paso1 i{font-style:normal;color:var(--mut);font-weight:500;margin-left:5px}
 .bbody{flex:1;min-width:0}
 .btxt{font-size:14px;line-height:1.5}
 .bmeta{margin-top:6px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
@@ -177,6 +185,8 @@ select.f{padding:10px 11px;border:1px solid var(--line);border-radius:11px;backg
 #map{height:min(66vh,560px);border-radius:var(--r);border:1px solid var(--line);box-shadow:var(--sh);
   background:#e8e4dd;z-index:1}
 .mk{border-radius:50%;border:2.5px solid #fff;box-shadow:0 1px 5px rgba(0,0,0,.35)}
+/* Referencia de paso: anillo hueco, para que se lea distinto de una parada del día */
+.mkpaso{width:15px;height:15px;background:#fff;border:3px solid;box-shadow:0 1px 4px rgba(0,0,0,.3)}
 .mnum{display:grid;place-items:center;color:#fff;font-size:11px;font-weight:800;
   border-radius:50%;border:2.5px solid #fff;box-shadow:0 1px 6px rgba(0,0,0,.4)}
 .leaflet-popup-content{margin:11px 13px;font:13px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif}
@@ -476,6 +486,63 @@ function enTramos(arr, n){
   for (let i = 0; i < arr.length; i += n) out.push(arr.slice(i, i + n));
   return out;
 }
+/* ── Lugares de paso ──────────────────────────────────────────────────────────
+   Entre dos paradas consecutivas, qué del catálogo queda EN EL CAMINO. No son
+   visitas y no tocan el itinerario: son referencia por si vale un desvío corto.
+
+   La medida es el DESVÍO —cuánto se alarga el trayecto si paso por ahí,
+   d(A,P) + d(P,B) - d(A,B)— y no la distancia al lugar, porque son preguntas
+   distintas: el Puente de Brooklyn está a 800 m de DUMBO y cuesta CERO metros
+   pasar por él, porque queda justo sobre la línea hacia el Oculus.
+
+   Arriba de PASO_CORREDOR el tramo ya no se camina, se va en subte: ahí el
+   corredor no existe (no pasás por el medio) y solo valen las puntas. */
+const PASO_DESVIO = 500;      /* m de desvío que se tolera en un tramo caminable */
+const PASO_CORREDOR = 2500;   /* m: hasta acá el tramo se hace a pie */
+const PASO_PUNTA = 400;       /* m alrededor de cada punta en los tramos largos */
+const PASO_TOP = 4;           /* cuántos se muestran por tramo */
+const PASO_FUERA = {transporte:1, hotel:1, evento:1};  /* logística y cosas con fecha fija */
+
+function hav(a, b){
+  const R = 6371000, r = Math.PI/180;
+  const la1 = a[0]*r, la2 = b[0]*r, dla = (b[0]-a[0])*r, dlo = (b[1]-a[1])*r;
+  const h = Math.sin(dla/2)**2 + Math.cos(la1)*Math.cos(la2)*Math.sin(dlo/2)**2;
+  return 2*R*Math.asin(Math.sqrt(h));
+}
+/* Los de paso de un día entero: { idDelBloqueDestino: [{p, desvio}] }.
+   Se calcula sobre el itinerario VIVO —no en el build— para que siga bien
+   después de que Juan mueva, agregue o saque un bloque. */
+function dePasoDelDia(d){
+  const wd = DOW_IDX[d.dow];
+  const usados = {};                     /* agendado en CUALQUIER día: no es novedad */
+  S.itin.forEach(x => x.blocks.forEach(b => { if (b.pid) usados[b.pid] = 1; }));
+  const cand = PLACES.filter(p => p.lat && !usados[p.id] && !PASO_FUERA[p.cat]
+    && (p.jp > 0 || p.th > 0)            /* lo que los dos bajaron a 0 está descartado */
+    && horario(p, wd) !== 'CERRADO');    /* cerrado ese día no es una referencia útil */
+
+  const paradas = paradasDe(d);
+  const mejor = {};                      /* cada lugar UNA vez por día, en su tramo más barato */
+  for (let i = 0; i < paradas.length - 1; i++){
+    const A = paradas[i].p, B = paradas[i+1].p, destino = paradas[i+1].b.id;
+    const a = [A.lat, A.lng], b = [B.lat, B.lng], dab = hav(a, b);
+    cand.forEach(p => {
+      const q = [p.lat, p.lng], da = hav(a, q), db = hav(q, b);
+      const desvio = da + db - dab;
+      const entra = dab <= PASO_CORREDOR ? desvio <= PASO_DESVIO
+                                         : Math.min(da, db) <= PASO_PUNTA;
+      if (!entra) return;
+      if (!mejor[p.id] || desvio < mejor[p.id].desvio) mejor[p.id] = {p, desvio, destino};
+    });
+  }
+  const out = {};
+  Object.values(mejor).forEach(x => (out[x.destino] = out[x.destino] || []).push(x));
+  Object.keys(out).forEach(k => { out[k].sort((x,y) => x.desvio - y.desvio); out[k] = out[k].slice(0, PASO_TOP); });
+  return out;
+}
+/* Los mismos lugares, planos, para pintarlos en el mapa del día. */
+function dePasoPlano(d){
+  return Object.values(dePasoDelDia(d)).flat();
+}
 /* Las paradas de un día, en orden, sin repetir la misma dos bloques seguidos
    (el hotel al salir y al volver son dos paradas distintas; el mismo lugar en
    bloques pegados, una sola). */
@@ -553,11 +620,18 @@ function rItin(){
     const nx = d.blocks[i + 1];
     return nx && /^\d{1,2}:\d{2}$/.test(nx.t) ? nx.t : '';
   });
+  const PASO = dePasoDelDia(d);
   const blocks = d.blocks.map((b,i) => {
     if (!vis(b)) return '';
     const p = b.pid ? PBY[b.pid] : null;
+    const paso = PASO[b.id] || [];
     const ajeno = b.who !== 'both' && b.who !== d.who;   // bloque de la otra persona
     return `${b.trav ? `<div class="trav">↓ ${esc(b.trav)}</div>` : ''}
+      ${paso.length ? `<div class="paso">
+        <span class="pasolb">de paso</span>
+        ${paso.map(({p:q, desvio}) => `<a class="chip paso1" data-paso="${q.id}"
+            style="color:${CAT[q.cat].c}" title="${esc(q.typ + ' · ' + q.hood + ' · ' + money(q.cost))} — desvío +${Math.round(desvio)} m">${esc(q.n)}<i>+${desvio < 950 ? Math.round(desvio/10)*10 + ' m' : (desvio/1000).toFixed(1) + ' km'}</i></a>`).join('')}
+      </div>` : ''}
       <div class="blk${b.kind==='destacado'?' hi':''}${b.done?' done':''}${ajeno?' ajeno':''}" data-b="${b.id}">
       <div class="tmw">
         <input class="tm" value="${esc(b.t)}" data-act="time" aria-label="hora">
@@ -628,6 +702,8 @@ function rItin(){
    Registrarla dentro de las funciones de render acumularía un listener por render
    y cada click se dispararía N veces. */
 $('#v-itin').addEventListener('click', e => {
+  const pa = e.target.closest('[data-paso]');          /* referencia de paso → su ficha */
+  if (pa){ showPlace(pa.dataset.paso); return; }
   const el = e.target.closest('[data-act]'); if (!el) return;
   const id = e.target.closest('.blk')?.dataset.b; if (!id) return;
   const act = el.dataset.act;
@@ -981,21 +1057,30 @@ function drawMap(){
   if (dsel){
     const d = S.itin.find(x => x.n === +dsel);
     d.blocks.forEach(b => { if (b.pid && PBY[b.pid]) items.push({p:PBY[b.pid], num:items.length+1, t:b.t}); });
+    /* Los de paso van SIN número y no entran en la línea del recorrido: son
+       referencia, no paradas. Se marcan con `paso` para pintarlos distinto. */
+    dePasoPlano(d).forEach(({p, desvio}) => items.push({p, num:null, paso:desvio}));
   } else {
     items = PLACES.filter(p => matchSel(p) && (!fsel || p.cost === 0 || p.free)).map(p => ({p, num:null}));
   }
-  const pts = [];
-  items.forEach(({p,num,t}) => {
+  const pts = [], ruta = [];
+  items.forEach(({p,num,t,paso}) => {
     if (!p.lat) return;
     pts.push([p.lat, p.lng]);
+    if (num) ruta.push([p.lat, p.lng]);      /* la línea une las paradas, no las referencias */
     const c = CAT[p.cat].c;
     const icon = num
       ? L.divIcon({className:'', html:`<div class="mnum" style="background:${c};width:27px;height:27px">${num}</div>`,
                    iconSize:[27,27], iconAnchor:[13,13]})
+      : paso != null
+      ? L.divIcon({className:'', html:`<div class="mk mkpaso" style="border-color:${c}"></div>`,
+                   iconSize:[15,15], iconAnchor:[8,8]})
       : L.divIcon({className:'', html:`<div class="mk" style="background:${c};width:13px;height:13px"></div>`,
                    iconSize:[13,13], iconAnchor:[7,7]});
     L.marker([p.lat,p.lng], {icon}).addTo(LAYER).bindPopup(
       `<h4>${t ? t + ' · ' : ''}${esc(p.n)}</h4>
+       ${paso != null ? `<div style="font-size:11.5px;color:#8a7f6d;margin-bottom:6px">
+         De paso · no está en el itinerario · desvío +${paso < 950 ? Math.round(paso/10)*10 + ' m' : (paso/1000).toFixed(1) + ' km'}</div>` : ''}
        <div style="color:#66707d;font-size:12px;margin-bottom:6px"><b style="color:${CAT[p.cat].c}">${esc(p.typ)}</b> · ${esc(p.hood)} · ${money(p.cost)}</div>
        <div style="margin-bottom:8px">${esc(p.why.slice(0,190))}${p.why.length>190?'…':''}</div>
        <div style="font-size:11.5px;color:#66707d;margin-bottom:8px">🚇 ${esc(p.sub)}</div>
@@ -1003,8 +1088,8 @@ function drawMap(){
           style="display:inline-block;background:#14293d;color:#fff;padding:7px 11px;border-radius:9px;
           text-decoration:none;font-weight:650;font-size:12px">Abrir en Google Maps ↗</a>`);
   });
-  if (dsel && pts.length > 1)
-    L.polyline(pts, {color:'#14293d', weight:2.5, opacity:.45, dashArray:'6,7'}).addTo(LAYER);
+  if (dsel && ruta.length > 1)
+    L.polyline(ruta, {color:'#14293d', weight:2.5, opacity:.45, dashArray:'6,7'}).addTo(LAYER);
   if (pts.length) MAP.fitBounds(pts, {padding:[36,36], maxZoom: dsel ? 14 : 12});
 }
 

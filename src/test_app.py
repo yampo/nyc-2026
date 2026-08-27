@@ -85,6 +85,66 @@ with sync_playwright() as pw:
             f"{c} (U+{ord(c):04X}, {malos[c]} usos)" for c in malos)
     check("sin símbolos que el aparato pueda no tener", simbolos_seguros)
 
+    print("── lugares de paso ──")
+    pg.click('.tab[data-t="itin"]'); pg.wait_for_timeout(250)
+
+    def paso_no_toca_el_itinerario():
+        """Lo primero que hay que garantizar: son referencia, NO plan. Ningún
+        lugar de paso puede convertirse en bloque ni cambiar la cuenta del día."""
+        antes = pg.evaluate("S.itin.reduce((a,d)=>a+d.blocks.length,0)")
+        for d in range(1, 10):
+            pg.click(f'.dbtn[data-d="{d}"]'); pg.wait_for_timeout(160)
+        despues = pg.evaluate("S.itin.reduce((a,d)=>a+d.blocks.length,0)")
+        assert antes == despues, f"el itinerario cambió: {antes} → {despues} bloques"
+    check("las referencias no modifican el itinerario", paso_no_toca_el_itinerario)
+
+    def paso_aparece():
+        vistos = 0
+        for d in range(1, 10):
+            pg.click(f'.dbtn[data-d="{d}"]'); pg.wait_for_timeout(160)
+            vistos += pg.locator('#v-itin .paso1').count()
+        assert vistos >= 20, f"apenas {vistos} referencias en los 9 días"
+    check("hay referencias de paso repartidas en los 9 días", paso_aparece)
+
+    def paso_es_coherente():
+        """Nada agendado, nada repetido dentro del día, nada que los dos hayan
+        bajado a 0, nada cerrado ese día."""
+        pg.click('.dbtn[data-d="2"]'); pg.wait_for_timeout(250)
+        r = pg.evaluate("""() => {
+          const d = S.itin.find(x => x.n === S.day);
+          const usados = {}; S.itin.forEach(x => x.blocks.forEach(b => { if (b.pid) usados[b.pid]=1; }));
+          const ids = [...document.querySelectorAll('#v-itin [data-paso]')].map(e => e.dataset.paso);
+          const wd = DOW_IDX[d.dow];
+          return {ids, agendados: ids.filter(i => usados[i]),
+                  repes: ids.length - new Set(ids).size,
+                  ceros: ids.filter(i => PBY[i].jp === 0 && PBY[i].th === 0),
+                  cerrados: ids.filter(i => horario(PBY[i], wd) === 'CERRADO')};
+        }""")
+        assert r["ids"], "el día 2 no muestra ninguna referencia"
+        assert not r["agendados"], f"referencias que YA están en el itinerario: {r['agendados']}"
+        assert r["repes"] == 0, f"{r['repes']} referencias repetidas dentro del mismo día"
+        assert not r["ceros"], f"referencias que los dos marcaron 0: {r['ceros']}"
+        assert not r["cerrados"], f"referencias cerradas ese día: {r['cerrados']}"
+    check("las referencias no repiten, no están agendadas ni cerradas", paso_es_coherente)
+
+    def paso_abre_ficha():
+        pg.locator('#v-itin [data-paso]').first.click(); pg.wait_for_timeout(500)
+        assert pg.locator('#ov.on').count() == 1, "no abrió la ficha del lugar"
+        pg.click('#ov', position={"x": 10, "y": 10}); pg.wait_for_timeout(250)
+    check("tocar una referencia abre su ficha", paso_abre_ficha)
+
+    def paso_en_el_mapa():
+        """Se tienen que ver en el mapa del día aunque no tengan número de visita,
+        y sin entrar en la línea del recorrido."""
+        pg.click('.dbtn[data-d="7"]'); pg.wait_for_timeout(200)
+        pg.click('#mapDay'); pg.wait_for_timeout(2600)
+        r = pg.evaluate("""() => ({num: document.querySelectorAll('.mnum').length,
+                                  paso: document.querySelectorAll('.mkpaso').length})""")
+        assert r["num"] >= 5, f"paradas numeradas: {r['num']}"
+        assert r["paso"] >= 3, f"referencias en el mapa: {r['paso']}"
+        pg.click('.tab[data-t="itin"]'); pg.wait_for_timeout(300)
+    check("las referencias se ven en el mapa del día, sin número", paso_en_el_mapa)
+
     print("── ruta a Apple Maps ──")
     # El dia 7 es todo "both", asi que el filtro por persona que dejo el bloque
     # anterior no le esconde bloques.

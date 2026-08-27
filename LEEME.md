@@ -4,6 +4,28 @@ Lo más nuevo va arriba. Está escrito para leerse desde el celular, sin tecnici
 
 ---
 
+## 27 de agosto de 2026
+
+**Nuevo: lugares "de paso", para desviarse un poco si pinta.**
+
+Entre una parada y la siguiente, el itinerario ahora muestra una línea gris que dice **DE PASO**
+con los lugares del catálogo que quedan en el camino y que **no están en el plan**. Al lado de
+cada uno dice cuánto se alarga la caminata si pasan por ahí: `+0 m` significa que está
+literalmente sobre el recorrido.
+
+No son visitas y **no cambian el itinerario en nada**: son referencia por si en el momento tienen
+ganas de meter la cabeza en un lugar. Tocando cualquiera se abre su ficha, con el porqué, el
+precio y el horario.
+
+**En el mapa del día también aparecen**, como circulitos huecos, para diferenciarlos de las
+paradas numeradas. La línea punteada del recorrido sigue uniendo solo las paradas de verdad.
+
+Qué queda afuera, a propósito: lo que ya está en algún día del viaje, lo que esté cerrado ese
+día, la logística (hoteles, estaciones) y **lo que ustedes dos marcaron como que no les
+interesa**. De resto entra todo: comida, música, museos, bares, parques.
+
+---
+
 ## 26 de agosto de 2026 · a la nochecita
 
 **Nuevo: abrir la ruta del día en Apple Maps, y seguirla desde el reloj.**

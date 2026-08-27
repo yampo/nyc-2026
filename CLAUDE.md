@@ -77,7 +77,7 @@ src/
   merge_interests.py       versión vieja del anterior, solo intereses
   recalc_report.py         diagnóstico: qué quieren y no está agendado, conflictos, huecos
   check_hours.py           chequeo de horarios de apertura
-  test_app.py              33 chequeos de la app con Playwright
+  test_app.py              42 chequeos de la app con Playwright
   test_marca.py            16 chequeos de la marca ★ / ✕ / ☆
   data/*.json              GENERADOS salvo overrides.json y los dos caches de coordenadas
   vendor/leaflet/          Leaflet 1.9.4 vendorizado. se embebe en el sitio, no hace falta npm
@@ -135,6 +135,31 @@ Tres funciones gobiernan la carga y **hay que entenderlas antes de tocar el esta
 > `migrate`. Si el itinerario no cambió, `migrate` **no corre**, y el navegador de alguien con un
 > plan guardado llega a `S.claveNueva[id]` sobre `undefined`. Por eso existe `hydrate`, y por eso
 > `test_app.py` borra cada clave del estado, una por una, y recorre las 6 pestañas.
+
+---
+
+## Lugares de paso
+
+Entre dos paradas consecutivas, la app lista lo que del catálogo queda **en el camino**. Son
+**referencia, no plan**: no tocan el itinerario, no tienen número de visita y hay un test que
+falla si la cuenta de bloques cambia al recorrer los días.
+
+- **La medida es el DESVÍO**, no la distancia al lugar: `d(A,P) + d(P,B) - d(A,B)`, o sea cuánto
+  se alarga el trayecto si paso por ahí. Son preguntas distintas — el Puente de Brooklyn está a
+  800 m de DUMBO y cuesta **cero** metros pasar por él, porque queda sobre la línea al Oculus.
+- **Dos regímenes.** Hasta `PASO_CORREDOR` (2,5 km) el tramo se camina y vale todo el corredor,
+  con `PASO_DESVIO` (500 m) de tolerancia. Más largo que eso se va en subte y **no se pasa por el
+  medio**: solo cuentan los `PASO_PUNTA` (400 m) alrededor de cada extremo.
+- **Cada lugar aparece una sola vez por día**, en el tramo donde menos desvío cuesta. Sin esto,
+  el domingo el Tenement Museum salía en cuatro tramos seguidos.
+- **Se excluyen**: lo ya agendado en cualquier día, `transporte`/`hotel`/`evento` (logística y
+  cosas con fecha fija), lo cerrado ese día del calendario, y lo que **los dos** bajaron a 0 —
+  eso lo descartaron a propósito.
+- **Se calcula en el cliente, no en el build** (`dePasoDelDia`), para que siga siendo correcto
+  después de que Juan mueva, agregue o saque un bloque. Son ~210 lugares × ~10 tramos por día:
+  irrelevante para el navegador.
+- En el mapa van como **anillo hueco** (`.mkpaso`) y **no entran en la polilínea** del recorrido:
+  la línea une paradas, no referencias.
 
 ---
 
@@ -308,7 +333,7 @@ Está en `~/.claude/skills/coe-defaults/` si lo tenés instalado. Lo que más pe
 ```bash
 git pull                              # SIEMPRE primero
 # … editar src/build_*.py o src/app_template.html …
-.venv/bin/python src/build_all.py --test       # build + 53 chequeos
+.venv/bin/python src/build_all.py --test       # build + 58 chequeos
 git add -A && git commit -m "..." && git push     # esto publica
 ```
 
