@@ -1027,11 +1027,6 @@ a(id="grayspapaya", n="Gray's Papaya", cat="comida", hood="Upper West Side", bor
   cost=6, costN="estimado, sin verificar contra la fuente", dur=0.2,
   why="Pancho y jugo de papaya de parado, luz de neon, abierto toda la noche desde 1973.",
   jp=1, th=1, tags=["exploracion"])
-a(id="neuegalerie", n="Neue Galerie", cat="museo", hood="Upper East Side", boro="Manhattan",
-  sub="86 St (4,5,6)", lat=40.78122, lng=-73.96024, addr="1048 5th Ave",
-  cost=28, costN="estimado, sin verificar contra la fuente", dur=1.5,
-  why="Klimt y Schiele en una mansion de 1914, con el cafe vienes mas creible de la ciudad. La 'Dama de oro' esta aca.",
-  jp=1, th=1, tags=["exploracion"])
 a(id="lexcandy", n="Lexington Candy Shop", cat="comida", hood="Upper East Side", boro="Manhattan",
   sub="86 St (4,5,6)", lat=40.77743, lng=-73.95727, addr="1226 Lexington Ave",
   cost=18, costN="estimado, sin verificar contra la fuente", dur=0.8,
@@ -1139,7 +1134,7 @@ SUB = {
  # ── MUSEO ──
  "Museo de arte":       ["met", "cloisters", "moma", "whitney", "guggenheim", "frick", "bkmuseum",
                          "momaps1", "studiomuseum", "noguchi", "diabeacon",
-                         "roerich", "neuegalerie"],
+                         "roerich"],
  "Museo de historia":   ["mcny", "tenement", "911museum", "cityreliquary", "transitmuseum",
                          "hamiltongrange", "merchantshouse"],
  "Museo de ciencia":    ["amnh"],

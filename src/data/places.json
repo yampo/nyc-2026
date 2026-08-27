@@ -7977,35 +7977,6 @@
    "typ": "Comida al paso"
   },
   {
-   "id": "neuegalerie",
-   "n": "Neue Galerie",
-   "cat": "museo",
-   "hood": "Upper East Side",
-   "boro": "Manhattan",
-   "sub": "86 St (4,5,6)",
-   "lat": 40.78122,
-   "lng": -73.96024,
-   "addr": "1048 5th Ave",
-   "cost": 28,
-   "costN": "estimado, sin verificar contra la fuente",
-   "dur": 1.5,
-   "why": "Klimt y Schiele en una mansion de 1914, con el cafe vienes mas creible de la ciudad. La 'Dama de oro' esta aca.",
-   "jp": 1,
-   "th": 1,
-   "tags": [
-    "exploracion"
-   ],
-   "closed": "",
-   "free": "",
-   "book": "",
-   "main": false,
-   "src": "propuesta",
-   "aprox": false,
-   "gname": "",
-   "must": 0,
-   "typ": "Museo de arte"
-  },
-  {
    "id": "lexcandy",
    "n": "Lexington Candy Shop",
    "cat": "comida",
@@ -8558,7 +8529,7 @@
   }
  ],
  "generated": "2026-08-16",
- "count": 257,
+ "count": 256,
  "subs": {
   "mirador": [
    "Ferry y teleférico",

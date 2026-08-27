@@ -295,7 +295,7 @@ Versión visible en la app en **⋯ → Versión del plan**.
 - **210 lugares** · 63 en las dos listas, 71 solo de Google Maps, 76 solo nuestros.
 - **34 ★ imprescindibles**, 33 de ellos ya en el itinerario.
 - **9 días, 142 bloques**, 32 ítems en el checklist de reservas.
-- Anclas fijas ya compradas o con horario cerrado: festival Charlie Parker (28/8),
+- Anclas fijas ya compradas o con horario cerrado: festival Charlie Parker (sáb 29/8, Marcus Garvey Park, 14-19 h — VERIFICADO 27/8: cierra Joshua Redman),
   Birdland lun 31/8 20:30, Top of the Rock lun 31/8 ~18:00, día completo del WTC el jue 3/9,
   MO Lounge + Dizzy's jue 3/9, SUMMIT al atardecer vie 4/9 18:10,
   **Village Vanguard vie 4/9 22:00 — entradas compradas**, Peter Luger sáb 5/9 17:00,
@@ -306,9 +306,18 @@ Versión visible en la app en **⋯ → Versión del plan**.
 1. **MoMA PS1** es el único ★ que no está en el itinerario. Necesita hueco o que Juan lo baje.
 2. Cuando Juan termine de marcar ★ / ✕, **rearmar el itinerario garantizando que todos los ★
    entren**, mostrando explícitamente qué hay que sacar o mover. Ese pedido ya está hecho.
-3. Verificaciones previas al viaje: orden de artistas del festival (28/8), rotonda del Guggenheim,
-   alertas de NJ Transit (noche del 2/9 y mañana del 3/9), AirTrain, calendario del Lincoln Center
-   Atrium, ticket con horario del Studio Museum.
+3. Verificaciones previas al viaje. **Resueltas el 27/8 contra fuente**:
+   - ✅ **Festival Charlie Parker**: sáb 29 en Marcus Garvey Park, 14:00-19:00, cierra Joshua
+     Redman con Nat Adderley Jr., Catherine Russell y Nicole Glover. Con salida obligada 18:30
+     ven el arranque de Redman, no el final.
+   - ✅ **Rotonda del Guggenheim**: CERRADA del 3/8 al 17/9 por el montaje de Taryn Simon. La
+     entrada baja de $30 a $16 y sigue el pay-what-you-wish dominical. No se camina la rampa.
+   - ✅ **Lincoln Center**: no está "entre temporadas". El Met proyecta ópera gratis en la Josie
+     Robertson Plaza del 2 al 7/9 a las 20:00 (jue 3: Tristan und Isolde II y III), y **despejan
+     la plaza desde las 18:00** para armar 2.500 sillas. El bloque del jueves 19:55 ya lo dice.
+   - ❌ **Neue Galerie**: cerrada por renovación hasta el 12/11. Sacada del catálogo.
+   - Pendientes todavía: alertas de NJ Transit (noche del 2/9 y mañana del 3/9), AirTrain y el
+     ticket con horario del Studio Museum.
 
 ---
 
