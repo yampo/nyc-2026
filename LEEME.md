@@ -4,6 +4,30 @@ Lo más nuevo va arriba. Está escrito para leerse desde el celular, sin tecnici
 
 ---
 
+## 26 de agosto de 2026 · a la nochecita
+
+**Nuevo: abrir la ruta del día en Apple Maps, y seguirla desde el reloj.**
+
+Dos formas de usarlo:
+
+- **Un lugar suelto.** Cada bloque que tenga un lugar ahora tiene un botón **🧭 Ir**. Lo tocás
+  y se abre Apple Maps con la caminata hasta ahí, arrancando **desde donde estés parado**.
+- **El día entero.** Abajo de la lista de bloques hay un botón **🧭 Ruta del día en Apple
+  Maps**. Se abre una lista con todas las paradas del día en orden y elegís cuáles entran —
+  vienen tildadas las que todavía no marcaste como hechas, así en la calle la ruta arranca en
+  lo que te falta. Después elegís **a pie** o **en transporte** y Maps te arma la ruta completa.
+
+**Lo del reloj**: no hay que mandarle nada al Apple Watch. Cuando arrancás la navegación en el
+teléfono, el reloj la toma solo y te va avisando con toques en la muñeca — doce toques seguidos
+es doblar a la derecha, tres pares de dos es a la izquierda. Podés seguir la ruta sin sacar el
+teléfono del bolsillo.
+
+Dos cosas para tener en cuenta: hace falta iOS 18.4 o más nuevo (y watchOS 11.4 en el reloj),
+y **conviene probarlo antes de viajar**, con un día cualquiera, para ver que las direcciones
+caigan donde tienen que caer.
+
+---
+
 ## 26 de agosto de 2026 · a la tarde
 
 **Sale Grand Central del viernes 4.** Estaba a las 16:20 con la idea de que Thais lo viera,

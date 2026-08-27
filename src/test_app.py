@@ -61,6 +61,73 @@ with sync_playwright() as pw:
     check("filtro por persona", lambda: (pg.click('#bWho'), pg.wait_for_timeout(350),
                                          pg.click('#sheet [data-w="jp"]')))
 
+    print("── ruta a Apple Maps ──")
+    # El dia 7 es todo "both", asi que el filtro por persona que dejo el bloque
+    # anterior no le esconde bloques.
+    pg.click('.tab[data-t="itin"]'); pg.wait_for_timeout(300)
+    pg.click('.dbtn[data-d="7"]'); pg.wait_for_timeout(300)
+
+    def q(url):
+        from urllib.parse import urlparse, parse_qsl
+        u = urlparse(url); return u.path, parse_qsl(u.query)
+
+    def chip_por_bloque():
+        a = pg.locator('#v-itin a.chip:has-text("Ir")')
+        assert a.count() >= 5, f"pocos chips Ir: {a.count()}"
+        path, ps = q(a.first.get_attribute("href"))
+        assert path == "/directions", path
+        d = dict(ps)
+        assert d.get("mode") == "walking", d
+        assert "destination" in d and "," in d["destination"], d
+        assert "waypoint" not in d, "un bloque suelto no lleva waypoints"
+    check("chip «Ir» por bloque → maps.apple.com/directions", chip_por_bloque)
+
+    check("abre la hoja de ruta del día", lambda: pg.click('#rutaDia'))
+
+    def lista_paradas():
+        n = pg.locator('#rlist [data-rp]').count()
+        assert n >= 5, f"paradas listadas: {n}"
+    check("lista las paradas del día", lista_paradas)
+
+    def ruta_pie():
+        path, ps = q(pg.locator('#rw').get_attribute("href"))
+        n = pg.locator('#rlist [data-rp]:checked').count()
+        wp = [v for k, v in ps if k == "waypoint"]
+        dest = [v for k, v in ps if k == "destination"]
+        assert path == "/directions", path
+        assert len(wp) == n - 1, f"{len(wp)} waypoints para {n} paradas"
+        assert len(dest) == 1, dest
+        assert ("mode", "walking") in ps, ps
+        # nombre + direccion, NO coordenadas crudas: daddr/destination=lat,lng se
+        # rompio en iOS 18.4 y un pin mudo no dice adonde va.
+        import re as _re
+        crudas = [t for t in wp + dest if _re.fullmatch(r"-?\d+\.\d+,-?\d+\.\d+", t)]
+        assert not crudas, f"paradas como coordenadas crudas: {crudas}"
+    check("ruta a pie: waypoints en orden + destino + mode", ruta_pie)
+
+    def ruta_transporte():
+        _, ps = q(pg.locator('#rt').get_attribute("href"))
+        assert ("mode", "transit") in ps, ps
+        assert any(k == "transit-preferences" for k, _ in ps), ps
+    check("ruta en transporte: mode=transit + preferencias", ruta_transporte)
+
+    def destildar():
+        antes = len([1 for k, _ in q(pg.locator('#rw').get_attribute("href"))[1] if k == "waypoint"])
+        pg.uncheck('#rlist [data-rp="0"]'); pg.wait_for_timeout(250)
+        ahora = len([1 for k, _ in q(pg.locator('#rw').get_attribute("href"))[1] if k == "waypoint"])
+        assert ahora == antes - 1, f"{antes} → {ahora}"
+    check("destildar una parada la saca de la ruta", destildar)
+
+    def sin_paradas():
+        for c in pg.locator('#rlist [data-rp]').all():
+            if c.is_checked(): c.uncheck()
+        pg.wait_for_timeout(250)
+        assert pg.locator('#rw').get_attribute("aria-disabled"), "el botón debería quedar deshabilitado"
+        assert pg.locator('#raviso .banner').count() == 1, "falta el aviso"
+    check("sin paradas elegidas no se puede abrir", sin_paradas)
+
+    check("cerrar la hoja", lambda: pg.click('#ov', position={"x": 10, "y": 10}))
+
     print("── persistencia ──")
     CNT = ("(()=>{const s=JSON.parse(localStorage.getItem('nyc2026.v1'));"
            "return {done:s.itin.reduce((a,d)=>a+d.blocks.filter(b=>b.done).length,0),"

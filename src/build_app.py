@@ -20,12 +20,16 @@ import datetime, os as _os
 _MES = ["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"]
 _now = datetime.datetime.now()
 d["ver"] = f"{_now.day} {_MES[_now.month-1]} {_now.year} · {_now:%H:%M}"
+tpl = (base / "app_template.html").read_text(encoding="utf-8")
+# El sello tiene que cubrir TAMBIÉN la app, no solo los datos: un cambio de interfaz
+# sin cambio de contenido dejaba el mismo verId, y entonces hayVersionNueva() no
+# avisaba a nadie y el sello de ⋯ → Versión del plan seguía diciendo lo de antes.
 d["verId"] = hashlib.md5(
     (json.dumps(d["places"], sort_keys=True, ensure_ascii=False)
      + json.dumps(itin, sort_keys=True, ensure_ascii=False)
-     + json.dumps(d["extras"], sort_keys=True, ensure_ascii=False)).encode()
+     + json.dumps(d["extras"], sort_keys=True, ensure_ascii=False)
+     + tpl).encode()
 ).hexdigest()[:6]
-tpl = (base / "app_template.html").read_text(encoding="utf-8")
 assert "/*__DATA__*/" in tpl
 out = tpl.replace("/*__DATA__*/", json.dumps(d, ensure_ascii=False, separators=(",", ":")))
 (base / "NYC_2026_Itinerario.html").write_text(out, encoding="utf-8")

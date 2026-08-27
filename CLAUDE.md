@@ -77,7 +77,7 @@ src/
   merge_interests.py       versión vieja del anterior, solo intereses
   recalc_report.py         diagnóstico: qué quieren y no está agendado, conflictos, huecos
   check_hours.py           chequeo de horarios de apertura
-  test_app.py              25 chequeos de la app con Playwright
+  test_app.py              33 chequeos de la app con Playwright
   test_marca.py            16 chequeos de la marca ★ / ✕ / ☆
   data/*.json              GENERADOS salvo overrides.json y los dos caches de coordenadas
   vendor/leaflet/          Leaflet 1.9.4 vendorizado. se embebe en el sitio, no hace falta npm
@@ -138,6 +138,31 @@ Tres funciones gobiernan la carga y **hay que entenderlas antes de tocar el esta
 
 ---
 
+## Ruta del día a Apple Maps
+
+`app_template.html` genera links `https://maps.apple.com/directions` — el **formato unificado
+de iOS 18.4 / watchOS 11.4**, no el viejo `?daddr=`. Parámetros: `source` (si se omite, Maps
+arranca desde donde esté el que abre el link), `waypoint` repetido una vez por parada
+intermedia, `destination` y `mode` (`walking`/`transit`/`driving`/`cycling`).
+
+- **`?daddr=lat,lng` dejó de funcionar en iOS 18.4.** Por eso `amPunto()` manda
+  `nombre, dirección, ciudad` y nunca coordenadas crudas — además así Maps muestra el lugar
+  por su nombre en vez de un pin mudo. Hay un test que falla si vuelven a colarse coordenadas.
+- El nombre se limpia antes de mandarlo: `"Hotel Ink48 (29-31 ago)"` busca peor que
+  `"Hotel Ink48"`. Eso hace `amNombre()`.
+- Los lugares `aprox` van por **nombre + barrio**, no por su dirección: justamente es la que
+  no se pudo verificar.
+- **Un link lleva un solo `mode`**, y los días mezclan caminata con subte: por eso la hoja
+  tiene dos botones en vez de adivinar.
+- **El Watch no recibe nada.** Se inicia la navegación en el iPhone y el reloj la toma solo,
+  con taps en la muñeca. No hay forma de mandarle una ruta directamente desde una web.
+- Tope de 15 paradas por ruta (`AM_MAX`). El día más cargado tiene 11.
+- **Sin probar en un iPhone real.** Los ejemplos de la doc de Apple vienen con el escapado
+  roto, así que el orden `waypoint` → `destination` sale de la tabla de parámetros, que es la
+  parte normativa. Si alguna parada cae mal, es lo primero que hay que mirar.
+
+---
+
 ## Cosas que ya costaron tiempo — no repetirlas
 
 - **`overflow-x: hidden` en `body` mata el scroll vertical con rueda y con dedo.** Va `clip`.
@@ -152,6 +177,11 @@ Tres funciones gobiernan la carga y **hay que entenderlas antes de tocar el esta
 - **`localStorage` es por origen.** Lo que Juan marca en el `.html` de su Mac (`file://`) **no**
   cruza al sitio (`https://yampo.github.io`). Para que algo se replique a Thais tiene que bajar
   al catálogo vía `merge_export.py`. Esa es la respuesta a "no veo mis marcas en el otro lado".
+- **El `verId` cubría solo los datos, no la app.** Un cambio de interfaz sin cambio de
+  contenido dejaba el mismo sello: `hayVersionNueva()` comparaba `verId`, veía el mismo y no
+  avisaba a nadie, y ⋯ → *Versión del plan* seguía mostrando lo de antes. Ahora el hash de
+  `build_app.py` incluye también `app_template.html`. El `itinHash` **no** cambió: sigue
+  siendo solo del itinerario, que es lo que debe disparar `migrate`.
 - **`git` sobre las carpetas montadas del bridge deja `.git/*.lock` que no se pueden borrar.**
   Desde VS Code, con git nativo, esto no pasa — pero si volvés a laburar por el bridge, ojo.
 
@@ -255,7 +285,7 @@ Está en `~/.claude/skills/coe-defaults/` si lo tenés instalado. Lo que más pe
 ```bash
 git pull                              # SIEMPRE primero
 # … editar src/build_*.py o src/app_template.html …
-.venv/bin/python src/build_all.py --test       # build + 41 chequeos
+.venv/bin/python src/build_all.py --test       # build + 49 chequeos
 git add -A && git commit -m "..." && git push     # esto publica
 ```
 

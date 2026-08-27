@@ -418,6 +418,54 @@ function srcChip(p, mini){
 const VER = DATA.ver || '—', VERID = DATA.verId || '';
 const gmaps = p => 'https://www.google.com/maps/search/?api=1&query=' +
   encodeURIComponent(p.n + (p.addr ? ', ' + p.addr : '') + ', New York');
+/* ── Apple Maps ────────────────────────────────────────────────────────────────
+   maps.apple.com/directions, el formato unificado de iOS 18.4 / watchOS 11.4:
+   source, waypoint (se repite, una por parada intermedia), destination y mode.
+   SIN source, Maps arranca desde donde esté parado el que abre el link — que es
+   justo el punto: seguir la ruta desde donde estés. Iniciada la navegación en el
+   iPhone, el Watch la toma solo y va dando los taps en la muñeca.
+   Ojo con dos cosas: ?daddr=lat,lng (el formato viejo) dejó de andar en 18.4, y
+   pasarle nombre + dirección en vez de coordenadas hace que Maps muestre el lugar
+   por su nombre en vez de un pin mudo. */
+const AM_CIUDAD = {Manhattan:'New York, NY', Brooklyn:'Brooklyn, NY', Queens:'Queens, NY',
+  Bronx:'Bronx, NY', 'Staten Island':'Staten Island, NY', 'New Jersey':'NJ'};
+const AM_MAX = 15;   /* tope de paradas de una ruta en Maps: destino + 14 waypoints */
+/* El nombre del catálogo lleva aclaraciones que a Maps le sobran y le empeoran la
+   búsqueda: "Hotel Ink48 (29-31 ago)" encuentra peor que "Hotel Ink48". */
+const amNombre = p => String(p.n || '').split(/\s+[—·(]/)[0].trim();
+function amPunto(p){
+  if (!p) return '';
+  const ciudad = AM_CIUDAD[p.boro] || '';
+  /* aprox = la dirección no se pudo verificar y el pin es del barrio: ahí el nombre
+     manda, que lo busque Maps. Con dirección verificada, nombre + dirección. */
+  const partes = (!p.aprox && p.addr) ? [amNombre(p), p.addr, ciudad]
+                                      : [amNombre(p), p.hood, ciudad];
+  return partes.filter(Boolean).join(', ') || (p.lat ? p.lat + ',' + p.lng : '');
+}
+/* Una ruta con todas las paradas en orden. La última es el destino, el resto van
+   como waypoint. Sin source: Maps usa la ubicación actual. */
+function amRuta(places, mode){
+  const pts = places.map(amPunto).filter(Boolean).slice(0, AM_MAX);
+  if (!pts.length) return '';
+  const q = pts.slice(0, -1).map(t => 'waypoint=' + encodeURIComponent(t));
+  q.push('destination=' + encodeURIComponent(pts[pts.length - 1]));
+  q.push('mode=' + mode);
+  if (mode === 'transit') q.push('transit-preferences=subway,bus');
+  return 'https://maps.apple.com/directions?' + q.join('&');
+}
+/* Las paradas de un día, en orden, sin repetir la misma dos bloques seguidos
+   (el hotel al salir y al volver son dos paradas distintas; el mismo lugar en
+   bloques pegados, una sola). */
+function paradasDe(d){
+  const out = [];
+  d.blocks.forEach(b => {
+    const p = b.pid ? PBY[b.pid] : null;
+    if (!p || !amPunto(p)) return;
+    if (out.length && out[out.length - 1].p.id === p.id) return;
+    out.push({b, p});
+  });
+  return out;
+}
 const money = n => n === 0 ? 'gratis' : '$' + n;
 const DIAS = ['lunes','martes','miércoles','jueves','viernes','sábado','domingo'];
 /* Horario del lugar para un día de la semana (0=lunes). Devuelve null si no hay dato. */
@@ -499,6 +547,8 @@ function rItin(){
           ${p ? `<span class="chip" style="background:${CAT[p.cat].c}1a;color:${CAT[p.cat].c}"
                   data-act="info">${esc(p.n)}</span>` : ''}
           ${p ? `<a class="chip b" href="${gmaps(p)}" target="_blank" rel="noopener">↗ Maps</a>` : ''}
+          ${p ? `<a class="chip g" href="${amRuta([p],'walking')}" target="_blank" rel="noopener"
+                  title="Navegar hasta acá desde donde estés — el Watch la toma sola">🧭 Ir</a>` : ''}
           ${p && p.cost ? `<span class="chip">${money(p.cost)}</span>` : ''}
           ${p && p.hrs ? (()=>{ const hh = horario(p, DOW_IDX[d.dow]);
             return `<span class="chip ${hh==='CERRADO'?'r':'b'}">🕐 ${hh}</span>`; })() : ''}
@@ -536,6 +586,7 @@ function rItin(){
       <button class="btn ghost sm" id="addBlk">+ Agregar lugar a este día</button>
       <button class="btn ghost sm" id="addFree">+ Agregar nota libre</button>
       <button class="btn ghost sm" id="mapDay">Ver este día en el mapa</button>
+      <button class="btn ghost sm" id="rutaDia">🧭 Ruta del día en Apple Maps</button>
     </div>`;
 
   $('#v-itin').querySelector('.days').onclick = e => {
@@ -545,6 +596,7 @@ function rItin(){
   $('#addBlk').onclick = () => pickPlace(S.day);
   $('#addFree').onclick = () => addFree(S.day);
   $('#mapDay').onclick = () => { S.mapDay = S.day; go('map'); };
+  $('#rutaDia').onclick = () => rutaSheet(S.day);
 }
 
 /* Delegación ÚNICA: los contenedores nunca se reemplazan, solo su innerHTML.
@@ -1122,6 +1174,61 @@ function pickDay(pid){
       txt:p.n + ' — ' + p.why.slice(0,120), pid, who:d.who, kind:'', note:'agregado por vos',
       done:false, mynote:''});
     save(); closeSheet(); S.day = d.n; go('itin'); };
+}
+/* Hoja de la ruta del día: elegís qué paradas entran y la abrís en Apple Maps.
+   Vienen tildadas las que NO marcaste como hechas, así en la calle la ruta arranca
+   en lo que te falta. Un link lleva UN modo de transporte, por eso hay dos botones. */
+function rutaSheet(dayN){
+  const d = S.itin.find(x => x.n === dayN) || S.itin[0];
+  const paradas = paradasDe(d);
+  if (!paradas.length){
+    sheet(`<h2 style="font-size:17px;margin-bottom:8px">Ruta del día ${dayN}</h2>
+      <p class="sm muted">Este día no tiene bloques con un lugar del catálogo, así que no hay
+      ruta que armar. Los bloques de logística y las comidas sin lugar fijo no cuentan.</p>`);
+    return;
+  }
+  const fecha = d.date.slice(8) + '/' + d.date.slice(5,7);
+  const filas = paradas.map((x,i) => `<label class="opt" style="display:flex;gap:9px;align-items:flex-start;text-align:left">
+      <input type="checkbox" data-rp="${i}" ${x.b.done ? '' : 'checked'} style="margin-top:3px;flex:none">
+      <span style="flex:1">${esc(x.b.t)} · ${esc(x.p.n)}
+        <b>${esc(x.p.hood || '')}${x.p.aprox ? ' · 📍 dirección sin verificar' : ''}${x.b.done ? ' · ya lo hiciste' : ''}</b></span>
+    </label>`).join('');
+  sheet(`<h2 style="font-size:17px;margin-bottom:4px">Ruta del día ${dayN} · ${esc(d.dow)} ${fecha}</h2>
+    <p class="sm muted" style="margin-bottom:11px">Se abre en Apple Maps arrancando <b>desde donde estés</b>,
+    con estas paradas en orden. Iniciada la navegación en el iPhone, el Watch la toma solo.</p>
+    <div id="rlist" style="margin-bottom:11px">${filas}</div>
+    <div id="raviso"></div>
+    <div class="flex" style="margin-top:11px">
+      <a class="btn" id="rw" href="#" target="_blank" rel="noopener">A pie</a>
+      <a class="btn ghost" id="rt" href="#" target="_blank" rel="noopener">En transporte</a>
+    </div>
+    <p class="sm muted" style="margin-top:11px">Necesita iOS 18.4 o más nuevo (y watchOS 11.4 en el
+    reloj). Maps puede reordenar o recortar paradas si la ruta no le cierra: mirá la lista antes de arrancar.</p>`);
+
+  const sel = () => Array.from($('#rlist').querySelectorAll('[data-rp]'))
+    .filter(c => c.checked).map(c => paradas[+c.dataset.rp].p);
+  const pinta = () => {
+    const ps = sel();
+    const links = {rw:'walking', rt:'transit'};
+    Object.keys(links).forEach(id => {
+      const a = $('#' + id), url = ps.length ? amRuta(ps, links[id]) : '';
+      if (url){ a.href = url; a.removeAttribute('aria-disabled'); a.style.opacity = ''; }
+      else { a.href = '#'; a.setAttribute('aria-disabled','true'); a.style.opacity = '.45'; }
+    });
+    const avisos = [];
+    if (!ps.length) avisos.push('Elegí al menos una parada.');
+    else if (ps.length === 1) avisos.push('Una sola parada: Maps va a darte la ruta directa hasta ahí.');
+    if (ps.length > AM_MAX) avisos.push('Maps toma hasta ' + AM_MAX + ' paradas por ruta: se van a usar las primeras ' +
+      AM_MAX + ' y quedan ' + (ps.length - AM_MAX) + ' afuera.');
+    if (ps.some(x => x.aprox)) avisos.push('Hay paradas con 📍: la dirección no está verificada y Maps las busca por nombre.');
+    $('#raviso').innerHTML = avisos.length
+      ? '<div class="banner warn sm">' + avisos.map(esc).join(' ') + '</div>' : '';
+  };
+  $('#rlist').onchange = pinta;
+  ['rw','rt'].forEach(id => $('#' + id).onclick = e => {
+    if ($('#' + id).getAttribute('aria-disabled')){ e.preventDefault(); toast('Elegí al menos una parada.'); }
+  });
+  pinta();
 }
 function pickPlace(dayN){
   sheet(`<h2 style="font-size:17px;margin-bottom:4px">Agregar al día ${dayN}</h2>
