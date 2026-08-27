@@ -181,7 +181,7 @@ day(6, "2026-09-03", "Jueves", "jp", "New Jersey → The Beacon",
     "THAIS ESTÁ EN NYC CON SU EQUIPO este jueves y SE LIBERA A LAS 16:00: se encuentran por Manhattan y se van juntos al "
     "Museum of the Moving Image, que es GRATIS los jueves de 14 a 18 — estaba caído del plan y ustedes lo tienen 2/2: "
     "RECUPERADO. El día cierra con check-in, cena y Dizzy's. "
-    "Siguen afuera MoMA PS1, Astoria y Gantry (no hay hueco), y el Staten Island Ferry pasó a la alternativa nocturna de hoy.",
+    "Siguen afuera MoMA PS1, Astoria y Gantry (no hay hueco), y el Staten Island Ferry pasó a la alternativa nocturna de hoy. ENTRA STONE ST, que era imprescindible y no estaba en ningún día: el almuerzo se corre de Brookfield Place a la calle adoquinada, a 10 minutos del museo y 12 de One World. Se pagan 22 minutos de caminata y quedan 38 para comer — alcanza para un mediodía, aunque su mejor hora sea el after office de 5 a 8 y no la del almuerzo.",
     [
      b("06:20", "Uber desde el Residence Inn a la estación Raritan (~20 min, $14-20). PEDIRLO LA NOCHE ANTERIOR: Branchburg es semi-rural y a esa hora puede no haber autos.", "residenceinn", "jp", "logistica"),
      b("06:55", "NJ Transit Raritan → NY Penn Station. Llega 8:20. $18,50. Con maletas, ir al vagón con espacio de equipaje.", "", "jp", "logistica"),
@@ -190,7 +190,7 @@ day(6, "2026-09-03", "Jueves", "jp", "New Jersey → The Beacon",
      b("09:15", "Subte 1 directo desde 72 St hasta WTC Cortlandt (~30 min). Alternativa: 2/3 express hasta Chambers St y 5 min a pie.", "", "jp", "logistica"),
      b("09:50", "★ 9/11 MEMORIAL (la plaza) — las dos fuentes en las huellas de las torres y el Survivor Tree. Gratis, abierto desde las 8:00. Verlo ANTES del museo ordena la visita.", "", "jp", "destacado"),
      b("10:30", "★★ 9/11 MEMORIAL MUSEUM — $36, TIMED TICKET OBLIGATORIO comprado online antes (el museo no vende en puerta sin reserva). 2 horas largas; es duro y muy bien hecho. Thais lo marcó 0: por eso va en la mañana de JP solo.", "911museum", "jp", "destacado"),
-     b("12:45", "Almuerzo cruzando West St: Hudson Eats o Le District, en Brookfield Place, con el yate harbor de fondo.", "", "jp", "comida"),
+     b("12:45", "★ ALMUERZO EN STONE ST — 10 min a pie desde el museo, hacia el sureste. Calle adoquinada peatonal de 1660, la traza holandesa que sobrevivió al fuego de 1835: mesas afuera, sin autos, entre edificios de piedra. Se come rápido y se sigue: One World es a las 13:45 y son 12 min de vuelta. Plan B si llueve o no hay mesa: Hudson Eats o Le District en Brookfield Place, cruzando West St.", "stonest", "jp", "comida"),
      b("13:45", "★★ ONE WORLD OBSERVATORY — piso 102, el punto más alto del hemisferio occidental, con el puerto y Brooklyn dominando la vista. $44+fee, ventana de entrada de 15 min: sacar el timed ticket online. JP lo subió a 2 en la última pasada.", "owo", "jp", "destacado"),
      b("15:15", "El Oculus en un VISTAZO (5 min — ya estás ahí, y el tiempo no da para más) y R/W desde Cortlandt St hacia el norte.", "oculus", "jp", "paseo"),
      b("16:00", "★ ENCUENTRO CON THAIS. Lo que MÁS rinde: verse DIRECTO en la puerta del MoMI a las 16:20 (36-01 35 Ave, N/W hasta 36 Av) — cada uno llega por su lado y el museo gana 10-15 min. Si prefieren encontrarse antes en Manhattan: Lexington Av-59 St 16:00 y N/W juntos (JP puede llegar 16:05-16:10 si el WTC se estiró: avisale que es ±10).", "", "both", "destacado"),

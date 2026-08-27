@@ -690,7 +690,7 @@
    "who": "jp",
    "base": "New Jersey → The Beacon",
    "title": "Traslado + World Trade Center completo + ferry con Thais",
-   "note": "La mañana y la primera tarde son el World Trade Center completo — memorial, museo y One World Observatory en una sola bajada. OJO: One World es EL MIRADOR DE DÍA a propósito — su vista es el puerto y el agua, que de noche es negra; los arcos de atardecer van en Top of the Rock (lunes) y SUMMIT (viernes). THAIS ESTÁ EN NYC CON SU EQUIPO este jueves y SE LIBERA A LAS 16:00: se encuentran por Manhattan y se van juntos al Museum of the Moving Image, que es GRATIS los jueves de 14 a 18 — estaba caído del plan y ustedes lo tienen 2/2: RECUPERADO. El día cierra con check-in, cena y Dizzy's. Siguen afuera MoMA PS1, Astoria y Gantry (no hay hueco), y el Staten Island Ferry pasó a la alternativa nocturna de hoy.",
+   "note": "La mañana y la primera tarde son el World Trade Center completo — memorial, museo y One World Observatory en una sola bajada. OJO: One World es EL MIRADOR DE DÍA a propósito — su vista es el puerto y el agua, que de noche es negra; los arcos de atardecer van en Top of the Rock (lunes) y SUMMIT (viernes). THAIS ESTÁ EN NYC CON SU EQUIPO este jueves y SE LIBERA A LAS 16:00: se encuentran por Manhattan y se van juntos al Museum of the Moving Image, que es GRATIS los jueves de 14 a 18 — estaba caído del plan y ustedes lo tienen 2/2: RECUPERADO. El día cierra con check-in, cena y Dizzy's. Siguen afuera MoMA PS1, Astoria y Gantry (no hay hueco), y el Staten Island Ferry pasó a la alternativa nocturna de hoy. ENTRA STONE ST, que era imprescindible y no estaba en ningún día: el almuerzo se corre de Brookfield Place a la calle adoquinada, a 10 minutos del museo y 12 de One World. Se pagan 22 minutos de caminata y quedan 38 para comer — alcanza para un mediodía, aunque su mejor hora sea el after office de 5 a 8 y no la del almuerzo.",
    "blocks": [
     {
      "t": "06:20",
@@ -750,11 +750,12 @@
     },
     {
      "t": "12:45",
-     "txt": "Almuerzo cruzando West St: Hudson Eats o Le District, en Brookfield Place, con el yate harbor de fondo.",
-     "pid": "",
+     "txt": "★ ALMUERZO EN STONE ST — 10 min a pie desde el museo, hacia el sureste. Calle adoquinada peatonal de 1660, la traza holandesa que sobrevivió al fuego de 1835: mesas afuera, sin autos, entre edificios de piedra. Se come rápido y se sigue: One World es a las 13:45 y son 12 min de vuelta. Plan B si llueve o no hay mesa: Hudson Eats o Le District en Brookfield Place, cruzando West St.",
+     "pid": "stonest",
      "who": "jp",
      "kind": "comida",
-     "note": ""
+     "note": "",
+     "trav": "🚶 ~14 min a pie · 1.1 km · estimado"
     },
     {
      "t": "13:45",
@@ -763,7 +764,7 @@
      "who": "jp",
      "kind": "destacado",
      "note": "",
-     "trav": "🚶 ~4 min a pie · 0.2 km · estimado"
+     "trav": "🚶 ~20 min a pie (1.2 km) o 🚇 ~15 min · estimado"
     },
     {
      "t": "15:15",

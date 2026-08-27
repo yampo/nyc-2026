@@ -29,6 +29,22 @@ de noche. De resto entra todo: comida, museos, bares, parques, arquitectura.
 
 ---
 
+## 27 de agosto de 2026 · Stone St entra al plan
+
+**El jueves se almuerza en Stone Street.** Era uno de los imprescindibles y no estaba en ningún
+día. Ahora reemplaza al almuerzo en Brookfield Place: es una calle adoquinada peatonal de 1660
+—la traza holandesa que sobrevivió al incendio de 1835— con las mesas de los bares afuera y sin
+autos, a diez minutos a pie del museo del 11-S.
+
+Lo que cuesta, dicho claro: son 10 minutos de caminata para llegar y 12 para volver a One World,
+así que quedan **38 minutos para comer**. Alcanza para un mediodía sin sobremesa. Y su mejor
+hora en realidad es el after office de 5 a 8, que no es cuando van a pasar. Si llueve o no hay
+mesa, Hudson Eats y Le District siguen ahí cruzando la calle.
+
+Con esto quedan **36 de los 38 imprescindibles** ya agendados.
+
+---
+
 ## 27 de agosto de 2026 · al final del día
 
 **47 lugares nuevos, para que haya qué mirar entre parada y parada.**
