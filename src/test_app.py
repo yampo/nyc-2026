@@ -61,6 +61,30 @@ with sync_playwright() as pw:
     check("filtro por persona", lambda: (pg.click('#bWho'), pg.wait_for_timeout(350),
                                          pg.click('#sheet [data-w="jp"]')))
 
+    print("── símbolos ──")
+    def simbolos_seguros():
+        """La brújula 🧭 (U+1F9ED, Emoji 11 / 2018) salía como un glyph roto: el botón
+        estaba y no se veía. Ningún icono de la app puede depender de un emoji tan
+        nuevo. Esta lista blanca es todo lo no-ASCII que la app tiene derecho a usar:
+        símbolos Unicode de los 90 y emojis de Emoji 1.0 (2015). Para agregar uno
+        nuevo, primero comprobalo en el aparato de Juan y después sumalo acá."""
+        import unicodedata
+        PERMITIDOS = set(
+            "═─—–…“”‘’·«»⋯"          # tipografía y separadores
+            "★☆✕✓✔→←↑↓↗↔▸▾▲▼●⊞☰＋"    # símbolos Unicode, todos anteriores a 2000
+            "⚠❌✅📍🚇📅👥🕐🚫🔴"        # emojis, todos de Emoji 1.0 (2015)
+            "\ufe0f"                  # variation selector-16
+        )
+        tpl = open(_os.path.join(_BASE, "app_template.html"), encoding="utf-8").read()
+        malos = {}
+        for ch in tpl:
+            if ord(ch) < 0x2000 or ch in PERMITIDOS: continue
+            if unicodedata.category(ch).startswith("L"): continue   # letras acentuadas
+            malos[ch] = malos.get(ch, 0) + 1
+        assert not malos, "símbolos sin verificar en el aparato: " + ", ".join(
+            f"{c} (U+{ord(c):04X}, {malos[c]} usos)" for c in malos)
+    check("sin símbolos que el aparato pueda no tener", simbolos_seguros)
+
     print("── ruta a Apple Maps ──")
     # El dia 7 es todo "both", asi que el filtro por persona que dejo el bloque
     # anterior no le esconde bloques.
@@ -72,7 +96,7 @@ with sync_playwright() as pw:
         u = urlparse(url); return u.path, parse_qsl(u.query)
 
     def chip_por_bloque():
-        a = pg.locator('#v-itin a.chip:has-text("Ir")')
+        a = pg.locator('#v-itin a.chip:has-text("Cómo llegar")')
         assert a.count() >= 5, f"pocos chips Ir: {a.count()}"
         path, ps = q(a.first.get_attribute("href"))
         assert path == "/directions", path

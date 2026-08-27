@@ -10,9 +10,9 @@ Lo más nuevo va arriba. Está escrito para leerse desde el celular, sin tecnici
 
 Dos formas de usarlo:
 
-- **Un lugar suelto.** Cada bloque que tenga un lugar ahora tiene un botón **🧭 Ir**. Lo tocás
+- **Un lugar suelto.** Cada bloque que tenga un lugar ahora tiene un botón **→ Cómo llegar**. Lo tocás
   y se abre Apple Maps con la caminata hasta ahí, arrancando **desde donde estés parado**.
-- **El día entero.** Abajo de la lista de bloques hay un botón **🧭 Ruta del día en Apple
+- **El día entero.** Abajo de la lista de bloques hay un botón **→ Ruta del día en Apple
   Maps**. Se abre una lista con todas las paradas del día en orden y elegís cuáles entran —
   vienen tildadas las que todavía no marcaste como hechas, así en la calle la ruta arranca en
   lo que te falta. Después elegís **a pie** o **en transporte** y Maps te arma la ruta completa.

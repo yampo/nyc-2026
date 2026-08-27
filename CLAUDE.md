@@ -163,6 +163,11 @@ intermedia, `destination` y `mode` (`walking`/`transit`/`driving`/`cycling`).
   no en un link. Cada tramo arranca desde la ubicación actual, así que no hace falta repetir
   la última parada del tramo anterior. Hay un test que recorre los tramos y falla si alguno
   se pasa de 3 waypoints o si entre todos no cubren exactamente las paradas elegidas.
+- **Nada de emojis posteriores a Emoji 1.0 (2015).** El icono 🧭 (U+1F9ED, Emoji 11 / 2018)
+  salía como un glyph roto en el aparato de Juan: el botón estaba ahí y él no lo veía, dos
+  veces seguidas. Todo lo demás que usa la app es Unicode de los 90 (★ ✕ → ↗ ▸) o Emoji 1.0
+  (📍 🚇 🕐 ✅). Hay un test con lista blanca en `test_app.py` que escanea el template y falla
+  ante cualquier símbolo nuevo: para sumar uno, probalo primero en el aparato de Juan.
 - **Un plan B enterrado no es un plan B.** La primera versión puso Google al fondo de la hoja:
   en un iPhone quedaba a 1025px de un viewport de 844, sin ninguna señal de que hubiera más
   abajo, y Juan reportó que "no veía el botón". Ahora lo accionable va arriba —los dos mapas
@@ -297,7 +302,7 @@ Está en `~/.claude/skills/coe-defaults/` si lo tenés instalado. Lo que más pe
 ```bash
 git pull                              # SIEMPRE primero
 # … editar src/build_*.py o src/app_template.html …
-.venv/bin/python src/build_all.py --test       # build + 52 chequeos
+.venv/bin/python src/build_all.py --test       # build + 53 chequeos
 git add -A && git commit -m "..." && git push     # esto publica
 ```
 
