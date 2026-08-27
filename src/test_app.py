@@ -126,6 +126,33 @@ with sync_playwright() as pw:
         assert pg.locator('#raviso .banner').count() == 1, "falta el aviso"
     check("sin paradas elegidas no se puede abrir", sin_paradas)
 
+    def gm_tramos():
+        # volver a tildar todo: el chequeo anterior dejo la lista vacia
+        for c in pg.locator('#rlist [data-rp]').all():
+            if not c.is_checked(): c.check()
+        pg.wait_for_timeout(300)
+        filas = pg.locator('#rgm > div')
+        assert filas.count() >= 1, "no arma tramos de Google"
+        sel = pg.locator('#rlist [data-rp]:checked').count()
+        cubiertas, mx = 0, 0
+        for i in range(filas.count()):
+            _, ps = q(filas.nth(i).locator('a.chip').first.get_attribute("href"))
+            d = dict(ps)
+            assert d.get("api") == "1", d
+            assert d.get("travelmode") == "walking", d
+            wps = d.get("waypoints", "").split("|") if d.get("waypoints") else []
+            mx = max(mx, len(wps)); cubiertas += len(wps) + 1
+        # 3 waypoints es el tope de Google en navegador movil, que es donde lo va a abrir
+        assert mx <= 3, f"un tramo lleva {mx} waypoints"
+        # los tramos tienen que cubrir TODAS las paradas elegidas: ni perder ni repetir
+        assert cubiertas == sel, f"los tramos cubren {cubiertas} de {sel} paradas"
+    check("Google Maps: tramos dentro del límite y sin perder paradas", gm_tramos)
+
+    def gm_transporte():
+        _, ps = q(pg.locator('#rgm > div').first.locator('a.chip').nth(1).get_attribute("href"))
+        assert ("travelmode", "transit") in ps, ps
+    check("Google Maps: el segundo link va en transporte", gm_transporte)
+
     check("cerrar la hoja", lambda: pg.click('#ov', position={"x": 10, "y": 10}))
 
     print("── persistencia ──")

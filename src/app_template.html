@@ -453,6 +453,29 @@ function amRuta(places, mode){
   if (mode === 'transit') q.push('transit-preferences=subway,bus');
   return 'https://maps.apple.com/directions?' + q.join('&');
 }
+/* ── Google Maps, el plan B ────────────────────────────────────────────────────
+   Maps URLs (api=1): origin, destination, waypoints separados por | y travelmode.
+   Sin origin arranca desde la ubicación del aparato, igual que Apple.
+   EL LÍMITE MANDA EL DISEÑO: Google acepta hasta 3 waypoints EN NAVEGADOR MÓVIL
+   (nueve en el resto de las plataformas), y los días tienen entre 6 y 11 paradas.
+   Por eso la ruta se parte en tramos de 4 paradas — 3 waypoints + el destino —
+   que es lo que entra seguro en el celular. Cada tramo arranca donde estés, así
+   que al terminar uno se abre el siguiente y no hay que repetir la última parada. */
+const GM_PARADAS = 4;
+function gmRuta(places, mode){
+  const pts = places.map(amPunto).filter(Boolean);
+  if (!pts.length) return '';
+  const q = ['api=1', 'travelmode=' + mode,
+             'destination=' + encodeURIComponent(pts[pts.length - 1])];
+  if (pts.length > 1) q.push('waypoints=' + pts.slice(0, -1).map(encodeURIComponent).join('%7C'));
+  return 'https://www.google.com/maps/dir/?' + q.join('&');
+}
+/* Parte una lista en grupos de n, respetando el orden. */
+function enTramos(arr, n){
+  const out = [];
+  for (let i = 0; i < arr.length; i += n) out.push(arr.slice(i, i + n));
+  return out;
+}
 /* Las paradas de un día, en orden, sin repetir la misma dos bloques seguidos
    (el hotel al salir y al volver son dos paradas distintas; el mismo lugar en
    bloques pegados, una sola). */
@@ -1203,7 +1226,14 @@ function rutaSheet(dayN){
       <a class="btn ghost" id="rt" href="#" target="_blank" rel="noopener">En transporte</a>
     </div>
     <p class="sm muted" style="margin-top:11px">Necesita iOS 18.4 o más nuevo (y watchOS 11.4 en el
-    reloj). Maps puede reordenar o recortar paradas si la ruta no le cierra: mirá la lista antes de arrancar.</p>`);
+    reloj). Maps puede reordenar o recortar paradas si la ruta no le cierra: mirá la lista antes de arrancar.</p>
+    <div style="border-top:1px solid var(--ln);margin-top:14px;padding-top:12px">
+      <h3 style="font-size:14px;margin-bottom:4px">Si Apple Maps no responde: Google Maps</h3>
+      <p class="sm muted" style="margin-bottom:9px">Google acepta pocas paradas por link en el celular,
+      así que la ruta va <b>partida en tramos</b>. Cada tramo arranca desde donde estés: terminás uno
+      y abrís el siguiente.</p>
+      <div id="rgm"></div>
+    </div>`);
 
   const sel = () => Array.from($('#rlist').querySelectorAll('[data-rp]'))
     .filter(c => c.checked).map(c => paradas[+c.dataset.rp].p);
@@ -1223,6 +1253,16 @@ function rutaSheet(dayN){
     if (ps.some(x => x.aprox)) avisos.push('Hay paradas con 📍: la dirección no está verificada y Maps las busca por nombre.');
     $('#raviso').innerHTML = avisos.length
       ? '<div class="banner warn sm">' + avisos.map(esc).join(' ') + '</div>' : '';
+
+    const grupos = enTramos(ps, GM_PARADAS);
+    $('#rgm').innerHTML = !grupos.length
+      ? '<p class="sm muted">Elegí paradas arriba.</p>'
+      : grupos.map((g, i) => `<div class="flex" style="margin-bottom:7px;align-items:center">
+          <span class="chip" style="flex:none">${grupos.length > 1 ? 'Tramo ' + (i+1) + '/' + grupos.length : 'Ruta'}</span>
+          <span class="sm muted" style="flex:1;min-width:120px">${esc(g.map(amNombre).join(' → '))}</span>
+          <a class="chip b" href="${gmRuta(g,'walking')}" target="_blank" rel="noopener">a pie</a>
+          <a class="chip b" href="${gmRuta(g,'transit')}" target="_blank" rel="noopener">transporte</a>
+        </div>`).join('');
   };
   $('#rlist').onchange = pinta;
   ['rw','rt'].forEach(id => $('#' + id).onclick = e => {

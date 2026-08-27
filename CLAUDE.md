@@ -157,6 +157,12 @@ intermedia, `destination` y `mode` (`walking`/`transit`/`driving`/`cycling`).
 - **El Watch no recibe nada.** Se inicia la navegación en el iPhone y el reloj la toma solo,
   con taps en la muñeca. No hay forma de mandarle una ruta directamente desde una web.
 - Tope de 15 paradas por ruta (`AM_MAX`). El día más cargado tiene 11.
+- **Google Maps es el plan B, y no es equivalente.** Maps URLs (`api=1`) acepta hasta
+  **3 waypoints en navegador móvil** (nueve en el resto), y los días tienen entre 6 y 11
+  paradas: por eso la ruta de Google va **partida en tramos de 4 paradas** (`GM_PARADAS`),
+  no en un link. Cada tramo arranca desde la ubicación actual, así que no hace falta repetir
+  la última parada del tramo anterior. Hay un test que recorre los tramos y falla si alguno
+  se pasa de 3 waypoints o si entre todos no cubren exactamente las paradas elegidas.
 - **Sin probar en un iPhone real.** Los ejemplos de la doc de Apple vienen con el escapado
   roto, así que el orden `waypoint` → `destination` sale de la tabla de parámetros, que es la
   parte normativa. Si alguna parada cae mal, es lo primero que hay que mirar.
@@ -285,7 +291,7 @@ Está en `~/.claude/skills/coe-defaults/` si lo tenés instalado. Lo que más pe
 ```bash
 git pull                              # SIEMPRE primero
 # … editar src/build_*.py o src/app_template.html …
-.venv/bin/python src/build_all.py --test       # build + 49 chequeos
+.venv/bin/python src/build_all.py --test       # build + 51 chequeos
 git add -A && git commit -m "..." && git push     # esto publica
 ```
 
