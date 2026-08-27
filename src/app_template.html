@@ -570,8 +570,10 @@ function rItin(){
           ${p ? `<span class="chip" style="background:${CAT[p.cat].c}1a;color:${CAT[p.cat].c}"
                   data-act="info">${esc(p.n)}</span>` : ''}
           ${p ? `<a class="chip b" href="${gmaps(p)}" target="_blank" rel="noopener">↗ Maps</a>` : ''}
-          ${p ? `<a class="chip g" href="${amRuta([p],'walking')}" target="_blank" rel="noopener"
-                  title="Navegar hasta acá desde donde estés — el Watch la toma sola">→ Cómo llegar</a>` : ''}
+          ${p ? `<a class="chip g" data-nav="apple" href="${amRuta([p],'walking')}" target="_blank" rel="noopener"
+                  title="Ir hasta acá con Apple Maps, desde donde estés — el Watch la toma sola">→ Apple</a>` : ''}
+          ${p ? `<a class="chip g" data-nav="google" href="${gmRuta([p],'walking')}" target="_blank" rel="noopener"
+                  title="Lo mismo con Google Maps, por si Apple no responde">→ Google</a>` : ''}
           ${p && p.cost ? `<span class="chip">${money(p.cost)}</span>` : ''}
           ${p && p.hrs ? (()=>{ const hh = horario(p, DOW_IDX[d.dow]);
             return `<span class="chip ${hh==='CERRADO'?'r':'b'}">🕐 ${hh}</span>`; })() : ''}
@@ -609,7 +611,7 @@ function rItin(){
       <button class="btn ghost sm" id="addBlk">+ Agregar lugar a este día</button>
       <button class="btn ghost sm" id="addFree">+ Agregar nota libre</button>
       <button class="btn ghost sm" id="mapDay">Ver este día en el mapa</button>
-      <button class="btn ghost sm" id="rutaDia">→ Ruta del día en Apple Maps</button>
+      <button class="btn ghost sm" id="rutaDia">→ Ruta del día completa</button>
     </div>`;
 
   $('#v-itin').querySelector('.days').onclick = e => {

@@ -95,16 +95,24 @@ with sync_playwright() as pw:
         from urllib.parse import urlparse, parse_qsl
         u = urlparse(url); return u.path, parse_qsl(u.query)
 
-    def chip_por_bloque():
-        a = pg.locator('#v-itin a.chip:has-text("Cómo llegar")')
-        assert a.count() >= 5, f"pocos chips Ir: {a.count()}"
-        path, ps = q(a.first.get_attribute("href"))
+    def chips_por_bloque():
+        """Cada bloque con lugar tiene los DOS mapas: el plan B tiene que estar donde
+        se lo necesita, parado en la calle, no solo en la hoja del día."""
+        ap = pg.locator('#v-itin a.chip[data-nav="apple"]')
+        go = pg.locator('#v-itin a.chip[data-nav="google"]')
+        assert ap.count() >= 5, f"pocos chips de Apple: {ap.count()}"
+        assert go.count() == ap.count(), f"Apple {ap.count()} vs Google {go.count()}"
+        path, ps = q(ap.first.get_attribute("href")); d = dict(ps)
         assert path == "/directions", path
-        d = dict(ps)
         assert d.get("mode") == "walking", d
         assert "destination" in d and "," in d["destination"], d
         assert "waypoint" not in d, "un bloque suelto no lleva waypoints"
-    check("chip «Ir» por bloque → maps.apple.com/directions", chip_por_bloque)
+        gu, gp = q(go.first.get_attribute("href")); gd = dict(gp)
+        assert "google.com" in go.first.get_attribute("href"), gu
+        assert gd.get("travelmode") == "walking", gd
+        assert "destination" in gd, gd
+        assert gd.get("destination") == d.get("destination"), "los dos mapas van a destinos distintos"
+    check("cada bloque tiene los dos mapas, al mismo destino", chips_por_bloque)
 
     check("abre la hoja de ruta del día", lambda: pg.click('#rutaDia'))
 

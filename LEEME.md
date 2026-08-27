@@ -10,10 +10,13 @@ Lo más nuevo va arriba. Está escrito para leerse desde el celular, sin tecnici
 
 Dos formas de usarlo:
 
-- **Un lugar suelto.** Cada bloque que tenga un lugar ahora tiene un botón **→ Cómo llegar**. Lo tocás
-  y se abre Apple Maps con la caminata hasta ahí, arrancando **desde donde estés parado**.
-- **El día entero.** Abajo de la lista de bloques hay un botón **→ Ruta del día en Apple
-  Maps**. Se abre una lista con todas las paradas del día en orden y elegís cuáles entran —
+- **Un lugar suelto.** Cada bloque que tenga un lugar ahora tiene dos botones verdes,
+  **→ Apple** y **→ Google**: los dos abren la caminata hasta ahí arrancando **desde donde
+  estés parado**, cada uno en su mapa. Si uno no responde, tenés el otro al lado.
+  (El botón azul **↗ Maps** que ya estaba sigue haciendo lo de siempre: te muestra la ficha
+  del lugar en Google, con fotos y reseñas. No es para ir, es para mirar.)
+- **El día entero.** Abajo de la lista de bloques hay un botón **→ Ruta del día completa**.
+  Se abre una lista con todas las paradas del día en orden y elegís cuáles entran —
   vienen tildadas las que todavía no marcaste como hechas, así en la calle la ruta arranca en
   lo que te falta. Después elegís **a pie** o **en transporte** y Maps te arma la ruta completa.
 

@@ -168,6 +168,12 @@ intermedia, `destination` y `mode` (`walking`/`transit`/`driving`/`cycling`).
   veces seguidas. Todo lo demás que usa la app es Unicode de los 90 (★ ✕ → ↗ ▸) o Emoji 1.0
   (📍 🚇 🕐 ✅). Hay un test con lista blanca en `test_app.py` que escanea el template y falla
   ante cualquier símbolo nuevo: para sumar uno, probalo primero en el aparato de Juan.
+- **El plan B va donde se lo necesita.** Primero quedó solo en la hoja del día, y el chip del
+  bloque tenía nada más que Apple: Juan lo reportó igual que lo anterior — el respaldo existía
+  pero no estaba a mano parado en la calle. Cada bloque con lugar tiene ahora `→ Apple` y
+  `→ Google` (`data-nav="apple"` / `"google"`, que es por donde los agarran los tests: buscarlos
+  por texto sería frágil), los dos al mismo destino. El `↗ Maps` azul que ya existía es otra
+  cosa y se queda: abre la **ficha** del lugar en Google, no la navegación.
 - **Un plan B enterrado no es un plan B.** La primera versión puso Google al fondo de la hoja:
   en un iPhone quedaba a 1025px de un viewport de 844, sin ninguna señal de que hubiera más
   abajo, y Juan reportó que "no veía el botón". Ahora lo accionable va arriba —los dos mapas
