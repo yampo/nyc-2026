@@ -152,9 +152,19 @@ falla si la cuenta de bloques cambia al recorrer los días.
   medio**: solo cuentan los `PASO_PUNTA` (400 m) alrededor de cada extremo.
 - **Cada lugar aparece una sola vez por día**, en el tramo donde menos desvío cuesta. Sin esto,
   el domingo el Tenement Museum salía en cuatro tramos seguidos.
-- **Se excluyen**: lo ya agendado en cualquier día, `transporte`/`hotel`/`evento` (logística y
-  cosas con fecha fija), lo cerrado ese día del calendario, y lo que **los dos** bajaron a 0 —
-  eso lo descartaron a propósito.
+- **Se excluyen**: lo ya agendado en cualquier día, `transporte`/`hotel`/`evento`/`teatro`,
+  lo cerrado ese día del calendario, y lo que **los dos** bajaron a 0 — eso lo descartaron.
+- **Nada que necesite entrada.** Broadway y los clubes de jazz no son desvíos de cinco minutos:
+  cuestan $25-112, tienen hora fija y hay que reservar. De `musica` solo pasa lo que se paga en
+  la puerta (`!book && cost <= PASO_MUSICA_COVER`) **y de noche** (`PASO_MUSICA_DESDE`): un bar
+  con música a las once de la mañana no es una referencia útil. En los 9 días sobreviven dos.
+- **Un piso de cercanía además del desvío.** En un tramo corto el desvío miente: si A y B están
+  a 100 m, pasar por algo a la vuelta "cuesta" 500 m. Por eso también entra lo que está a menos
+  de `PASO_CERCA` de cualquiera de las puntas.
+- **El reparto va en dos vueltas, y el orden importa.** Con solo "cada lugar a su tramo más
+  barato", los tramos cortos del mismo barrio quedaban mudos. Primero cada tramo se queda con su
+  mejor candidato libre (cobertura), después se reparte el resto (desvío). Un lugar sigue
+  apareciendo una sola vez por día — hay un test que lo verifica en los 9.
 - **Se calcula en el cliente, no en el build** (`dePasoDelDia`), para que siga siendo correcto
   después de que Juan mueva, agregue o saque un bloque. Son ~210 lugares × ~10 tramos por día:
   irrelevante para el navegador.
@@ -333,7 +343,7 @@ Está en `~/.claude/skills/coe-defaults/` si lo tenés instalado. Lo que más pe
 ```bash
 git pull                              # SIEMPRE primero
 # … editar src/build_*.py o src/app_template.html …
-.venv/bin/python src/build_all.py --test       # build + 58 chequeos
+.venv/bin/python src/build_all.py --test       # build + 59 chequeos
 git add -A && git commit -m "..." && git push     # esto publica
 ```
 

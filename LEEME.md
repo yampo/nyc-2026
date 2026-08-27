@@ -22,7 +22,21 @@ paradas numeradas. La línea punteada del recorrido sigue uniendo solo las parad
 
 Qué queda afuera, a propósito: lo que ya está en algún día del viaje, lo que esté cerrado ese
 día, la logística (hoteles, estaciones) y **lo que ustedes dos marcaron como que no les
-interesa**. De resto entra todo: comida, música, museos, bares, parques.
+interesa**. Tampoco aparece **nada que necesite sacar entrada**: ni Broadway ni los clubes de
+jazz, que cuestan plata, tienen hora fija y hay que reservarlos — eso no es un desvío de cinco
+minutos. Los únicos lugares de música que asoman son bares que se pagan en la puerta, y solo
+de noche. De resto entra todo: comida, museos, bares, parques, arquitectura.
+
+---
+
+## 27 de agosto de 2026 · más tarde
+
+**Se bajaron al plan las marcas nuevas de Juan**: 21 cambios de interés y 4 estrellas nuevas
+(MO Lounge, Roosevelt Island, Stone St y el Village Vanguard). Ahora hay **38 imprescindibles**
+y **ya no queda ningún desacuerdo** en los días que van juntos — antes había dos.
+
+También salieron del plan, porque Juan los bajó a cero: el Staten Island Ferry y TKTS Lincoln
+Center.
 
 ---
 

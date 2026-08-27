@@ -2,6 +2,11 @@ import os
 _R = os.path.dirname(os.path.abspath(__file__))   # todo se resuelve relativo a este archivo, no a donde se corra
 import os as _os
 _BASE = _os.path.dirname(_os.path.abspath(__file__))
+import re as _re
+_TPL = open(_os.path.join(_BASE, "app_template.html"), encoding="utf-8").read()
+_num = lambda k: int(_re.search(r"const " + k + r" = (\d+)", _TPL).group(1))
+PASO_MUSICA_COVER_PY = _num("PASO_MUSICA_COVER")
+PASO_MUSICA_DESDE_PY = _num("PASO_MUSICA_DESDE")
 #!/usr/bin/env python3
 """Prueba la app: errores de consola, navegación entre pestañas, interacciones y capturas."""
 from playwright.sync_api import sync_playwright
@@ -126,6 +131,29 @@ with sync_playwright() as pw:
         assert not r["ceros"], f"referencias que los dos marcaron 0: {r['ceros']}"
         assert not r["cerrados"], f"referencias cerradas ese día: {r['cerrados']}"
     check("las referencias no repiten, no están agendadas ni cerradas", paso_es_coherente)
+
+    def paso_sin_entradas():
+        """Broadway y los clubes de jazz no son desvíos: cuestan entrada, tienen hora
+        fija y hay que reservar. Solo pasan los bares con música que se pagan en la
+        puerta, y solo de noche."""
+        malos, musica = [], []
+        for d in range(1, 10):
+            pg.click(f'.dbtn[data-d="{d}"]'); pg.wait_for_timeout(160)
+            r = pg.evaluate("""() => [...document.querySelectorAll('#v-itin [data-paso]')].map(e => {
+                  const p = PBY[e.dataset.paso];
+                  const blk = e.closest('.paso').nextElementSibling;
+                  return {n:p.n, cat:p.cat, cost:p.cost||0, book:!!p.book,
+                          h: parseInt((blk && blk.querySelector('.tm')?.value || '00').slice(0,2), 10)};
+                })""")
+            for x in r:
+                if x["cat"] == "teatro": malos.append(f"teatro: {x['n']}")
+                if x["cat"] == "musica":
+                    musica.append(x)
+                    if x["book"]: malos.append(f"música con reserva: {x['n']}")
+                    if x["cost"] > PASO_MUSICA_COVER_PY: malos.append(f"música cara (${x['cost']}): {x['n']}")
+                    if x["h"] < PASO_MUSICA_DESDE_PY: malos.append(f"música a las {x['h']}h: {x['n']}")
+        assert not malos, "referencias que necesitan entrada o caen a deshora: " + " · ".join(malos)
+    check("nada de Broadway ni música con entrada en los desvíos", paso_sin_entradas)
 
     def paso_abre_ficha():
         pg.locator('#v-itin [data-paso]').first.click(); pg.wait_for_timeout(500)

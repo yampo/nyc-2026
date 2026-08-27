@@ -21,7 +21,7 @@
   "th": 0
  },
  "gantry": {
-  "jp": 1,
+  "jp": 2,
   "th": 1
  },
  "valentino": {
@@ -44,8 +44,8 @@
   "must": true
  },
  "siferry": {
-  "jp": 2,
-  "th": 2
+  "jp": 0,
+  "th": 0
  },
  "sunsetparkview": {
   "jp": 1,
@@ -212,7 +212,8 @@
  },
  "rooseveltisland": {
   "jp": 2,
-  "th": 2
+  "th": 2,
+  "must": 1
  },
  "sunsetpark": {
   "jp": 1,
@@ -286,8 +287,8 @@
   "th": 1
  },
  "lucali": {
-  "jp": 0,
-  "th": 0
+  "jp": 1,
+  "th": 1
  },
  "malecon": {
   "jp": 0,
@@ -346,16 +347,16 @@
   "th": 2
  },
  "barbayeux": {
-  "jp": 2,
-  "th": 2
+  "jp": 1,
+  "th": 1
  },
  "lunatico": {
-  "jp": 2,
-  "th": 2
+  "jp": 1,
+  "th": 1
  },
  "barbes": {
-  "jp": 2,
-  "th": 2
+  "jp": 1,
+  "th": 1
  },
  "birdland": {
   "jp": 2,
@@ -363,24 +364,24 @@
   "must": true
  },
  "bluenote": {
-  "jp": 2,
-  "th": 2
+  "jp": 1,
+  "th": 0
  },
  "dizzys": {
   "jp": 2,
   "th": 2
  },
  "mezzrow": {
-  "jp": 2,
-  "th": 2
+  "jp": 1,
+  "th": 1
  },
  "nublu": {
-  "jp": 2,
-  "th": 2
+  "jp": 1,
+  "th": 1
  },
  "ornithology": {
-  "jp": 2,
-  "th": 2
+  "jp": 1,
+  "th": 1
  },
  "smalls": {
   "jp": 2,
@@ -388,7 +389,8 @@
  },
  "vanguard": {
   "jp": 2,
-  "th": 2
+  "th": 2,
+  "must": 1
  },
  "fdrpark": {
   "jp": 2,
@@ -463,7 +465,7 @@
   "th": 0
  },
  "inwoodhill": {
-  "jp": 2,
+  "jp": 1,
   "th": 0
  },
  "socrates": {
@@ -530,8 +532,8 @@
   "th": 0
  },
  "tkts": {
-  "jp": 2,
-  "th": 2
+  "jp": 0,
+  "th": 0
  },
  "ink48": {
   "jp": 2,
@@ -564,5 +566,47 @@
   "jp": 2,
   "th": 2,
   "must": true
+ },
+ "stonest": {
+  "jp": 2,
+  "th": 1,
+  "must": 1
+ },
+ "molounge": {
+  "jp": 2,
+  "th": 2,
+  "must": 1
+ },
+ "oldstpats": {
+  "jp": 2,
+  "th": 1
+ },
+ "trinitychurch": {
+  "jp": 2,
+  "th": 1
+ },
+ "louisvuitton": {
+  "jp": 1,
+  "th": 2
+ },
+ "rockefeller": {
+  "jp": 2,
+  "th": 1
+ },
+ "hudsonyards": {
+  "jp": 2,
+  "th": 1
+ },
+ "brooklynbridge": {
+  "jp": 2,
+  "th": 1
+ },
+ "wallst": {
+  "jp": 2,
+  "th": 1
+ },
+ "rilighthouse": {
+  "jp": 2,
+  "th": 2
  }
 }

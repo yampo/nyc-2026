@@ -498,10 +498,26 @@ function enTramos(arr, n){
    Arriba de PASO_CORREDOR el tramo ya no se camina, se va en subte: ahí el
    corredor no existe (no pasás por el medio) y solo valen las puntas. */
 const PASO_DESVIO = 500;      /* m de desvío que se tolera en un tramo caminable */
+/* En un tramo corto el desvío miente: si A y B están a 100 m, pasar por algo que está
+   a la vuelta de la esquina "cuesta" 500 m y queda afuera. Por eso también entra lo
+   que está a menos de PASO_CERCA de cualquiera de las dos puntas — es el caso del
+   paseo por el Lower East Side, donde la parada siguiente está a una cuadra y el
+   barrio entero está a tiro. */
+const PASO_CERCA = 350;
 const PASO_CORREDOR = 2500;   /* m: hasta acá el tramo se hace a pie */
 const PASO_PUNTA = 400;       /* m alrededor de cada punta en los tramos largos */
 const PASO_TOP = 4;           /* cuántos se muestran por tramo */
-const PASO_FUERA = {transporte:1, hotel:1, evento:1};  /* logística y cosas con fecha fija */
+const PASO_FUERA = {transporte:1, hotel:1, evento:1, teatro:1};
+/* transporte y hotel son logística; evento y teatro tienen fecha, hora y entrada
+   —Broadway no es un desvío de cinco minutos—. La música es el caso fino: un club
+   de jazz cuesta $25-45 y hay que reservar, pero un bar con música en vivo se paga
+   en la puerta y se entra sin nada. Solo pasa el segundo, y solo de noche: Bar
+   Bayeux a las once de la mañana no es una referencia útil. */
+const PASO_MUSICA_COVER = 15;   /* hasta acá es cover de puerta, no una entrada */
+const PASO_MUSICA_DESDE = 18;   /* antes de esta hora un bar de música no sirve */
+const esDesvioPosible = (p, horaTramo) =>
+  p.cat !== 'musica' ? true
+  : !p.book && (p.cost || 0) <= PASO_MUSICA_COVER && horaTramo >= PASO_MUSICA_DESDE;
 
 function hav(a, b){
   const R = 6371000, r = Math.PI/180;
@@ -521,22 +537,52 @@ function dePasoDelDia(d){
     && horario(p, wd) !== 'CERRADO');    /* cerrado ese día no es una referencia útil */
 
   const paradas = paradasDe(d);
-  const mejor = {};                      /* cada lugar UNA vez por día, en su tramo más barato */
+
+  /* Qué candidatos tiene cada tramo, ordenados por lo que cuesta pasar. */
+  const tramos = [];
   for (let i = 0; i < paradas.length - 1; i++){
-    const A = paradas[i].p, B = paradas[i+1].p, destino = paradas[i+1].b.id;
+    const A = paradas[i].p, B = paradas[i+1].p;
     const a = [A.lat, A.lng], b = [B.lat, B.lng], dab = hav(a, b);
+    const hora = parseInt(String(paradas[i+1].b.t).slice(0, 2), 10);   /* a qué hora se pasa */
+    const lista = [];
     cand.forEach(p => {
+      if (!esDesvioPosible(p, hora)) return;
       const q = [p.lat, p.lng], da = hav(a, q), db = hav(q, b);
       const desvio = da + db - dab;
-      const entra = dab <= PASO_CORREDOR ? desvio <= PASO_DESVIO
-                                         : Math.min(da, db) <= PASO_PUNTA;
-      if (!entra) return;
-      if (!mejor[p.id] || desvio < mejor[p.id].desvio) mejor[p.id] = {p, desvio, destino};
+      const entra = dab <= PASO_CORREDOR
+        ? (desvio <= PASO_DESVIO || Math.min(da, db) <= PASO_CERCA)
+        : Math.min(da, db) <= PASO_PUNTA;
+      if (entra) lista.push({p, desvio});
     });
+    lista.sort((x, y) => x.desvio - y.desvio);
+    tramos.push({destino: paradas[i+1].b.id, lista});
   }
-  const out = {};
-  Object.values(mejor).forEach(x => (out[x.destino] = out[x.destino] || []).push(x));
-  Object.keys(out).forEach(k => { out[k].sort((x,y) => x.desvio - y.desvio); out[k] = out[k].slice(0, PASO_TOP); });
+
+  /* El reparto va en DOS vueltas, y el orden importa. Con solo "cada lugar al tramo
+     donde menos cuesta", los tramos cortos del mismo barrio quedaban mudos: el
+     domingo, el Tenement Museum y compañía se los llevaba el tramo de las 10:30 con
+     un metro de desvío, y la caminata por el Lower East Side —que los tiene a todos
+     a la vuelta— no mostraba nada.
+     Primera vuelta: cada tramo se queda con su mejor candidato todavía libre, así
+     ninguno con opciones se queda sin nada. Segunda: el resto se reparte al tramo
+     donde menos cuesta. Un lugar sigue apareciendo UNA sola vez por día. */
+  const tomado = {}, out = {};
+  const poner = (destino, x) => { (out[destino] = out[destino] || []).push(x); tomado[x.p.id] = 1; };
+  tramos.forEach(t => {
+    const primero = t.lista.find(x => !tomado[x.p.id]);
+    if (primero) poner(t.destino, primero);
+  });
+  const resto = {};
+  tramos.forEach(t => t.lista.forEach(x => {
+    if (tomado[x.p.id]) return;
+    if (!resto[x.p.id] || x.desvio < resto[x.p.id].desvio) resto[x.p.id] = {...x, destino: t.destino};
+  }));
+  Object.values(resto).forEach(x => poner(x.destino, x));
+
+  Object.keys(out).forEach(k => {
+    out[k].sort((x, y) => x.desvio - y.desvio);
+    out[k] = out[k].slice(0, PASO_TOP);
+  });
   return out;
 }
 /* Los mismos lugares, planos, para pintarlos en el mapa del día. */

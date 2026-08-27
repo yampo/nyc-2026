@@ -251,8 +251,8 @@
    "costN": "GRATIS, 24/7",
    "dur": 1.5,
    "why": "Pasa a ~500 m de la Estatua de la Libertad con todo el Lower Manhattan de fondo. Sentarse a la derecha yendo, a la izquierda volviendo. Es la mejor relacion vista/precio de la ciudad.",
-   "jp": 2,
-   "th": 2,
+   "jp": 0,
+   "th": 0,
    "tags": [
     "gratis",
     "skyline",
@@ -341,7 +341,7 @@
    "cost": 0,
    "dur": 1,
    "why": "La mejor vista frontal de Midtown que existe, desde el nivel del agua, con las gruas ferroviarias historicas y el cartel Pepsi-Cola. Practicamente sin turistas.",
-   "jp": 1,
+   "jp": 2,
    "th": 1,
    "tags": [
     "gratis",
@@ -2149,7 +2149,7 @@
    "src": "ambas",
    "aprox": false,
    "gname": "Roosevelt Island",
-   "must": 0,
+   "must": 1,
    "typ": "Isla"
   },
   {
@@ -3033,8 +3033,8 @@
    "costN": "solo efectivo, BYOB",
    "dur": 2,
    "why": "Considerada por muchos la mejor pizza de NYC. SIN reservas: hay que ir a anotarse cuando abren y volver despues. Solo si tienen paciencia.",
-   "jp": 0,
-   "th": 0,
+   "jp": 1,
+   "th": 1,
    "tags": [
     "pizza",
     "cola"
@@ -3225,7 +3225,7 @@
    "src": "ambas",
    "aprox": false,
    "gname": "Village Vanguard",
-   "must": 0,
+   "must": 1,
    "typ": "Club de jazz"
   },
   {
@@ -3273,8 +3273,8 @@
    "dur": 1.5,
    "why": "35 asientos, sala de escucha centrada en el piano. El mas intimo de la ciudad. Entre semana se consigue; los fines de semana se agota.",
    "book": "reservar",
-   "jp": 2,
-   "th": 2,
+   "jp": 1,
+   "th": 1,
    "tags": [
     "jazz",
     "intimo"
@@ -3363,8 +3363,8 @@
    "dur": 2,
    "why": "El mas grande y comercial de los clubes historicos (250 personas). 29-30 ago: MonoNeon. 4-5 sep: Chief Adjuah.",
    "main": true,
-   "jp": 2,
-   "th": 2,
+   "jp": 1,
+   "th": 0,
    "tags": [
     "jazz"
    ],
@@ -3391,8 +3391,8 @@
    "costN": "$10 sugerido EN EFECTIVO - los musicos cobran de las donaciones",
    "dur": 2.5,
    "why": "Bar de barrio de musicos, no de publico. Dos sets todas las noches (21:00 y 22:15), cocina y cocteleria completas. Es la mejor relacion musica/precio de la ciudad. LLEVAR EFECTIVO.",
-   "jp": 2,
-   "th": 2,
+   "jp": 1,
+   "th": 1,
    "tags": [
     "jazz",
     "barato",
@@ -3422,8 +3422,8 @@
    "costN": "Frecuentemente sin cover (minimo de consumo)",
    "dur": 2,
    "why": "Wine bar de barrio con jazz de verdad y sin entrada. El mas barato de la lista.",
-   "jp": 2,
-   "th": 2,
+   "jp": 1,
+   "th": 1,
    "tags": [
     "jazz",
     "gratis",
@@ -3453,8 +3453,8 @@
    "costN": "Donacion sugerida ~$10-20, efectivo",
    "dur": 2,
    "why": "No es jazz: musica latina, balcanica, brasilena y de Africa occidental. La programacion es de otro nivel y la trastienda es minuscula. Llegar temprano.",
-   "jp": 2,
-   "th": 2,
+   "jp": 1,
+   "th": 1,
    "tags": [
     "musica",
     "escondido",
@@ -3484,8 +3484,8 @@
    "costN": "$15-25",
    "dur": 2,
    "why": "75 asientos y regla estricta de sala de escucha: no se habla durante los sets. Es la alternativa joven al Vanguard.",
-   "jp": 2,
-   "th": 2,
+   "jp": 1,
+   "th": 1,
    "tags": [
     "jazz",
     "escondido"
@@ -3544,8 +3544,8 @@
    "cost": 20,
    "dur": 2.5,
    "why": "Jazz experimental, afrobeat y electronica turca. Musica en vivo desde las 19:00, DJs hasta las 4:00. 'Producer Mondays' todos los lunes a las 22:00.",
-   "jp": 2,
-   "th": 2,
+   "jp": 1,
+   "th": 1,
    "tags": [
     "musica",
     "tarde"
@@ -4025,7 +4025,7 @@
    "src": "propuesta",
    "aprox": false,
    "gname": "",
-   "must": 0,
+   "must": 1,
    "typ": "Rooftop bar",
    "hrs": [
     [
@@ -4492,7 +4492,7 @@
    "cost": 0,
    "dur": 2,
    "why": "El unico bosque primario que queda en Manhattan, con cuevas de roca usadas por los Lenape y vista del Hudson y los Palisades. Cuesta creer que sea la misma isla.",
-   "jp": 2,
+   "jp": 1,
    "th": 0,
    "tags": [
     "gratis",
@@ -4949,8 +4949,8 @@
    "closed": "lunes y domingos",
    "dur": 0.75,
    "why": "Mismo inventario que el booth de Times Square y casi siempre sin cola. Mar-sab 11-18h. Usar la app de TKTS para ver el inventario en tiempo real ANTES de ir. A 10 cuadras del hotel The Beacon.",
-   "jp": 2,
-   "th": 2,
+   "jp": 0,
+   "th": 0,
    "tags": [
     "broadway",
     "truco"
@@ -6192,7 +6192,7 @@
    "dur": 0.5,
    "why": "La catedral ORIGINAL de San Patricio (1815), no la de la Quinta: cementerio amurallado y catacumbas visitables. A tres cuadras del JGStay.",
    "main": false,
-   "jp": 1,
+   "jp": 2,
    "th": 1,
    "src": "lista",
    "aprox": false,
@@ -6222,7 +6222,7 @@
    "dur": 0.5,
    "why": "Neogótica de 1846, la torre más alta de NY durante medio siglo. En su cementerio está Alexander Hamilton.",
    "main": false,
-   "jp": 1,
+   "jp": 2,
    "th": 1,
    "src": "lista",
    "aprox": false,
@@ -6462,7 +6462,7 @@
    "why": "Flagship de la Quinta. En la lista de Google, presumiblemente para compras.",
    "main": true,
    "jp": 1,
-   "th": 1,
+   "th": 2,
    "src": "lista",
    "aprox": true,
    "tags": [
@@ -6551,7 +6551,7 @@
    "dur": 0.75,
    "why": "El conjunto art déco a nivel de calle: la plaza hundida, el Atlas y el mural de Prometeo. Gratis; el Top of the Rock es aparte.",
    "main": true,
-   "jp": 1,
+   "jp": 2,
    "th": 1,
    "src": "lista",
    "aprox": false,
@@ -6581,7 +6581,7 @@
    "dur": 0.75,
    "why": "El complejo entero: el Vessel, The Shed y el mall. Es el arranque natural del High Line.",
    "main": true,
-   "jp": 1,
+   "jp": 2,
    "th": 1,
    "src": "lista",
    "aprox": false,
@@ -6611,7 +6611,7 @@
    "dur": 1.0,
    "why": "Cruzarlo a pie es el clásico que sí lo vale. Entrada peatonal frente a City Hall; después de las 16 se llena.",
    "main": true,
-   "jp": 1,
+   "jp": 2,
    "th": 1,
    "src": "lista",
    "aprox": false,
@@ -6671,7 +6671,7 @@
    "dur": 0.5,
    "why": "Calle adoquinada peatonal, con las mesas de los bares afuera. De 5 a 8 PM es el after office más lindo de FiDi.",
    "main": false,
-   "jp": 1,
+   "jp": 2,
    "th": 1,
    "src": "lista",
    "aprox": false,
@@ -6684,7 +6684,7 @@
    "free": "",
    "book": "",
    "gname": "",
-   "must": 0,
+   "must": 1,
    "typ": "Casa y calle histórica"
   },
   {
@@ -6701,7 +6701,7 @@
    "dur": 0.4,
    "why": "El cañón de piedra: la Bolsa, Federal Hall y Trinity al fondo. Se ve en veinte minutos.",
    "main": true,
-   "jp": 1,
+   "jp": 2,
    "th": 1,
    "src": "lista",
    "aprox": false,
@@ -6851,8 +6851,8 @@
    "dur": 0.4,
    "why": "Faro de 1872 en la punta NORTE de la isla (el FDR Park está en la sur): 20 minutos de caminata y casi nadie.",
    "main": false,
-   "jp": 1,
-   "th": 1,
+   "jp": 2,
+   "th": 2,
    "src": "lista",
    "aprox": false,
    "tags": [
