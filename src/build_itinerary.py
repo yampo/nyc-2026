@@ -293,8 +293,11 @@ day(9, "2026-09-06", "Domingo", "both", "The Beacon (checkout) → EWR",
      b("13:30", "Bajar a 59 St y 2ª Av: subte 6 desde 68 St-Hunter College (el 4/5 exprés NO para ahí), o caminando por la Quinta si el día está lindo.", "", "both", "logistica"),
      b("13:50", "★ ROOSEVELT ISLAND TRAMWAY ($3, OMNY) — cruza el East River a 76 metros de altura con el Queensboro Bridge al lado. Es la vista de $50 por el precio de un viaje de subte.", "tram", "both", "destacado"),
      b("14:25", "FDR Four Freedoms Park — del teleférico son ~20 min a pie por el borde del río. La última obra de Louis Kahn: granito, plátanos y una sala abierta al río apuntando a Manhattan. Gratis y vacía. Se pasa por las ruinas del Smallpox Hospital.", "fdrpark", "both", "paseo"),
+     b("15:00", "◇ LA DECISIÓN DEL DÍA, y se toma acá parado, antes de salir de la isla. Si al llamar al Guggenheim les dijeron que la rotonda está en montaje, el edificio —que es la mitad de la visita— no se ve, y conviene cambiarlo por MOMA PS1: el último imprescindible que queda afuera del viaje, GRATIS, abierto los domingos hasta las 18, y a 1,2 km de donde están parados. CÓMO: en vez de volver en teleférico, caminan a la estación del F que está EN Roosevelt Island, una parada hasta 21 St-Queensbridge y 15 min a pie (~25 min puerta a puerta). Entran 15:45, dos horas holgadas hasta las 17:45, y al hotel en el 7 o el E/M desde Court Sq (~45 min): llegan 18:30, justo para las valijas. NO toca el vuelo. Lo que se pierde: el Guggenheim y el cruce de vuelta en teleférico — el de ida ya lo hicieron a las 13:50.", "", "both", "paseo",
+       "Bloque de decisión, no de plan. Si la rotonda está abierta, se ignora y se sigue al Guggenheim."),
      b("15:05", "SALIR 15:05 (no más tarde): caminata al teleférico + cruce + subte 4/5/6 de 59 St a 86 St suman ~50 min, y la ventana pay-what-you-wish del Guggenheim arranca 16:00 y el museo cierra 17:30 — llegar puntuales ES la visita.", "", "both", "logistica"),
-     b("16:00", "★ GUGGENHEIM — pay-what-you-wish domingos 16:00-17:30 (sugerido $10, mínimo $1). El edificio de Frank Lloyd Wright vale la visita solo: se sube en ascensor y se baja caminando la rampa. ⚠️ LLAMAR ANTES: la rotonda estaría en montaje hasta el 18 de septiembre y el pay-what-you-wish no está confirmado en fuente oficial.", "guggenheim", "both", "destacado"),
+     b("16:00", "★ GUGGENHEIM — pay-what-you-wish domingos 16:00-17:30 (sugerido $10, mínimo $1). El edificio de Frank Lloyd Wright vale la visita solo: se sube en ascensor y se baja caminando la rampa. ⚠️ LLAMAR ANTES DE SALIR (guggenheim.org o +1 212-423-3500) y preguntar DOS cosas: si la rotonda está abierta —estaría en montaje hasta el 18 de septiembre— y si el pay-what-you-wish sigue en pie. Ninguna de las dos está confirmada en fuente oficial. SI LA ROTONDA ESTÁ CERRADA, el plan B ya está armado: ver el bloque de abajo.", "guggenheim", "both", "destacado",
+       "Si la rotonda está en montaje, el edificio —que es la mitad de la visita— no se ve."),
      b("17:45", "Volver caminando por Central Park hasta el hotel (~25 min) o subte 86 St → 1 a 79 St.", "beacon", "both", "logistica"),
      b("18:30", "Retirar las valijas del bell desk. Cena tranquila cerca del hotel: es la última.", "", "both", "comida"),
      b("19:40", "Salir de The Beacon. Subte 1/2/3 desde 72 St hasta 34 St-Penn Station: ~10 min, $3.", "", "both", "logistica"),
@@ -303,8 +306,12 @@ day(9, "2026-09-06", "Domingo", "both", "The Beacon (checkout) → EWR",
      b("20:55", "En terminal. Faltan 2h45 para el vuelo de las 23:40 — correcto para un internacional en el domingo de Labor Day, que es la noche de más tráfico del año en EWR.", "", "both", "logistica")],
     alt="COLCHÓN: si algo se atrasa, el tren siguiente sale 20:55 y llega a EWR 21:16, o sea terminal ~21:35 y 2h05 antes del vuelo. "
         "Es el último que yo tomaría. // Si prefieren un último día sin moverse, salteen el teleférico y estiren Central Park hasta "
-        "el Guggenheim: el parque solo da para toda la mañana y la tarde. Y si el Guggenheim tiene la rotonda cerrada, el Whitney "
-        "abre los domingos. Lo que NO conviene hoy es meter algo nuevo y grande.")
+        "el Guggenheim: el parque solo da para toda la mañana y la tarde. Lo que NO conviene hoy es meter algo nuevo y grande. "
+        "// LA DECISIÓN DEL DÍA, y se toma con una llamada: si la rotonda del Guggenheim está en montaje, el edificio —que es la "
+        "mitad de la visita— no se ve, y ahí conviene cambiarlo por MOMA PS1, el último imprescindible que queda afuera del viaje. "
+        "Es gratis, abre los domingos hasta las 18 y hoy pasan a 1,2 km. Los tiempos están calculados en el bloque de las 16:00 y "
+        "no tocan el vuelo. Si la rotonda está abierta, el Guggenheim se queda: el edificio de Wright vale por sí solo. "
+        "Tercera opción si ninguna convence: el Whitney también abre los domingos.")
 
 out = {"days": D, "trip": {"from": "2026-08-29", "to": "2026-09-06",
         "travelers": ["Juan Pablo", "Thais"], "generated": "2026-08-17",

@@ -29,6 +29,28 @@ de noche. De resto entra todo: comida, museos, bares, parques, arquitectura.
 
 ---
 
+## 27 de agosto de 2026 · el plan B del último día
+
+**MoMA PS1 queda armado como alternativa del Guggenheim, listo para usar o no.**
+
+El domingo 6 hay una sola decisión y se toma con una llamada. El Guggenheim de esa tarde tiene
+dos cosas sin confirmar: si la rotonda está abierta —estaría en montaje hasta el 18 de
+septiembre— y si sigue el pay-what-you-wish. Si la rotonda está cerrada, el edificio de Frank
+Lloyd Wright, que es la razón para ir, se ve a medias.
+
+Para ese caso está todo calculado. En el itinerario del domingo, **a las 15:00**, aparece un
+bloque de decisión: si la rotonda no está, en vez de volver en teleférico caminan a la estación
+del F que está **en la propia isla**, una parada y quince minutos a pie hasta **MoMA PS1** —el
+último imprescindible que quedaba afuera del viaje, gratis y abierto hasta las 18. Entran 15:45,
+tienen dos horas holgadas y llegan al hotel 18:30, justo para las valijas. **No toca el vuelo.**
+
+Si la rotonda está abierta, se ignora ese bloque y el día sigue igual: el Guggenheim se queda.
+
+El teléfono está en el bloque y en el checklist de reservas: **+1 212-423-3500**. Llamen esa
+misma mañana, antes de salir del hotel.
+
+---
+
 ## 27 de agosto de 2026 · Stone St entra al plan
 
 **El jueves se almuerza en Stone Street.** Era uno de los imprescindibles y no estaba en ningún
