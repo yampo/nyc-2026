@@ -1217,22 +1217,29 @@ function rutaSheet(dayN){
         <b>${esc(x.p.hood || '')}${x.p.aprox ? ' · 📍 dirección sin verificar' : ''}${x.b.done ? ' · ya lo hiciste' : ''}</b></span>
     </label>`).join('');
   sheet(`<h2 style="font-size:17px;margin-bottom:4px">Ruta del día ${dayN} · ${esc(d.dow)} ${fecha}</h2>
-    <p class="sm muted" style="margin-bottom:11px">Se abre en Apple Maps arrancando <b>desde donde estés</b>,
-    con estas paradas en orden. Iniciada la navegación en el iPhone, el Watch la toma solo.</p>
-    <div id="rlist" style="margin-bottom:11px">${filas}</div>
+    <p class="sm muted" style="margin-bottom:9px">Arranca <b>desde donde estés</b>. El Watch toma la
+    navegación del iPhone solo.</p>
     <div id="raviso"></div>
-    <div class="flex" style="margin-top:11px">
-      <a class="btn" id="rw" href="#" target="_blank" rel="noopener">A pie</a>
-      <a class="btn ghost" id="rt" href="#" target="_blank" rel="noopener">En transporte</a>
+    <div class="flex" style="margin-bottom:4px">
+      <span class="chip b" style="flex:none">Apple Maps</span>
+      <a class="btn sm" id="rw" href="#" target="_blank" rel="noopener">A pie</a>
+      <a class="btn ghost sm" id="rt" href="#" target="_blank" rel="noopener">En transporte</a>
     </div>
-    <p class="sm muted" style="margin-top:11px">Necesita iOS 18.4 o más nuevo (y watchOS 11.4 en el
-    reloj). Maps puede reordenar o recortar paradas si la ruta no le cierra: mirá la lista antes de arrancar.</p>
-    <div style="border-top:1px solid var(--ln);margin-top:14px;padding-top:12px">
-      <h3 style="font-size:14px;margin-bottom:4px">Si Apple Maps no responde: Google Maps</h3>
-      <p class="sm muted" style="margin-bottom:9px">Google acepta pocas paradas por link en el celular,
-      así que la ruta va <b>partida en tramos</b>. Cada tramo arranca desde donde estés: terminás uno
-      y abrís el siguiente.</p>
+    <p class="sm muted" style="margin-bottom:10px">Necesita iOS 18.4 · watchOS 11.4.</p>
+    <div style="border-top:1px solid var(--ln);padding-top:11px">
+      <div class="flex" style="margin-bottom:4px">
+        <span class="chip" style="flex:none">Plan B · Google Maps</span>
+      </div>
+      <p class="sm muted" style="margin-bottom:8px">Google toma pocas paradas por link: va
+      <b>en tramos</b>. Cada uno arranca donde estés.</p>
       <div id="rgm"></div>
+    </div>
+    <div style="border-top:1px solid var(--ln);margin-top:13px;padding-top:11px">
+      <p class="sm muted" style="margin-bottom:7px">Las <b>${paradas.length} paradas</b> del día.
+      Vienen tildadas las que no marcaste como hechas — destildá lo que quieras saltear.</p>
+      <div id="rlist">${filas}</div>
+      <p class="sm muted" style="margin-top:9px">Maps puede reordenar o recortar paradas si la ruta no
+      le cierra: mirá la lista antes de arrancar.</p>
     </div>`);
 
   const sel = () => Array.from($('#rlist').querySelectorAll('[data-rp]'))
@@ -1259,7 +1266,8 @@ function rutaSheet(dayN){
       ? '<p class="sm muted">Elegí paradas arriba.</p>'
       : grupos.map((g, i) => `<div class="flex" style="margin-bottom:7px;align-items:center">
           <span class="chip" style="flex:none">${grupos.length > 1 ? 'Tramo ' + (i+1) + '/' + grupos.length : 'Ruta'}</span>
-          <span class="sm muted" style="flex:1;min-width:120px">${esc(g.map(amNombre).join(' → '))}</span>
+          <span class="sm muted" style="flex:1;min-width:90px;white-space:nowrap;overflow:hidden;
+            text-overflow:ellipsis" title="${esc(g.map(amNombre).join(' → '))}">${esc(g.map(amNombre).join(' → '))}</span>
           <a class="chip b" href="${gmRuta(g,'walking')}" target="_blank" rel="noopener">a pie</a>
           <a class="chip b" href="${gmRuta(g,'transit')}" target="_blank" rel="noopener">transporte</a>
         </div>`).join('');

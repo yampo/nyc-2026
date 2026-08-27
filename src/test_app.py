@@ -153,7 +153,31 @@ with sync_playwright() as pw:
         assert ("travelmode", "transit") in ps, ps
     check("Google Maps: el segundo link va en transporte", gm_transporte)
 
+
     check("cerrar la hoja", lambda: pg.click('#ov', position={"x": 10, "y": 10}))
+
+    def plan_b_a_la_vista():
+        """El plan B no sirve enterrado: la primera versión quedaba a 1025px en una
+        pantalla de 844 y no se veía. Se mide achicando a un iPhone SE —la pantalla
+        más chica— y recorriendo los 9 días, porque los que tienen más paradas son
+        los que empujan la sección de Google fuera de la vista."""
+        pg.set_viewport_size({"width": 375, "height": 667})
+        try:
+            for d in range(1, 10):
+                pg.click(f'.dbtn[data-d="{d}"]'); pg.wait_for_timeout(120)
+                pg.click('#rutaDia'); pg.wait_for_timeout(320)
+                r = pg.evaluate("""() => {const g = document.querySelector('#rgm');
+                    if (!g) return null;
+                    const b = g.getBoundingClientRect();
+                    return {bot: Math.round(b.bottom), vh: window.innerHeight};}""")
+                assert r, f"D{d}: no existe la sección de Google"
+                assert r["bot"] <= r["vh"], \
+                    f"D{d}: Google termina en {r['bot']}px y la pantalla mide {r['vh']}px"
+                pg.click('#ov', position={"x": 10, "y": 10}); pg.wait_for_timeout(120)
+        finally:
+            pg.set_viewport_size({"width": 430, "height": 940})
+            pg.click('.dbtn[data-d="7"]'); pg.wait_for_timeout(150)
+    check("el plan B se ve sin scrollear, en pantalla chica y los 9 días", plan_b_a_la_vista)
 
     print("── persistencia ──")
     CNT = ("(()=>{const s=JSON.parse(localStorage.getItem('nyc2026.v1'));"

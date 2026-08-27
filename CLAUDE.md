@@ -163,6 +163,12 @@ intermedia, `destination` y `mode` (`walking`/`transit`/`driving`/`cycling`).
   no en un link. Cada tramo arranca desde la ubicación actual, así que no hace falta repetir
   la última parada del tramo anterior. Hay un test que recorre los tramos y falla si alguno
   se pasa de 3 waypoints o si entre todos no cubren exactamente las paradas elegidas.
+- **Un plan B enterrado no es un plan B.** La primera versión puso Google al fondo de la hoja:
+  en un iPhone quedaba a 1025px de un viewport de 844, sin ninguna señal de que hubiera más
+  abajo, y Juan reportó que "no veía el botón". Ahora lo accionable va arriba —los dos mapas
+  antes de la lista de paradas— y hay un test que achica a iPhone SE (375×667), recorre los
+  9 días y falla si la sección de Google cae fuera de la pantalla. El día 3, con 11 paradas,
+  es el que la empuja más abajo: es el caso que hay que mirar al tocar esta hoja.
 - **Sin probar en un iPhone real.** Los ejemplos de la doc de Apple vienen con el escapado
   roto, así que el orden `waypoint` → `destination` sale de la tabla de parámetros, que es la
   parte normativa. Si alguna parada cae mal, es lo primero que hay que mirar.
@@ -291,7 +297,7 @@ Está en `~/.claude/skills/coe-defaults/` si lo tenés instalado. Lo que más pe
 ```bash
 git pull                              # SIEMPRE primero
 # … editar src/build_*.py o src/app_template.html …
-.venv/bin/python src/build_all.py --test       # build + 51 chequeos
+.venv/bin/python src/build_all.py --test       # build + 52 chequeos
 git add -A && git commit -m "..." && git push     # esto publica
 ```
 

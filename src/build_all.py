@@ -21,7 +21,7 @@ PASOS = [
     ("build_pages.py",     "sitio con Leaflet    → pages/index.html (+ index.html de la raiz)"),
     ("build_xlsx.py",      "planilla             → NYC_2026_Planificador.xlsx"),
 ]
-TESTS = [("test_app.py", "35 chequeos generales"), ("test_marca.py", "16 chequeos de la marca ★/✕/☆")]
+TESTS = [("test_app.py", "36 chequeos generales"), ("test_marca.py", "16 chequeos de la marca ★/✕/☆")]
 
 def corre(script, que):
     print(f"\n── {script}  ({que})")

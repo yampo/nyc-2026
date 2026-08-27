@@ -22,11 +22,14 @@ teléfono, el reloj la toma solo y te va avisando con toques en la muñeca — d
 es doblar a la derecha, tres pares de dos es a la izquierda. Podés seguir la ruta sin sacar el
 teléfono del bolsillo.
 
-**Y si Apple Maps no responde, está Google Maps.** Abajo de la misma hoja aparece la ruta
+**Y si Apple Maps no responde, está Google Maps.** En la misma hoja aparece la ruta
 para Google, con una diferencia: Google acepta pocas paradas por link desde el celular, así que
 la ruta va **partida en tramos** de cuatro paradas. Hacés el primero, llegás, abrís el segundo —
 cada tramo arranca desde donde estés, así que no hay que repetir nada. Cada tramo tiene sus dos
 botones, a pie y en transporte.
+
+Los dos mapas quedan arriba de todo apenas abrís la hoja, sin tener que scrollear: la lista de
+paradas, que solo se toca para saltear alguna, va abajo.
 
 Dos cosas para tener en cuenta: Apple Maps necesita iOS 18.4 o más nuevo (y watchOS 11.4 en el
 reloj), y **conviene probarlo antes de viajar**, con un día cualquiera, para ver que las
