@@ -474,7 +474,7 @@ Está en `~/.claude/skills/coe-defaults/` si lo tenés instalado. Lo que más pe
 ```bash
 git pull                              # SIEMPRE primero
 # … editar src/build_*.py o src/app_template.html …
-.venv/bin/python src/build_all.py --test       # build + 64 chequeos
+.venv/bin/python src/build_all.py --test       # build + 65 chequeos
 git add -A && git commit -m "..." && git push     # esto publica
 ```
 

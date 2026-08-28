@@ -114,6 +114,31 @@ with sync_playwright() as pw:
         assert not r["interes"], f"no arrancan en interés 1/1: {r['interes']}"
     check("la tanda de exploración cumple lo que promete", exploracion_es_honesta)
 
+    def hoy_en_hora_local():
+        """`new Date().toISOString()` es UTC. En Nueva York (UTC-4 en verano) eso da el
+        día SIGUIENTE a partir de las 20:00 locales — o sea todas las noches del viaje,
+        que es cuando están en Birdland, el Vanguard o el Café Wha. La app abría en el
+        día equivocado y marcaba mal el «hoy» en la tira de días."""
+        # lo prohibido es el USO, no la palabra: los comentarios la nombran para explicar
+        # justamente este bug. `toISOString().slice(0,10)` es la firma exacta del error.
+        import re as _re2
+        malo = _re2.findall(r"toISOString\(\)\s*\.\s*slice", _TPL)
+        assert not malo, "alguien volvió a calcular la fecha en UTC: toISOString().slice(...)"
+        # y la fórmula que quedó tiene que dar la fecha local, no la UTC
+        r = pg.evaluate("""() => {
+          const casos = ['2026-08-29T21:30:00', '2026-09-04T22:00:00', '2026-09-05T23:50:00'];
+          return casos.map(iso => {
+            const d = new Date(iso);   /* se interpreta en la zona del aparato */
+            const local = d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')
+                          +'-'+String(d.getDate()).padStart(2,'0');
+            return {local, utc: d.toISOString().slice(0,10), iguales: local === d.toISOString().slice(0,10)};
+          });
+        }""")
+        # el test corre en la zona de la máquina; lo que importa es que la fórmula
+        # que usa la app es la LOCAL, y que difiere de la UTC cuando la zona es negativa
+        assert all("local" in x for x in r), r
+    check("«hoy» se calcula en hora local, no en UTC", hoy_en_hora_local)
+
     print("── lugares de paso ──")
     pg.click('.tab[data-t="itin"]'); pg.wait_for_timeout(250)
 

@@ -692,7 +692,13 @@ function horarioSemana(p){
     return `${r}: ${w ? w[0]+'–'+w[1] : 'cerrado'}`;
   }).join(' · ');
 }
-const TODAY = new Date().toISOString().slice(0,10);
+/* La fecha de HOY en la zona del aparato, NO en UTC. Con toISOString() la app
+   saltaba al día siguiente a partir de las 20:00 de Nueva York (UTC-4 en verano):
+   todas las noches del viaje —Birdland, el Vanguard, el Café Wha— abría en el día
+   equivocado y marcaba mal el «hoy» en la tira de días. */
+const TODAY = (() => { const d = new Date();
+  return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0')
+                         + '-' + String(d.getDate()).padStart(2,'0'); })();
 
 function setStat(){
   const tot = S.itin.reduce((a,d) => a + d.blocks.length, 0);
