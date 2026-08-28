@@ -1375,6 +1375,23 @@ a(id="papayaking", n="Papaya King", cat="comida", hood="Upper East Side", boro="
   why="Pancho con jugo de papaya desde 1932, el invento del que despues copiaron todos los demas. Se come parado en el mostrador. OJO: se mudo del 179 al 206 de la misma calle.",
   jp=1, th=1, tags=["exploracion", "lista-gmaps-2"])
 
+# ══════════════════════════════════════════════════════════════════════════
+#  Las dos HEATONIST — pedido de Juan el 28/8. Salsas picantes, con el
+#  lineup completo de Hot Ones y cata en el local.
+#  Van CON horario cargado, que es la excepción a la regla de la tanda de
+#  exploración: estos sí se verificaron contra heatonist.com el 28/8.
+# ══════════════════════════════════════════════════════════════════════════
+a(id="heatonistwb", n="HEATONIST Williamsburg", cat="arq", hood="Williamsburg", boro="Brooklyn",
+  sub="Bedford Av (L)", lat=40.7201719, lng=-73.9594757, addr="121 Wythe Ave, Brooklyn",
+  cost=15, costN="una botella ronda $12-20; probar es gratis", dur=0.5,
+  why="La tienda insignia: mas de 100 salsas artesanales para PROBAR en el local, con el lineup completo de Hot Ones — las mismas diez que toman los invitados del programa, en orden de menor a mayor. El local es el grande de los dos.",
+  jp=1, th=1, tags=["exploracion", "pedido-juan", "horario-verificado"])
+a(id="heatonistch", n="HEATONIST Chelsea Market", cat="arq", hood="Chelsea", boro="Manhattan",
+  sub="14 St (A,C,E), 8 Av (L)", lat=40.7420513, lng=-74.0048973, addr="75 9th Ave (dentro del Chelsea Market)",
+  cost=15, costN="una botella ronda $12-20; probar es gratis", dur=0.3,
+  why="La sucursal chica, ADENTRO del Chelsea Market donde ya almuerzan el viernes. Mismo catalogo de mas de 100 salsas y la misma cata, en menos metros y con mas gente.",
+  jp=1, th=1, tags=["exploracion", "pedido-juan", "horario-verificado"])
+
 SUB = {
  # ── MIRADOR ──
  "Observatorio pago":   ["summit", "topofrock", "edge", "esb", "owo"],
@@ -1474,7 +1491,8 @@ SUB = {
  "Restaurante americano": ["sylvias",
                          "grandbrasserie"],
  "Tienda con historia":   ["mcnallyjackson", "hkflea", "economycandy", "booksaremagic",
-                         "jerseygardens"],
+                         "jerseygardens",
+                         "heatonistwb", "heatonistch"],
  # ── de la segunda lista de Google Maps ──
  "Café y brunch":         ["bubbys"],
 }
@@ -1591,6 +1609,14 @@ HRS = {
  "tkts":         _h(ma=["11:00","18:00"], mi=["11:00","18:00"], ju=["11:00","18:00"],
                     vi=["11:00","18:00"], sa=["11:00","18:00"]),
 }
+# HEATONIST: 12-19 en Williamsburg y 12-18:45 en Chelsea Market, todos los días.
+# Verificado en heatonist.com el 28/8 — por eso llevan horario y la tanda de
+# exploración no.
+HRS["heatonistwb"] = _h(lu=["12:00","19:00"], ma=["12:00","19:00"], mi=["12:00","19:00"],
+                        ju=["12:00","19:00"], vi=["12:00","19:00"], sa=["12:00","19:00"], do=["12:00","19:00"])
+HRS["heatonistch"] = _h(lu=["12:00","18:45"], ma=["12:00","18:45"], mi=["12:00","18:45"],
+                        ju=["12:00","18:45"], vi=["12:00","18:45"], sa=["12:00","18:45"], do=["12:00","18:45"])
+
 for _pid, _h_ in HRS.items():
     assert _pid in _byid, "id inexistente en HRS: " + _pid
     _byid[_pid]["hrs"] = _h_

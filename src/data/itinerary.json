@@ -929,7 +929,7 @@
     },
     {
      "t": "14:30",
-     "txt": "Almuerzo en Chelsea Market — COMER FUERTE: es la comida grande del día, la cena de hoy es un bocado rápido entre el SUMMIT y el Vanguard. Los Tacos No.1 o Very Fresh Noodles. Ahora hay casi DOS HORAS: sin apuro, y si quedaron galerías de Chelsea sin ver, se vuelve.",
+     "txt": "Almuerzo en Chelsea Market — COMER FUERTE: es la comida grande del día, la cena de hoy es un bocado rápido entre el SUMMIT y el Vanguard. Los Tacos No.1 o Very Fresh Noodles. Ahora hay casi DOS HORAS: sin apuro, y si quedaron galerías de Chelsea sin ver, se vuelve. ★ HEATONIST está ADENTRO de este mismo mercado (12-18:45): más de 100 salsas picantes para probar, con el lineup de Hot Ones. Si el sábado no llegan a la de Williamsburg, esta es la misma cata en menos metros.",
      "pid": "chelseamarket",
      "who": "both",
      "kind": "comida",
@@ -1071,11 +1071,12 @@
     },
     {
      "t": "15:15",
-     "txt": "Paseo por Williamsburg: Bedford Ave, disquerías y vintage. OPCIONAL si quieren la panorámica: Westlight (piso 22, sin cover, un trago) — lo bajaron a 'quizás', así que es prescindible. NO comer nada: lo que viene lo merece.",
-     "pid": "",
+     "txt": "Paseo por Williamsburg: Bedford Ave, disquerías y vintage. ★ ACÁ ENTRA HEATONIST (121 Wythe Ave, a una cuadra de Bedford): la tienda insignia de salsas picantes, con más de 100 para probar en el local y el lineup completo de Hot Ones. Abre 12-19 todos los días, así que a esta hora está abierta y les queda de camino al Williamsburg Bridge. OPCIONAL si quieren la panorámica: Westlight (piso 22, sin cover, un trago) — lo bajaron a 'quizás'. NO comer nada: lo que viene lo merece.",
+     "pid": "heatonistwb",
      "who": "both",
      "kind": "paseo",
-     "note": ""
+     "note": "",
+     "trav": "🚶 ~20 min a pie (1.2 km) o 🚇 ~15 min · estimado"
     },
     {
      "t": "16:45",

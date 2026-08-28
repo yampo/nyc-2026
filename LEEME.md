@@ -29,6 +29,25 @@ de noche. De resto entra todo: comida, museos, bares, parques, arquitectura.
 
 ---
 
+## 28 de agosto de 2026 · las salsas picantes, resueltas dos veces
+
+**HEATONIST entra al plan, y en los dos lugares donde ya iban a estar.** No hubo que mover nada.
+
+- **Sábado 5, 15:15** — el paseo por Williamsburg ahora la nombra: la tienda insignia está en
+  **121 Wythe Ave, a una cuadra de Bedford**, justo donde ya caminan, y les queda de paso hacia
+  el Williamsburg Bridge y Peter Luger. Más de 100 salsas para probar en el local, con el lineup
+  completo de Hot Ones — las mismas diez del programa, en orden.
+- **Viernes 4, 14:30** — la otra sucursal está **adentro del Chelsea Market**, donde almuerzan.
+  A 108 metros de la mesa. Es la misma cata en menos metros y con más gente.
+
+O sea que tienen dos oportunidades: si el sábado se les pasa, el viernes ya habían estado al
+lado sin saberlo.
+
+**Los horarios están verificados** en heatonist.com: Williamsburg abre 12 a 19 todos los días y
+Chelsea Market 12 a 18:45. En los dos casos van a estar abiertos a la hora que pasan.
+
+---
+
 ## 28 de agosto de 2026 · el New York Pass, cada uno por su lado
 
 En la pestaña **Costos** ahora está el análisis del New York Pass **calculado por separado para

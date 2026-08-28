@@ -115,7 +115,9 @@ with sync_playwright() as pw:
           const caja = p => p.lat >= 40.49 && p.lat <= 40.92 && p.lng >= -74.27 && p.lng <= -73.68;
           return {n: ex.length,
                   fuera: ex.filter(p => !p.lat || !caja(p)).map(p => p.n),
-                  conHrs: ex.filter(p => p.hrs).map(p => p.n),
+                  /* horarios permitidos SOLO con el tag que dice que se verificaron
+                     contra la fuente. Sin el tag, un horario es un horario inventado. */
+                  conHrs: ex.filter(p => p.hrs && !(p.tags||[]).includes('horario-verificado')).map(p => p.n),
                   sinPorque: ex.filter(p => !p.why || p.why.length < 40).map(p => p.n),
                   costoSinNota: ex.filter(p => p.cost > 0 && !p.costN).map(p => p.n),
                   interes: ex.filter(p => p.jp !== 1 || p.th !== 1).map(p => p.n)};
@@ -123,7 +125,8 @@ with sync_playwright() as pw:
         assert r["n"] >= 40, f"solo {r['n']} lugares de exploración"
         assert not r["fuera"], f"pin fuera de Nueva York: {r['fuera']}"
         # horarios sin verificar es peor que no tener horarios: que nadie los invente después
-        assert not r["conHrs"], f"horarios sin verificar: {r['conHrs']}"
+        assert not r["conHrs"], \
+            f"horarios sin el tag 'horario-verificado': {r['conHrs']}. Si los verificaste contra la fuente, ponéselo; si no, sacá el horario."
         assert not r["sinPorque"], f"sin un porqué que sirva: {r['sinPorque']}"
         assert not r["costoSinNota"], f"cobran y no dicen que el precio es estimado: {r['costoSinNota']}"
         # 1/1 = sugerencia. Si alguno arranca en 2 se cuela en «lo que quieren ver».

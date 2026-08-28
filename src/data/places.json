@@ -9906,10 +9906,132 @@
    "gname": "",
    "must": 0,
    "typ": "Comida al paso"
+  },
+  {
+   "id": "heatonistwb",
+   "n": "HEATONIST Williamsburg",
+   "cat": "arq",
+   "hood": "Williamsburg",
+   "boro": "Brooklyn",
+   "sub": "Bedford Av (L)",
+   "lat": 40.7201719,
+   "lng": -73.9594757,
+   "addr": "121 Wythe Ave, Brooklyn",
+   "cost": 15,
+   "costN": "una botella ronda $12-20; probar es gratis",
+   "dur": 0.5,
+   "why": "La tienda insignia: mas de 100 salsas artesanales para PROBAR en el local, con el lineup completo de Hot Ones — las mismas diez que toman los invitados del programa, en orden de menor a mayor. El local es el grande de los dos.",
+   "jp": 1,
+   "th": 1,
+   "tags": [
+    "exploracion",
+    "pedido-juan",
+    "horario-verificado"
+   ],
+   "closed": "",
+   "free": "",
+   "book": "",
+   "main": false,
+   "src": "propuesta",
+   "aprox": false,
+   "gname": "",
+   "must": 0,
+   "typ": "Tienda con historia",
+   "hrs": [
+    [
+     "12:00",
+     "19:00"
+    ],
+    [
+     "12:00",
+     "19:00"
+    ],
+    [
+     "12:00",
+     "19:00"
+    ],
+    [
+     "12:00",
+     "19:00"
+    ],
+    [
+     "12:00",
+     "19:00"
+    ],
+    [
+     "12:00",
+     "19:00"
+    ],
+    [
+     "12:00",
+     "19:00"
+    ]
+   ]
+  },
+  {
+   "id": "heatonistch",
+   "n": "HEATONIST Chelsea Market",
+   "cat": "arq",
+   "hood": "Chelsea",
+   "boro": "Manhattan",
+   "sub": "14 St (A,C,E), 8 Av (L)",
+   "lat": 40.7420513,
+   "lng": -74.0048973,
+   "addr": "75 9th Ave (dentro del Chelsea Market)",
+   "cost": 15,
+   "costN": "una botella ronda $12-20; probar es gratis",
+   "dur": 0.3,
+   "why": "La sucursal chica, ADENTRO del Chelsea Market donde ya almuerzan el viernes. Mismo catalogo de mas de 100 salsas y la misma cata, en menos metros y con mas gente.",
+   "jp": 1,
+   "th": 1,
+   "tags": [
+    "exploracion",
+    "pedido-juan",
+    "horario-verificado"
+   ],
+   "closed": "",
+   "free": "",
+   "book": "",
+   "main": false,
+   "src": "propuesta",
+   "aprox": false,
+   "gname": "",
+   "must": 0,
+   "typ": "Tienda con historia",
+   "hrs": [
+    [
+     "12:00",
+     "18:45"
+    ],
+    [
+     "12:00",
+     "18:45"
+    ],
+    [
+     "12:00",
+     "18:45"
+    ],
+    [
+     "12:00",
+     "18:45"
+    ],
+    [
+     "12:00",
+     "18:45"
+    ],
+    [
+     "12:00",
+     "18:45"
+    ],
+    [
+     "12:00",
+     "18:45"
+    ]
+   ]
   }
  ],
  "generated": "2026-08-16",
- "count": 302,
+ "count": 304,
  "subs": {
   "mirador": [
    "Ferry y teleférico",
