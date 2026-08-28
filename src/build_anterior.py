@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Construye la V2 de la app — la versión donde se trabaja la interfaz — a partir de
-`app_template_v2.html`, y la deja en `v2.html` en la raíz del repo.
+Construye la app ANTERIOR —la que estuvo publicada hasta el 27/8 a la noche— a
+partir de `app_template_anterior.html`, y la deja en `v1.html` en la raíz.
 
 POR QUÉ EXISTE, y qué NO hace:
   · La v1 (`app_template.html` → `index.html`) es la que Juan y Thais usan de verdad,
@@ -20,12 +20,12 @@ POR QUÉ EXISTE, y qué NO hace:
 import base64, json, os, hashlib, datetime
 
 _R = os.path.dirname(os.path.abspath(__file__))
-TPL = os.path.join(_R, "app_template_v2.html")
+TPL = os.path.join(_R, "app_template_anterior.html")
 LF = os.path.join(_R, "vendor/leaflet")
-OUT_RAIZ = os.path.join(os.path.dirname(_R), "v2.html")
+OUT_RAIZ = os.path.join(os.path.dirname(_R), "v1.html")
 
 if not os.path.exists(TPL):
-    raise SystemExit("falta app_template_v2.html — es la copia sobre la que se trabaja la interfaz")
+    raise SystemExit("falta app_template_anterior.html — es la app que estuvo publicada hasta el 27/8")
 
 pj = json.load(open(os.path.join(_R, "data/places.json"), encoding="utf-8"))
 itin = json.load(open(os.path.join(_R, "data/itinerary.json"), encoding="utf-8"))["days"]
@@ -38,7 +38,7 @@ d = {
 }
 _MES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"]
 _now = datetime.datetime.now()
-d["ver"] = f"{_now.day} {_MES[_now.month-1]} {_now.year} · {_now:%H:%M} · V2"
+d["ver"] = f"{_now.day} {_MES[_now.month-1]} {_now.year} · {_now:%H:%M} · ANTERIOR"
 tpl = open(TPL, encoding="utf-8").read()
 d["verId"] = hashlib.md5(
     (json.dumps(d["places"], sort_keys=True, ensure_ascii=False)
@@ -50,8 +50,8 @@ html = tpl.replace("/*__DATA__*/", json.dumps(d, ensure_ascii=False, separators=
 
 # La v2 NO puede compartir el estado guardado con la v1: si comparten clave, probar
 # la v2 pisaría las marcas y las notas que Juan tiene en la app de verdad.
-assert "nyc2026.v1" in html, "no encontré la clave de localStorage en el template v2"
-html = html.replace("nyc2026.v1", "nyc2026.v2")
+assert "nyc2026.v1" in html, "no encontré la clave de localStorage en el template anterior"
+html = html.replace("nyc2026.v1", "nyc2026.anterior")
 
 # Leaflet embebido, igual que en build_pages.py: por índice de string, no por regex
 # (el JS de Leaflet tiene escapes que rompen las plantillas de re.sub).
@@ -78,6 +78,6 @@ if i >= 0:
 
 with open(OUT_RAIZ, "w", encoding="utf-8") as f:
     f.write(html)
-print(f"V2 ok · {round(len(html)/1024)} KB · sello {d['verId']}")
+print(f"ANTERIOR ok · {round(len(html)/1024)} KB · sello {d['verId']}")
 print(f"   → {OUT_RAIZ}")
-print("   la v1 no se tocó · estado en localStorage: nyc2026.v2")
+print("   la app actual no se tocó · estado en localStorage: nyc2026.anterior")

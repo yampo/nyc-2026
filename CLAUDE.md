@@ -376,28 +376,41 @@ cartelera por JavaScript y no se dejan leer.
 
 ---
 
-## La V2 — donde se trabaja la interfaz
+## La app nueva y cómo volver atrás
 
-`src/app_template_v2.html` → `src/build_v2.py` → **`v2.html`** en la raíz.
-Se publica con el resto, así que se abre en **yampo.github.io/nyc-2026/v2.html** y se compara
-con la v1 desde el mismo celular.
+El **27/8 a la noche la interfaz rediseñada pasó a ser la principal**. Quedaron así:
 
-- **La cadena de la v1 no se toca.** `build_v2.py` no corre dentro de `build_all.py` a propósito:
-  se corre a mano cuando se quiere ver el rediseño.
-- **Comparten los datos, no la interfaz.** La v2 lee los mismos JSON.
-- **Estado separado**: `build_v2.py` reemplaza `nyc2026.v1` por `nyc2026.v2` en el HTML, para que
-  probar la v2 no pise las marcas y notas reales de Juan. Si tocás esa cadena en el template, el
-  build falla con un assert.
-- Lleva un **banner naranja** arriba diciendo que es la de pruebas.
+| archivo | qué es | estado en el navegador |
+|---|---|---|
+| `src/app_template.html` | la app **actual** (la rediseñada) | `nyc2026.v1` — hereda las marcas y notas |
+| `src/app_template_anterior.html` | la que estuvo publicada hasta esa noche | — |
+| `index.html` | lo que sirve GitHub Pages | `nyc2026.v1` |
+| `v1.html` | la anterior, para comparar | `nyc2026.anterior` — no pisa nada |
 
-Lo que cambió la v2 respecto de la v1: tarjeta **«Ahora»** que cruza la hora con el itinerario,
-bloques **plegados** con un toque para expandir (el día 7 pasó de 5.540 px a 1.652), tres pesos
-visuales según el tipo de bloque, header y pestañas en un solo sticky, y swipe para cambiar de
-día. `fresh()`, `migrate()` y `hydrate()` quedaron byte por byte idénticos a la v1.
+`build_anterior.py` genera `v1.html`. **No corre dentro de `build_all.py`**: se corre a mano
+cuando se quiere regenerar la vieja.
 
-El diagnóstico de UX está en `docs/ux_diagnostico_v2.md` y sus tests en `src/test_v2.py`.
+**PARA VOLVER ATRÁS**, si la nueva no convence:
+
+```bash
+git mv src/app_template.html src/app_template_v2.html
+git mv src/app_template_anterior.html src/app_template.html
+python3 src/build_all.py --test && git commit -am "vuelvo a la interfaz anterior" && git push
+```
+
+El estado guardado sobrevive: las dos usan `nyc2026.v1` y `fresh`/`migrate`/`hydrate` son
+idénticos byte por byte entre las dos.
+
+**Lo que cambió**: tarjeta «Ahora» que cruza la hora con el itinerario, bloques plegados con un
+toque para expandir (el día 7 pasó de 5.540 px a 1.652), tres pesos visuales, header y pestañas
+en un solo sticky, y swipe para cambiar de día.
+
+⚠️ **Los bloques vienen plegados y el detalle no está en el DOM hasta tocarlos.** Los tests que
+miran chips, notas, ▲▼✕ o referencias tienen que llamar a `desplegar()` primero — está en
+`test_app.py`. Trece chequeos fallaron por esto y ninguno era una función rota.
 
 ---
+
 
 ## Cuando el deploy de Pages se cuelga
 

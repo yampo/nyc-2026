@@ -24,6 +24,21 @@ with sync_playwright() as pw:
     pg.on("console", lambda m: console.append(f"{m.type}: {m.text}") if m.type in ("error", "warning") else None)
     pg.goto(URL); pg.wait_for_timeout(1200)
 
+    def desplegar():
+        """La v2 pliega los bloques: el detalle —chips, notas, ▲▼✕, referencias de
+        paso y de barrio— no está en el DOM hasta que se toca el bloque. Los tests
+        que buscan ese detalle tienen que desplegarlo primero. En la v1 esto no
+        hacía falta pero tampoco molesta: si no hay nada plegable, no pasa nada."""
+        n = pg.locator('#v-itin .blk').count()
+        for i in range(n):
+            try:
+                b_ = pg.locator('#v-itin .blk').nth(i)
+                if not b_.locator('[data-act="opennote"], .bmeta').count():
+                    b_.click(timeout=1500); pg.wait_for_timeout(45)
+            except Exception:
+                pass
+        pg.wait_for_timeout(180)
+
     def check(label, fn):
         n0 = len(errors)
         try: fn()
@@ -42,10 +57,11 @@ with sync_playwright() as pw:
     pg.click('.tab[data-t="itin"]'); pg.wait_for_timeout(300)
     check("cambiar de día (día 5)", lambda: pg.click('.dbtn[data-d="5"]'))
     check("marcar bloque hecho", lambda: pg.click('.blk .ck'))
+    desplegar()   # la v2 pliega los bloques; el detalle no está en el DOM hasta tocarlos
     check("mover bloque abajo", lambda: pg.click('.blk .mini[data-act="down"]'))
-    check("abrir ficha de lugar", lambda: pg.click('.blk .chip[data-act="info"]'))
+    check("abrir ficha de lugar", lambda: (desplegar(), pg.click('.blk .chip[data-act="info"]')))
     check("cerrar ficha", lambda: pg.click('#ov', position={"x": 10, "y": 10}))
-    check("abrir campo de nota", lambda: pg.click('.blk .notebtn'))
+    check("abrir campo de nota", lambda: (desplegar(), pg.click('.blk .notebtn')))
     check("escribir nota", lambda: pg.fill('.blk .bnote', 'probando nota'))
     check("agregar lugar al día", lambda: (pg.click('#addBlk'), pg.wait_for_timeout(400),
                                            pg.click('#pl .opt')))
@@ -156,6 +172,7 @@ with sync_playwright() as pw:
         vistos = 0
         for d in range(1, 10):
             pg.click(f'.dbtn[data-d="{d}"]'); pg.wait_for_timeout(160)
+            desplegar()
             vistos += pg.locator('#v-itin .paso1').count()
         assert vistos >= 20, f"apenas {vistos} referencias en los 9 días"
     check("hay referencias de paso repartidas en los 9 días", paso_aparece)
@@ -164,6 +181,7 @@ with sync_playwright() as pw:
         """Nada agendado, nada repetido dentro del día, nada que los dos hayan
         bajado a 0, nada cerrado ese día."""
         pg.click('.dbtn[data-d="2"]'); pg.wait_for_timeout(250)
+        desplegar()
         r = pg.evaluate("""() => {
           const d = S.itin.find(x => x.n === S.day);
           const usados = {}; S.itin.forEach(x => x.blocks.forEach(b => { if (b.pid) usados[b.pid]=1; }));

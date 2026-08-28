@@ -29,6 +29,29 @@ de noche. De resto entra todo: comida, museos, bares, parques, arquitectura.
 
 ---
 
+## 27 de agosto de 2026 · la app cambió de cara
+
+**La interfaz nueva pasó a ser la principal.** Lo que van a notar al abrirla:
+
+- **Arriba de todo, una tarjeta que dice qué toca ahora**: en qué bloque están, cuál sigue y en
+  cuántos minutos, con un botón para arrancar a caminar. La app sabía la hora y sabía el
+  itinerario, y hasta hoy nunca los cruzaba.
+- **Los bloques vienen plegados**: hora, título y una línea. **Un toque los abre entero**, con
+  todo lo que había antes — el texto completo, los mapas, los lugares de paso, las notas. No se
+  borró nada, está a un toque.
+- El día 7, por ejemplo, pasó de **5.540 píxeles de alto a 1.652**. Un tercio del scroll.
+- **Se cambia de día deslizando** el dedo a los costados.
+- Los bloques de logística —subtes, traslados— quedaron en gris chiquito, y los destacados más
+  grandes. Antes pesaban todos igual.
+
+**Sus marcas, notas y tildes siguen ahí.** La app nueva lee lo mismo que la vieja.
+
+**Y si no les gusta, se vuelve atrás.** La versión anterior quedó publicada en
+`yampo.github.io/nyc-2026/v1.html` para comparar, y volver a ponerla de principal es un cambio
+de dos minutos. Prueben la nueva unos días; si molesta, se revierte sin drama.
+
+---
+
 ## 27 de agosto de 2026 · la llegada del sábado cambia a Uber Shuttle
 
 **El sábado 29 se llega en un solo transporte.** Antes eran tres con las valijas a las siete de
