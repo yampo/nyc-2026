@@ -201,6 +201,12 @@ select.f{padding:10px 11px;border:1px solid var(--line);border-radius:11px;backg
 .mk{border-radius:50%;border:2.5px solid #fff;box-shadow:0 1px 5px rgba(0,0,0,.35)}
 /* Referencia de paso: anillo hueco, para que se lea distinto de una parada del día */
 .mkpaso{width:15px;height:15px;background:#fff;border:3px solid;box-shadow:0 1px 4px rgba(0,0,0,.3)}
+/* Pin de la vista de conjunto: el número del día es la identidad, el color acompaña */
+.mdchip{cursor:pointer;font-size:11.5px;padding:3px 9px 3px 5px;font-weight:600}
+.mdchip:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.mdia{width:21px;height:21px;border-radius:50%;border:2px solid #fff;color:#fff;
+  font:700 11px/17px ui-sans-serif,system-ui,sans-serif;text-align:center;
+  box-shadow:0 1px 4px rgba(0,0,0,.35)}
 .mnum{display:grid;place-items:center;color:#fff;font-size:11px;font-weight:800;
   border-radius:50%;border:2.5px solid #fff;box-shadow:0 1px 6px rgba(0,0,0,.4)}
 .leaflet-popup-content{margin:11px 13px;font:13px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif}
@@ -457,6 +463,18 @@ const CAT = {
   teatro:{n:'Teatro',c:'#9c36b5'},  transporte:{n:'Logística',c:'#495057'}
 };
 const WHO = {both:'Ambos', jp:'Solo JP', th:'Thais'};
+/* ── Los 9 días en el mapa ────────────────────────────────────────────────────
+   Nueve colores simultáneos NO se distinguen: se probaron siete paletas contra
+   el validador y ninguna llega al piso de ΔE 15 en visión normal — la mejor da
+   12,4, y el par rojo/naranja de esta da 7,1. Por eso el color acá es APOYO y
+   la identidad la lleva el NÚMERO DEL DÍA en cada pin, que no depende de la
+   vista. Y tocando un día en la leyenda se aísla, que es la salida cuando dos
+   colores se parecen.
+   La paleta son los 8 slots categóricos de referencia (ya validados entre sí)
+   más un violeta; ninguno lee gris, que era el otro modo de fallar. */
+const DIA_COLOR = ['#2a78d6','#eb6834','#008300','#4a3aa7','#eda100',
+                   '#e87ba4','#1baf7a','#e34948','#9a3fbf'];
+let SOLO_DIA = null;          /* día aislado en la vista de conjunto; UI transitoria */
 const DOW_IDX = {'Lunes':0,'Martes':1,'Miércoles':2,'Jueves':3,'Viernes':4,'Sábado':5,'Domingo':6};
 const KEY = 'nyc2026.v1';
 
@@ -1441,6 +1459,7 @@ function rMap(){
       <div class="tools">
         <select class="f" id="mday" style="max-width:220px">
           <option value="">Todos los lugares</option>
+          <option value="todos">★ Los 9 días juntos — cada uno con su color</option>
           ${S.itin.map(d => `<option value="${d.n}">Día ${d.n} · ${d.dow} ${d.date.slice(8)}/${d.date.slice(5,7)}</option>`).join('')}
         </select>
         <select class="f" id="mcat" style="max-width:210px"><option value="">Todo</option>
@@ -1454,16 +1473,22 @@ function rMap(){
         <button class="tg" id="mfree">Solo gratis</button>
       </div>
       <div id="map"></div>
-      <div class="flex" style="margin-top:11px">
-        ${Object.entries(CAT).map(([k,v]) =>
-          `<span class="chip" style="background:${v.c}1a;color:${v.c}">● ${v.n}</span>`).join('')}
-      </div>
+      <div class="flex" style="margin-top:11px" id="mleg"></div>
       <p class="xs muted" style="margin-top:11px">Las coordenadas de los pines son aproximadas (±50–100 m).
       Para navegar, usá el botón <b>“Abrir en Google Maps”</b> del popup: busca por nombre y dirección exactos.
       El mapa necesita conexión a internet.</p>`;
     el.dataset.built = '1';
-    $('#mday').onchange = e => { S.mapDay = e.target.value ? +e.target.value : null; drawMap(); };
+    $('#mday').onchange = e => {
+      const v = e.target.value;
+      S.mapDay = v === 'todos' ? 'todos' : (v ? +v : null);
+      SOLO_DIA = null; drawMap(); };
     $('#mcat').onchange = drawMap;
+    $('#mleg').addEventListener('click', e => {
+      const b = e.target.closest('[data-dia]'); if (!b) return;
+      const n = +b.dataset.dia;
+      SOLO_DIA = SOLO_DIA === n ? null : n;   /* tocar el mismo vuelve a los nueve */
+      drawMap();
+    });
     $('#mfree').onclick = e => { e.target.classList.toggle('on'); drawMap(); };
   }
   if (S.mapDay) $('#mday').value = S.mapDay;
@@ -1563,6 +1588,53 @@ function drawMap(){
   // csel viene como "c:<categoría>" o "s:<tipo>"
   const matchSel = p => !csel || (csel.startsWith('c:') ? p.cat === csel.slice(2) : p.typ === csel.slice(2));
   let items = [];
+  /* ── Vista de conjunto: los 9 recorridos a la vez ───────────────────────── */
+  if (dsel === 'todos'){
+    /* La leyenda pasa a ser de DÍAS y es el control de aislamiento: tocar uno
+       lo deja solo. Es la salida real cuando dos colores se parecen — y con
+       nueve series siempre hay dos que se parecen. */
+    const leg = $('#mleg');
+    if (leg) leg.innerHTML = `<span class="xs muted" style="width:100%;margin-bottom:2px">
+        Tocá un día para verlo solo${SOLO_DIA ? ' · <b>tocá de nuevo para volver a los nueve</b>' : ''}.
+        No se dibuja lo que queda fuera de la ciudad (el hotel de New Jersey), que deformaba el mapa.</span>` +
+      S.itin.map((d, i) => { const c = DIA_COLOR[i % DIA_COLOR.length];
+        const on = !SOLO_DIA || SOLO_DIA === d.n;
+        return `<button class="chip mdchip" data-dia="${d.n}" style="background:${c}${on?'22':'0d'};
+          color:${on?c:'var(--mut)'};border:1.5px solid ${SOLO_DIA===d.n?c:'transparent'}">
+          <b style="display:inline-block;width:15px;height:15px;border-radius:50%;background:${on?c:'var(--line)'};
+          color:#fff;font-size:9.5px;line-height:15px;text-align:center;margin-right:4px">${d.n}</b>${d.dow.slice(0,3)} ${d.date.slice(8)}/${d.date.slice(5,7)}</button>`;
+      }).join('');
+    const pts = [];
+    S.itin.forEach((d, di) => {
+      if (SOLO_DIA && d.n !== SOLO_DIA) return;
+      const col = DIA_COLOR[di % DIA_COLOR.length];
+      const ruta = [], vistos = {};
+      d.blocks.forEach(b => {
+        const p = b.pid ? PBY[b.pid] : null;
+        if (!p || !p.lat || vistos[p.id]) return;
+        /* Fuera de la ciudad no entra: el hotel de Branchburg está a 60 km y
+           deforma el encuadre — Manhattan quedaba apretado en una esquina y el
+           recorrido, ilegible. Esta vista es el viaje DENTRO de Nueva York. */
+        if (p.boro === 'New Jersey' || p.boro === 'Fuera de NYC') return;
+        vistos[p.id] = 1;
+        ruta.push([p.lat, p.lng]); pts.push([p.lat, p.lng]);
+        /* el NÚMERO DEL DÍA es la identidad: el color solo acompaña */
+        L.marker([p.lat, p.lng], {icon: L.divIcon({className:'',
+            html:`<div class="mdia" style="background:${col}">${d.n}</div>`,
+            iconSize:[21,21], iconAnchor:[11,11]})})
+          .addTo(LAYER)
+          .bindPopup(`<h4>${esc(b.t)} · ${esc(p.n)}</h4>
+            <div style="color:${col};font-weight:700;font-size:12px;margin-bottom:5px">
+              Día ${d.n} · ${esc(d.dow)} ${d.date.slice(8)}/${d.date.slice(5,7)}</div>
+            <div style="color:#66707d;font-size:12px">${esc(p.typ)} · ${esc(p.hood)}</div>`);
+      });
+      if (ruta.length > 1)
+        L.polyline(ruta, {color: col, weight: SOLO_DIA ? 4 : 2.5,
+                          opacity: SOLO_DIA ? .95 : .6}).addTo(LAYER);
+    });
+    if (pts.length) MAP.fitBounds(pts, {padding:[36,36], maxZoom: SOLO_DIA ? 14 : 12});
+    return;
+  }
   if (dsel){
     const d = S.itin.find(x => x.n === +dsel);
     d.blocks.forEach(b => { if (b.pid && PBY[b.pid]) items.push({p:PBY[b.pid], num:items.length+1, t:b.t}); });
@@ -1572,6 +1644,9 @@ function drawMap(){
   } else {
     items = PLACES.filter(p => matchSel(p) && (!fsel || p.cost === 0 || p.free)).map(p => ({p, num:null}));
   }
+  const leg = $('#mleg');
+  if (leg) leg.innerHTML = Object.entries(CAT).map(([k,v]) =>
+    `<span class="chip" style="background:${v.c}1a;color:${v.c}">● ${v.n}</span>`).join('');
   const pts = [], ruta = [];
   items.forEach(({p,num,t,paso}) => {
     if (!p.lat) return;

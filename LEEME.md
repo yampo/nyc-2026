@@ -29,6 +29,27 @@ de noche. De resto entra todo: comida, museos, bares, parques, arquitectura.
 
 ---
 
+## 28 de agosto de 2026 · el mapa con los nueve días juntos
+
+En la pestaña **Mapa**, arriba, hay una opción nueva: **«★ Los 9 días juntos»**. Muestra los
+nueve recorridos al mismo tiempo, cada uno con su color y su línea, para ver de un vistazo cómo
+se reparte el viaje por la ciudad. Se nota enseguida que el día 1 sube al norte, el 8 es todo
+Brooklyn, el 2 baja al sur y el 7 se queda sobre el oeste.
+
+**Cada pin lleva el número del día adentro**, y no es un adorno: nueve colores distintos no se
+llegan a distinguir bien —lo verifiqué con siete combinaciones y ninguna daba— así que el número
+es lo que te dice de qué día es cada punto. El color ayuda a leer el conjunto, el número resuelve
+la duda.
+
+**Y tocando un día en la lista de abajo, se queda solo.** El resto desaparece y la línea de ese
+día se ve más gruesa. Tocás de nuevo y vuelven los nueve. Es la forma cómoda de seguir un
+recorrido sin marearse con los colores.
+
+El hotel de New Jersey no se dibuja en esta vista: está a 60 kilómetros y hacía que Manhattan
+quedara apretado en una esquina, ilegible.
+
+---
+
 ## 28 de agosto de 2026 · las salsas picantes, resueltas dos veces
 
 **HEATONIST entra al plan, y en los dos lugares donde ya iban a estar.** No hubo que mover nada.

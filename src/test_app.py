@@ -307,6 +307,36 @@ with sync_playwright() as pw:
         pg.click('#ov', position={"x": 10, "y": 10}); pg.wait_for_timeout(250)
     check("tocar una referencia abre su ficha", paso_abre_ficha)
 
+    def mapa_nueve_dias():
+        """La vista de conjunto: los 9 recorridos a la vez, cada uno con su color,
+        y el NÚMERO del día en cada pin — que es la identidad real, porque nueve
+        colores no se distinguen (se validaron siete paletas y ninguna llega al
+        piso de ΔE 15). Tocar un día en la leyenda lo aísla."""
+        pg.click('.tab[data-t="map"]'); pg.wait_for_timeout(2400)
+        pg.select_option('#mday', 'todos'); pg.wait_for_timeout(2200)
+        r = pg.evaluate("""() => ({pines: document.querySelectorAll('.mdia').length,
+            rutas: document.querySelectorAll('.leaflet-overlay-pane path').length,
+            chips: document.querySelectorAll('.mdchip').length,
+            fueraDeNYC: [...document.querySelectorAll('.mdia')].length})""")
+        assert r["chips"] == 9, f"la leyenda tiene {r['chips']} días, no 9"
+        assert r["rutas"] >= 8, f"solo {r['rutas']} recorridos dibujados"
+        assert r["pines"] >= 50, f"solo {r['pines']} paradas"
+        # el número del día tiene que estar EN el pin: es la identidad no-color
+        nums = pg.evaluate("[...document.querySelectorAll('.mdia')].map(e=>e.textContent.trim())")
+        assert all(n.isdigit() and 1 <= int(n) <= 9 for n in nums), f"pines sin número de día: {set(nums)}"
+        # aislar y volver
+        pg.locator('.mdchip[data-dia="7"]').click(); pg.wait_for_timeout(1600)
+        solo = pg.evaluate("document.querySelectorAll('.mdia').length")
+        assert 0 < solo < r["pines"], f"aislar no filtró: {solo} de {r['pines']}"
+        assert pg.evaluate("document.querySelectorAll('.leaflet-overlay-pane path').length") == 1, \
+            "aislado debería quedar un solo recorrido"
+        pg.locator('.mdchip[data-dia="7"]').click(); pg.wait_for_timeout(1600)
+        assert pg.evaluate("document.querySelectorAll('.mdia').length") == r["pines"], \
+            "tocar de nuevo no volvió a los nueve días"
+        pg.select_option('#mday', ''); pg.wait_for_timeout(1200)
+        pg.click('.tab[data-t="itin"]'); pg.wait_for_timeout(400)
+    check("el mapa muestra los 9 días juntos y sabe aislar uno", mapa_nueve_dias)
+
     def paso_en_el_mapa():
         """Se tienen que ver en el mapa del día aunque no tengan número de visita,
         y sin entrar en la línea del recorrido."""

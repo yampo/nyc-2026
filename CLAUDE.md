@@ -236,6 +236,31 @@ en vez de chips de paso.
 
 ---
 
+## El mapa con los 9 días juntos
+
+Opción **«★ Los 9 días juntos»** en el selector del mapa: los nueve recorridos a la vez, cada
+uno con su color y su polilínea.
+
+**El color NO es la identidad — el número del día en el pin sí.** Se probaron siete paletas
+contra `validate_palette.js` con `--pairs all` (que es el caso real: en un mapa todos los colores
+se ven juntos) y **ninguna llega al piso de ΔE 15 en visión normal**; la mejor da 12,4 y hasta la
+paleta de referencia de 8 slots falla ahí, con el rojo y el naranja a 7,1. Nueve series
+distinguibles solo por color no existen. Por eso:
+
+- cada pin lleva el **número del día**, que no depende de la vista;
+- la **leyenda aísla**: tocar un día lo deja solo y atenúa el resto — es la salida real cuando
+  dos colores se parecen, y con nueve siempre hay dos que se parecen;
+- la paleta elegida son los 8 slots categóricos de referencia más un violeta, que al menos
+  garantiza que **ninguno lea gris** (el otro modo de fallar).
+
+**Se excluyen los puntos fuera de la ciudad** (`boro` New Jersey o Fuera de NYC). El hotel de
+Branchburg está a 60 km y deformaba el encuadre: Manhattan quedaba apretado en una esquina y el
+recorrido, ilegible.
+
+`SOLO_DIA` es UI transitoria y vive en una variable de módulo — **no toca el estado guardado**.
+
+---
+
 ## Ruta del día a Apple Maps
 
 `app_template.html` genera links `https://maps.apple.com/directions` — el **formato unificado
@@ -510,7 +535,7 @@ Está en `~/.claude/skills/coe-defaults/` si lo tenés instalado. Lo que más pe
 ```bash
 git pull                              # SIEMPRE primero
 # … editar src/build_*.py o src/app_template.html …
-.venv/bin/python src/build_all.py --test       # build + 65 chequeos
+.venv/bin/python src/build_all.py --test       # build + 66 chequeos
 git add -A && git commit -m "..." && git push     # esto publica
 ```
 
