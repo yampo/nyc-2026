@@ -29,6 +29,39 @@ de noche. De resto entra todo: comida, museos, bares, parques, arquitectura.
 
 ---
 
+## 27 de agosto de 2026 · lo que Juan eligió del informe
+
+**Entraron los 40 lugares que marcaste**, más 7 datos que cambian bloques del itinerario.
+
+Los lugares van como referencia de paso, igual que los otros: aparecen cuando pasás cerca, no
+ocupan tiempo del plan. Ahora hay **129 referencias** repartidas en los nueve días. Algunos de
+los que elegiste caen justo encima del recorrido: el **lobby del Chanin** y el **globo del Daily
+News** están a media cuadra de Grand Central, **Joe's Pizza** y **Pommes Frites** a pasos del
+Vanguard, **Juliana's** al lado del Fulton Ferry Landing.
+
+**Y siete cosas que ya no son propuestas sino correcciones al plan:**
+
+- **MoMA, lunes 31** — está *Frida and Diego: The Last Dream*, y cierra el 12 de septiembre.
+- **MET, martes 1** — están *Musical Bodies* (Galería 199) y *Costume Art*. Y ojo: **el Cantor
+  Roof Garden**, la terraza con vista a Central Park que recomiendan todas las guías, **está
+  cerrado hasta 2030**. No existe en este viaje.
+- **Studio Museum, sábado 29** — *Fade* cierra el 6 de septiembre, así que esa es la única
+  pasada posible. La entrada es **con horario asignado**: hay que sacarla antes.
+- **Frick, miércoles 2** — la ventana a voluntad es de 13:30 a 17:30 y **eso es todo**: fuera de
+  ahí son 30 dólares. Conviene reservar online.
+- **MoMA PS1** — es **gratis para todos**, y su muestra grande sigue en pie hasta el 7/9. Eso
+  hace mucho más fácil la decisión del domingo.
+- **Whitney, viernes 4** — gratis de 17:00 a 22:00 y están en el barrio, pero choca de frente
+  con la Morgan y el SUMMIT. Está explicado en las alternativas de ese día.
+- **Domingo 6, lo que se pierden** — a las 20:00 el Met proyecta gratis en Lincoln Center *El
+  Último Sueño de Frida y Diego*, la misma Frida de la muestra del MoMA. Salen del hotel 19:40
+  hacia el aeropuerto. Está a diez cuadras, pero no entra sin arriesgar el vuelo.
+
+Del informe descartaste el US Open. Las otras 70 propuestas quedaron sin marcar: siguen en la
+página por si querés volver.
+
+---
+
 ## 27 de agosto de 2026 · el plan B del último día
 
 **MoMA PS1 queda armado como alternativa del Guggenheim, listo para usar o no.**

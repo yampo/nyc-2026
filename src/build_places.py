@@ -1123,44 +1123,266 @@ a(id="nybg", n="New York Botanical Garden", cat="parque", hood="Bronx Park", bor
   why="Un bosque original de 20 hectareas que nunca se talo, mas el invernadero victoriano. A diez cuadras de Arthur Avenue.",
   jp=1, th=1, tags=["exploracion"])
 
+
+# ══════════════════════════════════════════════════════════════════════════
+#  SELECCIÓN DE JUAN — 40 de las 124 propuestas que armaron los tres agentes
+#  el 27/8 y que él marcó ★ en informe_exploracion.html.
+#  Mismas reglas que la tanda anterior: interés 1/1 (son sugerencias, no
+#  plan), coordenadas de Nominatim VALIDADAS contra el centroide del barrio,
+#  y sin `hrs` — los horarios no están confirmados contra fuente oficial.
+#  La validación volvió a ganarse el sueldo: a «19 First Avenue» Nominatim
+#  lo mandó a Riverhead, Suffolk County, a 104 km. Corregido a mano, igual
+#  que el Haughwout que había caído en Staten Island.
+# ══════════════════════════════════════════════════════════════════════════
+a(id="juddfoundation", n="Judd Foundation (101 Spring St)", cat="museo", hood="SoHo", boro="Manhattan",
+  sub="Spring St (6)", lat=40.7234986, lng=-73.99939, addr="101 Spring St",
+  cost=33, costN="estimado, sin verificar contra la fuente", dur=1.5,
+  why="Donald Judd compró este edificio de hierro fundido de 1870 en 1968 por US$ 68.000 y vivió ahí hasta su muerte en 1994. Cada piso es un solo ambiente y Judd dejó todo fijo: qué mueble va dónde, qué obra cuelga de qué pared, qué se ve por cada ventana.",
+  jp=1, th=1, tags=["exploracion", "eleccion-juan"])
+a(id="stpaulschapel", n="St. Paul's Chapel", cat="arq", hood="Financial District", boro="Manhattan",
+  sub="Fulton St (2,3,4,5,A,C,J,Z)", lat=40.711318, lng=-74.0092102, addr="209 Broadway",
+  cost=0, costN="", dur=0.5,
+  why="1766, es la iglesia más vieja que queda en pie en Manhattan y el edificio público en uso continuo más antiguo de la isla. Adentro está el banco donde rezó George Washington el día de su asunción, el 30 de abril de 1789.",
+  jp=1, th=1, tags=["exploracion", "eleccion-juan"])
+a(id="africanburial", n="African Burial Ground National Monument", cat="museo", hood="Civic Center", boro="Manhattan",
+  sub="Chambers St (J,Z,4,5,6)", lat=40.7147234, lng=-74.0051418, addr="290 Broadway",
+  cost=0, costN="", dur=0.7,
+  why="en 1991, excavando los cimientos de una torre de oficinas, aparecieron 419 esqueletos. Era el cementerio de africanos esclavizados y libres de la Nueva York colonial, entre 6 y 20 mil personas enterradas ahí entre 1690 y 1794, tapado y olvidado por dos siglos.",
+  jp=1, th=1, tags=["exploracion", "eleccion-juan"])
+a(id="customhouse", n="Alexander Hamilton U.S. Custom House", cat="museo", hood="Financial District", boro="Manhattan",
+  sub="Bowling Green (4,5)", lat=40.7040569, lng=-74.0137545, addr="1 Bowling Green",
+  cost=0, costN="", dur=1.5,
+  why="el edificio de Cass Gilbert de 1907 es más interesante que la excusa para entrar. La rotonda oval de tres pisos tiene los murales que Reginald Marsh pintó en 1936-37 con fondos de la WPA: ocho escenas del puerto de Nueva York y ocho retratos de navegantes.",
+  jp=1, th=1, tags=["exploracion", "eleccion-juan"])
+a(id="irishhunger", n="Irish Hunger Memorial", cat="arq", hood="Battery Park City", boro="Manhattan",
+  sub="Chambers St (1,2,3)", lat=40.7147356, lng=-74.0158442, addr="Vesey St & North End Ave",
+  cost=0, costN="", dur=0.4,
+  why="media hectárea de campo irlandés levantada y trasplantada a Manhattan, con una casa de piedra real de la época de la hambruna donada por la familia Slack de Attymass, condado de Mayo, desarmada y rearmada acá piedra por piedra.",
+  jp=1, th=1, tags=["exploracion", "eleccion-juan"])
+a(id="poetshouse", n="Poets House", cat="museo", hood="Battery Park City", boro="Manhattan",
+  sub="Chambers St (1,2,3)", lat=40.7160909, lng=-74.0162918, addr="10 River Terrace",
+  cost=0, costN="", dur=0.6,
+  why="una biblioteca de 70.000 volúmenes dedicada exclusivamente a poesía, con ventanales al Hudson, gratis y sin carnet: se entra, se agarra un libro, se sienta. La fundó Stanley Kunitz en 1985. Es el lugar donde matar una hora en el Financial District sin gastar ni hacer cola.",
+  jp=1, th=1, tags=["exploracion", "eleccion-juan"])
+a(id="pine70", n="Lobby de 70 Pine Street", cat="arq", hood="Financial District", boro="Manhattan",
+  sub="Wall St (2,3)", lat=40.7064733, lng=-74.0077415, addr="70 Pine St",
+  cost=0, costN="", dur=0.2,
+  why="1932, la Cities Service Company, 290 metros — el tercer edificio más alto del mundo cuando se inauguró. El lobby art déco tiene un detalle que casi nadie mira: en el vestíbulo hay maquetas en relieve del propio edificio, o sea el edificio retratándose a sí mismo.",
+  jp=1, th=1, tags=["exploracion", "eleccion-juan"])
+a(id="chanin", n="Lobby del Chanin Building", cat="arq", hood="Midtown East", boro="Manhattan",
+  sub="Grand Central-42 St (4,5,6,7,S)", lat=40.7512124, lng=-73.9765595, addr="122 E 42nd St",
+  cost=0, costN="", dur=0.2,
+  why="1929, a media cuadra de Grand Central y enfrente del Chrysler, y nadie entra.",
+  jp=1, th=1, tags=["exploracion", "eleccion-juan"])
+a(id="dailynews", n="Globo del Daily News Building", cat="arq", hood="Midtown East", boro="Manhattan",
+  sub="Grand Central-42 St (4,5,6,7,S)", lat=40.7501297, lng=-73.9733465, addr="220 E 42nd St",
+  cost=0, costN="", dur=0.2,
+  why="el globo terráqueo interior más grande del mundo — 3,6 metros de diámetro, 1.800 kilos — girando en un pozo espejado bajo una cúpula de vidrio negro, con el piso de terrazo marcando distancias y rumbos a las grandes ciudades.",
+  jp=1, th=1, tags=["exploracion", "eleccion-juan"])
+a(id="tudorcity", n="Tudor City Greens", cat="parque", hood="Midtown East", boro="Manhattan",
+  sub="Grand Central-42 St (4,5,6,7,S)", lat=40.7494783, lng=-73.9701388, addr="Tudor City Pl",
+  cost=0, costN="", dur=0.3,
+  why="dos parques privados abiertos al público arriba de un barranco, con el mirador que da directo sobre la 42 hacia el este — es la postal del puente de la 42 sobre el cañón de la calle.",
+  jp=1, th=1, tags=["exploracion", "eleccion-juan"])
+a(id="amsteryard", n="Amster Yard (Instituto Cervantes)", cat="arq", hood="Midtown East", boro="Manhattan",
+  sub="51 St (6), Lexington Av-53 St (E,M)", lat=40.7550451, lng=-73.9705045, addr="211 E 49th St",
+  cost=0, costN="", dur=0.3,
+  why="un patio en L escondido detrás de una fila de conventillos, que el decorador James Amster armó entre 1944 y 1946 juntando varios fondos de casa. Isamu Noguchi tuvo su taller acá.",
+  jp=1, th=1, tags=["exploracion", "eleccion-juan"])
+a(id="sixandhalf", n="6½ Avenue", cat="arq", hood="Midtown", boro="Manhattan",
+  sub="57 St (F), 7 Av (B,D,E)", lat=40.7634689, lng=-73.9801264, addr="6 1/2 Ave & W 53rd St",
+  cost=0, costN="", dur=0.4,
+  why="la única avenida fraccionaria de la grilla de Nueva York, oficializada con cartel de calle por el Departamento de Transporte en julio de 2012.",
+  jp=1, th=1, tags=["exploracion", "eleccion-juan"])
+a(id="sniffencourt", n="Sniffen Court", cat="arq", hood="Murray Hill", boro="Manhattan",
+  sub="33 St (6)", lat=40.7472326, lng=-73.9779701, addr="150 E 36th St",
+  cost=0, costN="", dur=0.2,
+  why="diez caballerizas de ladrillo de 1863-64, construidas por John Sniffen y convertidas en casas en los años 20. Es el callejón privado más intacto de Manhattan y no se ve desde ningún lado salvo parado justo enfrente.",
+  jp=1, th=1, tags=["exploracion", "eleccion-juan"])
+a(id="posterhouse", n="Poster House", cat="museo", hood="Chelsea", boro="Manhattan",
+  sub="23 St (F,M,1)", lat=40.7435881, lng=-73.9933365, addr="119 W 23rd St",
+  cost=15, costN="estimado, sin verificar contra la fuente", dur=1.0,
+  why="el primer museo de Estados Unidos dedicado exclusivamente al afiche, abierto en 2019. Y el dato que lo hace fácil: el viernes es gratis y abre hasta las 21:00 — que es exactamente el día que están en Chelsea. Está a cinco cuadras de la High Line.",
+  jp=1, th=1, tags=["exploracion", "eleccion-juan"])
+a(id="cushmanrow", n="Cushman Row", cat="arq", hood="Chelsea", boro="Manhattan",
+  sub="23 St (C,E)", lat=40.7447213, lng=-74.0033841, addr="406 W 20th St",
+  cost=0, costN="", dur=0.2,
+  why="Don Alonzo Cushman construyó estas seis casas en 1839-40 en tierra que le compró a Clement Clarke Moore, el que escribió \"'Twas the night before Christmas\".",
+  jp=1, th=1, tags=["exploracion", "eleccion-juan"])
+a(id="patchinplace", n="Patchin Place", cat="arq", hood="Greenwich Village", boro="Manhattan",
+  sub="W 4 St (A,C,E,B,D,F,M)", lat=40.7349905, lng=-73.9993107, addr="Patchin Place, W 10th St",
+  cost=0, costN="", dur=0.2,
+  why="diez casitas de 1848 en un callejón con portón de 1929, justo enfrente de la Jefferson Market Library que ya tienen agendada. E.E. Cummings vivió en el número 4 durante cuarenta años; Djuna Barnes, en el 5, del otro lado del callejón.",
+  jp=1, th=1, tags=["exploracion", "eleccion-juan"])
+a(id="bedford75", n="75½ Bedford Street", cat="arq", hood="West Village", boro="Manhattan",
+  sub="Christopher St (1)", lat=40.731345, lng=-74.0049771, addr="75 Bedford St",
+  cost=0, costN="", dur=0.2,
+  why="2,90 metros de ancho en el frente, 2,60 adentro y 60 centímetros en su punto más angosto: la casa más flaca de Nueva York, construida en 1873 sobre lo que era la entrada de carruajes de la casa de al lado. Vivieron ahí Edna St.",
+  jp=1, th=1, tags=["exploracion", "eleccion-juan"])
+a(id="westbeth", n="Westbeth Artists Housing", cat="arq", hood="West Village", boro="Manhattan",
+  sub="14 St (A,C,E), 8 Av (L)", lat=40.7368831, lng=-74.0085005, addr="55 Bethune St",
+  cost=0, costN="", dur=0.4,
+  why="acá estaban los Bell Labs. En este edificio se inventó el transistor, se hizo la primera transmisión de televisión y Claude Shannon escribió la teoría de la información.",
+  jp=1, th=1, tags=["exploracion", "eleccion-juan"])
+a(id="clintongarden", n="Clinton Community Garden", cat="parque", hood="Hell's Kitchen", boro="Manhattan",
+  sub="50 St (C,E)", lat=40.7625352, lng=-73.9908001, addr="434 W 48th St",
+  cost=0, costN="", dur=0.3,
+  why="1978, el barrio estaba lleno de terrenos baldíos y los vecinos ocuparon uno. Cuando la ciudad quiso rematarlo, juntaron US$ 1 el pie cuadrado vendiendo llaves del portón y se lo compraron. Fue el primer jardín comunitario de Nueva York que pasó a ser parque municipal.",
+  jp=1, th=1, tags=["exploracion", "eleccion-juan"])
+a(id="pomanderwalk", n="Pomander Walk", cat="arq", hood="Upper West Side", boro="Manhattan",
+  sub="96 St (1,2,3)", lat=40.7937231, lng=-73.9733507, addr="261 W 94th St",
+  cost=0, costN="", dur=0.2,
+  why="27 casas Tudor de dos pisos con fachadas pastel y jardincitos, en un pasaje privado en el medio de la manzana.",
+  jp=1, th=1, tags=["exploracion", "eleccion-juan"])
+a(id="strauspark", n="Straus Park", cat="parque", hood="Upper West Side", boro="Manhattan",
+  sub="103 St (1)", lat=40.8015504, lng=-73.9676666, addr="Broadway & W 106th St",
+  cost=0, costN="", dur=0.3,
+  why="Isidor Straus era dueño de Macy's y murió en el Titanic. Su mujer Ida se negó a subir al bote salvavidas y se quedó con él.",
+  jp=1, th=1, tags=["exploracion", "eleccion-juan"])
+a(id="nyhistorical", n="The New York Historical", cat="museo", hood="Upper West Side", boro="Manhattan",
+  sub="81 St-Museum of Natural History (B,C)", lat=40.7792489, lng=-73.9743038, addr="170 Central Park West",
+  cost=24, costN="estimado, sin verificar contra la fuente", dur=2.0,
+  why="está literalmente pegado al Museo de Historia Natural, que hacen el miércoles 2 — misma cuadra, otra puerta.",
+  jp=1, th=1, tags=["exploracion", "eleccion-juan"])
+a(id="parkarmory", n="Park Avenue Armory", cat="arq", hood="Upper East Side", boro="Manhattan",
+  sub="68 St-Hunter College (6)", lat=40.7672334, lng=-73.9655036, addr="643 Park Ave",
+  cost=0, costN="", dur=1.0,
+  why="el Veterans Room, terminado en 1881, es el interior intacto más importante que queda en el mundo de Louis Comfort Tiffany y Associated Artists — Tiffany hizo los vidrios, el mural y los azulejos de la chimenea; Stanford White, toda la carpintería; Candace Wheeler, los textiles.",
+  jp=1, th=1, tags=["exploracion", "eleccion-juan"])
+a(id="hendersonplace", n="Henderson Place", cat="arq", hood="Upper East Side", boro="Manhattan",
+  sub="86 St (4,5,6) + M86", lat=40.7752778, lng=-73.945, addr="Henderson Pl, E 86th St",
+  cost=0, costN="", dur=0.2,
+  why="21 casitas de ladrillo rojo Queen Anne de 1880-82, de Lamb & Rich, que el peletero John Cleves Henderson mandó a construir \"para gente de recursos moderados\" cuando llegó el elevado de la Segunda Avenida. Techos con gabletes, mansardas y torrecitas, todas distintas, en un enclave de media hectárea.",
+  jp=1, th=1, tags=["exploracion", "eleccion-juan"])
+a(id="columbuspark", n="Columbus Park", cat="parque", hood="Chinatown", boro="Manhattan",
+  sub="Canal St (J,N,Q,R,W,6)", lat=40.7148572, lng=-74.0000602, addr="Columbus Park, Baxter St",
+  cost=0, costN="", dur=0.4,
+  why="acá estaba Mulberry Bend, el corazón de Five Points — el peor conventillo de la historia de Nueva York, al que Jacob Riis le dedicó un capítulo entero de *How the Other Half Lives* llamándolo \"el núcleo podrido de los suburbios de Nueva York\".",
+  jp=1, th=1, tags=["exploracion", "eleccion-juan"])
+a(id="fultonferry", n="Fulton Ferry Landing", cat="mirador", hood="DUMBO", boro="Brooklyn",
+  sub="High St (A,C), York St (F)", lat=40.7033383, lng=-73.995142, addr="Fulton Ferry Landing, Brooklyn",
+  cost=0, costN="", dur=0.3,
+  why="acá salía el ferry de Brooklyn, que cruza el East River desde 1642, y acá Walt Whitman escribió \"Crossing Brooklyn Ferry\".",
+  jp=1, th=1, tags=["exploracion", "eleccion-juan"])
+a(id="vinegarhill", n="Vinegar Hill", cat="barrio", hood="DUMBO", boro="Brooklyn",
+  sub="York St (F), High St (A,C)", lat=40.7015194, lng=-73.9826357, addr="Hudson Ave & Front St, Brooklyn",
+  cost=0, costN="", dur=0.5,
+  why="uno de los distritos históricos más chicos de Nueva York — tres cuadras de casas federales y Greek Revival sobre adoquines belgas de verdad, encajadas entre DUMBO y el Brooklyn Navy Yard, con 2.700 habitantes.",
+  jp=1, th=1, tags=["exploracion", "eleccion-juan"])
+a(id="catedralrusa", n="Catedral de la Transfiguración", cat="arq", hood="Williamsburg", boro="Brooklyn",
+  sub="Bedford Av (L)", lat=40.7195025, lng=-73.9533782, addr="228 N 12th St, Brooklyn",
+  cost=0, costN="", dur=0.3,
+  why="Louis Allmendinger la construyó entre 1916 y 1921 copiando la Catedral de la Dormición del Kremlin de Moscú: planta de cruz griega, ladrillo amarillo, y cinco cúpulas de cobre en forma de cebolla sobre campanarios octogonales. Se declaró monumento de la ciudad en 1969.",
+  jp=1, th=1, tags=["exploracion", "eleccion-juan"])
+a(id="girlpuzzle", n="The Girl Puzzle (Nellie Bly)", cat="arq", hood="Roosevelt Island", boro="Manhattan",
+  sub="Roosevelt Island (F) + Red Bus", lat=40.7706, lng=-73.9397, addr="Lighthouse Park, Roosevelt Island",
+  cost=0, costN="", dur=0.4,
+  why="cinco caras de bronce de tres metros, de Amanda Matthews, inauguradas en diciembre de 2021 — algunas partidas en pedazos, otras con las grietas reparadas a la vista.",
+  jp=1, th=1, tags=["exploracion", "eleccion-juan"])
+a(id="theoctagon", n="The Octagon", cat="arq", hood="Roosevelt Island", boro="Manhattan",
+  sub="Roosevelt Island (F)", lat=40.7631769, lng=-73.9488178, addr="888 Main St, Roosevelt Island",
+  cost=0, costN="", dur=0.3,
+  why="es la entrada original del New York City Lunatic Asylum, de Alexander Jackson Davis, inaugurado en 1841 — el manicomio que Nellie Bly denunció.",
+  jp=1, th=1, tags=["exploracion", "eleccion-juan"])
+a(id="xianfamous", n="Xi'an Famous Foods (W 45th)", cat="comida", hood="Midtown", boro="Manhattan",
+  sub="47-50 Sts-Rockefeller Ctr (B,D,F,M)", lat=40.7561989, lng=-73.9819584, addr="60 W 45th St",
+  cost=18, costN="estimado, sin verificar contra la fuente", dur=0.5,
+  why="los *spicy cumin lamb hand-ripped noodles* (N1), fideos estirados a mano con cordero y comino. La versión para comer parado es el *spicy cumin lamb burger* (B2).",
+  jp=1, th=1, tags=["exploracion", "eleccion-juan"])
+a(id="grandbrasserie", n="Grand Brasserie", cat="comida", hood="Midtown East", boro="Manhattan",
+  sub="Grand Central-42 St (4,5,6,7,S)", lat=40.7526944, lng=-73.977253, addr="89 E 42nd St",
+  cost=55, costN="estimado, sin verificar contra la fuente", dur=1.2,
+  why="brasserie grande dentro de Vanderbilt Hall, la sala de mármol de Grand Central. El valor acá no es la cocina: es que abre 19 horas por día y está a 40 metros del ancla del viernes.",
+  jp=1, th=1, tags=["exploracion", "eleccion-juan"])
+a(id="africakine", n="Africa Kine", cat="comida", hood="Harlem", boro="Manhattan",
+  sub="116 St (2,3)", lat=40.8141504, lng=-73.9441093, addr="2267 Adam Clayton Powell Jr Blvd",
+  cost=25, costN="estimado, sin verificar contra la fuente", dur=1.0,
+  why="el senegalés más veterano de Nueva York, el ancla del Little Senegal de Harlem. Pedí thiéboudienne (arroz con pescado, plato nacional) o yassa de pollo con cebolla, limón y aceitunas. Es otra cocina, no una variante del soul food de Sylvia's.",
+  jp=1, th=1, tags=["exploracion", "eleccion-juan"])
+a(id="unclelou", n="Uncle Lou", cat="comida", hood="Chinatown", boro="Manhattan",
+  sub="Canal St (J,N,Q,R,W,6)", lat=40.7162837, lng=-73.9993899, addr="73 Mulberry St",
+  cost=37, costN="estimado, sin verificar contra la fuente", dur=1.0,
+  why="cantonés de Louis Wong, Critic's Pick del NYT. El pollo al ajo de piel crocante es por lo que va la gente; también wonton, siu mai y chow mei fun con vieiras y sepia frita. Mesas redondas con lazy susan y tres generaciones de familias chinas comiendo.",
+  jp=1, th=1, tags=["exploracion", "eleccion-juan"])
+a(id="lilfrankies", n="Lil' Frankie's", cat="comida", hood="East Village", boro="Manhattan",
+  sub="2 Av (F)", lat=40.72992, lng=-73.98361, addr="19 First Ave",
+  cost=30, costN="estimado, sin verificar contra la fuente", dur=1.2,
+  why="pizza napolitana a horno de leña y pastas a mano. La marinara (sin muzzarella) y la bianca con aceite de trufa y romero.",
+  jp=1, th=1, tags=["exploracion", "eleccion-juan"])
+a(id="joespizza", n="Joe's Pizza (Carmine St)", cat="comida", hood="Greenwich Village", boro="Manhattan",
+  sub="W 4 St (A,C,E,B,D,F,M)", lat=40.7305467, lng=-74.0020629, addr="7 Carmine St",
+  cost=10, costN="estimado, sin verificar contra la fuente", dur=0.3,
+  why="desde 1975, la porción de muzzarella clásica de Nueva York. No hay nada más rápido que sea igual de bueno tan cerca del club.",
+  jp=1, th=1, tags=["exploracion", "eleccion-juan"])
+a(id="pommesfrites", n="Pommes Frites", cat="comida", hood="Greenwich Village", boro="Manhattan",
+  sub="W 4 St (A,C,E,B,D,F,M)", lat=40.7300993, lng=-74.0002841, addr="128 MacDougal St",
+  cost=11, costN="estimado, sin verificar contra la fuente", dur=0.3,
+  why="papas belgas doble fritura en cono de papel, con una lista larga de salsas (la de trufa y la de mango-chutney-mayo son las clásicas). No es una comida, es lo que se come a las 2 de la mañana.",
+  jp=1, th=1, tags=["exploracion", "eleccion-juan"])
+a(id="julianas", n="Juliana's Pizza", cat="comida", hood="DUMBO", boro="Brooklyn",
+  sub="High St (A,C), York St (F)", lat=40.7027428, lng=-73.9934333, addr="19 Old Fulton St, Brooklyn",
+  cost=25, costN="estimado, sin verificar contra la fuente", dur=1.0,
+  why="es la pizzería de Patsy Grimaldi, que vendió su nombre y volvió a abrir al lado en 2012. Horno de carbón. La Margherita clásica, o la \"No. 1\" con mozzarella de búfala.",
+  jp=1, th=1, tags=["exploracion", "eleccion-juan"])
+a(id="smorgasburg", n="Smorgasburg Williamsburg", cat="comida", hood="Williamsburg", boro="Brooklyn",
+  sub="Bedford Av (L)", lat=40.7209531, lng=-73.9622447, addr="Marsha P. Johnson State Park, Kent Ave, Brooklyn",
+  cost=22, costN="estimado, sin verificar contra la fuente", dur=1.5,
+  why="74 puestos esta temporada, 22 nuevos. Sirve para picar liviano y llegar con hambre a Peter Luger: porciones chicas de muchos puestos en vez de un plato.",
+  jp=1, th=1, tags=["exploracion", "eleccion-juan"])
+a(id="tradinoi", n="Trattoria Tra Di Noi", cat="comida", hood="Belmont", boro="Bronx",
+  sub="Fordham Rd (B,D)", lat=40.855029, lng=-73.8868064, addr="622 E 187th St, Bronx",
+  cost=65, costN="estimado, sin verificar contra la fuente", dur=1.5,
+  why="es el que eligen los que viven ahí, no los que bajan del bus turístico. Diez mesas, cocina de Marco Coletta (nacido en Abruzzo, 50 años de oficio). El menú del día lo cantan los mozos; el pez espada es el plato que destaca Infatuation. Venden la salsa por pinta.",
+  jp=1, th=1, tags=["exploracion", "eleccion-juan"])
+
 SUB = {
  # ── MIRADOR ──
  "Observatorio pago":   ["summit", "topofrock", "edge", "esb", "owo"],
  "Rooftop bar":         ["westlight", "thecrown", "molounge",
                          "campbell"],
  "Mirador gratis":      ["bhpromenade", "gantry", "domino", "forttryon", "sunsetparkview", "valentino",
-                         "elevatedacre"],
+                         "elevatedacre",
+                         "fultonferry"],
  "Ferry y teleférico":  ["siferry", "tram"],
  # ── MUSEO ──
  "Museo de arte":       ["met", "cloisters", "moma", "whitney", "guggenheim", "frick", "bkmuseum",
                          "momaps1", "studiomuseum", "noguchi", "diabeacon",
-                         "roerich"],
+                         "roerich",
+                         "juddfoundation"],
  "Museo de historia":   ["mcny", "tenement", "911museum", "cityreliquary", "transitmuseum",
-                         "hamiltongrange", "merchantshouse"],
+                         "hamiltongrange", "merchantshouse",
+                         "africanburial", "customhouse", "nyhistorical"],
  "Museo de ciencia":    ["amnh"],
  "Museo temático":      ["momi", "intrepid", "mercerlabs",
-                         "firemuseum", "skyscrapermuseum", "cityreliquary2"],
+                         "firemuseum", "skyscrapermuseum", "cityreliquary2",
+                         "posterhouse"],
  "Biblioteca histórica":["morgan",
-                         "jeffersonmkt"],
+                         "jeffersonmkt",
+                         "poetshouse"],
  # ── BARRIO ──
  "Barrio étnico":       ["jacksonheights", "astoria", "greenpoint", "sunsetpark", "arthurave",
                          "ridgewood", "bayridge", "flushing", "chinatown"],
- "Barrio histórico":    ["harlem", "les", "westvillage", "inwood"],
+ "Barrio histórico":    ["harlem", "les", "westvillage", "inwood",
+                         "vinegarhill"],
  "Waterfront":          ["redhook", "dumbo"],
  "Isla":                ["govisland", "rooseveltisland"],
  # ── COMIDA ──
  "Mercado y food hall": ["essexmarket", "chelseamarket", "arthurmarket", "newworldmall", "dekalb", "timeoutmarket",
-                         "gansevoortmkt"],
+                         "gansevoortmkt",
+                         "smorgasburg"],
  "Deli y pastrami":     ["katzs", "splunch", "russdaughters", "frankels",
                          "barneygreengrass"],
  "Hamburguesería":      ["hamburgerica",
                          "cornerbistro"],
- "Pizzería":            ["lbspumoni", "totonnos", "lucali", "manos"],
+ "Pizzería":            ["lbspumoni", "totonnos", "lucali", "manos",
+                         "joespizza", "julianas"],
  "Restaurante étnico":  ["lhasa", "nepalibhanchha", "jalapenoking", "elbronco", "henan", "uyghur",
                          "pierozek", "karczma", "malecon", "tanoreen", "kyclades",
-                         "nomwah"],
+                         "nomwah",
+                         "africakine", "unclelou", "lilfrankies", "tradinoi"],
  "Comida al paso":      ["casadellamozz", "cosenza", "lostacos",
-                         "dipalos", "murrays", "grayspapaya"],
+                         "dipalos", "murrays", "grayspapaya",
+                         "xianfamous", "pommesfrites"],
  "Panadería y bagels":  ["rudys", "bosbagels",
                          "vesuvio", "amysbread"],
  # ── MÚSICA ──
@@ -1170,17 +1392,21 @@ SUB = {
  "Música del mundo":    ["barbes"],
  "Venue alternativo":   ["nublu"],
  # ── ARQUITECTURA ──
- "Interior monumental": ["grandcentral", "nypl", "chrysler", "fordfoundation"],
+ "Interior monumental": ["grandcentral", "nypl", "chrysler", "fordfoundation",
+                         "pine70", "chanin", "dailynews", "parkarmory"],
  "Arquitectura moderna":["littleisland", "fdrpark", "oculus", "twahotel", "vessel", "lincolncenter",
                          "haughwout", "leverhouse", "seagram"],
  "Steakhouse clásico":  ["peterluger"],
  "Templo":              ["eldridge",
-                         "stbarts", "stpatricks", "stjohndivine", "mahayana", "plymouthchurch"],
+                         "stbarts", "stpatricks", "stjohndivine", "mahayana", "plymouthchurch",
+                         "stpaulschapel", "catedralrusa"],
  "Casa y calle histórica": ["onderdonk", "striversrow",
-                         "stonewall", "grovecourt", "washingtonmews", "chargingbull", "hotelchelsea", "apollo", "janescarousel"],
+                         "stonewall", "grovecourt", "washingtonmews", "chargingbull", "hotelchelsea", "apollo", "janescarousel",
+                         "irishhunger", "amsteryard", "sixandhalf", "sniffencourt", "cushmanrow", "patchinplace", "bedford75", "westbeth", "pomanderwalk", "hendersonplace", "girlpuzzle", "theoctagon"],
  # ── PARQUE ──
  "Parque urbano":       ["centralpark", "bryantpark", "washingtonsq", "brooklynbridgepark", "astoriapark",
-                         "paleypark", "greenacre", "pier84", "carlschurz"],
+                         "paleypark", "greenacre", "pier84", "carlschurz",
+                         "tudorcity", "clintongarden", "strauspark", "columbuspark"],
  "Paseo elevado":       ["highline"],
  "Parque de esculturas":["socrates",
                          "elizabethgarden"],
@@ -1201,7 +1427,8 @@ SUB = {
  # ── de la tanda de exploración ──
  "Diner clásico":         ["lexcandy"],
  "Heladería y dulces":    ["levain"],
- "Restaurante americano": ["sylvias"],
+ "Restaurante americano": ["sylvias",
+                         "grandbrasserie"],
  "Tienda con historia":   ["mcnallyjackson", "hkflea", "economycandy", "booksaremagic"],
 }
 
