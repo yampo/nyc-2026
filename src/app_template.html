@@ -1641,6 +1641,19 @@ function rCosts(){
         <td class="sm muted">Cambiá los 0/1/2 en la pestaña Lugares y esto se recalcula solo.</td></tr>
       </tbody></table></div>
 
+    ${EX.passes.por_persona ? (() => { const P = EX.passes.por_persona; return `
+    <div class="sect">${esc(P.titulo)}</div>
+    <div class="banner warn sm" style="margin-bottom:10px">${esc(P.nota)}</div>
+    ${P.gente.map(g => `<div class="card pad" style="margin-bottom:9px">
+      <div class="b" style="font-size:14.5px;margin-bottom:6px">${esc(g.quien)}</div>
+      <div class="sm" style="margin-bottom:5px"><span class="muted">Qué le cubriría:</span> ${esc(g.cubre)}</div>
+      <div class="sm" style="margin-bottom:5px"><span class="muted">La mejor ventana posible:</span> ${esc(g.mejor)}</div>
+      <div class="sm muted" style="margin-bottom:7px">${esc(g.otras)}</div>
+      <div class="banner ${/NO CONVIENE/.test(g.veredicto) ? 'warn' : 'ok'} sm" style="margin:0">${esc(g.veredicto)}</div>
+    </div>`).join('')}
+    <div class="card pad sm" style="margin-bottom:8px"><b style="color:var(--accent)">El agujero:</b> ${esc(P.el_agujero)}</div>
+    <div class="card pad sm" style="margin-bottom:14px"><b style="color:var(--accent)">Lo que ningún pase cubre:</b> ${esc(P.lo_que_nunca_cubre)}</div>`; })() : ''}
+
     <div class="sect">Por qué NO conviene un pase</div>
     ${EX.passes.razones.map((r,i) => `<div class="card pad sm" style="margin-bottom:8px">
       <b style="color:var(--accent)">${i+1}.</b> ${esc(r)}</div>`).join('')}

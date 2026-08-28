@@ -80,13 +80,30 @@ transport = {
 
 # ══════════════════════════════ PASES ══════════════════════════════
 passes = {
- "veredicto": "TICKETS INDIVIDUALES. Ningún pase les cierra con este itinerario, y el ahorro real está en el calendario gratuito, no en los pases.",
+ "veredicto": "TICKETS INDIVIDUALES. Ningún pase les cierra, y ahora está calculado por separado para cada uno: a Juan la mejor ventana posible le hace perder $60 y a Thais $97. El ahorro real de este viaje está en el calendario gratuito, no en los pases.",
+ "por_persona": {
+  "titulo": "The New York Pass, calculado por separado para cada uno (28/8)",
+  "nota": "Los días del pase son CONSECUTIVOS desde el primer uso y cada uno termina a medianoche — no son días flexibles, aunque la página principal lo sugiera. Eso manda todo el cálculo, porque las atracciones caras de este viaje caen salteadas.",
+  "gente": [
+   {"quien": "Juan Pablo — 9 días en Nueva York",
+    "cubre": "$271 en total: dom 30 $72 (Eldridge + Mercer Labs) · lun 31 $72 (MoMA + Top of the Rock) · mié 2 $37 (Historia Natural) · jue 3 $80 (9/11 + One World) · vie 4 $10 (Vessel)",
+    "mejor": "Se probaron las 45 ventanas consecutivas posibles. La mejor es dom 30 → lun 31: cubre $144 y el pase de 2 días cuesta $219. PIERDE $75. Con el Top of the Rock en franja atardecer ($57 en vez de $42) pierde $60, que es lo menos malo que da el cálculo.",
+    "otras": "5 días (dom 30 → jue 3): cubre $261, cuesta $359, pierde $98. Un solo día (jue 3): cubre $80, cuesta $169, pierde $89.",
+    "veredicto": "NO CONVIENE. Para empatar el de 5 días habría que sumar el Empire State ($49) Y el Intrepid ($38) a días que ya van de 8:00 a 22:40 — y empatar no es ganar."},
+   {"quien": "Thais — no está en NY del 31/8 al 2/9 (trabaja en New Jersey)",
+    "cubre": "$82 en total: Mercer Labs y Eldridge Street el domingo 30, y el Vessel el viernes 4. Nada más del pase cae en sus días.",
+    "mejor": "Un solo día, el domingo 30: cubre $72 contra $169 del pase de 1 día. PIERDE $97.",
+    "otras": "Cualquier ventana más larga empeora, porque sus días útiles no son consecutivos: el 31, 1 y 2 está trabajando.",
+    "veredicto": "NO CONVIENE, y no está cerca. Para ella ni siquiera hay una ventana discutible."}],
+  "el_agujero": "Dentro de la única ventana que casi funciona para Juan (dom 30 → jue 3), el MARTES 1 no aporta NADA: el MET y The Cloisters, que son todo ese día, no están en el pase. Es un día pago para no usar.",
+  "lo_que_nunca_cubre": "De lo que hacen, $585 no los cubre ningún pase: SUMMIT ($44), el MET ($30), Frick ($30), Morgan ($25), MoMI ($20), Studio Museum ($16), Transit Museum ($10), el Vanguard, Birdland, Smalls, Dizzy's, Café Wha, el play de Broadway ($90) y Peter Luger ($110)."},
+
  "razones": [
   "El itinerario está construido sobre días gratis y pay-what-you-wish (Whitney viernes, MCNY miércoles, Frick miércoles, Guggenheim domingo, MoMA PS1, MoMI jueves). Nada de eso está en ningún pase, y los pases no lo compensan.",
   "SUMMIT One Vanderbilt y el MET — dos de los ítems más caros y deseados — NO están en NINGÚN pase. Se pagan aparte siempre.",
   "Los precios 'desde' oficiales son bajos si se compra con anticipación (Edge $34 con Advance Saver a 14+ días, Top of the Rock $42, ESB $44). Los pases se calculan contra los precios PICO ($57-69), no contra estos.",
   "El Go City All-Inclusive es de días CONSECUTIVOS: necesitarían ~7 atracciones en 3 días seguidos para amortizarlo, lo que choca de frente con los días de cierre (miércoles cierra el MET, martes cierran Frick y 9/11).",
-  "Thais ya conoce los clásicos y va a hacer bastante menos atracciones pagas. Para ella ningún pase se acerca a amortizar."],
+  "Thais no está en Nueva York del 31/8 al 2/9 —trabaja en New Jersey— así que sus días útiles NO son consecutivos, que es justo lo que el pase exige. En todo el viaje hace $82 de atracciones que el pase cubra, contra $169 del pase más barato."],
  "opciones": [
   {"p": "New York CityPASS C3", "c": "$116 (con fee)", "v": "9 días desde el primer uso",
    "inc": "Elegís 3 de 10: Empire State, Top of the Rock, Statue of Liberty+Ellis, 9/11 Museum, Edge, AMNH, Circle Line, MoMA, Intrepid, Guggenheim",

@@ -29,6 +29,34 @@ de noche. De resto entra todo: comida, museos, bares, parques, arquitectura.
 
 ---
 
+## 28 de agosto de 2026 · el New York Pass, cada uno por su lado
+
+En la pestaña **Costos** ahora está el análisis del New York Pass **calculado por separado para
+Juan y para Thais**, porque ellos no hacen el mismo viaje: Juan está los nueve días y Thais
+trabaja en New Jersey del 31 al 2.
+
+**La conclusión no cambió: a ninguno de los dos le conviene.** Pero ahora está el número.
+
+Lo primero que hay que saber es que **los días del pase son consecutivos**, corridos desde el
+primer uso, y cada uno termina a medianoche. No son días flexibles, aunque la página principal
+lo sugiera. Eso manda todo, porque las atracciones caras de este viaje caen salteadas.
+
+**Juan** — el pase le cubriría $271 en total: el domingo 30, el lunes 31, el miércoles 2, el
+jueves 3 y el viernes 4. Se probaron **las 45 ventanas consecutivas posibles**: la mejor es
+domingo 30 y lunes 31, que cubre $144 contra $219 que cuesta el pase de dos días. **Pierde $75**,
+o $60 si el Top of the Rock resulta ser el de franja atardecer. Ninguna de las 45 gana.
+
+**Thais** — el pase le cubriría $82 en todo el viaje: Mercer Labs y Eldridge el domingo 30, y el
+Vessel el viernes. El pase más barato cuesta $169. **Pierde $97**, y no hay ventana discutible:
+sus días útiles ni siquiera son consecutivos.
+
+**Dos razones concretas de por qué no cierra.** Dentro de la única ventana que casi funciona para
+Juan, el **martes 1 no aporta nada**: el MET y The Cloisters, que son todo ese día, no están en el
+pase — sería pagar un día para no usarlo. Y de todo lo que hacen, hay **$585 que ningún pase
+cubre**: el SUMMIT, el MET, el Frick, la Morgan, el Vanguard, Peter Luger, el play de Broadway.
+
+---
+
 ## 27 de agosto de 2026 · la app cambió de cara
 
 **La interfaz nueva pasó a ser la principal.** Lo que van a notar al abrirla:
