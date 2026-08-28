@@ -338,6 +338,14 @@ fichas, filtros por informe y por texto, y la **misma mecánica de tres estados 
 portapapeles. Es una herramienta de decisión, no un documento de lectura — se revisa desde el
 celular y lo que sale se pega en el chat.
 
+⚠️ **Dentro de un Artifact la página corre en un iframe con sandbox, y ahí NO existen
+`navigator.clipboard`, `alert()`, `confirm()` ni `prompt()`** — fallan sin tirar error, así que
+el botón parece roto y no hay nada en consola. La primera versión del exportador usaba los
+cuatro y Juan reportó que no podía exportar. Lo que sí funciona: `document.execCommand('copy')`
+sobre un `<textarea>` con el texto ya seleccionado, y paneles inline en vez de diálogos. Para
+probarlo hay que cargar la página **dentro de un iframe con `sandbox`** — servida por http, no
+por `file://` — porque suelta funciona perfecto y el bug no aparece.
+
 **Son material crudo para revisar, no catálogo.** Lo que se apruebe entra por el mismo camino
 que la tanda de exploración: `a(...)` en `build_places.py`, interés 1/1, coordenadas
 geocodificadas y validadas, sin `hrs` salvo verificación contra fuente oficial.

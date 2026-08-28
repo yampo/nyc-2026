@@ -1,3 +1,4 @@
+<meta charset="utf-8">
 <title>Explorar Nueva York</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -98,6 +99,22 @@ header.top .sub{color:var(--mut);margin-top:9px;max-width:62ch}
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .pie .n b{color:var(--green)}
 .bt.exp{background:var(--accent);color:#fff}
+/* Panel de exportación. Va DENTRO de la página porque los diálogos del navegador
+   (alert/confirm/prompt) y navigator.clipboard no funcionan dentro del iframe
+   con sandbox donde se publica esto: fallan sin avisar y el botón parece roto. */
+.modal{position:fixed;inset:0;background:rgba(20,22,26,.55);z-index:20;
+  display:none;align-items:flex-end;justify-content:center;padding:0}
+.modal.on{display:flex}
+.hoja{background:var(--card);border-radius:16px 16px 0 0;width:100%;max-width:760px;
+  padding:18px 16px calc(18px + env(safe-area-inset-bottom));max-height:86vh;
+  display:flex;flex-direction:column;gap:11px}
+.hoja h2{font-size:18px;font-weight:700}
+.hoja p{margin:0;font-size:13.5px;color:var(--mut)}
+#salida{width:100%;flex:1;min-height:210px;font:12.5px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;
+  padding:11px;border-radius:10px;border:1px solid var(--line);background:var(--bg);
+  color:var(--ink);resize:vertical}
+.hoja .acc{display:flex;gap:8px;flex-wrap:wrap}
+#aviso{font-size:13px;color:var(--green);font-weight:600;min-height:18px}
 @media (prefers-reduced-motion:no-preference){.it{transition:opacity .15s,border-color .15s}}
 </style>
 
@@ -2008,6 +2025,20 @@ header.top .sub{color:var(--mut);margin-top:9px;max-width:62ch}
   <button class="bt exp" id="exportar">Exportar</button>
 </div>
 
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mt">
+  <div class="hoja">
+    <h2 id="mt">Tu selección</h2>
+    <p>Ya está seleccionada. Tocá <b>Copiar</b> y pegámela en el chat — o copiala a mano
+    si tu navegador no deja.</p>
+    <textarea id="salida" readonly spellcheck="false"></textarea>
+    <div id="aviso" role="status"></div>
+    <div class="acc">
+      <button class="bt exp" id="copiar">Copiar</button>
+      <button class="bt" id="cerrar">Cerrar</button>
+    </div>
+  </div>
+</div>
+
 <script>
 const K='nyc2026.informe.v1';
 let S={}; try{ S=JSON.parse(localStorage.getItem(K))||{}; }catch(e){ S={}; }
@@ -2056,20 +2087,50 @@ document.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{
   filtro=b.dataset.f; pinta();
 });
 document.getElementById('q').oninput=e=>{ busca=e.target.value.toLowerCase().trim(); pinta(); };
-document.getElementById('limpiar').onclick=()=>{
-  if(!confirm('¿Borrar todas las marcas?')) return;
+/* Borrar pide confirmación en el propio botón: dos toques, sin confirm() */
+let armado=null;
+const limpiar=document.getElementById('limpiar');
+limpiar.onclick=()=>{
+  if(!armado){
+    limpiar.textContent='¿Seguro? Tocá de nuevo'; limpiar.classList.add('on');
+    armado=setTimeout(()=>{ limpiar.textContent='Borrar marcas';
+      limpiar.classList.remove('on'); armado=null; }, 4000);
+    return;
+  }
+  clearTimeout(armado); armado=null;
+  limpiar.textContent='Borrar marcas'; limpiar.classList.remove('on');
   S={}; guardar(); items.forEach(el=>delete el.dataset.m); pinta();
 };
+
+const modal=document.getElementById('modal'), salida=document.getElementById('salida'),
+      aviso=document.getElementById('aviso');
 document.getElementById('exportar').onclick=()=>{
   const si=items.filter(el=>el.dataset.m==='1').map(el=>'★ '+clave(el)+'  ['+el.dataset.g+']');
   const no=items.filter(el=>el.dataset.m==='-1').map(el=>'✕ '+clave(el));
-  if(!si.length && !no.length){ alert('Todavía no marcaste nada.'); return; }
-  const txt='LO QUE QUIERO ('+si.length+')\n'+si.join('\n')+
-            '\n\nDESCARTADOS ('+no.length+')\n'+no.join('\n');
-  navigator.clipboard.writeText(txt).then(
-    ()=>alert('Copiado al portapapeles: '+si.length+' marcados y '+no.length+' descartados.\n\nPegámelo en el chat.'),
-    ()=>prompt('Copiá esto y pasámelo:', txt));
+  salida.value = (si.length||no.length)
+    ? 'LO QUE QUIERO ('+si.length+')\n'+(si.join('\n')||'—')+
+      '\n\nDESCARTADOS ('+no.length+')\n'+(no.join('\n')||'—')
+    : 'Todavía no marcaste nada.\n\nTocá ★ en las propuestas que te interesen y volvé acá.';
+  aviso.textContent='';
+  modal.classList.add('on');
+  salida.focus(); salida.select();
 };
+document.getElementById('copiar').onclick=()=>{
+  salida.focus(); salida.select(); salida.setSelectionRange(0, salida.value.length);
+  let ok=false;
+  try{ ok=document.execCommand('copy'); }catch(e){}      /* el que sí anda en sandbox */
+  if(ok){ aviso.textContent='Copiado. Pegámelo en el chat.'; return; }
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(salida.value).then(
+      ()=>{ aviso.textContent='Copiado. Pegámelo en el chat.'; },
+      ()=>{ aviso.textContent='No me deja copiar solo: ya te lo dejé seleccionado, copialo a mano.'; });
+    return;
+  }
+  aviso.textContent='No me deja copiar solo: ya te lo dejé seleccionado, copialo a mano.';
+};
+document.getElementById('cerrar').onclick=()=>modal.classList.remove('on');
+modal.onclick=e=>{ if(e.target===modal) modal.classList.remove('on'); };
+addEventListener('keydown',e=>{ if(e.key==='Escape') modal.classList.remove('on'); });
 pinta();
 addEventListener('resize', pinta);
 </script>
