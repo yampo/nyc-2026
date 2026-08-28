@@ -247,7 +247,9 @@ se ven juntos) y **ninguna llega al piso de ΔE 15 en visión normal**; la mejor
 paleta de referencia de 8 slots falla ahí, con el rojo y el naranja a 7,1. Nueve series
 distinguibles solo por color no existen. Por eso:
 
-- cada pin lleva el **número del día**, que no depende de la vista;
+- cada pin lleva el **orden de la parada dentro de su día** (1, 2, 3…), que es lo que Juan pidió
+  para poder seguir la secuencia. Costo dicho: con los nueve días juntos la identidad del día
+  queda solo en el color — el popup la nombra («Parada 3 del día 7») y la leyenda aísla;
 - la **leyenda aísla**: tocar un día lo deja solo y atenúa el resto — es la salida real cuando
   dos colores se parecen, y con nueve siempre hay dos que se parecen;
 - la paleta elegida son los 8 slots categóricos de referencia más un violeta, que al menos

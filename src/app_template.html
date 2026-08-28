@@ -204,9 +204,9 @@ select.f{padding:10px 11px;border:1px solid var(--line);border-radius:11px;backg
 /* Pin de la vista de conjunto: el número del día es la identidad, el color acompaña */
 .mdchip{cursor:pointer;font-size:11.5px;padding:3px 9px 3px 5px;font-weight:600}
 .mdchip:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
-.mdia{width:21px;height:21px;border-radius:50%;border:2px solid #fff;color:#fff;
-  font:700 11px/17px ui-sans-serif,system-ui,sans-serif;text-align:center;
-  box-shadow:0 1px 4px rgba(0,0,0,.35)}
+.mdia{min-width:22px;height:22px;padding:0 3px;border-radius:11px;border:2px solid #fff;color:#fff;
+  font:700 11.5px/18px ui-sans-serif,system-ui,sans-serif;text-align:center;
+  box-shadow:0 1px 4px rgba(0,0,0,.35);box-sizing:border-box}
 .mnum{display:grid;place-items:center;color:#fff;font-size:11px;font-weight:800;
   border-radius:50%;border:2.5px solid #fff;box-shadow:0 1px 6px rgba(0,0,0,.4)}
 .leaflet-popup-content{margin:11px 13px;font:13px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif}
@@ -1595,6 +1595,7 @@ function drawMap(){
        nueve series siempre hay dos que se parecen. */
     const leg = $('#mleg');
     if (leg) leg.innerHTML = `<span class="xs muted" style="width:100%;margin-bottom:2px">
+        El número de cada punto es el <b>orden de la parada dentro de su día</b>; el color dice qué día es.
         Tocá un día para verlo solo${SOLO_DIA ? ' · <b>tocá de nuevo para volver a los nueve</b>' : ''}.
         No se dibuja lo que queda fuera de la ciudad (el hotel de New Jersey), que deformaba el mapa.</span>` +
       S.itin.map((d, i) => { const c = DIA_COLOR[i % DIA_COLOR.length];
@@ -1608,7 +1609,7 @@ function drawMap(){
     S.itin.forEach((d, di) => {
       if (SOLO_DIA && d.n !== SOLO_DIA) return;
       const col = DIA_COLOR[di % DIA_COLOR.length];
-      const ruta = [], vistos = {};
+      const ruta = [], vistos = {}; let orden = 0;
       d.blocks.forEach(b => {
         const p = b.pid ? PBY[b.pid] : null;
         if (!p || !p.lat || vistos[p.id]) return;
@@ -1616,16 +1617,19 @@ function drawMap(){
            deforma el encuadre — Manhattan quedaba apretado en una esquina y el
            recorrido, ilegible. Esta vista es el viaje DENTRO de Nueva York. */
         if (p.boro === 'New Jersey' || p.boro === 'Fuera de NYC') return;
-        vistos[p.id] = 1;
+        vistos[p.id] = 1; orden++;
         ruta.push([p.lat, p.lng]); pts.push([p.lat, p.lng]);
-        /* el NÚMERO DEL DÍA es la identidad: el color solo acompaña */
+        /* El número es el ORDEN DE LA PARADA dentro del día, para poder seguir la
+           secuencia; el color dice de qué día es. Ojo con el costo: con los nueve
+           días juntos la identidad del día queda SOLO en el color, que con nueve
+           series no alcanza — por eso el popup nombra el día y la leyenda aísla. */
         L.marker([p.lat, p.lng], {icon: L.divIcon({className:'',
-            html:`<div class="mdia" style="background:${col}">${d.n}</div>`,
-            iconSize:[21,21], iconAnchor:[11,11]})})
+            html:`<div class="mdia" style="background:${col}">${orden}</div>`,
+            iconSize:[22,22], iconAnchor:[11,11]})})
           .addTo(LAYER)
           .bindPopup(`<h4>${esc(b.t)} · ${esc(p.n)}</h4>
             <div style="color:${col};font-weight:700;font-size:12px;margin-bottom:5px">
-              Día ${d.n} · ${esc(d.dow)} ${d.date.slice(8)}/${d.date.slice(5,7)}</div>
+              Parada ${orden} del día ${d.n} · ${esc(d.dow)} ${d.date.slice(8)}/${d.date.slice(5,7)}</div>
             <div style="color:#66707d;font-size:12px">${esc(p.typ)} · ${esc(p.hood)}</div>`);
       });
       if (ruta.length > 1)

@@ -321,15 +321,19 @@ with sync_playwright() as pw:
         assert r["chips"] == 9, f"la leyenda tiene {r['chips']} días, no 9"
         assert r["rutas"] >= 8, f"solo {r['rutas']} recorridos dibujados"
         assert r["pines"] >= 50, f"solo {r['pines']} paradas"
-        # el número del día tiene que estar EN el pin: es la identidad no-color
+        # el número del pin es el ORDEN de la parada dentro de su día, así que
+        # tiene que haber exactamente un «1» por día dibujado
         nums = pg.evaluate("[...document.querySelectorAll('.mdia')].map(e=>e.textContent.trim())")
-        assert all(n.isdigit() and 1 <= int(n) <= 9 for n in nums), f"pines sin número de día: {set(nums)}"
+        assert all(x.isdigit() and int(x) >= 1 for x in nums), f"pines sin número: {set(nums)}"
+        assert nums.count("1") == 9, f"hay {nums.count('1')} paradas número 1, deberían ser 9 (una por día)"
         # aislar y volver
         pg.locator('.mdchip[data-dia="7"]').click(); pg.wait_for_timeout(1600)
         solo = pg.evaluate("document.querySelectorAll('.mdia').length")
         assert 0 < solo < r["pines"], f"aislar no filtró: {solo} de {r['pines']}"
         assert pg.evaluate("document.querySelectorAll('.leaflet-overlay-pane path').length") == 1, \
             "aislado debería quedar un solo recorrido"
+        seq = pg.evaluate("[...document.querySelectorAll('.mdia')].map(e=>+e.textContent.trim())")
+        assert seq == list(range(1, len(seq)+1)), f"la secuencia del día aislado tiene huecos: {seq}"
         pg.locator('.mdchip[data-dia="7"]').click(); pg.wait_for_timeout(1600)
         assert pg.evaluate("document.querySelectorAll('.mdia').length") == r["pines"], \
             "tocar de nuevo no volvió a los nueve días"

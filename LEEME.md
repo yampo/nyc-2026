@@ -36,10 +36,12 @@ nueve recorridos al mismo tiempo, cada uno con su color y su línea, para ver de
 se reparte el viaje por la ciudad. Se nota enseguida que el día 1 sube al norte, el 8 es todo
 Brooklyn, el 2 baja al sur y el 7 se queda sobre el oeste.
 
-**Cada pin lleva el número del día adentro**, y no es un adorno: nueve colores distintos no se
-llegan a distinguir bien —lo verifiqué con siete combinaciones y ninguna daba— así que el número
-es lo que te dice de qué día es cada punto. El color ayuda a leer el conjunto, el número resuelve
-la duda.
+**El número de cada punto es el orden de la parada dentro de su día** — 1, 2, 3… — así que
+podés seguir el recorrido en orden. El color dice de qué día es.
+
+Con los nueve días juntos hay puntos de días distintos que comparten número, y ahí el color es lo
+único que los separa. Por eso: tocando un punto, el popup dice **«Parada 3 del día 7»** con todas
+las letras. Y para seguir un día entero, lo mejor es aislarlo.
 
 **Y tocando un día en la lista de abajo, se queda solo.** El resto desaparece y la línea de ese
 día se ve más gruesa. Tocás de nuevo y vuelven los nueve. Es la forma cómoda de seguir un
