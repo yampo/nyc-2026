@@ -1335,6 +1335,46 @@ a(id="tradinoi", n="Trattoria Tra Di Noi", cat="comida", hood="Belmont", boro="B
   why="es el que eligen los que viven ahí, no los que bajan del bus turístico. Diez mesas, cocina de Marco Coletta (nacido en Abruzzo, 50 años de oficio). El menú del día lo cantan los mozos; el pez espada es el plato que destaca Infatuation. Venden la salsa por pinta.",
   jp=1, th=1, tags=["exploracion", "eleccion-juan"])
 
+
+# ══════════════════════════════════════════════════════════════════════════
+#  De la lista de Google Maps que pasó Juan el 27/8. Murray's Cheese y
+#  Lucali ya estaban, así que entran seis.
+#  TRES SE HABÍAN MUDADO O CERRADO, y la dirección que figura en las guías
+#  ya no sirve: Bubby's High Line cerró (queda Tribeca), OddFellows dejó
+#  Kent Ave y ahora está DENTRO de Domino Park, y Papaya King se corrió del
+#  179 al 206 de la calle 86. Verificado el 27/8.
+# ══════════════════════════════════════════════════════════════════════════
+a(id="jerseygardens", n="The Mills at Jersey Gardens", cat="arq", hood="Elizabeth", boro="New Jersey",
+  sub="NJ Transit bus 40 o shuttle desde EWR", lat=40.6601329, lng=-74.1734442, addr="651 Kapkowski Rd, Elizabeth, NJ",
+  cost=0, costN="", dur=3.0,
+  why="El outlet mas grande de New Jersey, 200+ locales bajo techo y A CINCO MINUTOS DEL AEROPUERTO DE NEWARK, con shuttle propio desde la terminal. En New Jersey la ropa y el calzado NO pagan impuesto a las ventas. Sirve el domingo del vuelo si adelantan la salida, o cualquier dia que Thais este en NJ.",
+  jp=1, th=1, tags=["exploracion", "lista-gmaps-2"])
+a(id="oddfellows", n="OddFellows Ice Cream (Domino Park)", cat="comida", hood="Williamsburg", boro="Brooklyn",
+  sub="Bedford Av (L), Marcy Av (J,M,Z)", lat=40.7167772, lng=-73.9660814, addr="40 River St, Brooklyn",
+  cost=8, costN="estimado, sin verificar contra la fuente", dur=0.3,
+  why="Helado hecho ahi con sabores que suenan raros y funcionan. La sucursal de Kent Ave cerro: la que queda esta DENTRO DE DOMINO PARK, que ya estan visitando el sabado 5 a las 14:15.",
+  jp=1, th=1, tags=["exploracion", "lista-gmaps-2"])
+a(id="bubbys", n="Bubby's Tribeca", cat="comida", hood="Tribeca", boro="Manhattan",
+  sub="Franklin St (1), Canal St (A,C,E)", lat=40.7198226, lng=-74.0084234, addr="120 Hudson St",
+  cost=30, costN="estimado, sin verificar contra la fuente", dur=1.2,
+  why="Brunch americano desde 1990 en la misma esquina de Tribeca, con las tartas que le dieron el nombre. Abre 8:00. OJO: la sucursal del High Line cerro, esta es la que queda.",
+  jp=1, th=1, tags=["exploracion", "lista-gmaps-2"])
+a(id="joesshanghai", n="Joe's Shanghai (Chinatown)", cat="comida", hood="Chinatown", boro="Manhattan",
+  sub="Canal St (J,N,Q,R,W,6), Grand St (B,D)", lat=40.7156823, lng=-73.9966551, addr="46 Bowery",
+  cost=28, costN="estimado, sin verificar contra la fuente", dur=1.0,
+  why="Los soup dumplings que pusieron el xiao long bao en el mapa de Nueva York en 1995. Mesas compartidas, cero decoracion, cola en la puerta. Esta a dos cuadras de donde almuerzan el domingo 30.",
+  jp=1, th=1, tags=["exploracion", "lista-gmaps-2"])
+a(id="emilypizza", n="Emily (West Village)", cat="comida", hood="West Village", boro="Manhattan",
+  sub="Houston St (1), W 4 St (A,C,E,B,D,F,M)", lat=40.7293542, lng=-74.0038432, addr="35 Downing St",
+  cost=35, costN="estimado, sin verificar contra la fuente", dur=1.2,
+  why="La Colony: pizza con pepperoni, miel caliente y mozzarella ahumada que aparece en todas las listas de la mejor de la ciudad. Tambien hacen la hamburguesa Emmy, que se pide aparte y se agota.",
+  jp=1, th=1, tags=["exploracion", "lista-gmaps-2"])
+a(id="papayaking", n="Papaya King", cat="comida", hood="Upper East Side", boro="Manhattan",
+  sub="86 St (4,5,6)", lat=40.7784635, lng=-73.953693, addr="206 E 86th St",
+  cost=10, costN="estimado, sin verificar contra la fuente", dur=0.3,
+  why="Pancho con jugo de papaya desde 1932, el invento del que despues copiaron todos los demas. Se come parado en el mostrador. OJO: se mudo del 179 al 206 de la misma calle.",
+  jp=1, th=1, tags=["exploracion", "lista-gmaps-2"])
+
 SUB = {
  # ── MIRADOR ──
  "Observatorio pago":   ["summit", "topofrock", "edge", "esb", "owo"],
@@ -1375,14 +1415,17 @@ SUB = {
  "Hamburguesería":      ["hamburgerica",
                          "cornerbistro"],
  "Pizzería":            ["lbspumoni", "totonnos", "lucali", "manos",
-                         "joespizza", "julianas"],
+                         "joespizza", "julianas",
+                         "emilypizza"],
  "Restaurante étnico":  ["lhasa", "nepalibhanchha", "jalapenoking", "elbronco", "henan", "uyghur",
                          "pierozek", "karczma", "malecon", "tanoreen", "kyclades",
                          "nomwah",
-                         "africakine", "unclelou", "lilfrankies", "tradinoi"],
+                         "africakine", "unclelou", "lilfrankies", "tradinoi",
+                         "joesshanghai"],
  "Comida al paso":      ["casadellamozz", "cosenza", "lostacos",
                          "dipalos", "murrays", "grayspapaya",
-                         "xianfamous", "pommesfrites"],
+                         "xianfamous", "pommesfrites",
+                         "papayaking"],
  "Panadería y bagels":  ["rudys", "bosbagels",
                          "vesuvio", "amysbread"],
  # ── MÚSICA ──
@@ -1426,10 +1469,14 @@ SUB = {
  "Hotel":               ["ink48", "jgstay", "beacon", "residenceinn"],
  # ── de la tanda de exploración ──
  "Diner clásico":         ["lexcandy"],
- "Heladería y dulces":    ["levain"],
+ "Heladería y dulces":    ["levain",
+                         "oddfellows"],
  "Restaurante americano": ["sylvias",
                          "grandbrasserie"],
- "Tienda con historia":   ["mcnallyjackson", "hkflea", "economycandy", "booksaremagic"],
+ "Tienda con historia":   ["mcnallyjackson", "hkflea", "economycandy", "booksaremagic",
+                         "jerseygardens"],
+ # ── de la segunda lista de Google Maps ──
+ "Café y brunch":         ["bubbys"],
 }
 
 # subcategorías de los lugares de la lista de Google: se suman a las existentes o crean una nueva

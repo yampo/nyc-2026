@@ -29,6 +29,34 @@ de noche. De resto entra todo: comida, museos, bares, parques, arquitectura.
 
 ---
 
+## 27 de agosto de 2026 · la segunda lista de Google Maps
+
+Entraron seis de los ocho que pasó Juan. **Murray's Cheese y Lucali ya estaban** en el catálogo.
+
+Tres de los seis **se habían mudado o cerrado**, así que la dirección que figura en las guías ya
+no sirve — y esto es exactamente por lo que conviene chequear antes de caminar hasta la puerta:
+
+- **Bubby's**: la del High Line **cerró**. La que queda es la de Tribeca, 120 Hudson St, la
+  original de 1990.
+- **OddFellows**: dejó Kent Ave y ahora está **adentro de Domino Park** — que ya visitan el
+  sábado 5 a las 14:15. Les queda al paso sin desviarse un metro.
+- **Papaya King**: se corrió del 179 al **206 de la calle 86**, media cuadra más al este.
+
+Los otros tres: **Joe's Shanghai** (46 Bowery, los soup dumplings, a dos cuadras de donde
+almuerzan el domingo 30), **Emily** (35 Downing St, la pizza Colony con miel caliente) y **The
+Mills at Jersey Gardens**.
+
+Sobre el outlet, un dato que puede servir: está en Elizabeth, **a cinco minutos del aeropuerto
+de Newark y con shuttle propio desde la terminal**, y en New Jersey la ropa y el calzado no pagan
+impuesto a las ventas. No lo metí en ningún día porque el domingo salen del hotel 19:40 y no da,
+pero queda ahí por si adelantan la salida o por si a Thais le sirve alguno de los días que está
+trabajando en New Jersey.
+
+Ya aparecen como referencia de paso: Joe's Shanghai el domingo 30, Emily el martes 1 y OddFellows
+el sábado 5. El catálogo queda en **302 lugares**.
+
+---
+
 ## 27 de agosto de 2026 · lo que Juan eligió del informe
 
 **Entraron los 40 lugares que marcaste**, más 7 datos que cambian bloques del itinerario.
