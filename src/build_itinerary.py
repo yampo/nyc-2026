@@ -26,14 +26,15 @@ day(1, "2026-08-29", "Sábado", "both", "Ink48",
     "La reserva de Hudson VU (rooftop del propio Ink48) NO es modificable y exige estar en el hotel 19:20, así que el festival queda en la franja 16:30-18:30 — dos horas justas, con salida obligada 20-30 min antes del cierre. La tarde liberada la ocupa ARTHUR AVENUE, la Little Italy "
     "real del Bronx — los dos la marcaron 2 y no entraba en ningún día. Desde Harlem es un tiro de subte D (~20 min), "
     "y el sábado es EL día: el mercado cierra ~18h y los domingos no abre. "
-    "Bogotá está a una hora de NYC: no hay jet lag, solo noche corta de avión. PEDIR EARLY CHECK-IN a Ink48 por mail.",
+    "Bogotá está a una hora de NYC: no hay jet lag, solo noche corta de avión. PEDIR EARLY CHECK-IN a Ink48 por mail. CAMBIO EN LA LLEGADA: entra el UBER SHUTTLE en vez de AirTrain + NJ Transit + taxi. Para dos personas sale más barato —$41,40 contra $46-52— y sobre todo es UN solo transporte con las valijas en vez de tres, a las siete de la mañana y después de un vuelo nocturno. Lo que se paga: llegan al hotel ~9:10 en vez de ~8:20, y los shuttles salen cada 40-50 minutos mientras que el tren sale cada 10-15. Si migraciones se estira más de lo previsto, EL PLAN VIEJO SIGUE SIENDO MEJOR y está escrito en las alternativas del día.",
     [
      b("06:00", "Aterrizaje en EWR. Migraciones + equipaje de vuelo internacional: 45-75 min.", "", "both", "logistica"),
-     b("07:15", "AirTrain al Newark Airport Station (~10 min). Comprar el ticket en la app MyTix: a bordo cobran $5 extra.", "", "both", "logistica",
-       "El AirTrain opera normal los fines de semana; la obra afecta solo días hábiles 5-15h."),
-     b("07:39", "NJ Transit EWR → New York Penn Station. $17,25 (incluye el fee del AirTrain). Llega 8:07.", "", "both", "logistica"),
-     b("08:20", "Taxi/Uber Penn Station → Ink48 ($12-18). Dejar valijas y, si consiguieron el early check-in, ducha y ropa limpia.", "ink48", "both", "logistica"),
-     b("09:15", "Desayuno rápido en Hell's Kitchen.", "", "both", "comida"),
+     b("07:20", "Caminar a la zona de recogida del UBER SHUTTLE: Terminal B, Zona 5 — son ~6 min desde la puerta de llegadas. Pedirlo en la app apenas salgan de migraciones.", "", "both", "logistica"),
+     b("07:40", "★ UBER SHUTTLE EWR → THEATRE DISTRICT (50th St y 8th Ave). $20,70 POR PERSONA = $41,40 los dos, precio fijo y asiento reservado. Llega 8:54. UN SOLO transporte con las valijas, después de un vuelo nocturno: sin AirTrain, sin transbordo en Penn Station y sin taxi. Horarios del sábado desde Terminal B: 7:40 · 7:50 (a Port Authority) · 8:30 · 8:35.", "", "both", "logistica",
+       "⚠️ Salen cada 40-50 min, no cada 10 como el tren: si migraciones se estira y pierden el de 7:40, el siguiente llega 9:57 y el día arranca tarde."),
+     b("08:54", "Bajar en Theatre District y caminar 13 min al Ink48 (50th y 8ª → 48th y 11ª, todo derecho por la 48). Con valijas es lo único que cuesta de esta opción.", "", "both", "logistica"),
+     b("09:10", "Ink48: dejar valijas y, si consiguieron el early check-in, ducha y ropa limpia.", "ink48", "both", "logistica"),
+     b("09:25", "Desayuno RÁPIDO en Hell's Kitchen, sobre la 9ª o la 10ª. Hoy es rápido de verdad: el shuttle llega más tarde que el tren y el subte a Harlem sale 10:00.", "", "both", "comida"),
      b("10:00", "Subte A o D express desde 42 St hasta 125 St: 12 minutos y ya están en Harlem.", "", "both", "logistica"),
      b("10:30", "Caminata por Harlem: 125th St, Adam Clayton Powell Blvd y las brownstones del Mount Morris Park Historic District.", "harlem", "both", "destacado"),
      b("11:30", "Bo's Bagels (235 W 116th St) — bagel rápido, sin sentarse mucho: hoy el almuerzo fuerte es italiano en el Bronx.", "bosbagels", "both", "comida"),
@@ -47,7 +48,7 @@ day(1, "2026-08-29", "Sábado", "both", "Ink48",
      b("19:30", "★★ HUDSON VU — drinks y comida, RESERVA NO MODIFICABLE, en el rooftop de SU PROPIO hotel (Ink48). La mesa es de MÁXIMO 90 MINUTOS: cierran ~21:00. Pedir sin vueltas y disfrutar la vista — lo que sigue está a 8 cuadras.", "ink48", "both", "destacado"),
      b("21:00", "Caminata Ink48 → Birdland (315 W 44th): 8 cuadras, 10-12 min. Llegan ~21:15, justo para las puertas del set de las 21:30.", "", "both", "logistica"),
      b("21:30", "★★ BIRDLAND — set de las 21:30: DAVID DEJESUS & THE BOPTET, 'Celebrating Charlie Parker'. El 29/8 es el CUMPLEAÑOS de Bird y Birdland es el club que lleva su nombre: el día cierra en círculo — festival Charlie Parker de día, tributo a Parker de noche. RESERVAR en birdlandjazz.com (cartelera ya publicada). Si prefieren más tarde: Makoto Ozone Trio a las 22:30 en el mismo club. Y si el cansancio de un día que empezó 6 AM en un avión manda, saltearlo no es pecado.", "birdland", "both", "destacado")],
-    alt="Si llegan fundidos del vuelo, ARTHUR AVENUE es lo primero que se cae: salteenla, descansen en el hotel 13-16h y "
+    alt="PLAN VIEJO, POR SI EL SHUTTLE NO SIRVE (y es el que conviene si salen tarde de migraciones): AirTrain hasta Newark Airport Station (~10 min, ticket en la app MyTix — a bordo cobran $5 extra) y NJ Transit hasta Penn Station, $17,25 por persona con el AirTrain incluido. Trenes del sábado desde EWR: 6:00, 6:07, 6:43, 7:04, 7:15, 7:25, 7:39 — o sea uno cada diez o quince minutos, que es la ventaja real. De Penn al hotel, taxi de $12-18. Llegan 8:15-8:30, casi una hora antes que con el shuttle. // Si llegan fundidos del vuelo, ARTHUR AVENUE es lo primero que se cae: salteenla, descansen en el hotel 13-16h y "
         "lleguen al festival 16:30. El festival y la reserva de Hudson VU son lo irrenunciable del día. OJO: Bill's Place se movió al VIERNES 4/9 por esta reserva — el set del sábado ya no aplica. "
         "// Sobre agregar cosas AL LUNES con este recorte: el lunes ya está lleno de 8:45 a 22:48 con dos anclas fijas "
         "(Ford Foundation solo abre días hábiles y el 9/11 gratis es 17:30-19:00) — no hay hueco real. El tiempo que libera "

@@ -7,7 +7,7 @@
    "who": "both",
    "base": "Ink48",
    "title": "Harlem + Arthur Avenue + festival (2h) + Hudson VU",
-   "note": "La reserva de Hudson VU (rooftop del propio Ink48) NO es modificable y exige estar en el hotel 19:20, así que el festival queda en la franja 16:30-18:30 — dos horas justas, con salida obligada 20-30 min antes del cierre. La tarde liberada la ocupa ARTHUR AVENUE, la Little Italy real del Bronx — los dos la marcaron 2 y no entraba en ningún día. Desde Harlem es un tiro de subte D (~20 min), y el sábado es EL día: el mercado cierra ~18h y los domingos no abre. Bogotá está a una hora de NYC: no hay jet lag, solo noche corta de avión. PEDIR EARLY CHECK-IN a Ink48 por mail.",
+   "note": "La reserva de Hudson VU (rooftop del propio Ink48) NO es modificable y exige estar en el hotel 19:20, así que el festival queda en la franja 16:30-18:30 — dos horas justas, con salida obligada 20-30 min antes del cierre. La tarde liberada la ocupa ARTHUR AVENUE, la Little Italy real del Bronx — los dos la marcaron 2 y no entraba en ningún día. Desde Harlem es un tiro de subte D (~20 min), y el sábado es EL día: el mercado cierra ~18h y los domingos no abre. Bogotá está a una hora de NYC: no hay jet lag, solo noche corta de avión. PEDIR EARLY CHECK-IN a Ink48 por mail. CAMBIO EN LA LLEGADA: entra el UBER SHUTTLE en vez de AirTrain + NJ Transit + taxi. Para dos personas sale más barato —$41,40 contra $46-52— y sobre todo es UN solo transporte con las valijas en vez de tres, a las siete de la mañana y después de un vuelo nocturno. Lo que se paga: llegan al hotel ~9:10 en vez de ~8:20, y los shuttles salen cada 40-50 minutos mientras que el tren sale cada 10-15. Si migraciones se estira más de lo previsto, EL PLAN VIEJO SIGUE SIENDO MEJOR y está escrito en las alternativas del día.",
    "blocks": [
     {
      "t": "06:00",
@@ -18,32 +18,40 @@
      "note": ""
     },
     {
-     "t": "07:15",
-     "txt": "AirTrain al Newark Airport Station (~10 min). Comprar el ticket en la app MyTix: a bordo cobran $5 extra.",
-     "pid": "",
-     "who": "both",
-     "kind": "logistica",
-     "note": "El AirTrain opera normal los fines de semana; la obra afecta solo días hábiles 5-15h."
-    },
-    {
-     "t": "07:39",
-     "txt": "NJ Transit EWR → New York Penn Station. $17,25 (incluye el fee del AirTrain). Llega 8:07.",
+     "t": "07:20",
+     "txt": "Caminar a la zona de recogida del UBER SHUTTLE: Terminal B, Zona 5 — son ~6 min desde la puerta de llegadas. Pedirlo en la app apenas salgan de migraciones.",
      "pid": "",
      "who": "both",
      "kind": "logistica",
      "note": ""
     },
     {
-     "t": "08:20",
-     "txt": "Taxi/Uber Penn Station → Ink48 ($12-18). Dejar valijas y, si consiguieron el early check-in, ducha y ropa limpia.",
+     "t": "07:40",
+     "txt": "★ UBER SHUTTLE EWR → THEATRE DISTRICT (50th St y 8th Ave). $20,70 POR PERSONA = $41,40 los dos, precio fijo y asiento reservado. Llega 8:54. UN SOLO transporte con las valijas, después de un vuelo nocturno: sin AirTrain, sin transbordo en Penn Station y sin taxi. Horarios del sábado desde Terminal B: 7:40 · 7:50 (a Port Authority) · 8:30 · 8:35.",
+     "pid": "",
+     "who": "both",
+     "kind": "logistica",
+     "note": "⚠️ Salen cada 40-50 min, no cada 10 como el tren: si migraciones se estira y pierden el de 7:40, el siguiente llega 9:57 y el día arranca tarde."
+    },
+    {
+     "t": "08:54",
+     "txt": "Bajar en Theatre District y caminar 13 min al Ink48 (50th y 8ª → 48th y 11ª, todo derecho por la 48). Con valijas es lo único que cuesta de esta opción.",
+     "pid": "",
+     "who": "both",
+     "kind": "logistica",
+     "note": ""
+    },
+    {
+     "t": "09:10",
+     "txt": "Ink48: dejar valijas y, si consiguieron el early check-in, ducha y ropa limpia.",
      "pid": "ink48",
      "who": "both",
      "kind": "logistica",
      "note": ""
     },
     {
-     "t": "09:15",
-     "txt": "Desayuno rápido en Hell's Kitchen.",
+     "t": "09:25",
+     "txt": "Desayuno RÁPIDO en Hell's Kitchen, sobre la 9ª o la 10ª. Hoy es rápido de verdad: el shuttle llega más tarde que el tren y el subte a Harlem sale 10:00.",
      "pid": "",
      "who": "both",
      "kind": "comida",
@@ -156,7 +164,7 @@
      "note": ""
     }
    ],
-   "alt": "Si llegan fundidos del vuelo, ARTHUR AVENUE es lo primero que se cae: salteenla, descansen en el hotel 13-16h y lleguen al festival 16:30. El festival y la reserva de Hudson VU son lo irrenunciable del día. OJO: Bill's Place se movió al VIERNES 4/9 por esta reserva — el set del sábado ya no aplica. // Sobre agregar cosas AL LUNES con este recorte: el lunes ya está lleno de 8:45 a 22:48 con dos anclas fijas (Ford Foundation solo abre días hábiles y el 9/11 gratis es 17:30-19:00) — no hay hueco real. El tiempo que libera el festival es del SÁBADO, y Arthur Avenue era lo mejor que quedaba sin agendar de lo que marcaron los dos."
+   "alt": "PLAN VIEJO, POR SI EL SHUTTLE NO SIRVE (y es el que conviene si salen tarde de migraciones): AirTrain hasta Newark Airport Station (~10 min, ticket en la app MyTix — a bordo cobran $5 extra) y NJ Transit hasta Penn Station, $17,25 por persona con el AirTrain incluido. Trenes del sábado desde EWR: 6:00, 6:07, 6:43, 7:04, 7:15, 7:25, 7:39 — o sea uno cada diez o quince minutos, que es la ventaja real. De Penn al hotel, taxi de $12-18. Llegan 8:15-8:30, casi una hora antes que con el shuttle. // Si llegan fundidos del vuelo, ARTHUR AVENUE es lo primero que se cae: salteenla, descansen en el hotel 13-16h y lleguen al festival 16:30. El festival y la reserva de Hudson VU son lo irrenunciable del día. OJO: Bill's Place se movió al VIERNES 4/9 por esta reserva — el set del sábado ya no aplica. // Sobre agregar cosas AL LUNES con este recorte: el lunes ya está lleno de 8:45 a 22:48 con dos anclas fijas (Ford Foundation solo abre días hábiles y el 9/11 gratis es 17:30-19:00) — no hay hueco real. El tiempo que libera el festival es del SÁBADO, y Arthur Avenue era lo mejor que quedaba sin agendar de lo que marcaron los dos."
   },
   {
    "n": 2,

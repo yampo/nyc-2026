@@ -9,19 +9,22 @@ import json
 transport = {
  "ewr_llegada": {
   "titulo": "EWR → Ink48 · sábado 29 de agosto, 6:00 AM",
-  "reco": "AirTrain + NJ Transit",
+  "reco": "Uber Shuttle",
   "opciones": [
-   {"m": "AirTrain + NJ Transit ✅", "costo": "$17,25", "tiempo": "~55-70 min desde terminal",
-    "det": "Precio ÚNICO: ya incluye el fee de AirTrain de $8,75, no se compra aparte. Trenes sábado desde EWR: 6:00, 6:07, 6:43, 7:04, 7:15, 7:25, 7:39. Viaje 26-31 min. Comprar en la app MyTix o en máquina — a bordo cobran $5 de recargo.",
-    "total": "~$30-35 p/p con el taxi de Penn Station al hotel"},
+   {"m": "Uber Shuttle ✅", "costo": "$20,70 p/p · $41,40 los dos", "tiempo": "~75 min terminal a hotel",
+    "det": "UN SOLO transporte con las valijas: sin AirTrain, sin transbordo en Penn y sin taxi. Precio fijo por persona y asiento reservado, se pide en la app de Uber. Sale de Terminal B, Zona 5, a ~6 min a pie de llegadas. Horarios del sábado 29: 7:40 y 8:30 a Theatre District (50th y 8ª, 13 min a pie del Ink48); 7:50 y 8:35 a Port Authority (40th y 8ª, 17 min a pie). ⚠️ SALEN CADA 40-50 MIN: si migraciones se estira y pierden el de 7:40, el siguiente llega 9:57 y el día arranca tarde.",
+    "total": "$41,40 los dos, sin nada más que pagar"},
+   {"m": "AirTrain + NJ Transit (el plan viejo)", "costo": "$17,25 p/p · $34,50 los dos", "tiempo": "~55-70 min desde terminal",
+    "det": "Precio ÚNICO: ya incluye el fee de AirTrain de $8,75, no se compra aparte. Trenes sábado desde EWR: 6:00, 6:07, 6:43, 7:04, 7:15, 7:25, 7:39 — UNO CADA 10-15 MIN, que es su ventaja real sobre el shuttle. Viaje 26-31 min. Comprar en la app MyTix o en máquina — a bordo cobran $5 de recargo. Llegan al hotel 8:15-8:30, casi una hora antes.",
+    "total": "$46,50-52,50 los dos con el taxi de Penn Station al hotel · ES EL PLAN B SI SALEN TARDE DE MIGRACIONES"},
    {"m": "Taxi oficial de EWR", "costo": "~$78-90", "tiempo": "45-60 min",
     "det": "Tarifa fija por zona: Ink48 está en la calle 48 = Zona 2 = $65 fijo, + $2 de airport fee + $6,75-15,75 de peajes + $1 por valija. El recargo de hora pico ($10) rige sáb-dom 12-21h, así que a las 6-7 AM NO aplica."},
    {"m": "Uber / Lyft", "costo": "$70-110 (estimado)", "tiempo": "45-60 min",
     "det": "A las 7 AM de un sábado el tráfico es liviano. Ink48 está dentro de la zona de congestion pricing (sur de la calle 60): hay recargo adicional."},
    {"m": "Newark Airport Express ❌", "costo": "$18-19 (NO CONFIRMADO)", "tiempo": "60-80 min",
     "det": "No aporta nada frente al tren: más caro, más lento, sujeto al tráfico del Lincoln Tunnel, y deja en Port Authority a 15 min caminando del hotel. Las fuentes se contradicen sobre el precio."}],
-  "secuencia": "Aterrizan 6:00 → migraciones y equipaje 45-75 min → AirTrain ~10-12 min → tren de 7:25 o 7:39 → Penn Station 7:51/8:07 → hotel 8:15-8:30. Total ≈ 2h15-2h30 desde que tocan pista.",
-  "alerta": "El AirTrain de Newark está en obra de reemplazo hasta 2030. El servicio por bus solo aplica días de semana de 5:00 a 15:00 — sus dos vuelos caen en fin de semana, así que están cubiertos. Igual reverifiquen 2-3 días antes en njtransit.com."},
+  "secuencia": "Aterrizan 6:00 → migraciones y equipaje 45-75 min → 6 min a pie a la Zona 5 de Terminal B → Uber Shuttle 7:40 → Theatre District 8:54 → 13 min a pie → hotel ~9:10. Total ≈ 3h desde que tocan pista, con UN solo transporte. Con el plan viejo llegaban 8:15-8:30 pero cambiando tres veces de vehículo con las valijas.",
+  "alerta": "El shuttle sale cada 40-50 minutos, no cada 10: mirá el horario en la app de Uber apenas aterricen y, si se estiró migraciones, pasate al tren sin dudar. El AirTrain de Newark está en obra de reemplazo hasta 2030. El servicio por bus solo aplica días de semana de 5:00 a 15:00 — sus dos vuelos caen en fin de semana, así que están cubiertos. Igual reverifiquen 2-3 días antes en njtransit.com."},
 
  "ewr_salida": {
   "titulo": "The Beacon → EWR · domingo 6 de septiembre, vuelo 23:40",

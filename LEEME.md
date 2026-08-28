@@ -29,6 +29,33 @@ de noche. De resto entra todo: comida, museos, bares, parques, arquitectura.
 
 ---
 
+## 27 de agosto de 2026 · la llegada del sábado cambia a Uber Shuttle
+
+**El sábado 29 se llega en un solo transporte.** Antes eran tres con las valijas a las siete de
+la mañana: AirTrain, tren a Penn Station y taxi al hotel. Ahora es el **Uber Shuttle** de EWR
+directo al Theatre District, y de ahí 13 minutos a pie al Ink48.
+
+Las cuentas, para dos personas:
+
+| | antes | ahora |
+|---|---|---|
+| precio | $17,25 c/u + taxi de $12-18 = **$46 a $52** | $20,70 c/u = **$41,40** |
+| transportes | tres | **uno** |
+| llegan al hotel | 8:15-8:30 | **~9:10** |
+
+O sea: más barato, mucho más simple, y **casi una hora más tarde**. Por eso el desayuno pasó a
+las 9:25 y hoy es rápido de verdad: el subte a Harlem sale 10:00.
+
+**Lo que hay que mirar de esto**: los shuttles salen cada 40 o 50 minutos, mientras que los
+trenes salen cada 10 o 15. Los del sábado son 7:40 y 8:30 al Theatre District, 7:50 y 8:35 a
+Port Authority. Si migraciones se estira y pierden el de las 7:40, el siguiente los deja recién
+9:57 y el día arranca torcido. **En ese caso el plan viejo es mejor**, y quedó escrito completo
+en las alternativas del día 1, con los horarios de todos los trenes.
+
+Miren el horario en la app de Uber apenas aterricen, antes de caminar a la zona de recogida.
+
+---
+
 ## 27 de agosto de 2026 · el domingo cambia y aparece «acá cerca»
 
 **MoMA PS1 entra al plan y el Guggenheim pasa a ser la alternativa.** El domingo 6, en vez de
