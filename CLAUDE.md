@@ -194,6 +194,26 @@ uno**, y no inventar horarios.
 
 ---
 
+### «Acá cerca» ≠ «de paso»
+
+Son dos preguntas distintas y confundirlas engaña:
+
+- **de paso** = qué queda en el camino ENTRE dos paradas. Se mide en **desvío** y cuelga del
+  traslado.
+- **acá cerca** = qué hay pegado a la parada donde vas a estar. Se mide en **distancia al lugar**
+  y va DENTRO del bloque (`ACA_RADIO`, 350 m).
+
+Lo pidió Juan con un caso que lo muestra entero: **OddFellows está adentro de Domino Park**, a
+296 m del punto, y salía en la fila de paso del tramo anterior con «+591 m de desvío». El número
+era el del tramo que venía de Downtown Brooklyn, no la distancia a la heladería, y el lugar donde
+mostrarlo también estaba mal: lo útil es verlo mientras estás en el parque, no antes de llegar.
+
+El reparto es en cascada y el orden importa: **primero** cada lugar se asigna a la parada más
+cercana si está dentro de `ACA_RADIO`, **después** lo que queda entra al reparto de tramos. Un
+lugar nunca aparece en los dos lados — hay un test que lo verifica en los 9 días.
+
+---
+
 ### Caminar un barrio es otra cosa
 
 Un bloque cuyo lugar tiene `cat === 'barrio'` —Harlem, Arthur Avenue, Lower East Side,
@@ -454,7 +474,7 @@ Está en `~/.claude/skills/coe-defaults/` si lo tenés instalado. Lo que más pe
 ```bash
 git pull                              # SIEMPRE primero
 # … editar src/build_*.py o src/app_template.html …
-.venv/bin/python src/build_all.py --test       # build + 62 chequeos
+.venv/bin/python src/build_all.py --test       # build + 64 chequeos
 git add -A && git commit -m "..." && git push     # esto publica
 ```
 

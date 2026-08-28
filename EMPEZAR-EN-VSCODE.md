@@ -60,7 +60,7 @@ pip install playwright && playwright install chromium     # ~150 MB, opcional
 ```
 
 Sin Playwright, `python3 src/build_all.py` funciona igual; lo único que no vas a poder es
-`--test`. Vale la pena instalarlo: son los 62 chequeos que agarran los errores que ya rompieron
+`--test`. Vale la pena instalarlo: son los 64 chequeos que agarran los errores que ya rompieron
 la app dos veces.
 
 ## 5. Probar que todo funciona
@@ -90,7 +90,7 @@ Después, `git tag -n` te lista las versiones publicadas y
 ```bash
 git pull                                   # siempre primero
 # … pedirle a Claude lo que quieras cambiar …
-python3 src/build_all.py --test            # reconstruye + 62 chequeos
+python3 src/build_all.py --test            # reconstruye + 64 chequeos
 git add -A && git commit -m "..." && git push
 ```
 

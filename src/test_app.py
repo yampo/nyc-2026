@@ -165,7 +165,10 @@ with sync_playwright() as pw:
             pg.click(f'.dbtn[data-d="{d}"]'); pg.wait_for_timeout(160)
             r = pg.evaluate("""() => [...document.querySelectorAll('#v-itin [data-paso]')].map(e => {
                   const p = PBY[e.dataset.paso];
-                  const blk = e.closest('.paso').nextElementSibling;
+                  /* «de paso» cuelga del traslado y su hora es la del bloque SIGUIENTE;
+                     «acá cerca» va dentro del bloque, así que su hora es la de ese bloque. */
+                  const enPaso = e.closest('.paso');
+                  const blk = enPaso ? enPaso.nextElementSibling : e.closest('.blk');
                   return {n:p.n, cat:p.cat, cost:p.cost||0, book:!!p.book,
                           h: parseInt((blk && blk.querySelector('.tm')?.value || '00').slice(0,2), 10)};
                 })""")
@@ -221,6 +224,36 @@ with sync_playwright() as pw:
         assert not r["ceros"], f"lugares que los dos marcaron 0: {r['ceros']}"
         pg.locator('#v-itin [data-act="closehood"]').first.click(); pg.wait_for_timeout(250)
     check("el barrio no repite lo que ya está agendado", barrio_no_repite_lo_agendado)
+
+    def aca_cerca_va_en_la_parada():
+        """Lo que está pegado a una parada va EN la parada, con su distancia real —
+        no colgado del traslado anterior con un número de desvío que engaña.
+        El caso que lo originó: OddFellows está DENTRO de Domino Park, a 296 m, y
+        salía en la fila de paso del tramo anterior como «+591 m»."""
+        pg.click('.dbtn[data-d="8"]'); pg.wait_for_timeout(300)
+        r = pg.evaluate("""() => {
+          const blk = [...document.querySelectorAll('#v-itin .blk')]
+            .find(b => b.textContent.includes('Domino Park'));
+          if (!blk) return {err: 'no encontré el bloque de Domino Park'};
+          const chips = [...blk.querySelectorAll('.aca .paso1')];
+          return {ids: chips.map(c => c.dataset.paso), txt: chips.map(c => c.textContent)};
+        }""")
+        assert not r.get("err"), r.get("err")
+        assert "oddfellows" in r["ids"], f"OddFellows no está en el bloque de Domino Park: {r['ids']}"
+        # y con la distancia al lugar, no con el desvío del tramo
+        assert any("m" in t for t in r["txt"]), r["txt"]
+    check("lo que está pegado a una parada se muestra EN la parada", aca_cerca_va_en_la_parada)
+
+    def aca_no_duplica_de_paso():
+        for d in range(1, 10):
+            pg.click(f'.dbtn[data-d="{d}"]'); pg.wait_for_timeout(160)
+            r = pg.evaluate("""() => ({
+                aca: [...document.querySelectorAll('#v-itin .aca [data-paso]')].map(e=>e.dataset.paso),
+                paso: [...document.querySelectorAll('#v-itin .paso [data-paso]')].map(e=>e.dataset.paso)})""")
+            cruce = set(r["aca"]) & set(r["paso"])
+            assert not cruce, f"D{d}: aparecen en los dos lados: {cruce}"
+            assert len(r["aca"]) == len(set(r["aca"])), f"D{d}: repetidos en «acá cerca»"
+    check("«acá cerca» y «de paso» no se pisan", aca_no_duplica_de_paso)
 
     def paso_abre_ficha():
         pg.locator('#v-itin [data-paso]').first.click(); pg.wait_for_timeout(500)

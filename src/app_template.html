@@ -127,6 +127,10 @@ main{max-width:1180px;margin:0 auto;padding:16px 14px 40px}
 .chip.paso1{background:#fff;border:1px dashed var(--line);font-size:11px;padding:2px 8px;
   font-weight:600;cursor:pointer;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .chip.paso1 i{font-style:normal;color:var(--mut);font-weight:500;margin-left:5px}
+/* «Acá cerca» va dentro del bloque, no en el traslado: es lo que tenés al lado
+   mientras estás en esa parada, no lo que te queda de camino hacia ella. */
+.aca{margin-top:7px;display:flex;gap:5px;flex-wrap:wrap;align-items:center}
+.acalb{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);flex:none}
 /* Lo que hay dentro de un barrio que se camina: ficha corta, no chip — acá sí
    hace falta el porqué y los links, porque la decisión se toma leyendo. */
 .hood{margin-top:8px;border:1px dashed var(--line);border-radius:11px;padding:9px 11px;background:#fbf9f5}
@@ -517,6 +521,14 @@ const PASO_CERCA = 350;
 const PASO_CORREDOR = 2500;   /* m: hasta acá el tramo se hace a pie */
 const PASO_PUNTA = 400;       /* m alrededor de cada punta en los tramos largos */
 const PASO_TOP = 4;           /* cuántos se muestran por tramo */
+/* ACÁ CERCA: lo que está pegado a una parada, no en el camino hacia ella.
+   Son preguntas distintas y confundirlas engaña. OddFellows está DENTRO de
+   Domino Park, a 296 m del punto, y como referencia de tramo salía con
+   «+591 m de desvío» colgado del traslado anterior — el número correcto es
+   otro y el lugar donde mostrarlo también: va en la parada, mientras estás
+   ahí parado una hora. */
+const ACA_RADIO = 350;       /* m alrededor de una parada */
+const ACA_TOP = 4;
 const PASO_FUERA = {transporte:1, hotel:1, evento:1, teatro:1};
 /* transporte y hotel son logística; evento y teatro tienen fecha, hora y entrada
    —Broadway no es un desvío de cinco minutos—. La música es el caso fino: un club
@@ -548,6 +560,29 @@ function dePasoDelDia(d){
 
   const paradas = paradasDe(d);
 
+  /* PRIMERO lo que está pegado a una parada: si algo está a menos de ACA_RADIO
+     de donde vas a estar, la respuesta útil es «lo tenés acá», no «te queda de
+     camino». Se lo queda la parada MÁS cercana, y sale del reparto de tramos. */
+  const aca = {}, tomadoAca = {};
+  paradas.forEach(({b, p: A}) => {
+    const a = [A.lat, A.lng];
+    const hora = parseInt(String(b.t).slice(0, 2), 10);
+    cand.forEach(q => {
+      if (!esDesvioPosible(q, hora)) return;
+      const dist = hav(a, [q.lat, q.lng]);
+      if (dist > ACA_RADIO) return;
+      if (!tomadoAca[q.id] || dist < tomadoAca[q.id].dist)
+        tomadoAca[q.id] = {p: q, dist, destino: b.id};
+    });
+  });
+  Object.values(tomadoAca).forEach(x => (aca[x.destino] = aca[x.destino] || []).push(x));
+  Object.keys(aca).forEach(k => {
+    aca[k].sort((x, y) => x.dist - y.dist);
+    aca[k] = aca[k].slice(0, ACA_TOP);
+  });
+  const yaEnAca = {};
+  Object.values(aca).flat().forEach(x => { yaEnAca[x.p.id] = 1; });
+
   /* Qué candidatos tiene cada tramo, ordenados por lo que cuesta pasar. */
   const tramos = [];
   for (let i = 0; i < paradas.length - 1; i++){
@@ -562,7 +597,7 @@ function dePasoDelDia(d){
       const entra = dab <= PASO_CORREDOR
         ? (desvio <= PASO_DESVIO || Math.min(da, db) <= PASO_CERCA)
         : Math.min(da, db) <= PASO_PUNTA;
-      if (entra) lista.push({p, desvio});
+      if (entra && !yaEnAca[p.id]) lista.push({p, desvio});
     });
     lista.sort((x, y) => x.desvio - y.desvio);
     tramos.push({destino: paradas[i+1].b.id, lista});
@@ -593,7 +628,7 @@ function dePasoDelDia(d){
     out[k].sort((x, y) => x.desvio - y.desvio);
     out[k] = out[k].slice(0, PASO_TOP);
   });
-  return out;
+  return {paso: out, aca};
 }
 /* ── Qué hay dentro de un barrio ──────────────────────────────────────────────
    Un bloque de "caminar un barrio" no es una parada: son horas sueltas en un
@@ -618,7 +653,9 @@ function enElBarrio(pb){
 }
 /* Los mismos lugares, planos, para pintarlos en el mapa del día. */
 function dePasoPlano(d){
-  return Object.values(dePasoDelDia(d)).flat();
+  const r = dePasoDelDia(d);
+  return Object.values(r.paso).flat()
+    .concat(Object.values(r.aca).flat().map(x => ({p: x.p, desvio: x.dist})));
 }
 /* Las paradas de un día, en orden, sin repetir la misma dos bloques seguidos
    (el hotel al salir y al volver son dos paradas distintas; el mismo lugar en
@@ -698,11 +735,11 @@ function rItin(){
     const nx = d.blocks[i + 1];
     return nx && /^\d{1,2}:\d{2}$/.test(nx.t) ? nx.t : '';
   });
-  const PASO = dePasoDelDia(d);
+  const _dp = dePasoDelDia(d), PASO = _dp.paso, ACA = _dp.aca;
   const blocks = d.blocks.map((b,i) => {
     if (!vis(b)) return '';
     const p = b.pid ? PBY[b.pid] : null;
-    const paso = PASO[b.id] || [];
+    const paso = PASO[b.id] || [], aca = ACA[b.id] || [];
     const ajeno = b.who !== 'both' && b.who !== d.who;   // bloque de la otra persona
     return `${b.trav ? `<div class="trav">↓ ${esc(b.trav)}</div>` : ''}
       ${paso.length ? `<div class="paso">
@@ -731,6 +768,11 @@ function rItin(){
             return `<span class="chip ${hh==='CERRADO'?'r':'b'}">🕐 ${hh}</span>`; })() : ''}
           ${b.note ? `<span class="chip wrap">${esc(b.note)}</span>` : ''}
         </div>
+        ${aca.length ? `<div class="aca">
+          <span class="acalb">acá cerca</span>
+          ${aca.map(({p:q, dist}) => `<a class="chip paso1" data-paso="${q.id}"
+              style="color:${CAT[q.cat].c}" title="${esc(q.typ + ' · ' + money(q.cost))} — a ${Math.round(dist)} m">${esc(q.n)}<i>${dist < 95 ? Math.round(dist/5)*5 : Math.round(dist/10)*10} m</i></a>`).join('')}
+        </div>` : ''}
         ${(b.mynote || OPEN_NOTES.has(b.id))
           ? `<textarea class="bnote" data-act="note" placeholder="mis notas…">${esc(b.mynote||'')}</textarea>`
           : `<button class="notebtn" data-act="opennote">＋ nota</button>`}

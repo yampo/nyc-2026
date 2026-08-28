@@ -280,25 +280,28 @@ day(8, "2026-09-05", "Sábado", "both", "The Beacon",
 
 # ═══════════════ DÍA 9 · DOM 6 SEP · AMBOS ═══════════════
 day(9, "2026-09-06", "Domingo", "both", "The Beacon (checkout) → EWR",
-    "Checkout, Central Park, Roosevelt Island y vuelo",
+    "Checkout, Central Park, Roosevelt Island, MoMA PS1 y vuelo",
     "El día arranca con el CHECKOUT de The Beacon: hacerlo temprano y dejar las valijas en el bell desk libera el día entero. "
     "El vuelo sale 23:40, así que hay margen — pero es el domingo del fin de semana largo de Labor Day, la noche de mayor "
-    "tráfico del año, y EWR va a estar cargado. Por eso todo queda dentro del eje Central Park - Upper East Side, "
-    "a diez minutos de subte del hotel, y se sale con 2h45 de anticipación.",
+    "tráfico del año, y EWR va a estar cargado. Por eso todo queda cerca y se sale con 2h45 de anticipación. "
+    "EL CAMBIO DEL ÚLTIMO DÍA: entra MOMA PS1 y sale el Guggenheim. Se verificó el 27/8 que la rotonda del Guggenheim "
+    "está cerrada hasta el 17/9 —no se camina la rampa, que es la razón para ir— y PS1 resultó ser gratis, abierto hasta "
+    "las 18 los domingos, a 1,2 km de Roosevelt Island y con «Greater New York 2026» en pie hasta el 7/9. Era el último "
+    "imprescindible que quedaba afuera del viaje. El Guggenheim queda escrito como alternativa por si cambian de idea.",
     [
-     b("09:00", "Desayuno SIN despertador temprano: anoche terminó ~1:30 en el Village y lo único con hora fija hoy es el Guggenheim a las 16:00. Dormir un poco más está permitido.", "", "both", "comida"),
+     b("09:00", "Desayuno SIN despertador temprano: anoche terminó ~1:30 en el Village y lo único con hora fija hoy es el PS1, que cierra a las 18:00. Dormir un poco más está permitido.", "", "both", "comida"),
      b("09:45", "★ CHECKOUT de The Beacon y dejar las valijas en el bell desk. El checkout formal suele ser 11:00-12:00, pero hacerlo antes libera el día.", "beacon", "both", "destacado"),
      b("10:15", "★ CENTRAL PARK cruzando de oeste a este: Bethesda Terrace, el Ramble, Bow Bridge. Se entra por la 72 desde Broadway, a tres cuadras del hotel.", "centralpark", "both", "destacado"),
      b("12:30", "Almuerzo en el Upper East Side, saliendo del parque por la Quinta.", "", "both", "comida"),
      b("13:30", "Bajar a 59 St y 2ª Av: subte 6 desde 68 St-Hunter College (el 4/5 exprés NO para ahí), o caminando por la Quinta si el día está lindo.", "", "both", "logistica"),
      b("13:50", "★ ROOSEVELT ISLAND TRAMWAY ($3, OMNY) — cruza el East River a 76 metros de altura con el Queensboro Bridge al lado. Es la vista de $50 por el precio de un viaje de subte.", "tram", "both", "destacado"),
      b("14:25", "FDR Four Freedoms Park — del teleférico son ~20 min a pie por el borde del río. La última obra de Louis Kahn: granito, plátanos y una sala abierta al río apuntando a Manhattan. Gratis y vacía. Se pasa por las ruinas del Smallpox Hospital.", "fdrpark", "both", "paseo"),
-     b("15:00", "◇ LA DECISIÓN DEL DÍA, y se toma acá parado, antes de salir de la isla. YA NO HACE FALTA LLAMAR: se verificó el 27/8 y la rotonda del Guggenheim está cerrada hasta el 17/9, así que el edificio —que es la mitad de la visita— se ve a medias. La alternativa es MOMA PS1 —ENTRADA GRATUITA para todos, verificado, y con «Greater New York 2026» en pie hasta el 7 de septiembre—: el último imprescindible que queda afuera del viaje, GRATIS, abierto los domingos hasta las 18, y a 1,2 km de donde están parados. CÓMO: en vez de volver en teleférico, caminan a la estación del F que está EN Roosevelt Island, una parada hasta 21 St-Queensbridge y 15 min a pie (~25 min puerta a puerta). Entran 15:45, dos horas holgadas hasta las 17:45, y al hotel en el 7 o el E/M desde Court Sq (~45 min): llegan 18:30, justo para las valijas. NO toca el vuelo. Lo que se pierde: el Guggenheim y el cruce de vuelta en teleférico — el de ida ya lo hicieron a las 13:50.", "", "both", "paseo",
-       "Bloque de decisión, no de plan. Si la rotonda está abierta, se ignora y se sigue al Guggenheim."),
-     b("15:05", "SALIR 15:05 (no más tarde): caminata al teleférico + cruce + subte 4/5/6 de 59 St a 86 St suman ~50 min, y la ventana pay-what-you-wish del Guggenheim arranca 16:00 y el museo cierra 17:30 — llegar puntuales ES la visita.", "", "both", "logistica"),
-     b("16:00", "★ GUGGENHEIM — ⚠️ VERIFICADO el 27/8 y la respuesta es la mala: LA ROTONDA ESTÁ CERRADA del 3/8 al 17/9 por el montaje de la muestra de Taryn Simon. No se puede caminar la rampa —la razón para venir— y avisan que puede haber ruido de obra; la espiral se mira desde abajo nomás. A cambio la entrada baja de $30 a $16, y sigue el pay-what-you-wish de los domingos 16:00-17:30. Lo que SÍ queda: Guggenheim Pop en las torres 4, 5 y 7 (Lichtenstein, Warhol, Oldenburg, Cattelan) y la colección Thannhauser. Con esto sobre la mesa, mirá el bloque de las 15:00: MoMA PS1 es la alternativa, y es el último imprescindible que falta.", "guggenheim", "both", "destacado",
-       "Si la rotonda está en montaje, el edificio —que es la mitad de la visita— no se ve."),
-     b("17:45", "Volver caminando por Central Park hasta el hotel (~25 min) o subte 86 St → 1 a 79 St.", "beacon", "both", "logistica"),
+     b("15:05", "SALIR 15:05 de Four Freedoms Park y caminar 15 min al norte por el borde del río hasta la ESTACIÓN DEL F, que está en el medio de la isla (Main St y Roosevelt Island Bridge). Hoy NO se vuelve en teleférico: se cruza a Queens por abajo.", "", "both", "logistica"),
+     b("15:30", "Subte F, UNA parada: Roosevelt Island → 21 St-Queensbridge (~4 min). Salir y caminar 12-15 min al sur por 21st St / Jackson Ave.", "", "both", "logistica"),
+     b("15:45", "★★ MOMA PS1 — el último imprescindible del viaje, y entra gratis. Escuela pública de 1892 reconvertida en el laboratorio del MoMA: lo que no se anima a mostrar en la Quinta Avenida. VERIFICADO el 27/8: ENTRADA GRATUITA para todos, abre domingos 12:00-18:00, y «Greater New York 2026» —la encuesta insignia de la casa, que se hace cada cinco años— sigue en pie hasta el 7 de septiembre, o sea que la agarran por un día. Más el Courtyard Commission de Precious Okoyomon al aire libre. Dos horas holgadas hasta las 17:45.", "momaps1", "both", "destacado"),
+     b("17:45", "Del PS1 al hotel: subte 7 desde Court Sq hasta Times Sq y 1/2/3 hasta 72 St, o E/M hasta 53 St (~45 min). Llegan 18:30, justo para las valijas. El vuelo no se toca.", "", "both", "logistica"),
+     b("18:20", "◇ SI PREFIEREN EL GUGGENHEIM, sigue estando y este bloque se ignora: pay-what-you-wish domingos 16:00-17:30 (mínimo $1) y entrada rebajada a $16 el resto del horario. ⚠️ PERO la rotonda está CERRADA del 3/8 al 17/9 por el montaje de Taryn Simon: no se camina la rampa —que es la razón para ir— y avisan que puede haber ruido de obra. Quedan las torres 4, 5 y 7 con «Guggenheim Pop» (Lichtenstein, Warhol, Oldenburg, Cattelan) y la colección Thannhauser. Para hacerlo: en vez de cruzar a Queens, teleférico de vuelta y subte 4/5/6 de 59 St a 86 St, y hay que salir del FDR Park 15:05 para entrar 16:00 — la ventana a voluntad va hasta las 17:30 y el museo cierra ahí.", "", "both", "paseo",
+       "Alternativa, no plan: por eso este bloque no tiene hora de visita ni cuenta como parada."),
      b("18:30", "Retirar las valijas del bell desk. Cena tranquila cerca del hotel: es la última.", "", "both", "comida"),
      b("19:40", "Salir de The Beacon. Subte 1/2/3 desde 72 St hasta 34 St-Penn Station: ~10 min, $3.", "", "both", "logistica"),
      b("20:14", "NJ Transit Penn Station → EWR, llega 20:38. $17,25 (incluye el AirTrain). VERIFICAR el horario dominical en njtransit.com unos días antes.", "", "both", "logistica"),
@@ -307,10 +310,8 @@ day(9, "2026-09-06", "Domingo", "both", "The Beacon (checkout) → EWR",
     alt="COLCHÓN: si algo se atrasa, el tren siguiente sale 20:55 y llega a EWR 21:16, o sea terminal ~21:35 y 2h05 antes del vuelo. "
         "Es el último que yo tomaría. // Si prefieren un último día sin moverse, salteen el teleférico y estiren Central Park hasta "
         "el Guggenheim: el parque solo da para toda la mañana y la tarde. Lo que NO conviene hoy es meter algo nuevo y grande. // LO QUE SE PIERDEN POR EL VUELO, y duele: esta noche a las 20:00 el Met proyecta gratis en Lincoln Center «El Último Sueño de Frida y Diego» —la misma Frida de la muestra del MoMA del lunes— y ustedes salen del hotel 19:40 hacia Penn Station. Está a diez cuadras del Beacon. No hay forma de que entre sin poner en riesgo el vuelo. "
-        "// LA DECISIÓN DEL DÍA, y se toma con una llamada: si la rotonda del Guggenheim está en montaje, el edificio —que es la "
-        "mitad de la visita— no se ve, y ahí conviene cambiarlo por MOMA PS1, el último imprescindible que queda afuera del viaje. "
-        "Es gratis, abre los domingos hasta las 18 y hoy pasan a 1,2 km. Los tiempos están calculados en el bloque de las 16:00 y "
-        "no tocan el vuelo. Si la rotonda está abierta, el Guggenheim se queda: el edificio de Wright vale por sí solo. "
+        "// SI QUIEREN VOLVER AL GUGGENHEIM en vez del PS1: está escrito en el bloque de las 18:20, con los tiempos hechos. "
+        "Cuesta el último imprescindible del viaje y hay que aceptar que la rampa —la razón para ir— no se camina hasta el 17/9. "
         "Tercera opción si ninguna convence: el Whitney también abre los domingos.")
 
 out = {"days": D, "trip": {"from": "2026-08-29", "to": "2026-09-06",

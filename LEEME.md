@@ -29,6 +29,30 @@ de noche. De resto entra todo: comida, museos, bares, parques, arquitectura.
 
 ---
 
+## 27 de agosto de 2026 · el domingo cambia y aparece «acá cerca»
+
+**MoMA PS1 entra al plan y el Guggenheim pasa a ser la alternativa.** El domingo 6, en vez de
+volver en teleférico, caminan quince minutos a la estación del F que está **en la propia isla**,
+cruzan una parada a Queens y entran a **PS1 a las 15:45**: gratis, con *Greater New York 2026*
+—que se hace cada cinco años— en pie hasta el 7 de septiembre, o sea que la agarran por un día.
+Dos horas holgadas, al hotel 18:30, el vuelo no se toca. Con esto **entra el último
+imprescindible que quedaba afuera del viaje**.
+
+El Guggenheim no se borró: quedó escrito en el bloque de las 18:20 con los tiempos hechos, por si
+cambian de idea sobre la marcha. Pero ahora saben lo que cuesta: la rotonda está cerrada hasta el
+17 de septiembre y la rampa de Wright —la razón para ir— no se camina.
+
+**Y algo nuevo en cada bloque: «acá cerca».** Hasta ahora la app decía qué hay *en el camino*
+entre una parada y la siguiente. Faltaba lo otro: qué tienen **al lado mientras están parados en
+un lugar**. Ahora cada bloque muestra lo que hay a menos de 350 metros, con la distancia real.
+
+El caso que lo destapó: **OddFellows está adentro de Domino Park**, y aparecía colgado del
+traslado anterior diciendo «+591 m» — que era el desvío del viaje desde Downtown Brooklyn, no lo
+que hay que caminar. Ahora sale dentro del bloque de Domino Park y dice **300 m**, que es la
+verdad.
+
+---
+
 ## 27 de agosto de 2026 · la segunda lista de Google Maps
 
 Entraron seis de los ocho que pasó Juan. **Murray's Cheese y Lucali ya estaban** en el catálogo.
