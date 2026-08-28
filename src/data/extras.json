@@ -330,8 +330,8 @@
    "urg": 2
   },
   {
-   "q": "Orden de artistas del festival Charlie Parker (¿a qué hora toca Joshua Redman?)",
-   "cuando": "vie 28/8",
+   "q": "✅ RESUELTO — festival Charlie Parker: sáb 29, Marcus Garvey Park, 14:00 a 19:00, cierra JOSHUA REDMAN con Nat Adderley Jr., Catherine Russell y Nicole Glover",
+   "cuando": "verificado el 27/8",
    "url": "cityparksfoundation.org",
    "por": "La salida obligada de las 18:30 puede o no cortar el set de cierre. Saberlo el día antes permite decidir el plan B del subte (salir 18:10) con datos.",
    "urg": 2
@@ -470,9 +470,9 @@
    "urg": 2
   },
   {
-   "q": "Guggenheim — llamar y preguntar DOS cosas: si la rotonda está abierta y si sigue el pay-what-you-wish",
-   "cuando": "La mañana del domingo 6, antes de salir del hotel",
-   "url": "guggenheim.org / +1 212-423-3500",
+   "q": "✅ RESUELTO — la rotonda del Guggenheim está CERRADA hasta el 17/9. Por eso el domingo entra MoMA PS1 en su lugar; el Guggenheim quedó como alternativa escrita en el bloque de las 18:20",
+   "cuando": "verificado el 27/8, ya no hay que llamar",
+   "url": "guggenheim.org",
    "por": "Es la única decisión del último día y ahora tiene plan B armado. La rotonda estaría en montaje hasta el 18 de septiembre, con entrada rebajada a ~$16; el pay-what-you-wish de domingos 16-17:30 no lo pude confirmar en fuente oficial (el sitio bloquea la lectura). SI LA ROTONDA ESTÁ CERRADA: el edificio —que es la razón para ir— se ve a medias, y conviene cambiarlo por MoMA PS1, el último imprescindible que queda afuera del viaje. Es gratis, abre los domingos hasta las 18 y ese día pasan a 1,2 km. Los tiempos están en el bloque de las 15:00 del domingo y no tocan el vuelo.",
    "urg": 3
   },
@@ -491,6 +491,27 @@
    "urg": 2
   },
   {
+   "q": "STUDIO MUSEUM sáb 29 — entrada con HORARIO ASIGNADO, sacarla antes. «Fade» cierra el 6/9: el sábado es la única pasada del viaje",
+   "cuando": "HOY",
+   "url": "studiomuseum.org",
+   "por": "Reabrió este año tras siete cerrado, en el edificio nuevo de Adjaye. Sugerido $16, gratis los domingos. Lo detectó el barrido del 27/8: la entrada es con hora asignada, no se entra y ya.",
+   "urg": 3
+  },
+  {
+   "q": "FRICK mié 2 — reservar la ventana a voluntad de 13:30 a 17:30",
+   "cuando": "HOY",
+   "url": "frick.org",
+   "por": "Esa ventana es TODA: fuera de ella son $30 por cabeza. Online el mínimo es $5. El cupo en puerta existe pero no está garantizado, y son solo cuatro horas.",
+   "urg": 3
+  },
+  {
+   "q": "MORGAN LIBRARY vie 4 — las reservas del viernes gratis (17-20h) se liberan HOY, viernes 28",
+   "cuando": "HOY, es el día",
+   "url": "themorgan.org",
+   "por": "Reserva obligatoria y se agota. Si no sale, el viernes queda un hueco de 17:00 a 18:10 antes del SUMMIT.",
+   "urg": 3
+  },
+  {
    "q": "Revisar travel alerts de NJ Transit para la noche del 2/9 y la mañana del 3/9",
    "cuando": "2-3 días antes",
    "url": "njtransit.com/travel-alerts-to",
@@ -498,8 +519,8 @@
    "urg": 3
   },
   {
-   "q": "Reverificar el AirTrain de Newark",
-   "cuando": "2-3 días antes de cada vuelo",
+   "q": "AirTrain + NJ Transit — ahora es el PLAN B de la llegada (entró el Uber Shuttle). Igual conviene reverificarlo: es lo que salva el sábado si migraciones se estira",
+   "cuando": "HOY, viernes 28",
    "url": "njtransit.com",
    "por": "Obra de reemplazo hasta 2030, con advisories que se renuevan mes a mes.",
    "urg": 2
