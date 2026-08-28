@@ -376,6 +376,29 @@ cartelera por JavaScript y no se dejan leer.
 
 ---
 
+## La V2 — donde se trabaja la interfaz
+
+`src/app_template_v2.html` → `src/build_v2.py` → **`v2.html`** en la raíz.
+Se publica con el resto, así que se abre en **yampo.github.io/nyc-2026/v2.html** y se compara
+con la v1 desde el mismo celular.
+
+- **La cadena de la v1 no se toca.** `build_v2.py` no corre dentro de `build_all.py` a propósito:
+  se corre a mano cuando se quiere ver el rediseño.
+- **Comparten los datos, no la interfaz.** La v2 lee los mismos JSON.
+- **Estado separado**: `build_v2.py` reemplaza `nyc2026.v1` por `nyc2026.v2` en el HTML, para que
+  probar la v2 no pise las marcas y notas reales de Juan. Si tocás esa cadena en el template, el
+  build falla con un assert.
+- Lleva un **banner naranja** arriba diciendo que es la de pruebas.
+
+Lo que cambió la v2 respecto de la v1: tarjeta **«Ahora»** que cruza la hora con el itinerario,
+bloques **plegados** con un toque para expandir (el día 7 pasó de 5.540 px a 1.652), tres pesos
+visuales según el tipo de bloque, header y pestañas en un solo sticky, y swipe para cambiar de
+día. `fresh()`, `migrate()` y `hydrate()` quedaron byte por byte idénticos a la v1.
+
+El diagnóstico de UX está en `docs/ux_diagnostico_v2.md` y sus tests en `src/test_v2.py`.
+
+---
+
 ## Cuando el deploy de Pages se cuelga
 
 El 27/8 a la tarde el sitio quedó dos horas sin actualizarse: `build` pasaba en 20 segundos y

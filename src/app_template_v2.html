@@ -1,0 +1,2117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#14293d">
+<title>NYC 2026 · JP & Thais</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+:root{
+  --bg:#f7f5f1; --card:#fff; --ink:#111c26; --mut:#5c6673; --line:#e3ddd4;
+  --navy:#14293d; --accent:#c1440e; --gold:#c8891b; --green:#2e7d4f; --red:#b8283a;
+  --sh:0 1px 2px rgba(20,41,61,.06),0 4px 14px rgba(20,41,61,.06);
+  --r:14px;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);
+  font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+  padding-bottom:88px;overscroll-behavior-y:none}
+h1,h2,h3{margin:0;line-height:1.2;letter-spacing:-.015em}
+a{color:var(--accent)}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+input,select,textarea{font:inherit;color:inherit}
+
+/* ── header ── */
+header{position:sticky;top:0;z-index:900;background:var(--navy);color:#fff;
+  padding:calc(10px + env(safe-area-inset-top)) 14px 10px;box-shadow:0 2px 18px rgba(0,0,0,.18)}
+.hrow{display:flex;align-items:center;gap:10px;max-width:1180px;margin:0 auto}
+.brand{font-weight:750;font-size:17px;letter-spacing:-.02em}
+.brand small{display:block;font-weight:400;font-size:11px;opacity:.72;letter-spacing:.02em}
+.spacer{flex:1}
+.iconbtn{width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,.12);
+  display:grid;place-items:center;font-size:15px;transition:background .15s}
+.iconbtn:hover{background:rgba(255,255,255,.24)}
+
+/* ── tabs ── */
+nav.tabs{position:sticky;top:0;z-index:880;background:var(--card);border-bottom:1px solid var(--line);
+  overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+nav.tabs::-webkit-scrollbar{display:none}
+.tabsin{display:flex;gap:2px;padding:0 10px;max-width:1180px;margin:0 auto;min-width:max-content}
+body{max-width:100%;overflow-x:clip}
+.tab{padding:13px 13px 11px;font-size:13.5px;font-weight:600;color:var(--mut);
+  border-bottom:2.5px solid transparent;white-space:nowrap}
+.tab.on{color:var(--navy);border-bottom-color:var(--accent)}
+
+main{max-width:1180px;margin:0 auto;padding:16px 14px 40px}
+.view{display:none}.view.on{display:block}
+
+/* ── generic ── */
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh)}
+.pad{padding:16px}
+.muted{color:var(--mut)}
+.sm{font-size:13px}.xs{font-size:11.5px}
+.b{font-weight:650}
+.hr{height:1px;background:var(--line);margin:14px 0;border:0}
+.flex{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+
+.chip{display:inline-flex;align-items:center;gap:5px;padding:4px 9px;border-radius:999px;
+  font-size:11.5px;font-weight:650;background:#eee9e1;color:#4a5460;white-space:nowrap;max-width:100%}
+.chip.wrap,.chip.o,.chip.g{white-space:normal;text-align:left;line-height:1.4}
+.chip.g{background:#dff0e4;color:#1e6b41}
+.chip.o{background:#fdeadb;color:#9c4a13}
+.chip.r{background:#fbe3e6;color:#8f2230}
+.chip.b{background:#e0e9f3;color:#1c4a72}
+.chip.p{background:#ece4f6;color:#5b3690}
+.chip.wrap{white-space:normal;text-align:left;line-height:1.45;font-weight:500}
+.notebtn{font-size:11px;font-weight:650;color:var(--mut);border:1px dashed var(--line);
+  border-radius:8px;padding:3px 8px;margin-top:6px}
+.notebtn:hover{color:var(--accent);border-color:#f0d0bd}
+
+.sect{font-size:11px;font-weight:750;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--mut);margin:26px 0 10px}
+.sect:first-child{margin-top:0}
+
+.banner{border-radius:var(--r);padding:13px 15px;font-size:13.5px;line-height:1.5;margin-bottom:14px}
+#planSheet .psBack{position:fixed;inset:0;background:rgba(10,18,28,.45);z-index:70}
+#planSheet .psBox{position:fixed;z-index:71;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:min(94vw,560px);background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+  padding:16px;box-shadow:0 18px 50px rgba(0,0,0,.3)}
+#planSheet textarea{width:100%;height:min(38vh,240px);font:12px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace;
+  border:1px solid var(--line);border-radius:10px;padding:9px;background:var(--bg);color:var(--ink);resize:vertical}
+/* Los tiles de OSM son más coloridos que el estilo gris anterior: los apagamos un poco
+   para que los pines de categoría sigan siendo lo que más resalta. */
+.leaflet-tile-pane{filter:grayscale(.62) brightness(1.06) contrast(.94)}
+#toast{position:fixed;left:50%;transform:translate(-50%,140%);bottom:76px;z-index:60;max-width:min(92vw,460px);
+  background:var(--navy);color:#fff;padding:11px 16px;border-radius:12px;font-size:13px;line-height:1.45;
+  box-shadow:0 10px 30px rgba(0,0,0,.28);opacity:0;transition:transform .25s ease,opacity .25s ease;pointer-events:none}
+#toast.on{transform:translate(-50%,0);opacity:1}
+@media(prefers-reduced-motion:reduce){#toast{transition:none}}
+.banner.warn{background:#fff4e2;border:1px solid #f0d6a8;color:#7a4c07}
+.banner.info{background:#e8f0f8;border:1px solid #c6d8ea;color:#1c4a72}
+.banner.ok{background:#e4f2e8;border:1px solid #b9ddc6;color:#1e6b41}
+
+/* ── día selector ── */
+.days{display:flex;gap:7px;overflow-x:auto;padding:2px 0 10px;scrollbar-width:none;margin:0 -14px;padding-left:14px;padding-right:14px}
+.days::-webkit-scrollbar{display:none}
+.dbtn{flex:0 0 auto;background:var(--card);border:1px solid var(--line);border-radius:12px;
+  padding:9px 12px;text-align:left;min-width:96px;box-shadow:var(--sh);transition:.15s}
+.dbtn .dn{font-size:10.5px;font-weight:750;letter-spacing:.07em;color:var(--mut);text-transform:uppercase}
+.dbtn .dd{font-size:15px;font-weight:750;margin:1px 0}
+.dbtn .dw{font-size:10.5px;font-weight:600}
+.dbtn.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.dbtn.on .dn,.dbtn.on .dw{color:rgba(255,255,255,.78)}
+.dbtn.today{outline:2px solid var(--gold);outline-offset:1px}
+
+/* ── bloques ── */
+.blk{display:flex;gap:11px;padding:12px 14px;border-bottom:1px solid var(--line);align-items:flex-start}
+.blk:last-child{border-bottom:0}
+.blk.hi{background:#f2f9f4}
+.blk.done{opacity:.42}
+.blk.done .btxt{text-decoration:line-through}
+/* bloque que NO le toca a quien está mirando el día: se atenúa para que no se confunda */
+.blk.ajeno{background:#faf8f4;border-left:3px solid #d9cfc0}
+.blk.ajeno .btxt{color:#6b6459}
+.tmw{flex:0 0 52px}
+.tm{font-size:13px;font-weight:750;color:var(--navy);padding-top:1px;
+  background:none;border:0;width:100%;text-align:left}
+.tmend{font-size:10.5px;color:var(--mut);margin-top:2px;white-space:nowrap}
+.trav{padding:5px 14px 5px 62px;font-size:11.5px;color:var(--mut);
+  border-bottom:1px dashed var(--line);background:#fbf9f5}
+/* Lugares de paso: van con el traslado, no con el bloque — no son visitas.
+   Tono apagado a propósito: son referencia, no plan. */
+.paso{padding:4px 14px 6px 62px;display:flex;gap:5px;flex-wrap:wrap;align-items:center;
+  border-bottom:1px dashed var(--line);background:#fbf9f5}
+.pasolb{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);flex:none}
+.chip.paso1{background:#fff;border:1px dashed var(--line);font-size:11px;padding:2px 8px;
+  font-weight:600;cursor:pointer;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.chip.paso1 i{font-style:normal;color:var(--mut);font-weight:500;margin-left:5px}
+/* «Acá cerca» va dentro del bloque, no en el traslado: es lo que tenés al lado
+   mientras estás en esa parada, no lo que te queda de camino hacia ella. */
+.aca{margin-top:7px;display:flex;gap:5px;flex-wrap:wrap;align-items:center}
+.acalb{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);flex:none}
+/* Lo que hay dentro de un barrio que se camina: ficha corta, no chip — acá sí
+   hace falta el porqué y los links, porque la decisión se toma leyendo. */
+.hood{margin-top:8px;border:1px dashed var(--line);border-radius:11px;padding:9px 11px;background:#fbf9f5}
+.hoodlb{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);margin-bottom:7px}
+.hoodit{padding:7px 0;border-top:1px dashed var(--line)}
+.hoodit:first-of-type{border-top:0;padding-top:0}
+.hoodn{display:flex;gap:6px;flex-wrap:wrap;align-items:center;font-size:13px}
+.hoodn b{cursor:pointer;text-decoration:underline;text-decoration-style:dotted}
+.hoodd{font-size:11px;color:var(--mut)}
+.hoodw{font-size:12px;color:var(--mut);line-height:1.45;margin:3px 0 5px}
+.bbody{flex:1;min-width:0}
+.btxt{font-size:14px;line-height:1.5}
+.bmeta{margin-top:6px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.bnote{margin-top:7px;width:100%;border:1px dashed var(--line);border-radius:9px;padding:7px 9px;
+  font-size:12.5px;background:#fcfbf9;resize:vertical;min-height:34px}
+.bact{flex:0 0 auto;display:flex;flex-direction:column;gap:3px;align-items:center}
+.ck{width:23px;height:23px;border-radius:7px;border:2px solid var(--line);display:grid;place-items:center;
+  font-size:12px;color:transparent;background:#fff}
+.ck.on{background:var(--green);border-color:var(--green);color:#fff}
+.mini{font-size:14px;opacity:.32;padding:2px 4px;line-height:1}
+.mini:hover{opacity:.85}
+
+/* ── lugares ── */
+.tools{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.search{flex:1;min-width:190px;padding:10px 13px;border:1px solid var(--line);border-radius:11px;
+  background:var(--card);box-shadow:var(--sh)}
+select.f{padding:10px 11px;border:1px solid var(--line);border-radius:11px;background:var(--card);
+  box-shadow:var(--sh);font-size:13.5px;max-width:170px}
+.tg{padding:9px 12px;border:1px solid var(--line);border-radius:11px;background:var(--card);
+  font-size:13px;font-weight:600;box-shadow:var(--sh)}
+.tg.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
+.plistbox{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.prow{display:flex;align-items:center;gap:9px;padding:9px 12px;border-bottom:1px solid var(--line)}
+.prow:last-child{border-bottom:0}
+.prow h3{font-size:13.5px;margin:0;cursor:pointer;flex:1;min-width:130px;line-height:1.3}
+.prow .pdot{width:9px;height:9px;border-radius:50%;flex:none}
+.prow .pmeta{font-size:11px;color:#8a8378;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:34%}
+.prow .ints{margin:0;padding:0;border:0;display:flex;gap:6px;align-items:center}
+.prow .ib{width:22px;height:22px;font-size:11px;border-radius:6px}
+.prow .addbtn{margin-left:2px}
+@media(max-width:600px){.prow{flex-wrap:wrap}.prow .pmeta{max-width:100%;order:5;width:100%}}
+.pc{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px;
+  box-shadow:var(--sh);display:flex;flex-direction:column;gap:9px}
+.pc h3{font-size:15.5px;font-weight:700}
+.pc .why{font-size:13px;color:#3d4854;line-height:1.5}
+.cbar{height:3px;border-radius:3px;margin:-14px -14px 2px;border-radius:var(--r) var(--r) 0 0}
+.ints{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:auto;padding-top:9px;border-top:1px solid var(--line)}
+.iw{display:flex;align-items:center;gap:5px}
+.ilab{font-size:10.5px;font-weight:750;letter-spacing:.05em;color:var(--mut)}
+.ib{width:26px;height:26px;border-radius:8px;border:1.5px solid var(--line);font-size:12px;
+  font-weight:750;background:#fff;display:grid;place-items:center;transition:.12s}
+.ib.v0{background:#f3f0eb;color:#a8a49d}
+.ib.v1{background:#fdf0d9;color:#96631a;border-color:#eccf9b}
+.ib.v2{background:#dff0e4;color:#1e6b41;border-color:#a9d6ba}
+.mustbtn{font-size:11px;font-weight:700;border:1.5px solid var(--line);background:var(--card);
+  color:#8a8378;border-radius:8px;padding:3px 8px;cursor:pointer;white-space:nowrap}
+.mustbtn.on{background:#fff3d4;border-color:#e8c46a;color:#8a6008}
+.mustbtn.off{background:#efebe5;border-color:#d8d0c4;color:#7b7268}
+.prow .mustbtn{padding:2px 6px;flex:none}
+.addbtn{margin-left:auto;max-width:100%;font-size:11.5px;font-weight:700;color:var(--accent);
+  border:1.5px solid #f0d0bd;border-radius:9px;padding:5px 9px;background:#fdf1eb}
+
+/* ── mapa ── */
+#map{height:min(66vh,560px);border-radius:var(--r);border:1px solid var(--line);box-shadow:var(--sh);
+  background:#e8e4dd;z-index:1}
+.mk{border-radius:50%;border:2.5px solid #fff;box-shadow:0 1px 5px rgba(0,0,0,.35)}
+/* Referencia de paso: anillo hueco, para que se lea distinto de una parada del día */
+.mkpaso{width:15px;height:15px;background:#fff;border:3px solid;box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.mnum{display:grid;place-items:center;color:#fff;font-size:11px;font-weight:800;
+  border-radius:50%;border:2.5px solid #fff;box-shadow:0 1px 6px rgba(0,0,0,.4)}
+.leaflet-popup-content{margin:11px 13px;font:13px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif}
+.leaflet-popup-content h4{margin:0 0 5px;font-size:14.5px}
+
+/* ── tablas ── */
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--r);border:1px solid var(--line);
+  box-shadow:var(--sh);background:var(--card)}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:13px}
+th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px;font-size:11.5px;
+  font-weight:700;letter-spacing:.03em;position:sticky;top:0}
+td{padding:10px 12px;border-top:1px solid var(--line);vertical-align:top;line-height:1.5}
+tr.hl td{background:#f2f9f4}
+tr.bad td{background:#fdf0eb}
+td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:650}
+
+/* ── modal ── */
+.ov{position:fixed;inset:0;background:rgba(16,26,36,.55);z-index:1200;display:none;
+  align-items:flex-end;justify-content:center;backdrop-filter:blur(2px)}
+.ov.on{display:flex}
+.sheet{background:var(--card);border-radius:18px 18px 0 0;width:100%;max-width:620px;
+  max-height:86vh;overflow-y:auto;padding:18px 18px calc(24px + env(safe-area-inset-bottom))}
+@media(min-width:640px){.ov{align-items:center}.sheet{border-radius:18px;max-height:82vh}}
+.grab{width:38px;height:4px;background:var(--line);border-radius:4px;margin:0 auto 14px}
+.opt{display:block;width:100%;text-align:left;padding:12px 13px;border-radius:11px;
+  border:1px solid var(--line);margin-bottom:7px;font-size:14px;background:#fff}
+.opt:hover{background:#f7f5f1}
+.opt b{display:block;font-size:12px;color:var(--mut);font-weight:650;margin-top:2px}
+
+/* ── bottom bar ── */
+.bar{position:fixed;bottom:0;left:0;width:100vw;max-width:100vw;background:rgba(255,255,255,.94);
+  backdrop-filter:blur(12px);border-top:1px solid var(--line);z-index:950;
+  padding:9px 14px calc(9px + env(safe-area-inset-bottom))}
+.barin{max-width:1180px;margin:0 auto;display:flex;gap:8px;align-items:center;min-width:0}
+.barin>.stat{flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.barin>.spacer{flex:0 1 auto}
+.barin .btn{flex:0 0 auto}
+@media(max-width:420px){.barin{gap:6px}.barin .btn{padding:9px 11px;font-size:12.5px}}
+.btn{padding:9px 14px;border-radius:11px;font-size:13px;font-weight:650;
+  background:var(--navy);color:#fff}
+.btn.ghost{background:#eee9e1;color:var(--ink)}
+.btn.sm{padding:7px 11px;font-size:12px}
+.stat{font-size:11.5px;color:var(--mut);line-height:1.35}
+
+.kv{display:grid;grid-template-columns:auto 1fr;gap:5px 14px;font-size:13.5px}
+.kv dt{font-weight:700;color:var(--navy);white-space:nowrap}
+.kv dd{margin:0}
+details{border:1px solid var(--line);border-radius:12px;background:var(--card);
+  margin-bottom:9px;box-shadow:var(--sh);overflow:hidden}
+summary{padding:13px 15px;font-weight:680;font-size:14px;cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"▸ ";color:var(--accent);font-weight:800}
+details[open] summary::before{content:"▾ "}
+details .dbody{padding:0 15px 15px}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   V2 · rediseño para el uso real: parado en la calle, una mano, 10 segundos.
+   Todo lo de abajo pisa a lo de arriba a propósito (misma especificidad,
+   más tarde en el archivo), así el CSS original queda como referencia.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── cromo superior: header + pestañas en UN solo sticky ──────────────────
+   Antes los dos eran sticky top:0 y el header tapaba las pestañas al
+   scrollear: cambiar de pestaña obligaba a volver arriba de todo. */
+.topbar{position:sticky;top:0;z-index:900;box-shadow:0 2px 16px rgba(20,41,61,.16)}
+header{position:static;z-index:auto;box-shadow:none;
+  padding:calc(8px + env(safe-area-inset-top)) 12px 8px}
+.brand{font-size:15.5px;font-weight:750;display:flex;align-items:baseline;gap:8px;
+  min-width:0;overflow:hidden}
+.brand small{display:inline;font-size:11.5px;font-weight:500;opacity:.75;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:0}
+.iconbtn{width:33px;height:33px;font-size:14px;border-radius:9px}
+nav.tabs{position:static;z-index:auto;border-bottom:1px solid var(--line)}
+.tab{padding:11px 12px 9px;font-size:13px}
+
+main{padding-top:12px}
+
+/* ── tira de días: más baja, y hoy se ve ─────────────────────────────────── */
+.days{gap:6px;padding-bottom:11px}
+.dbtn{min-width:0;padding:7px 11px;border-radius:11px}
+.dbtn .dd{font-size:14px;font-weight:750;margin:0;letter-spacing:-.01em}
+.dbtn .dw{font-size:10.5px;font-weight:600;color:var(--mut);margin-top:1px}
+.dbtn.on .dw{color:rgba(255,255,255,.8)}
+.dbtn.today{outline:2px solid var(--gold);outline-offset:1px}
+.dbtn .hoylb{display:block;font-size:9px;font-weight:800;letter-spacing:.1em;
+  color:var(--gold);text-transform:uppercase}
+
+/* ── AHORA: la respuesta a "¿qué toca?" ──────────────────────────────────── */
+.ahora{margin:0 0 13px;border-radius:15px;overflow:hidden;background:var(--navy);
+  color:#fff;box-shadow:0 4px 20px rgba(20,41,61,.22)}
+.ahlb{display:flex;align-items:center;gap:9px;padding:8px 14px;
+  background:rgba(255,255,255,.09);font-size:10.5px;font-weight:800;
+  letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.86)}
+.ahlb .sp{flex:1}
+.ahhoy{font-size:10.5px;font-weight:750;letter-spacing:.04em;text-transform:none;
+  background:rgba(255,255,255,.16);color:#fff;padding:4px 10px;border-radius:8px}
+.ahmain{padding:12px 14px 12px}
+.aht{font-size:12px;font-weight:750;color:#7fd4ae;letter-spacing:.03em}
+.ahn{font-size:19px;font-weight:700;line-height:1.24;margin:3px 0 5px;letter-spacing:-.015em;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.ahd{font-size:12.5px;line-height:1.5;color:rgba(255,255,255,.74)}
+.ahnext{padding:10px 14px;border-top:1px solid rgba(255,255,255,.14);
+  font-size:12.5px;line-height:1.45;color:rgba(255,255,255,.78)}
+.ahnext b{color:#fff}
+.ahacts{display:flex;gap:7px;padding:11px 14px calc(13px);flex-wrap:wrap;
+  border-top:1px solid rgba(255,255,255,.14)}
+.ahbtn{background:var(--accent);color:#fff;padding:10px 15px;border-radius:11px;
+  font-size:13.5px;font-weight:750;text-decoration:none;display:inline-block;
+  flex:0 1 auto;min-width:0;max-width:100%;white-space:nowrap;overflow:hidden;
+  text-overflow:ellipsis;text-align:center}
+.ahbtn.g2{background:rgba(255,255,255,.15);color:#fff}
+.ahora.pre{background:#1d3a52}
+.ahora.fin{background:#3a3630}
+
+/* ── cabecera del día: el título manda, el porqué se despliega ───────────── */
+.dhead{background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+  box-shadow:var(--sh);padding:13px 14px;margin-bottom:12px}
+.dhead h2{font-size:18px;font-weight:700;line-height:1.25;margin-bottom:7px}
+.dhead .dchips{display:flex;gap:6px;flex-wrap:wrap}
+/* El «base:» del día 5 es una frase entera ("JGStay SoHo → New Jersey (la ÚNICA
+   noche…"): con `white-space:nowrap` el chip medía 359 px dentro de 317 y el texto
+   quedaba cortado — invisible, porque `overflow-x:clip` lo tapa sin avisar. Envuelve. */
+.dhead .dchips .chip{white-space:normal;text-align:left;line-height:1.4;max-width:100%}
+.dporque{margin-top:10px;border:0;box-shadow:none;background:none;border-radius:0}
+.dporque summary{padding:0;font-size:12px;font-weight:700;color:var(--accent)}
+.dporque .dbody{padding:9px 0 0}
+.dporque p{margin:0 0 8px;font-size:13px;line-height:1.55;color:var(--mut)}
+.dporque p:last-child{margin-bottom:0}
+
+/* ── el bloque de itinerario ─────────────────────────────────────────────
+   `.itb` es la clase nueva: `.blk` a secas la sigue usando Reservas y no se
+   toca. Plegado por defecto — el texto completo está a un toque, no borrado. */
+.blk.itb{display:flex;gap:9px;padding:10px 12px;align-items:flex-start;
+  border-bottom:1px solid var(--line)}
+.itb .tmw{flex:0 0 46px;padding-top:1px}
+.itb .tm{font-size:13.5px;font-weight:800;color:var(--navy);letter-spacing:-.02em;
+  padding:0;background:none;border:0;width:100%;text-align:left}
+.itb input.tm{border:1px solid var(--line);border-radius:7px;padding:3px 4px;
+  background:#fff;font-weight:700;font-size:13px}
+.itb.on .tmw{flex:0 0 56px}
+.itb .tmend{font-size:10px;color:var(--mut);margin-top:1px}
+.itb .btog{cursor:pointer;-webkit-tap-highlight-color:rgba(193,68,14,.07)}
+.bhead{display:flex;gap:7px;align-items:flex-start}
+.cdot{width:8px;height:8px;border-radius:50%;flex:none;margin-top:6px;
+  box-shadow:0 0 0 2px rgba(255,255,255,.9)}
+.bttl{font-size:14.5px;font-weight:650;line-height:1.34;letter-spacing:-.008em;
+  color:var(--ink);flex:1;min-width:0;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.itb.hi .bttl,.itb.star .bttl{font-size:15.5px;font-weight:700}
+.bsub{font-size:12.5px;line-height:1.45;color:var(--mut);margin:2px 0 0 15px;
+  display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+.bfacts{font-size:11px;color:#78818f;margin:3px 0 0 15px;line-height:1.45;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.bfacts .mas{color:#a8a49d;font-weight:800}
+.stx{color:var(--gold)}
+.bfacts .ojo{color:#8a5a08;font-weight:750}
+.bfacts .cerr{color:var(--red);font-weight:750}
+/* logística: es pegamento entre paradas, no plan. Una línea y gris. */
+.itb.logi{padding:7px 12px;background:#fbfaf7}
+.itb.logi .bttl{font-size:12.5px;font-weight:500;color:#67707c;-webkit-line-clamp:2}
+.itb.logi .tm{font-size:12px;font-weight:700;color:#7c8593}
+.itb.done .bttl{text-decoration:line-through}
+.itb.on{background:#fffcf5}
+.itb.on .bttl{-webkit-line-clamp:unset;display:block}
+/* estado respecto del reloj (solo cuando el día que mirás es hoy) */
+.itb.past{opacity:.62}
+.itb.past.done{opacity:.4}
+.itb.now{background:#fff7e7;box-shadow:inset 3.5px 0 0 var(--gold)}
+.itb.now .bttl{font-weight:750}
+.itb.flash{animation:fl 1.3s ease}
+@keyframes fl{0%,100%{background:#fff7e7}30%{background:#ffe9b8}}
+@media(prefers-reduced-motion:reduce){.itb.flash{animation:none}}
+/* detalle desplegado: acá vuelve TODO lo que la v1 mostraba siempre */
+.bdet{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)}
+.bdet .btxt{font-size:13.5px;line-height:1.55}
+.bedit{margin-top:10px;padding-top:9px;border-top:1px dashed var(--line);
+  display:flex;gap:6px;align-items:center}
+.bedit .mini{font-size:13px;opacity:.55;border:1px solid var(--line);border-radius:8px;
+  padding:3px 10px;background:#fff}
+.bedit .lb{font-size:10.5px;color:var(--mut);letter-spacing:.05em;text-transform:uppercase;flex:1}
+.bedit .del{color:var(--red);border-color:#f0cdd2;margin-left:auto}
+/* columna de acción: plegado, SOLO lo que se usa caminando */
+.itb .bact{flex:0 0 auto;display:flex;flex-direction:column;gap:5px;align-items:center;
+  padding-top:1px}
+.itb .ck{width:26px;height:26px;border-radius:8px;font-size:13px}
+.goto{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;
+  background:#e6f3ea;color:#1e6b41;font-weight:800;font-size:14px;text-decoration:none;
+  border:1px solid #bfdfcb}
+.plegar{margin-top:9px;font-size:11px;font-weight:700;color:var(--mut);
+  border:1px dashed var(--line);border-radius:8px;padding:4px 10px}
+.itb.logi .bact .ck{width:22px;height:22px;font-size:11px}
+/* traslado entre paradas: se queda, es info de calle pura */
+.trav{padding:5px 12px 5px 57px;font-size:11.5px}
+
+/* ── barra inferior ──────────────────────────────────────────────────────── */
+.bar .stat{font-size:11.5px}
+#bAhora{background:var(--accent);padding:10px 16px;font-size:13.5px;font-weight:750}
+
+.hint{font-size:11px;color:var(--mut);margin:2px 0 10px;text-align:center}
+
+@media print{header,nav.tabs,.bar,.tools,.days,.bact,.addbtn{display:none!important}
+  .itb .bttl,.itb.on .bttl{-webkit-line-clamp:unset;display:block}.bsub,.bfacts{display:block!important}
+  .view{display:block!important}body{padding:0;background:#fff}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+<header>
+ <div class="hrow">
+  <div class="brand">NYC 2026<small id="hsub">29 ago – 6 sep · Juan Pablo &amp; Thais</small></div>
+  <div class="spacer"></div>
+  <button class="iconbtn" id="bWho" title="Filtrar por persona">👥</button>
+  <button class="iconbtn" id="bMenu" title="Datos">⋯</button>
+ </div>
+</header>
+
+<nav class="tabs"><div class="tabsin" id="tabs"></div></nav>
+</div>
+
+<main>
+ <section class="view on" id="v-itin"></section>
+ <section class="view" id="v-places"></section>
+ <section class="view" id="v-map"></section>
+ <section class="view" id="v-costs"></section>
+ <section class="view" id="v-trans"></section>
+ <section class="view" id="v-res"></section>
+</main>
+
+<div class="bar"><div class="barin">
+  <div class="stat" id="stat"></div>
+  <div class="spacer"></div>
+  <button class="btn sm" id="bAhora" title="Saltar al bloque que toca ahora">Ahora</button>
+  <button class="btn ghost sm" id="bExp">Exportar</button>
+  <button class="btn sm" id="bSave">Guardado ✓</button>
+</div></div>
+
+<div class="ov" id="ov"><div class="sheet" id="sheet"></div></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+/* ═══════════ DATOS ═══════════ */
+const DATA = /*__DATA__*/;
+const PLACES = DATA.places, BASE_ITIN = DATA.itinerary, EX = DATA.extras;
+const PBY = Object.fromEntries(PLACES.map(p => [p.id, p]));
+/* subcategorías agrupadas por categoría, para los <optgroup> de los filtros */
+const SUBS = DATA.subs || {};
+
+const CAT = {
+  mirador:{n:'Mirador',c:'#0b7285'}, museo:{n:'Museo',c:'#6741d9'},
+  barrio:{n:'Barrio',c:'#e8590c'},  comida:{n:'Comida',c:'#c2255c'},
+  musica:{n:'Música',c:'#2b8a3e'},  arq:{n:'Arquitectura',c:'#1864ab'},
+  parque:{n:'Parque',c:'#5c940d'},  evento:{n:'Evento',c:'#ae3ec9'},
+  teatro:{n:'Teatro',c:'#9c36b5'},  transporte:{n:'Logística',c:'#495057'}
+};
+const WHO = {both:'Ambos', jp:'Solo JP', th:'Thais'};
+const DOW_IDX = {'Lunes':0,'Martes':1,'Miércoles':2,'Jueves':3,'Viernes':4,'Sábado':5,'Domingo':6};
+const KEY = 'nyc2026.v1';
+
+/* ═══════════ ESTADO ═══════════ */
+let S = load();
+function fresh(){
+  const it = JSON.parse(JSON.stringify(BASE_ITIN));
+  it.forEach(d => d.blocks.forEach((b,i) => { b.id = 'd'+d.n+'b'+i; b.done = false; b.mynote = ''; }));
+  return { itin: it, interest: {}, must: {}, mv: 2, res: {}, day: 1, tab: 'itin', whoF: 'all', pv: 'cards', v: 1,
+           baseHash: DATA.itinHash };
+}
+/* El itinerario base cambió desde que este navegador guardó su plan: adoptar el NUEVO
+   conservando lo del usuario — tildes y notas (matcheadas por texto o por lugar+hora),
+   bloques agregados a mano, intereses JP/TH, reservas marcadas y filtros. */
+var MIGRATED;   // var sin inicializar: load() corre antes y puede ponerla en true — un '= false' acá la pisaría
+function migrate(old){
+  const ns = fresh();
+  ns.interest = old.interest || {};
+  ns.res = old.res || {};
+  ns.whoF = old.whoF || 'all';
+  ns.pv = old.pv || 'cards';
+  normMarks(old); ns.must = old.must; ns.mv = 2;
+  ns.tab = old.tab || 'itin';
+  ns.day = old.day || 1;
+  for (const nd of ns.itin){
+    const od = (old.itin || []).find(d => d.n === nd.n);
+    if (!od) continue;
+    for (const nb of nd.blocks){
+      const ob = od.blocks.find(b => b.txt === nb.txt) ||
+                 (nb.pid ? od.blocks.find(b => b.pid === nb.pid && b.t === nb.t) : null);
+      if (ob){ nb.done = !!ob.done; nb.mynote = ob.mynote || ''; }
+    }
+    od.blocks.filter(b => String(b.id).startsWith('x')).forEach(b => nd.blocks.push(b));
+  }
+  try { localStorage.setItem(KEY, JSON.stringify(ns)); } catch(e){}
+  MIGRATED = true;
+  return ns;
+}
+/* Completa un estado guardado con las claves que agregamos después de que se guardó.
+   Sin esto, una versión nueva de la app rompía la vista Lugares en el navegador de alguien
+   que ya tenía plan guardado y cuyo itinerario no había cambiado (no se disparaba migrate). */
+function hydrate(s){
+  normMarks(s);
+  const base = fresh();
+  for (const k of Object.keys(base)){
+    if (s[k] === undefined || s[k] === null) s[k] = base[k];
+    else if (base[k] && typeof base[k] === 'object' && !Array.isArray(base[k])
+             && (typeof s[k] !== 'object' || Array.isArray(s[k]))) s[k] = base[k];
+  }
+  if (!Array.isArray(s.itin) || !s.itin.length) return base;
+  return s;
+}
+function load(){
+  try { const raw = localStorage.getItem(KEY);
+    if (raw) { const s = JSON.parse(raw);
+      if (s && s.v === 1 && s.itin)
+        return s.baseHash === DATA.itinHash ? hydrate(s) : migrate(s);
+    } } catch(e){}
+  return fresh();
+}
+let saveT = null, dirty = false;
+function save(){
+  dirty = true; setStat();
+  clearTimeout(saveT);
+  saveT = setTimeout(() => {
+    try { localStorage.setItem(KEY, JSON.stringify(S)); dirty = false; }
+    catch(e){ console.warn('localStorage no disponible', e); }
+    setStat();
+  }, 250);
+}
+function interest(id){
+  const p = PBY[id]; if (!p) return {jp:0, th:0};
+  const o = (S.interest || (S.interest = {}))[id];
+  return { jp: o ? o.jp : p.jp, th: o ? o.th : p.th };
+}
+function setInterest(id, who, val){
+  if (!S.interest) S.interest = {};
+  if (!S.interest[id]) { const p = PBY[id]; S.interest[id] = {jp:p.jp, th:p.th}; }
+  S.interest[id][who] = val; save();
+}
+
+/* IMPRESCINDIBLE: marca sí / vacío. Igual que el interés, el default sale del catálogo
+   (editable desde el Excel) y lo que toques acá lo pisa y queda guardado en este navegador. */
+/* La marca de un lugar tiene TRES estados:
+     1  ★ imprescindible  · tiene que entrar en el itinerario
+    -1  ✕ no imprescindible · lo descartaste a proposito
+     0  sin marcar        · todavia no lo decidiste
+   Si el navegador no tiene nada guardado, manda el valor del catalogo (lo que ve Thais).
+   Compatibilidad: la version anterior guardaba 0 al DES-marcar una estrella, o sea
+   "esto no es imprescindible" — que es exactamente el nuevo -1. Por eso 0 guardado = -1. */
+function markOf(id){
+  const s = S.must || (S.must = {});
+  if (!(id in s)){ const d = PBY[id] && PBY[id].must; return d === -1 ? -1 : d ? 1 : 0; }
+  const v = s[id];
+  return v > 0 ? 1 : v < 0 ? -1 : 0;
+}
+function cycleMark(id){
+  const m = markOf(id);
+  (S.must || (S.must = {}))[id] = m === 0 ? 1 : m === 1 ? -1 : 0;   // ☆ → ★ → ✕ → ☆
+  save();
+}
+/* La version anterior guardaba 0 al DES-marcar una estrella, o sea "esto NO es
+   imprescindible" — que hoy es -1. Ahora 0 significa "sin marcar". Esta conversion
+   corre una sola vez por navegador (la marca S.mv) para no dar vuelta el sentido. */
+function normMarks(s){
+  if (s.mv === 2) return s;
+  const mm = (s.must && typeof s.must === 'object' && !Array.isArray(s.must)) ? s.must : {};
+  for (const k of Object.keys(mm)) if (!mm[k]) mm[k] = -1;
+  s.must = mm; s.mv = 2;
+  return s;
+}
+const isMust  = id => markOf(id) === 1;
+const isOut   = id => markOf(id) === -1;
+const mustCount = () => PLACES.filter(p => isMust(p.id)).length;
+const outCount  = () => PLACES.filter(p => isOut(p.id)).length;
+const MARKTIT = 'Tocá para ir cambiando: sin marcar → ★ imprescindible → ✕ no imprescindible → sin marcar';
+
+/* ═══════════ HELPERS ═══════════ */
+const $ = s => document.querySelector(s);
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, m =>
+  ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+/* Origen del lugar: de dónde salió. Tres estados, con el mismo código en tarjeta y en fila. */
+const SRC = {
+  ambas:     {t:'lista google', bg:'#efe7fb', fg:'#5b3a91', d:'Está en la lista de Google guardada — y además lo habíamos propuesto nosotros'},
+  lista:     {t:'lista google', bg:'#efe7fb', fg:'#5b3a91', d:'Salió de la lista de Google Maps'},
+  propuesta: {t:'otros',        bg:'#f0efec', fg:'#7a736a', d:'Salió de nuestro trabajo conjunto'},
+};
+function srcChip(p, mini){
+  const c = SRC[p.src] || SRC.propuesta;
+  const tip = c.d + (p.gname ? ' — en la lista figura como “' + p.gname + '”' : '');
+  return `<span class="chip" style="background:${c.bg};color:${c.fg};flex:none" title="${esc(tip)}">${mini ? (p.src === 'propuesta' ? '·' : '★') : c.t}</span>`;
+}
+const VER = DATA.ver || '—', VERID = DATA.verId || '';
+const gmaps = p => 'https://www.google.com/maps/search/?api=1&query=' +
+  encodeURIComponent(p.n + (p.addr ? ', ' + p.addr : '') + ', New York');
+/* ── Apple Maps ────────────────────────────────────────────────────────────────
+   maps.apple.com/directions, el formato unificado de iOS 18.4 / watchOS 11.4:
+   source, waypoint (se repite, una por parada intermedia), destination y mode.
+   SIN source, Maps arranca desde donde esté parado el que abre el link — que es
+   justo el punto: seguir la ruta desde donde estés. Iniciada la navegación en el
+   iPhone, el Watch la toma solo y va dando los taps en la muñeca.
+   Ojo con dos cosas: ?daddr=lat,lng (el formato viejo) dejó de andar en 18.4, y
+   pasarle nombre + dirección en vez de coordenadas hace que Maps muestre el lugar
+   por su nombre en vez de un pin mudo. */
+const AM_CIUDAD = {Manhattan:'New York, NY', Brooklyn:'Brooklyn, NY', Queens:'Queens, NY',
+  Bronx:'Bronx, NY', 'Staten Island':'Staten Island, NY', 'New Jersey':'NJ'};
+const AM_MAX = 15;   /* tope de paradas de una ruta en Maps: destino + 14 waypoints */
+/* El nombre del catálogo lleva aclaraciones que a Maps le sobran y le empeoran la
+   búsqueda: "Hotel Ink48 (29-31 ago)" encuentra peor que "Hotel Ink48". */
+const amNombre = p => String(p.n || '').split(/\s+[—·(]/)[0].trim();
+function amPunto(p){
+  if (!p) return '';
+  const ciudad = AM_CIUDAD[p.boro] || '';
+  /* aprox = la dirección no se pudo verificar y el pin es del barrio: ahí el nombre
+     manda, que lo busque Maps. Con dirección verificada, nombre + dirección. */
+  const partes = (!p.aprox && p.addr) ? [amNombre(p), p.addr, ciudad]
+                                      : [amNombre(p), p.hood, ciudad];
+  return partes.filter(Boolean).join(', ') || (p.lat ? p.lat + ',' + p.lng : '');
+}
+/* Una ruta con todas las paradas en orden. La última es el destino, el resto van
+   como waypoint. Sin source: Maps usa la ubicación actual. */
+function amRuta(places, mode){
+  const pts = places.map(amPunto).filter(Boolean).slice(0, AM_MAX);
+  if (!pts.length) return '';
+  const q = pts.slice(0, -1).map(t => 'waypoint=' + encodeURIComponent(t));
+  q.push('destination=' + encodeURIComponent(pts[pts.length - 1]));
+  q.push('mode=' + mode);
+  if (mode === 'transit') q.push('transit-preferences=subway,bus');
+  return 'https://maps.apple.com/directions?' + q.join('&');
+}
+/* ── Google Maps, el plan B ────────────────────────────────────────────────────
+   Maps URLs (api=1): origin, destination, waypoints separados por | y travelmode.
+   Sin origin arranca desde la ubicación del aparato, igual que Apple.
+   EL LÍMITE MANDA EL DISEÑO: Google acepta hasta 3 waypoints EN NAVEGADOR MÓVIL
+   (nueve en el resto de las plataformas), y los días tienen entre 6 y 11 paradas.
+   Por eso la ruta se parte en tramos de 4 paradas — 3 waypoints + el destino —
+   que es lo que entra seguro en el celular. Cada tramo arranca donde estés, así
+   que al terminar uno se abre el siguiente y no hay que repetir la última parada. */
+const GM_PARADAS = 4;
+function gmRuta(places, mode){
+  const pts = places.map(amPunto).filter(Boolean);
+  if (!pts.length) return '';
+  const q = ['api=1', 'travelmode=' + mode,
+             'destination=' + encodeURIComponent(pts[pts.length - 1])];
+  if (pts.length > 1) q.push('waypoints=' + pts.slice(0, -1).map(encodeURIComponent).join('%7C'));
+  return 'https://www.google.com/maps/dir/?' + q.join('&');
+}
+/* Parte una lista en grupos de n, respetando el orden. */
+function enTramos(arr, n){
+  const out = [];
+  for (let i = 0; i < arr.length; i += n) out.push(arr.slice(i, i + n));
+  return out;
+}
+/* ── Lugares de paso ──────────────────────────────────────────────────────────
+   Entre dos paradas consecutivas, qué del catálogo queda EN EL CAMINO. No son
+   visitas y no tocan el itinerario: son referencia por si vale un desvío corto.
+
+   La medida es el DESVÍO —cuánto se alarga el trayecto si paso por ahí,
+   d(A,P) + d(P,B) - d(A,B)— y no la distancia al lugar, porque son preguntas
+   distintas: el Puente de Brooklyn está a 800 m de DUMBO y cuesta CERO metros
+   pasar por él, porque queda justo sobre la línea hacia el Oculus.
+
+   Arriba de PASO_CORREDOR el tramo ya no se camina, se va en subte: ahí el
+   corredor no existe (no pasás por el medio) y solo valen las puntas. */
+const PASO_DESVIO = 500;      /* m de desvío que se tolera en un tramo caminable */
+/* En un tramo corto el desvío miente: si A y B están a 100 m, pasar por algo que está
+   a la vuelta de la esquina "cuesta" 500 m y queda afuera. Por eso también entra lo
+   que está a menos de PASO_CERCA de cualquiera de las dos puntas — es el caso del
+   paseo por el Lower East Side, donde la parada siguiente está a una cuadra y el
+   barrio entero está a tiro. */
+const PASO_CERCA = 350;
+const PASO_CORREDOR = 2500;   /* m: hasta acá el tramo se hace a pie */
+const PASO_PUNTA = 400;       /* m alrededor de cada punta en los tramos largos */
+const PASO_TOP = 4;           /* cuántos se muestran por tramo */
+/* ACÁ CERCA: lo que está pegado a una parada, no en el camino hacia ella.
+   Son preguntas distintas y confundirlas engaña. OddFellows está DENTRO de
+   Domino Park, a 296 m del punto, y como referencia de tramo salía con
+   «+591 m de desvío» colgado del traslado anterior — el número correcto es
+   otro y el lugar donde mostrarlo también: va en la parada, mientras estás
+   ahí parado una hora. */
+const ACA_RADIO = 350;       /* m alrededor de una parada */
+const ACA_TOP = 4;
+const PASO_FUERA = {transporte:1, hotel:1, evento:1, teatro:1};
+/* transporte y hotel son logística; evento y teatro tienen fecha, hora y entrada
+   —Broadway no es un desvío de cinco minutos—. La música es el caso fino: un club
+   de jazz cuesta $25-45 y hay que reservar, pero un bar con música en vivo se paga
+   en la puerta y se entra sin nada. Solo pasa el segundo, y solo de noche: Bar
+   Bayeux a las once de la mañana no es una referencia útil. */
+const PASO_MUSICA_COVER = 15;   /* hasta acá es cover de puerta, no una entrada */
+const PASO_MUSICA_DESDE = 18;   /* antes de esta hora un bar de música no sirve */
+const esDesvioPosible = (p, horaTramo) =>
+  p.cat !== 'musica' ? true
+  : !p.book && (p.cost || 0) <= PASO_MUSICA_COVER && horaTramo >= PASO_MUSICA_DESDE;
+
+function hav(a, b){
+  const R = 6371000, r = Math.PI/180;
+  const la1 = a[0]*r, la2 = b[0]*r, dla = (b[0]-a[0])*r, dlo = (b[1]-a[1])*r;
+  const h = Math.sin(dla/2)**2 + Math.cos(la1)*Math.cos(la2)*Math.sin(dlo/2)**2;
+  return 2*R*Math.asin(Math.sqrt(h));
+}
+/* Los de paso de un día entero: { idDelBloqueDestino: [{p, desvio}] }.
+   Se calcula sobre el itinerario VIVO —no en el build— para que siga bien
+   después de que Juan mueva, agregue o saque un bloque. */
+function dePasoDelDia(d){
+  const wd = DOW_IDX[d.dow];
+  const usados = {};                     /* agendado en CUALQUIER día: no es novedad */
+  S.itin.forEach(x => x.blocks.forEach(b => { if (b.pid) usados[b.pid] = 1; }));
+  const cand = PLACES.filter(p => p.lat && !usados[p.id] && !PASO_FUERA[p.cat]
+    && (p.jp > 0 || p.th > 0)            /* lo que los dos bajaron a 0 está descartado */
+    && horario(p, wd) !== 'CERRADO');    /* cerrado ese día no es una referencia útil */
+
+  const paradas = paradasDe(d);
+
+  /* PRIMERO lo que está pegado a una parada: si algo está a menos de ACA_RADIO
+     de donde vas a estar, la respuesta útil es «lo tenés acá», no «te queda de
+     camino». Se lo queda la parada MÁS cercana, y sale del reparto de tramos. */
+  const aca = {}, tomadoAca = {};
+  paradas.forEach(({b, p: A}) => {
+    const a = [A.lat, A.lng];
+    const hora = parseInt(String(b.t).slice(0, 2), 10);
+    cand.forEach(q => {
+      if (!esDesvioPosible(q, hora)) return;
+      const dist = hav(a, [q.lat, q.lng]);
+      if (dist > ACA_RADIO) return;
+      if (!tomadoAca[q.id] || dist < tomadoAca[q.id].dist)
+        tomadoAca[q.id] = {p: q, dist, destino: b.id};
+    });
+  });
+  Object.values(tomadoAca).forEach(x => (aca[x.destino] = aca[x.destino] || []).push(x));
+  Object.keys(aca).forEach(k => {
+    aca[k].sort((x, y) => x.dist - y.dist);
+    aca[k] = aca[k].slice(0, ACA_TOP);
+  });
+  const yaEnAca = {};
+  Object.values(aca).flat().forEach(x => { yaEnAca[x.p.id] = 1; });
+
+  /* Qué candidatos tiene cada tramo, ordenados por lo que cuesta pasar. */
+  const tramos = [];
+  for (let i = 0; i < paradas.length - 1; i++){
+    const A = paradas[i].p, B = paradas[i+1].p;
+    const a = [A.lat, A.lng], b = [B.lat, B.lng], dab = hav(a, b);
+    const hora = parseInt(String(paradas[i+1].b.t).slice(0, 2), 10);   /* a qué hora se pasa */
+    const lista = [];
+    cand.forEach(p => {
+      if (!esDesvioPosible(p, hora)) return;
+      const q = [p.lat, p.lng], da = hav(a, q), db = hav(q, b);
+      const desvio = da + db - dab;
+      const entra = dab <= PASO_CORREDOR
+        ? (desvio <= PASO_DESVIO || Math.min(da, db) <= PASO_CERCA)
+        : Math.min(da, db) <= PASO_PUNTA;
+      if (entra && !yaEnAca[p.id]) lista.push({p, desvio});
+    });
+    lista.sort((x, y) => x.desvio - y.desvio);
+    tramos.push({destino: paradas[i+1].b.id, lista});
+  }
+
+  /* El reparto va en DOS vueltas, y el orden importa. Con solo "cada lugar al tramo
+     donde menos cuesta", los tramos cortos del mismo barrio quedaban mudos: el
+     domingo, el Tenement Museum y compañía se los llevaba el tramo de las 10:30 con
+     un metro de desvío, y la caminata por el Lower East Side —que los tiene a todos
+     a la vuelta— no mostraba nada.
+     Primera vuelta: cada tramo se queda con su mejor candidato todavía libre, así
+     ninguno con opciones se queda sin nada. Segunda: el resto se reparte al tramo
+     donde menos cuesta. Un lugar sigue apareciendo UNA sola vez por día. */
+  const tomado = {}, out = {};
+  const poner = (destino, x) => { (out[destino] = out[destino] || []).push(x); tomado[x.p.id] = 1; };
+  tramos.forEach(t => {
+    const primero = t.lista.find(x => !tomado[x.p.id]);
+    if (primero) poner(t.destino, primero);
+  });
+  const resto = {};
+  tramos.forEach(t => t.lista.forEach(x => {
+    if (tomado[x.p.id]) return;
+    if (!resto[x.p.id] || x.desvio < resto[x.p.id].desvio) resto[x.p.id] = {...x, destino: t.destino};
+  }));
+  Object.values(resto).forEach(x => poner(x.destino, x));
+
+  Object.keys(out).forEach(k => {
+    out[k].sort((x, y) => x.desvio - y.desvio);
+    out[k] = out[k].slice(0, PASO_TOP);
+  });
+  return {paso: out, aca};
+}
+/* ── Qué hay dentro de un barrio ──────────────────────────────────────────────
+   Un bloque de "caminar un barrio" no es una parada: son horas sueltas en un
+   polígono. Ahí la pregunta no es "qué queda en el camino" —no hay camino— sino
+   "qué tengo alrededor mientras camino".
+   Se toma por barrio Y por radio: el `hood` del catálogo es la definición
+   administrativa y no siempre coincide con lo que uno camina. */
+const BARRIO_RADIO = 700;     /* m alrededor del punto del barrio */
+const BARRIO_TOP = 6;
+function enElBarrio(pb){
+  if (!pb || pb.cat !== 'barrio' || !pb.lat) return [];
+  const usados = {};
+  S.itin.forEach(x => x.blocks.forEach(b => { if (b.pid) usados[b.pid] = 1; }));
+  const c = [pb.lat, pb.lng];
+  return PLACES
+    .filter(p => p.lat && p.id !== pb.id && !usados[p.id] && !PASO_FUERA[p.cat]
+                 && (p.jp > 0 || p.th > 0))
+    .map(p => ({p, d: hav(c, [p.lat, p.lng])}))
+    .filter(x => x.d <= BARRIO_RADIO || x.p.hood === pb.hood)
+    .sort((x, y) => x.d - y.d)
+    .slice(0, BARRIO_TOP);
+}
+/* Los mismos lugares, planos, para pintarlos en el mapa del día. */
+function dePasoPlano(d){
+  const r = dePasoDelDia(d);
+  return Object.values(r.paso).flat()
+    .concat(Object.values(r.aca).flat().map(x => ({p: x.p, desvio: x.dist})));
+}
+/* Las paradas de un día, en orden, sin repetir la misma dos bloques seguidos
+   (el hotel al salir y al volver son dos paradas distintas; el mismo lugar en
+   bloques pegados, una sola). */
+function paradasDe(d){
+  const out = [];
+  d.blocks.forEach(b => {
+    const p = b.pid ? PBY[b.pid] : null;
+    if (!p || !amPunto(p)) return;
+    if (out.length && out[out.length - 1].p.id === p.id) return;
+    out.push({b, p});
+  });
+  return out;
+}
+const money = n => n === 0 ? 'gratis' : '$' + n;
+const DIAS = ['lunes','martes','miércoles','jueves','viernes','sábado','domingo'];
+/* Horario del lugar para un día de la semana (0=lunes). Devuelve null si no hay dato. */
+function horario(p, wd){
+  if (!p.hrs) return null;
+  const w = p.hrs[wd];
+  return w ? `${w[0]}–${w[1]}` : 'CERRADO';
+}
+/* Texto compacto de la semana entera, agrupando días con el mismo horario. */
+function horarioSemana(p){
+  if (!p.hrs) return '';
+  const out = []; let ini = 0;
+  for (let i = 1; i <= 6; i++){
+    const a = JSON.stringify(p.hrs[i]), b = JSON.stringify(p.hrs[i-1]);
+    if (a !== b){ out.push([ini, i-1]); ini = i; }
+  }
+  out.push([ini, 6]);
+  return out.map(([a,b]) => {
+    const w = p.hrs[a], r = a === b ? DIAS[a] : `${DIAS[a]} a ${DIAS[b]}`;
+    return `${r}: ${w ? w[0]+'–'+w[1] : 'cerrado'}`;
+  }).join(' · ');
+}
+/* ── El reloj ─────────────────────────────────────────────────────────────────
+   `new Date().toISOString()` es UTC: en Nueva York (UTC−4) a partir de las 20:00
+   locales devolvía el día SIGUIENTE, o sea que todas las noches del viaje —Birdland,
+   el Vanguard, Café Wha— la app creía que ya era mañana. Va en hora local.
+   `window.__NOW` existe solo para poder probar el "ahora" desde Playwright. */
+function NOW(){ return window.__NOW ? new Date(window.__NOW) : new Date(); }
+function hoyStr(){ const d = NOW();
+  return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0'); }
+let TODAY = hoyStr();
+const minOf = t => /^\d{1,2}:\d{2}$/.test(String(t)) ? (+String(t).slice(0,2))*60 + (+String(t).slice(3,5)) : null;
+const minsNow = () => { const d = NOW(); return d.getHours()*60 + d.getMinutes(); };
+const hhmmNow = () => { const d = NOW();
+  return String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0'); };
+const enMin = m => m < 60 ? m + ' min' : Math.floor(m/60) + ' h' + (m%60 ? ' ' + (m%60) + ' min' : '');
+
+/* ── leadOf: jerarquía, no tijera ─────────────────────────────────────────────
+   Los textos del catálogo ya vienen con una estructura: ★ al principio para lo
+   destacado, y un separador temprano —" — ", ". " o ": "— entre el QUÉ y el
+   POR QUÉ. Se parte ahí. El resto NO se pierde: se muestra entero al desplegar.
+   El ":" se exige precedido de algo que no sea dígito para no cortar en "125 St: 12". */
+function leadOf(txt){
+  let t = String(txt == null ? '' : txt).trim(), star = 0;
+  const m = t.match(/^([★☆]+)\s*/);
+  if (m){ star = m[1].length; t = t.slice(m[0].length); }
+  const cands = [];
+  const cab = t.slice(0, 100);
+  const e = cab.search(/\s[—–]\s/);       if (e > 6)  cands.push([e, 3]);
+  const p = cab.search(/\.\s/);           if (p > 10) cands.push([p, 2]);
+  const c = cab.search(/[^\d]:\s/);       if (c > 10) cands.push([c + 1, 2]);
+  cands.sort((a, b) => a[0] - b[0]);
+  let head, rest;
+  if (cands.length){ head = t.slice(0, cands[0][0]).trim(); rest = t.slice(cands[0][0] + cands[0][1]).trim(); }
+  else if (t.length > 92){ const sp = t.lastIndexOf(' ', 92);
+    head = t.slice(0, sp > 20 ? sp : 92).trim() + '…'; rest = t; }
+  else { head = t; rest = ''; }
+  return {star, head, rest, full: t};
+}
+/* El catálogo escribe en MAYÚSCULAS dos cosas distintas: advertencias
+   ("CIERRA LOS SÁBADOS", "RESERVA NO MODIFICABLE") y énfasis o nombres propios
+   ("el MET", "SUMMIT", "JOSHUA REDMAN"). Marcar cualquier mayúscula encendía el ⚠
+   en 51 de 143 bloques y dejaba de significar algo. Con este vocabulario quedan 28,
+   y los 28 son advertencias de verdad: si el ⚠ aparece, hay que abrir el bloque. */
+const RX_AVISO = /\b(NO|OJO|CIERRA|CERRAD[AO]S?|S[ÁA]BADOS?|DOMINGOS?|LUNES|MARTES|MI[ÉE]RCOLES|JUEVES|VIERNES|RESERVAR?|RESERVAD[AO]S?|MODIFICABLE|OBLIGAD[AO]S?|LLEGAR|SALIR|SALIDA|[ÚU]LTIM[AO]S?|M[ÁA]XIMO|M[ÍI]NIMO|TIMED|TICKET|AGOTAD[AO]S?|PEDIR|COMPRAR|EVITAR|CUIDADO|IMPRESCINDIBLE|PREINSCRIPCI[ÓO]N|HORARIO|ASIGNADO|PUNTUAL|CONFIRMAR|VERIFICAR|ANTES|EXACT[AO]S?|CUPO|FILA|COLA)\b/;
+const tieneAviso = rest => RX_AVISO.test(String(rest || ''));
+
+/* Índice del bloque que toca AHORA en un día: el último cuya hora ya pasó.
+   Devuelve -1 si el día no es hoy o si todavía no arrancó. */
+function idxAhora(d){
+  if (!d || d.date !== TODAY) return -1;
+  const m = minsNow(); let idx = -1;
+  d.blocks.forEach((b, i) => { const t = minOf(b.t); if (t != null && t <= m) idx = i; });
+  return idx;
+}
+
+function setStat(){
+  const tot = S.itin.reduce((a,d) => a + d.blocks.length, 0);
+  const dn  = S.itin.reduce((a,d) => a + d.blocks.filter(b => b.done).length, 0);
+  const d = S.itin.find(x => x.n === S.day);
+  /* Parado en la calle, "0/143" no dice nada: lo que importa es cómo va HOY.
+     El estado de guardado se cuenta acá para que la barra no necesite el botón. */
+  $('#stat').innerHTML = (S.tab === 'itin' && d)
+    ? `<b>${d.blocks.filter(b => b.done).length}/${d.blocks.length}</b> del día ${d.n}` +
+      `<span style="opacity:.55"> · ${dn}/${tot} en total${dirty ? ' · guardando…' : ''}</span>`
+    : `<b>${dn}/${tot}</b> bloques hechos`;
+  $('#bSave').textContent = dirty ? 'Guardando…' : 'Guardado ✓';
+}
+
+/* ═══════════ TABS ═══════════ */
+const TABS = [['itin','Itinerario'],['places','Lugares'],['map','Mapa'],
+              ['costs','Costos'],['trans','Transporte'],['res','Reservas']];
+$('#tabs').innerHTML = TABS.map(([k,l]) =>
+  `<button class="tab${k===S.tab?' on':''}" data-t="${k}">${l}</button>`).join('');
+$('#tabs').onclick = e => { const b = e.target.closest('.tab'); if (b) go(b.dataset.t); };
+function go(t){
+  S.tab = t; save();
+  document.querySelectorAll('.tab').forEach(x => x.classList.toggle('on', x.dataset.t === t));
+  document.querySelectorAll('.view').forEach(x => x.classList.toggle('on', x.id === 'v-' + t));
+  /* En Itinerario la barra inferior es de calle: progreso del día + saltar a "ahora".
+     Exportar y el botón de guardado son de planificación y viven en ⋯ → Datos. */
+  const it = t === 'itin';
+  $('#bAhora').style.display = it ? '' : 'none';
+  $('#bExp').style.display   = it ? 'none' : '';
+  $('#bSave').style.display  = it ? 'none' : '';
+  window.scrollTo({top:0});
+  ({itin:rItin, places:rPlaces, map:rMap, costs:rCosts, trans:rTrans, res:rRes})[t]();
+}
+
+/* ═══════════ VISTA: ITINERARIO ═══════════ */
+const OPEN_NOTES = new Set();   // estado de UI transitorio, no se persiste
+const OPEN_HOODS = new Set();   // idem: qué barrios están desplegados
+/* Qué bloques están desplegados. A propósito NO va al estado guardado: es UI
+   transitoria, y agregar una clave al estado es exactamente lo que rompió la app
+   una vez (migrate() no corre si el itinerario no cambió). Cero claves nuevas. */
+const OPEN_BLK = new Set();
+
+/* ── La tarjeta AHORA ─────────────────────────────────────────────────────────
+   La app tenía el reloj y tenía el itinerario y nunca los cruzaba. Esto es ese
+   cruce, y es lo primero que se ve al abrir. Tres estados honestos: antes del
+   viaje (cuánto falta), durante (qué toca y qué sigue), después. */
+function ahoraHTML(){
+  const hoy = S.itin.find(x => x.date === TODAY);
+  if (!hoy){
+    const d0 = S.itin[0], dl = S.itin[S.itin.length - 1];
+    if (TODAY < d0.date){
+      const dias = Math.round((new Date(d0.date + 'T12:00:00') - new Date(TODAY + 'T12:00:00')) / 864e5);
+      const b0 = d0.blocks[0], L0 = leadOf(b0 ? b0.txt : '');
+      return `<div class="ahora pre">
+        <div class="ahlb"><span>faltan ${dias} día${dias === 1 ? '' : 's'}</span><span class="sp"></span>
+          <span style="letter-spacing:.04em">${esc(hhmmNow())}</span></div>
+        <div class="ahmain">
+          <div class="aht">arranca ${esc(d0.dow.toLowerCase())} ${+d0.date.slice(8)}/${d0.date.slice(5,7)} · ${esc(b0 ? b0.t : '')}</div>
+          <div class="ahn">${esc(L0.head)}</div>
+          <div class="ahd">${esc(d0.title)}</div>
+        </div></div>`;
+    }
+    if (TODAY > dl.date)
+      return `<div class="ahora fin"><div class="ahmain">
+        <div class="ahn">El viaje terminó.</div>
+        <div class="ahd">Quedan las tildes, las notas y los nueve días enteros.</div></div></div>`;
+    return '';
+  }
+  const i = idxAhora(hoy);
+  const cur = i >= 0 ? hoy.blocks[i] : null;
+  const nx = hoy.blocks.slice(i + 1).find(b => minOf(b.t) != null) || null;
+  const L = cur ? leadOf(cur.txt) : null;
+  const p = cur && cur.pid ? PBY[cur.pid] : null;
+  const falta = nx ? minOf(nx.t) - minsNow() : null;
+  /* Si el bloque de ahora es un traslado (no tiene lugar), lo que sirve en la mano
+     es la ruta al lugar que viene: es literalmente adonde estás yendo. */
+  const pNav = p || (nx && nx.pid ? PBY[nx.pid] : null);
+  const nb = pNav && !p ? amNombre(pNav) : '';
+  const navLb = p ? '→ Llegar' : pNav ? '→ Llegar a ' + esc(nb.length > 26 ? nb.slice(0, 25).trim() + '…' : nb) : '';
+  const fin = cur ? (hoy.blocks.slice(i + 1).find(b => minOf(b.t) != null) || {}).t : '';
+  return `<div class="ahora">
+    <div class="ahlb"><span>${cur ? 'ahora' : 'hoy'} · ${esc(hhmmNow())}</span><span class="sp"></span>
+      ${S.day !== hoy.n ? `<button class="ahhoy" id="ahHoy">ir a hoy →</button>`
+                        : `<span style="opacity:.6">día ${hoy.n}</span>`}</div>
+    <div class="ahmain">
+      ${cur ? `<div class="aht">${esc(cur.t)}${fin ? ' → ' + esc(fin) : ''}${cur.done ? ' · ✓ hecho' : ''}</div>
+               <div class="ahn">${L.star ? '★ ' : ''}${esc(L.head)}</div>
+               ${L.rest ? `<div class="ahd">${esc(L.rest.slice(0, 160))}${L.rest.length > 160 ? '…' : ''}</div>` : ''}`
+            : `<div class="aht">el día todavía no arrancó</div>
+               <div class="ahn">${esc(hoy.title)}</div>`}
+    </div>
+    ${nx ? `<div class="ahnext"><b>${esc(nx.t)}</b>${falta != null && falta >= 0 ? ' · en ' + enMin(falta) : ''} — ${esc(leadOf(nx.txt).head)}</div>` : ''}
+    <div class="ahacts">
+      ${pNav ? `<a class="ahbtn" href="${amRuta([pNav], 'walking')}" target="_blank" rel="noopener">${navLb}</a>` : ''}
+      ${cur ? `<button class="ahbtn g2" id="ahDone" data-b="${esc(cur.id)}">${cur.done ? '✓ hecho' : '✓ marcar hecho'}</button>` : ''}
+      <button class="ahbtn g2" id="ahVer">Ver en el día</button>
+    </div></div>`;
+}
+/* Repinta SOLO la tarjeta: el tick de cada 30 s no puede re-renderizar el día
+   entero (se perdería el foco de una nota a medio escribir). */
+function pintarAhora(){
+  const box = document.getElementById('ahora'); if (!box) return;
+  box.innerHTML = ahoraHTML();
+  const h = document.getElementById('ahHoy');
+  if (h) h.onclick = () => { const t = S.itin.find(x => x.date === TODAY);
+    if (t){ S.day = t.n; save(); rItin(); } };
+  const dn = document.getElementById('ahDone');
+  if (dn) dn.onclick = () => {
+    const hy = S.itin.find(x => x.date === TODAY);
+    const b = hy && hy.blocks.find(z => z.id === dn.dataset.b);
+    if (b){ b.done = !b.done; save(); rItin(); } };
+  const v = document.getElementById('ahVer');
+  if (v) v.onclick = irAhora;
+}
+/* Saltar al bloque que toca. Si estabas mirando otro día, primero te lleva a hoy. */
+function irAhora(){
+  const hy = S.itin.find(x => x.date === TODAY);
+  if (!hy){ toast('Hoy no es un día del viaje: te muestro el día que estás mirando.'); }
+  else if (S.day !== hy.n){ S.day = hy.n; save(); }
+  if (S.tab !== 'itin') go('itin'); else rItin();
+  setTimeout(() => {
+    const el = document.querySelector('.blk.itb.now') || document.querySelector('.blk.itb');
+    if (!el) return;
+    el.scrollIntoView({block:'center', behavior:'smooth'});
+    el.classList.add('flash'); setTimeout(() => el.classList.remove('flash'), 1400);
+  }, 80);
+}
+
+function rItin(){
+  const d = S.itin.find(x => x.n === S.day) || S.itin[0], d2 = d;
+  const days = S.itin.map(x => {
+    const dd = +x.date.slice(8) + '/' + x.date.slice(5,7);
+    return `<button class="dbtn${x.n===S.day?' on':''}${x.date===TODAY?' today':''}" data-d="${x.n}">
+      ${x.date===TODAY?'<span class="hoylb">hoy</span>':''}
+      <div class="dd">${dd}</div>
+      <div class="dw">${esc(x.dow.slice(0,3).toLowerCase())} · día ${x.n}</div></button>`;
+  }).join('');
+
+  const vis = b => S.whoF === 'all' || b.who === S.whoF || b.who === 'both';
+  const nTH = d.blocks.filter(b => b.who === 'th').length;
+  // hora fin = inicio del bloque siguiente (se recalcula sola al reordenar o editar horas)
+  const ends = d.blocks.map((_, i) => {
+    const nx = d.blocks[i + 1];
+    return nx && /^\d{1,2}:\d{2}$/.test(nx.t) ? nx.t : '';
+  });
+  const _dp = dePasoDelDia(d), PASO = _dp.paso, ACA = _dp.aca;
+  const iNow = idxAhora(d);
+
+  const blocks = d.blocks.map((b,i) => {
+    if (!vis(b)) return '';
+    const p = b.pid ? PBY[b.pid] : null;
+    const paso = PASO[b.id] || [], aca = ACA[b.id] || [];
+    const ajeno = b.who !== 'both' && b.who !== d.who;   // bloque de la otra persona
+    const L = leadOf(b.txt);
+    const open = OPEN_BLK.has(b.id);
+    const hh = p && p.hrs ? horario(p, DOW_IDX[d.dow]) : null;
+    const logi = b.kind === 'logistica' && !p;           // pegamento entre paradas
+    const est = iNow < 0 ? '' : i === iNow ? ' now' : i < iNow ? ' past' : '';
+
+    /* Una sola línea de datos duros. Es lo que se lee de un vistazo caminando:
+       dónde, cuánto sale, si está abierto, si hay una advertencia adentro. */
+    const facts = [];
+    if (b.who !== 'both')
+      facts.push(`<b style="color:${b.who==='th'?'#5b3690':'#9c4a13'}">${WHO[b.who]}</b>`);
+    if (p) facts.push(esc(p.hood));
+    if (p && p.cost) facts.push(money(p.cost));
+    if (hh === 'CERRADO') facts.push('<b class="cerr">cerrado hoy</b>');
+    if (tieneAviso(L.rest)) facts.push('<b class="ojo">⚠ ojo</b>');
+    if (hh && hh !== 'CERRADO') facts.push('🕐 ' + esc(hh));
+    if (b.note) facts.push('<b class="ojo">⚠ nota</b>');
+    if (b.mynote) facts.push('nota tuya');
+    if (aca.length) facts.push(aca.length + ' cerca');
+
+    /* Todo lo que la v1 mostraba SIEMPRE vive acá: nada se borró, se plegó. */
+    const detalle = !open ? '' : `<div class="bdet">
+      ${L.rest ? `<div class="btxt">${esc(L.rest)}</div>` : ''}
+      <div class="bmeta">
+        ${b.who!=='both' ? `<span class="chip ${b.who==='th'?'p':'o'}">${WHO[b.who]}</span>` : ''}
+        ${p ? `<span class="chip" style="background:${CAT[p.cat].c}1a;color:${CAT[p.cat].c}"
+                data-act="info">${esc(p.n)}</span>` : ''}
+        ${p ? `<a class="chip b" href="${gmaps(p)}" target="_blank" rel="noopener">↗ Maps</a>` : ''}
+        ${p ? `<a class="chip g" data-nav="apple" href="${amRuta([p],'walking')}" target="_blank" rel="noopener"
+                title="Ir hasta acá con Apple Maps, desde donde estés — el Watch la toma sola">→ Apple</a>` : ''}
+        ${p ? `<a class="chip g" data-nav="google" href="${gmRuta([p],'walking')}" target="_blank" rel="noopener"
+                title="Lo mismo con Google Maps, por si Apple no responde">→ Google</a>` : ''}
+        ${p && p.cost ? `<span class="chip">${money(p.cost)}</span>` : ''}
+        ${hh ? `<span class="chip ${hh==='CERRADO'?'r':'b'}">🕐 ${hh}</span>` : ''}
+        ${b.note ? `<span class="chip wrap">${esc(b.note)}</span>` : ''}
+      </div>
+      ${paso.length ? `<div class="paso" style="padding:7px 0 0;border:0;background:none">
+        <span class="pasolb">de camino hasta acá</span>
+        ${paso.map(({p:q, desvio}) => `<a class="chip paso1" data-paso="${q.id}"
+            style="color:${CAT[q.cat].c}" title="${esc(q.typ + ' · ' + q.hood + ' · ' + money(q.cost))} — desvío +${Math.round(desvio)} m">${esc(q.n)}<i>+${desvio < 950 ? Math.round(desvio/10)*10 + ' m' : (desvio/1000).toFixed(1) + ' km'}</i></a>`).join('')}
+      </div>` : ''}
+      ${aca.length ? `<div class="aca">
+        <span class="acalb">acá cerca</span>
+        ${aca.map(({p:q, dist}) => `<a class="chip paso1" data-paso="${q.id}"
+            style="color:${CAT[q.cat].c}" title="${esc(q.typ + ' · ' + money(q.cost))} — a ${Math.round(dist)} m">${esc(q.n)}<i>${dist < 95 ? Math.round(dist/5)*5 : Math.round(dist/10)*10} m</i></a>`).join('')}
+      </div>` : ''}
+      ${(b.mynote || OPEN_NOTES.has(b.id))
+        ? `<textarea class="bnote" data-act="note" placeholder="mis notas…">${esc(b.mynote||'')}</textarea>`
+        : `<button class="notebtn" data-act="opennote">＋ nota</button>`}
+      ${(() => {                       /* caminar un barrio: qué hay adentro */
+        if (!p || p.cat !== 'barrio') return '';
+        const enb = enElBarrio(p);
+        if (!enb.length) return '';
+        if (!OPEN_HOODS.has(b.id))
+          return `<button class="notebtn" data-act="openhood">＋ ${enb.length} lugar${enb.length>1?'es':''} en ${esc(p.hood)}</button>`;
+        return `<div class="hood">
+          <div class="hoodlb">En ${esc(p.hood)}, mientras caminan
+            <button class="notebtn" data-act="closehood" style="margin-left:6px;padding:1px 7px">ocultar</button></div>
+          ${enb.map(({p:q, d}) => `<div class="hoodit">
+            <div class="hoodn"><b data-paso="${q.id}">${esc(q.n)}</b>
+              <span class="chip" style="background:${CAT[q.cat].c}1a;color:${CAT[q.cat].c}">${esc(q.typ)}</span>
+              <span class="chip">${money(q.cost)}</span>
+              <span class="hoodd">a ${d < 950 ? Math.round(d/10)*10 + ' m' : (d/1000).toFixed(1) + ' km'}</span></div>
+            <div class="hoodw">${esc(q.why.slice(0,150))}${q.why.length>150?'…':''}</div>
+            <div class="bmeta">
+              <a class="chip b" href="${gmaps(q)}" target="_blank" rel="noopener">↗ Maps</a>
+              <a class="chip g" data-nav="apple" href="${amRuta([q],'walking')}" target="_blank" rel="noopener">→ Apple</a>
+              <a class="chip g" data-nav="google" href="${gmRuta([q],'walking')}" target="_blank" rel="noopener">→ Google</a>
+              ${q.hrs ? (()=>{ const h2 = horario(q, DOW_IDX[d2.dow]);
+                return `<span class="chip ${h2==='CERRADO'?'r':'b'}">🕐 ${h2}</span>`; })() : ''}
+            </div></div>`).join('')}
+        </div>`;
+      })()}
+      <div class="bedit">
+        <span class="lb">mover o quitar</span>
+        <button class="mini" data-act="up" title="subir">▲</button>
+        <button class="mini" data-act="down" title="bajar">▼</button>
+        <button class="mini del" data-act="del" title="quitar del día">✕ quitar</button>
+      </div>
+      <button class="plegar" data-act="toggle">▲ plegar</button></div>`;
+
+    return `${b.trav ? `<div class="trav">↓ ${esc(b.trav)}</div>` : ''}
+      <div class="blk itb${b.kind==='destacado'?' hi':''}${L.star?' star':''}${b.done?' done':''}${ajeno?' ajeno':''}${logi?' logi':''}${open?' on':''}${est}" data-b="${b.id}">
+      <div class="tmw">
+        ${open ? `<input class="tm" value="${esc(b.t)}" data-act="time" aria-label="hora">`
+               : `<div class="tm">${esc(b.t)}</div>`}
+        ${(open || est===' now') && ends[i] ? `<div class="tmend">→ ${esc(ends[i])}</div>` : ''}
+      </div>
+      <div class="bbody">
+        <div class="btog" data-act="toggle" role="button" tabindex="0"
+             aria-expanded="${open?'true':'false'}">
+          <div class="bhead">
+            ${logi ? '' : `<span class="cdot" style="background:${p?CAT[p.cat].c:'#c3bcaf'}"></span>`}
+            <span class="bttl">${L.star?'<span class="stx">★</span> ':''}${esc(L.head)}</span>
+          </div>
+          ${!open && !logi && L.rest
+            ? `<div class="bsub">${esc(L.rest)}${facts.length?'':' <span class="mas">▾</span>'}</div>` : ''}
+          ${!open && facts.length ? `<div class="bfacts">${facts.join(' · ')} <span class="mas">▾</span></div>` : ''}
+        </div>
+        ${detalle}
+      </div>
+      <div class="bact">
+        <button class="ck${b.done?' on':''}" data-act="done" title="marcar hecho">✓</button>
+        ${!open && p ? `<a class="goto" data-nav="apple" href="${amRuta([p],'walking')}"
+             target="_blank" rel="noopener" title="Ir hasta acá — Apple Maps desde donde estés">→</a>` : ''}
+      </div></div>`;
+  }).join('');
+
+  $('#v-itin').innerHTML = `
+    ${MIGRATED ? `<div class="banner ok"><b>Plan actualizado a la última versión.</b>
+      Tus tildes, notas, intereses y bloques agregados se conservaron.</div>` : ''}
+    <div id="ahora"></div>
+    <div class="days">${days}</div>
+    <div class="dhead">
+      <h2>${esc(d.title)}</h2>
+      <div class="dchips">
+        <span class="chip b">día ${d.n} · ${esc(d.dow.toLowerCase())} ${+d.date.slice(8)}/${d.date.slice(5,7)}</span>
+        <span class="chip">base: ${esc(d.base)}</span>
+        <span class="chip ${d.who==='jp'?'o':'g'}">${WHO[d.who]}</span>
+        ${d.who === 'jp' && nTH ? `<span class="chip p">Thais no participa (${nTH} bloque${nTH>1?'s':''} suyo${nTH>1?'s':''})</span>` : ''}
+      </div>
+      <details class="dporque"><summary>Por qué este día${d.alt ? ' · alternativas' : ''}</summary>
+        <div class="dbody"><p>${esc(d.note)}</p>
+        ${d.alt ? `<p><b style="color:#8a5a08">⚠ Alternativa / ojo:</b> ${esc(d.alt)}</p>` : ''}</div></details>
+    </div>
+    <div class="card">${blocks || '<div class="pad muted sm">Sin bloques para este filtro.</div>'}</div>
+    <p class="hint">Tocá un bloque para ver todo · deslizá ← → para cambiar de día</p>
+    <div style="margin-top:4px" class="flex">
+      <button class="btn ghost sm" id="addBlk">+ Agregar lugar a este día</button>
+      <button class="btn ghost sm" id="addFree">+ Agregar nota libre</button>
+      <button class="btn ghost sm" id="mapDay">Ver este día en el mapa</button>
+      <button class="btn ghost sm" id="rutaDia">→ Ruta del día completa</button>
+    </div>`;
+
+  $('#v-itin').querySelector('.days').onclick = e => {
+    const b = e.target.closest('.dbtn'); if (!b) return;
+    S.day = +b.dataset.d; save(); rItin(); window.scrollTo({top:0});
+  };
+  $('#addBlk').onclick = () => pickPlace(S.day);
+  $('#addFree').onclick = () => addFree(S.day);
+  $('#mapDay').onclick = () => { S.mapDay = S.day; go('map'); };
+  $('#rutaDia').onclick = () => rutaSheet(S.day);
+  pintarAhora(); setStat();
+}
+
+/* Delegación ÚNICA: los contenedores nunca se reemplazan, solo su innerHTML.
+   Registrarla dentro de las funciones de render acumularía un listener por render
+   y cada click se dispararía N veces. */
+$('#v-itin').addEventListener('click', e => {
+  const pa = e.target.closest('[data-paso]');          /* referencia de paso → su ficha */
+  if (pa){ showPlace(pa.dataset.paso); return; }
+  const el = e.target.closest('[data-act]'); if (!el) return;
+  const id = e.target.closest('.blk')?.dataset.b; if (!id) return;
+  const act = el.dataset.act;
+  const day = S.itin.find(x => x.n === S.day), i = day.blocks.findIndex(b => b.id === id);
+  if (i < 0) return; const b = day.blocks[i];
+  if (act === 'toggle'){
+    if (OPEN_BLK.has(b.id)) OPEN_BLK.delete(b.id); else OPEN_BLK.add(b.id);
+    rItin();
+    const el2 = document.querySelector(`.blk[data-b="${b.id}"]`);
+    if (el2) el2.scrollIntoView({block:'nearest'});
+    return;
+  }
+  if (act === 'done'){ b.done = !b.done; save(); rItin(); }
+  if (act === 'del'){ day.blocks.splice(i,1); save(); rItin(); }
+  if (act === 'up' && i > 0){ day.blocks.splice(i-1,0,day.blocks.splice(i,1)[0]); save(); rItin(); }
+  if (act === 'down' && i < day.blocks.length-1){ day.blocks.splice(i+1,0,day.blocks.splice(i,1)[0]); save(); rItin(); }
+  if (act === 'info' && b.pid) showPlace(b.pid);
+  if (act === 'openhood'){ OPEN_HOODS.add(b.id); rItin(); return; }
+  if (act === 'closehood'){ OPEN_HOODS.delete(b.id); rItin(); return; }
+  if (act === 'opennote'){ OPEN_NOTES.add(b.id); rItin();
+    const ta = document.querySelector(`.blk[data-b="${b.id}"] .bnote`); if (ta) ta.focus(); }
+});
+$('#v-itin').addEventListener('keydown', e => {
+  if (e.key !== 'Enter' && e.key !== ' ') return;
+  const el = e.target.closest('[data-act="toggle"]'); if (!el) return;
+  e.preventDefault(); el.click();
+});
+$('#v-itin').addEventListener('input', e => {
+  const el = e.target.closest('[data-act]'); if (!el) return;
+  const id = e.target.closest('.blk')?.dataset.b; if (!id) return;
+  const b = S.itin.find(x => x.n === S.day)?.blocks.find(z => z.id === id); if (!b) return;
+  if (el.dataset.act === 'time') b.t = el.value;
+  if (el.dataset.act === 'note') b.mynote = el.value;
+  save();
+});
+$('#v-places').addEventListener('click', e => {
+  const ib = e.target.closest('.ib');
+  if (ib && ib.dataset.p){ setInterest(ib.dataset.p, ib.dataset.w,
+      (interest(ib.dataset.p)[ib.dataset.w] + 1) % 3); rPlaces(); return; }
+  const mb = e.target.closest('.mustbtn');
+  if (mb){ cycleMark(mb.dataset.p); rPlaces(); return; }
+  const ab = e.target.closest('.addbtn');
+  if (ab){ pickDay(ab.dataset.p); return; }
+  const h = e.target.closest('.pc h3, .prow h3');
+  if (h) showPlace(h.dataset.p);
+});
+
+/* ═══════════ VISTA: LUGARES ═══════════ */
+let F = {q:'', cat:'', sub:'', boro:'', free:false, hidden:false, want:false, mark:'', src:''};
+
+/* <optgroup> de tipos. Si hay una categoría elegida, muestra solo sus tipos. */
+function subOptions(selCat, selSub){
+  const cats = selCat ? [selCat] : Object.keys(CAT);
+  return cats.filter(c => SUBS[c] && SUBS[c].length).map(c =>
+    `<optgroup label="${CAT[c].n}">` + SUBS[c].map(s =>
+      `<option value="${esc(s)}"${selSub===s?' selected':''}>${esc(s)}</option>`).join('') +
+    `</optgroup>`).join('');
+}
+
+function rPlaces(){
+  const cats = Object.entries(CAT).map(([k,v]) => `<option value="${k}"${F.cat===k?' selected':''}>${v.n}</option>`).join('');
+  const boros = [...new Set(PLACES.map(p => p.boro))].sort()
+    .map(b => `<option value="${b}"${F.boro===b?' selected':''}>${b}</option>`).join('');
+
+  buildDayMap();
+  const list = PLACES.filter(p => {
+    if (F.cat && p.cat !== F.cat) return false;
+    if (F.sub && p.typ !== F.sub) return false;
+    if (F.boro && p.boro !== F.boro) return false;
+    if (F.free && !(p.cost === 0 || p.free)) return false;
+    if (F.hidden && p.main) return false;
+    if (F.want){ const i = interest(p.id); if (i.jp < 2 && i.th < 2) return false; }
+    if (F.mark === 'si'  && !isMust(p.id)) return false;
+    if (F.mark === 'no'  && !isOut(p.id))  return false;
+    if (F.mark === 'sin' && markOf(p.id) !== 0) return false;
+    if (F.src === 'enlista' && !(p.src === 'lista' || p.src === 'ambas')) return false;
+    if (F.src && F.src !== 'enlista' && p.src !== F.src) return false;
+    if (F.q){ const q = F.q.toLowerCase();
+      if (!(p.n+' '+p.typ+' '+p.hood+' '+p.why+' '+(p.tags||[]).join(' ')).toLowerCase().includes(q)) return false; }
+    return true;
+  });
+
+  $('#v-places').innerHTML = `
+    <div class="tools">
+      <input class="search" id="q" placeholder="Buscar lugar, barrio, palabra…" value="${esc(F.q)}">
+      <select class="f" id="fc"><option value="">Todas las categorías</option>${cats}</select>
+      <select class="f" id="fs"><option value="">Todos los tipos</option>${subOptions(F.cat, F.sub)}</select>
+      <select class="f" id="fb"><option value="">Todos los boroughs</option>${boros}</select>
+      <button class="tg${F.free?' on':''}" id="tf">Gratis / PWYW</button>
+      <button class="tg${F.hidden?' on':''}" id="th">No turístico</button>
+      <button class="tg${F.want?' on':''}" id="tw">Marcados “sí”</button>
+      <select class="f" id="fmk" title="Filtrar por la marca de imprescindible">
+        <option value="">★ / ✕ / sin marcar</option>
+        <option value="si"${F.mark==='si'?' selected':''}>★ Imprescindibles (${mustCount()})</option>
+        <option value="no"${F.mark==='no'?' selected':''}>✕ No imprescindibles (${outCount()})</option>
+        <option value="sin"${F.mark==='sin'?' selected':''}>Sin marcar todavía (${PLACES.length-mustCount()-outCount()})</option>
+      </select>
+      <select class="f" id="fsrc" title="De dónde salió cada lugar">
+        <option value="">Lista google + otros</option>
+        <option value="enlista"${F.src==='enlista'?' selected':''}>★ Lista google</option>
+        <option value="propuesta"${F.src==='propuesta'?' selected':''}>· Otros</option>
+        <option value="ambas"${F.src==='ambas'?' selected':''}>— de la lista, que además propusimos</option>
+      </select>
+      <span style="display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-left:auto">
+        <button class="tg${S.pv!=='list'?' on':''}" id="vwc" style="border:0;border-radius:0">⊞ Tarjetas</button>
+        <button class="tg${S.pv==='list'?' on':''}" id="vwl" style="border:0;border-radius:0">☰ Lista</button>
+      </span>
+      ${(F.cat||F.sub||F.boro||F.free||F.hidden||F.want||F.mark||F.src||F.q)
+        ? `<button class="tg" id="tclr" style="color:var(--accent)">✕ Limpiar</button>` : ''}
+    </div>
+    ${(() => { const ms = PLACES.filter(p => isMust(p.id));
+        const outs = PLACES.filter(p => isOut(p.id));
+        const outDentro = outs.filter(p => (DAYMAP[p.id] || []).length);
+        const av = outDentro.length
+          ? `<p class="sm" style="margin:0 0 10px;background:#f3eee8;border:1px solid #d8d0c4;border-radius:10px;padding:8px 10px">
+              <b>✕ ${outDentro.length} marcados “no imprescindible” siguen en el itinerario</b>:
+              ${outDentro.slice(0,6).map(p => `${esc(p.n)} <span class="muted">(D${(DAYMAP[p.id]||[]).map(d=>d.n).join(' D')})</span>`).join(', ')}${outDentro.length > 6 ? '…' : ''}.
+              Son los primeros candidatos a soltar si un día queda apretado.</p>` : '';
+        if (!ms.length && !outs.length)
+          return `<p class="sm muted" style="margin:0 0 10px">Tocá la marca de un lugar para ir cambiándola:
+            <b>☆ sin marcar → ★ imprescindible → ✕ no imprescindible</b>. Después te armo el itinerario respetando esa lista.</p>`;
+        if (!ms.length) return av;
+        const dentro = ms.filter(p => (DAYMAP[p.id] || []).length).length;
+        const fuera = ms.filter(p => !(DAYMAP[p.id] || []).length);
+        return `<p class="sm" style="margin:0 0 10px;background:#fff3d4;border:1px solid #e8c46a;border-radius:10px;padding:8px 10px">
+          <b>★ ${ms.length} imprescindibles</b> · ${dentro} ya están en el itinerario${fuera.length
+            ? ` · <b style="color:#96631a">${fuera.length} todavía no</b>: ${fuera.slice(0,6).map(p => esc(p.n)).join(', ')}${fuera.length > 6 ? '…' : ''}` : ' · todos adentro ✓'}${
+            outs.length ? ` <span class="muted">· ✕ ${outs.length} descartados</span>` : ''}</p>` + av;
+      })()}
+    <p class="sm muted" style="margin:0 0 12px">${list.length} de ${PLACES.length} lugares.
+      Tocá los cuadritos JP / TH para cambiar el interés: <b>0</b> no · <b>1</b> quizás · <b>2</b> sí.</p>
+    ${S.pv==='list'
+      ? `<div class="plistbox">${list.map(prow).join('')}</div>`
+      : `<div class="grid">${list.map(pcard).join('')}</div>`}`;
+
+  $('#q').oninput = e => { F.q = e.target.value; const s = window.scrollY; rPlaces();
+    $('#q').focus(); $('#q').setSelectionRange(F.q.length,F.q.length); window.scrollTo({top:s}); };
+  // cambiar de categoría invalida el tipo elegido si ya no pertenece a ella
+  $('#fc').onchange = e => { F.cat = e.target.value;
+    if (F.sub && F.cat && !(SUBS[F.cat]||[]).includes(F.sub)) F.sub = '';
+    rPlaces(); };
+  $('#fs').onchange = e => { F.sub = e.target.value;
+    if (F.sub && !F.cat){   // elegir un tipo fija su categoría, así el combo queda coherente
+      const owner = Object.keys(SUBS).find(c => SUBS[c].includes(F.sub));
+      if (owner) F.cat = owner;
+    }
+    rPlaces(); };
+  $('#fb').onchange = e => { F.boro = e.target.value; rPlaces(); };
+  $('#tf').onclick = () => { F.free = !F.free; rPlaces(); };
+  $('#th').onclick = () => { F.hidden = !F.hidden; rPlaces(); };
+  $('#tw').onclick = () => { F.want = !F.want; rPlaces(); };
+  $('#fmk').onchange = e => { F.mark = e.target.value; rPlaces(); };
+  $('#fsrc').onchange = e => { F.src = e.target.value; rPlaces(); };
+  $('#vwc').onclick = () => { S.pv = 'cards'; save(); rPlaces(); };
+  $('#vwl').onclick = () => { S.pv = 'list';  save(); rPlaces(); };
+  const clr = $('#tclr');
+  if (clr) clr.onclick = () => { F = {q:'', cat:'', sub:'', boro:'', free:false, hidden:false, want:false, mark:'', src:''}; rPlaces(); };
+}
+let DAYMAP = {};
+function buildDayMap(){
+  DAYMAP = {};
+  S.itin.forEach(d => {
+    const seen = {};
+    d.blocks.forEach(b => {
+      if (!b.pid || seen[b.pid]) return;
+      seen[b.pid] = 1;
+      (DAYMAP[b.pid] = DAYMAP[b.pid] || []).push(d);
+    });
+  });
+}
+function dayChips(pid){
+  const ds = DAYMAP[pid] || [];
+  if (!ds.length) return '';
+  return `<div class="flex" style="margin-top:6px">${ds.map(d =>
+    `<span class="chip" style="background:var(--accent);color:#fff">📅 Día ${d.n} · ${esc(d.dow.slice(0,3).toLowerCase())} ${+d.date.slice(8)}/${+d.date.slice(5,7)}</span>`).join('')}</div>`;
+}
+function prow(p){
+  const i = interest(p.id), c = CAT[p.cat];
+  const dd = DAYMAP[p.id] || [];
+  return `<div class="prow">
+    <span class="pdot" style="background:${c.c}"></span>
+    ${srcChip(p, true)}
+    <h3 data-p="${p.id}">${esc(p.n)}</h3>
+    ${dd.length ? `<span class="chip" style="background:var(--accent);color:#fff;flex:none">📅 ${dd.map(d=>'D'+d.n).join(' ')}</span>` : ''}
+    <span class="pmeta">${esc(p.typ)} · ${esc(p.hood)} · ${money(p.cost)}${p.dur ? ` · ${p.dur}h` : ''}</span>
+    <span class="ints">
+      <span class="iw"><span class="ilab">JP</span><button class="ib v${i.jp}" data-p="${p.id}" data-w="jp">${i.jp}</button></span>
+      <span class="iw"><span class="ilab">TH</span><button class="ib v${i.th}" data-p="${p.id}" data-w="th">${i.th}</button></span>
+    </span>
+    <button class="mustbtn${isMust(p.id) ? ' on' : isOut(p.id) ? ' off' : ''}" data-p="${p.id}"
+      title="${MARKTIT}">${isMust(p.id) ? '★' : isOut(p.id) ? '✕' : '☆'}</button>
+    <a class="chip b" href="${gmaps(p)}" target="_blank" rel="noopener"
+       style="text-decoration:none;flex:none">↗</a>
+    <button class="addbtn" data-p="${p.id}">+</button>
+  </div>`;
+}
+function pcard(p){
+  const i = interest(p.id), c = CAT[p.cat];
+  return `<div class="pc">
+    <div class="cbar" style="background:${c.c}"></div>
+    <h3 data-p="${p.id}" style="cursor:pointer">${esc(p.n)}</h3>
+    <div class="flex">
+      <span class="chip" style="background:${c.c};color:#fff">${esc(p.typ)}</span>
+      <span class="chip" style="background:${c.c}1a;color:${c.c}">${c.n}</span>
+      <span class="chip">${esc(p.hood)}</span>
+      <span class="chip ${p.cost===0?'g':''}">${money(p.cost)}</span>
+      ${p.dur ? `<span class="chip">${p.dur} h</span>` : ''}
+      ${p.main ? '<span class="chip o">turístico</span>' : '<span class="chip g">no mainstream</span>'}
+      ${p.closed ? `<span class="chip r">cierra ${esc(p.closed)}</span>` : ''}
+      <a class="chip b" href="${gmaps(p)}" target="_blank" rel="noopener"
+         style="text-decoration:none">↗ Maps</a>
+      ${srcChip(p)}
+      ${p.aprox ? '<span class="chip o" title="No pude verificar la dirección exacta: el pin es del barrio, pero el link de Maps busca por nombre y sí cae bien">📍 pin aproximado</span>' : ''}
+    </div>
+    ${dayChips(p.id)}
+    ${p.free ? `<div class="chip g" style="white-space:normal;line-height:1.45;text-align:left">★ ${esc(p.free)}</div>` : ''}
+    <div class="why">${esc(p.why)}</div>
+    ${p.hrs ? `<div class="xs muted"><b>Horario:</b> ${esc(horarioSemana(p))}</div>` : ''}
+    ${p.book ? `<div class="xs muted"><b>Reserva:</b> ${esc(p.book)}</div>` : ''}
+    <div class="xs muted">🚇 ${esc(p.sub)}</div>
+    <div class="ints">
+      <span class="iw"><span class="ilab">JP</span>
+        ${[0,1,2].map(v => `<button class="ib v${v}" data-p="${p.id}" data-w="jp"
+          style="${i.jp===v?'':'opacity:.28'}">${v}</button>`).join('')}</span>
+      <span class="iw"><span class="ilab">TH</span>
+        ${[0,1,2].map(v => `<button class="ib v${v}" data-p="${p.id}" data-w="th"
+          style="${i.th===v?'':'opacity:.28'}">${v}</button>`).join('')}</span>
+      <button class="mustbtn${isMust(p.id) ? ' on' : isOut(p.id) ? ' off' : ''}" data-p="${p.id}"
+        title="${MARKTIT}">${isMust(p.id) ? '★ imprescindible' : isOut(p.id) ? '✕ no imprescindible' : '☆ imprescindible'}</button>
+      <button class="addbtn" data-p="${p.id}">+ día</button>
+    </div></div>`;
+}
+
+/* ═══════════ VISTA: MAPA ═══════════ */
+let MAP = null, LAYER = null;
+function rMap(){
+  const el = $('#v-map');
+  if (!el.dataset.built){
+    el.innerHTML = `
+      <div class="tools">
+        <select class="f" id="mday" style="max-width:220px">
+          <option value="">Todos los lugares</option>
+          ${S.itin.map(d => `<option value="${d.n}">Día ${d.n} · ${d.dow} ${d.date.slice(8)}/${d.date.slice(5,7)}</option>`).join('')}
+        </select>
+        <select class="f" id="mcat" style="max-width:210px"><option value="">Todo</option>
+          <optgroup label="Por categoría">
+          ${Object.entries(CAT).map(([k,v]) => `<option value="c:${k}">${v.n}</option>`).join('')}
+          </optgroup>
+          ${Object.keys(CAT).filter(c => SUBS[c] && SUBS[c].length).map(c =>
+            `<optgroup label="${CAT[c].n} — por tipo">` + SUBS[c].map(s =>
+              `<option value="s:${esc(s)}">${esc(s)}</option>`).join('') + `</optgroup>`).join('')}
+        </select>
+        <button class="tg" id="mfree">Solo gratis</button>
+      </div>
+      <div id="map"></div>
+      <div class="flex" style="margin-top:11px">
+        ${Object.entries(CAT).map(([k,v]) =>
+          `<span class="chip" style="background:${v.c}1a;color:${v.c}">● ${v.n}</span>`).join('')}
+      </div>
+      <p class="xs muted" style="margin-top:11px">Las coordenadas de los pines son aproximadas (±50–100 m).
+      Para navegar, usá el botón <b>“Abrir en Google Maps”</b> del popup: busca por nombre y dirección exactos.
+      El mapa necesita conexión a internet.</p>`;
+    el.dataset.built = '1';
+    $('#mday').onchange = e => { S.mapDay = e.target.value ? +e.target.value : null; drawMap(); };
+    $('#mcat').onchange = drawMap;
+    $('#mfree').onclick = e => { e.target.classList.toggle('on'); drawMap(); };
+  }
+  if (S.mapDay) $('#mday').value = S.mapDay;
+  setTimeout(() => {
+    if (typeof L === 'undefined'){ mapFallback(); return; }   // sin internet: Leaflet no cargó
+    try {
+      if (!MAP){
+        MAP = L.map('map', {scrollWheelZoom:false}).setView([40.735,-73.96], 11);
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+          maxZoom:19
+        }).addTo(MAP);
+      }
+      MAP.invalidateSize(); drawMap();
+    } catch(e){ console.warn(e); mapFallback(); }
+  }, 60);
+}
+/* Sin conexión el mapa no puede dibujarse. En vez de romperse, listamos los lugares
+   con su link a Google Maps, que es lo único que hace falta para navegar. */
+function svgMap(items, conRuta){
+  const pts = items.filter(x => x.p.lat && x.p.lng);
+  if (pts.length < 2) return '';
+  const la = pts.map(x => x.p.lat), lo = pts.map(x => x.p.lng);
+  const la0 = (Math.min(...la) + Math.max(...la)) / 2;
+  const k = Math.cos(la0 * Math.PI / 180);                 // 1° de longitud mide menos que uno de latitud
+  const X = x => x.p.lng * k, Y = x => -x.p.lat;
+  const xs = pts.map(X), ys = pts.map(Y);
+  let x0 = Math.min(...xs), x1 = Math.max(...xs), y0 = Math.min(...ys), y1 = Math.max(...ys);
+  const W = 1000, pad = 46;
+  const span = Math.max(x1 - x0, y1 - y0, 1e-4);           // cuadrado: no deforma distancias
+  const cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
+  x0 = cx - span / 2; y0 = cy - span / 2;
+  const sc = (W - pad * 2) / span;
+  const px = x => pad + (X(x) - x0) * sc, py = x => pad + (Y(x) - y0) * sc;
+  // escala: cuánto mide en pantalla 1 km real
+  const kmPx = sc * (1 / 111.32) * 1;                      // 1 km en grados de latitud → px
+  const kmRot = Math.max(1, Math.round(span * 111.32 / 4)); // barra de referencia redondeada
+  const ruta = conRuta && pts.length > 1
+    ? `<polyline points="${pts.map(x => px(x).toFixed(1) + ',' + py(x).toFixed(1)).join(' ')}"
+        fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linejoin="round"
+        stroke-dasharray="7 5" opacity=".55"/>` : '';
+  const marcas = pts.map((x, i) => {
+    const c = CAT[x.p.cat].c, X0 = px(x).toFixed(1), Y0 = py(x).toFixed(1);
+    return `<g><title>${esc((x.t ? x.t + ' · ' : '') + x.p.n + ' — ' + x.p.hood)}</title>
+      <circle cx="${X0}" cy="${Y0}" r="${conRuta ? 13 : 6.5}" fill="${c}" fill-opacity="${conRuta ? 1 : .8}"
+        stroke="#fff" stroke-width="${conRuta ? 2.5 : 1.5}"/>
+      ${conRuta ? `<text x="${X0}" y="${Y0}" text-anchor="middle" dominant-baseline="central"
+        font-size="12" font-weight="700" fill="#fff">${i + 1}</text>` : ''}</g>`;
+  }).join('');
+  const etiquetas = conRuta ? pts.map((x, i) => {
+    const X0 = +px(x), Y0 = +py(x);
+    return `<text x="${(X0 + 17).toFixed(1)}" y="${(Y0 + 4).toFixed(1)}" font-size="12.5"
+      fill="var(--ink)" style="paint-order:stroke;stroke:var(--card);stroke-width:3.5px">${esc(x.p.n.slice(0, 30))}</text>`;
+  }).join('') : '';
+  return `<div style="background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:12px">
+    <svg viewBox="0 0 ${W} ${W}" width="100%" style="display:block;max-height:74vh" role="img"
+      aria-label="Esquema de posiciones relativas de los lugares">
+      <defs><pattern id="gr" width="50" height="50" patternUnits="userSpaceOnUse">
+        <path d="M50 0H0V50" fill="none" stroke="var(--line)" stroke-width="1" opacity=".55"/></pattern></defs>
+      <rect width="${W}" height="${W}" fill="url(#gr)"/>
+      ${ruta}${marcas}${etiquetas}
+      <g transform="translate(${pad},${W - 22})">
+        <line x1="0" y1="0" x2="${(kmPx * kmRot).toFixed(1)}" y2="0" stroke="var(--ink)" stroke-width="2"/>
+        <line x1="0" y1="-5" x2="0" y2="5" stroke="var(--ink)" stroke-width="2"/>
+        <line x1="${(kmPx * kmRot).toFixed(1)}" y1="-5" x2="${(kmPx * kmRot).toFixed(1)}" y2="5" stroke="var(--ink)" stroke-width="2"/>
+        <text x="${(kmPx * kmRot / 2).toFixed(1)}" y="-9" text-anchor="middle" font-size="13" fill="var(--ink)">${kmRot} km</text>
+      </g>
+      <text x="${W - pad}" y="${pad - 16}" text-anchor="end" font-size="13" fill="var(--mut)">↑ norte</text>
+    </svg></div>`;
+}
+function mapFallback(){
+  const dsel = $('#mday')?.value, csel = $('#mcat')?.value;
+  let items;
+  const matchSel = p => !csel || (csel.startsWith('c:') ? p.cat === csel.slice(2) : p.typ === csel.slice(2));
+  if (dsel){ const d = S.itin.find(x => x.n === +dsel);
+    items = d.blocks.filter(b => b.pid && PBY[b.pid]).map(b => ({p:PBY[b.pid], t:b.t})); }
+  else items = PLACES.filter(matchSel).map(p => ({p, t:''}));
+  $('#map').outerHTML = `<div id="map" style="height:auto;padding:0;background:transparent">
+    ${svgMap(items, !!dsel)}
+    <div class="banner warn" style="margin:12px 0">Este es un <b>esquema de posiciones reales</b>
+      (norte arriba, con escala), no un mapa de calles: acá el mapa callejero no puede cargarse.
+      ${dsel ? 'Los números siguen el orden del día.' : 'Elegí un día arriba para ver el recorrido numerado.'}
+      Para navegar, cada lugar tiene su <b>link a Google Maps</b>.</div>
+    ${items.map(({p,t}) => `<div style="padding:9px 0;border-bottom:1px solid var(--line)">
+      <div class="b">${t ? t + ' · ' : ''}${esc(p.n)}</div>
+      <div class="xs muted">${esc(p.typ)} · ${esc(p.hood)} · ${money(p.cost)} · 🚇 ${esc(p.sub)}</div>
+      <a class="chip b" style="margin-top:5px" href="${gmaps(p)}" target="_blank" rel="noopener">↗ Google Maps</a>
+    </div>`).join('')}</div>`;
+  const s = $('#mday'); if (s) s.onchange = e => { S.mapDay = e.target.value ? +e.target.value : null; mapFallback(); };
+  const c = $('#mcat'); if (c) c.onchange = mapFallback;
+}
+function drawMap(){
+  if (!MAP || typeof L === 'undefined') return;
+  if (LAYER) MAP.removeLayer(LAYER);
+  LAYER = L.layerGroup().addTo(MAP);
+  const dsel = $('#mday')?.value, csel = $('#mcat')?.value, fsel = $('#mfree')?.classList.contains('on');
+  // csel viene como "c:<categoría>" o "s:<tipo>"
+  const matchSel = p => !csel || (csel.startsWith('c:') ? p.cat === csel.slice(2) : p.typ === csel.slice(2));
+  let items = [];
+  if (dsel){
+    const d = S.itin.find(x => x.n === +dsel);
+    d.blocks.forEach(b => { if (b.pid && PBY[b.pid]) items.push({p:PBY[b.pid], num:items.length+1, t:b.t}); });
+    /* Los de paso van SIN número y no entran en la línea del recorrido: son
+       referencia, no paradas. Se marcan con `paso` para pintarlos distinto. */
+    dePasoPlano(d).forEach(({p, desvio}) => items.push({p, num:null, paso:desvio}));
+  } else {
+    items = PLACES.filter(p => matchSel(p) && (!fsel || p.cost === 0 || p.free)).map(p => ({p, num:null}));
+  }
+  const pts = [], ruta = [];
+  items.forEach(({p,num,t,paso}) => {
+    if (!p.lat) return;
+    pts.push([p.lat, p.lng]);
+    if (num) ruta.push([p.lat, p.lng]);      /* la línea une las paradas, no las referencias */
+    const c = CAT[p.cat].c;
+    const icon = num
+      ? L.divIcon({className:'', html:`<div class="mnum" style="background:${c};width:27px;height:27px">${num}</div>`,
+                   iconSize:[27,27], iconAnchor:[13,13]})
+      : paso != null
+      ? L.divIcon({className:'', html:`<div class="mk mkpaso" style="border-color:${c}"></div>`,
+                   iconSize:[15,15], iconAnchor:[8,8]})
+      : L.divIcon({className:'', html:`<div class="mk" style="background:${c};width:13px;height:13px"></div>`,
+                   iconSize:[13,13], iconAnchor:[7,7]});
+    L.marker([p.lat,p.lng], {icon}).addTo(LAYER).bindPopup(
+      `<h4>${t ? t + ' · ' : ''}${esc(p.n)}</h4>
+       ${paso != null ? `<div style="font-size:11.5px;color:#8a7f6d;margin-bottom:6px">
+         De paso · no está en el itinerario · desvío +${paso < 950 ? Math.round(paso/10)*10 + ' m' : (paso/1000).toFixed(1) + ' km'}</div>` : ''}
+       <div style="color:#66707d;font-size:12px;margin-bottom:6px"><b style="color:${CAT[p.cat].c}">${esc(p.typ)}</b> · ${esc(p.hood)} · ${money(p.cost)}</div>
+       <div style="margin-bottom:8px">${esc(p.why.slice(0,190))}${p.why.length>190?'…':''}</div>
+       <div style="font-size:11.5px;color:#66707d;margin-bottom:8px">🚇 ${esc(p.sub)}</div>
+       <a href="${gmaps(p)}" target="_blank" rel="noopener"
+          style="display:inline-block;background:#14293d;color:#fff;padding:7px 11px;border-radius:9px;
+          text-decoration:none;font-weight:650;font-size:12px">Abrir en Google Maps ↗</a>`);
+  });
+  if (dsel && ruta.length > 1)
+    L.polyline(ruta, {color:'#14293d', weight:2.5, opacity:.45, dashArray:'6,7'}).addTo(LAYER);
+  if (pts.length) MAP.fitBounds(pts, {padding:[36,36], maxZoom: dsel ? 14 : 12});
+}
+
+/* ═══════════ VISTA: COSTOS ═══════════ */
+const FIXED = [
+  ['Subte / bus (OMNY, tope $35 por 7 días)', 70, 55,
+   'MetroCard se eliminó el 1/1/2026. OMNY: $3,00 por viaje, tope $35 cada 7 días. 9 días = 2 períodos.'],
+  ['NJ Transit Raritan ↔ NY Penn', 74, 37,
+   'PLAN CONFIRMADO. JP: 4 tramos × $18,50 (vuelta a NJ el 31, ida el 1, vuelta el 2, ida el 3 con las maletas). Thais: 2 tramos. Sin descuento por round-trip ni 10-trip.'],
+  ['Uber Branchburg ↔ estación Raritan', 72, 36,
+   'JP 4 tramos y Thais 2, × ~$18. El hotel no tiene shuttle y la estación está a 4 millas. Pedir el auto la noche anterior.'],
+  ['EWR ↔ Manhattan (ida y vuelta)', 38, 38,
+   'Llegada AirTrain+NJT $17,25. Salida subte $3 + NJT $17,25.'],
+  ['Comida — todas las comidas', 630, 630,
+   '9 días × ~$70 p/p. Mezclando barrios étnicos ($12-20) con algunas cenas de $40-50.'],
+  ['Música en vivo', 130, 90,
+   'Vanguard ~$50, Smalls/Mezzrow $25, LunÀtico $10, Dizzy\'s late night ~$25.'],
+  ['Broadway / teatro (opcional)', 65, 65,
+   'Con lotería o TKTS. Comprado directo, un musical grande promedia $92-112 p/p.']
+];
+function rCosts(){
+  let ajp = 0, ath = 0;
+  PLACES.forEach(p => { if (p.cat === 'comida' || p.cat === 'musica') return;
+    const i = interest(p.id); if (i.jp === 2) ajp += p.cost; if (i.th === 2) ath += p.cost; });
+  const rows = [['Entradas de atracciones marcadas “sí”', ajp, ath,
+    'Suma de los lugares con interés 2, excluyendo Comida y Música (que van en sus propias filas).'], ...FIXED];
+  const tj = rows.reduce((a,r) => a + r[1], 0), tt = rows.reduce((a,r) => a + r[2], 0);
+
+  $('#v-costs').innerHTML = `
+    <div class="banner ok"><b>Veredicto sobre los pases:</b> ${esc(EX.passes.veredicto)}</div>
+    <div class="sect">Estimación de costos</div>
+    <div class="tw"><table>
+      <thead><tr><th>Concepto</th><th style="text-align:right">JP</th><th style="text-align:right">Thais</th>
+        <th style="text-align:right">Total</th><th>Base del cálculo</th></tr></thead>
+      <tbody>${rows.map(r => `<tr><td class="b">${esc(r[0])}</td><td class="n">$${r[1]}</td>
+        <td class="n">$${r[2]}</td><td class="n">$${r[1]+r[2]}</td>
+        <td class="sm muted">${esc(r[3])}</td></tr>`).join('')}
+      <tr class="hl"><td class="b">TOTAL (sin alojamiento ni vuelos)</td>
+        <td class="n b">$${tj}</td><td class="n b">$${tt}</td><td class="n b">$${tj+tt}</td>
+        <td class="sm muted">Cambiá los 0/1/2 en la pestaña Lugares y esto se recalcula solo.</td></tr>
+      </tbody></table></div>
+
+    <div class="sect">Por qué NO conviene un pase</div>
+    ${EX.passes.razones.map((r,i) => `<div class="card pad sm" style="margin-bottom:8px">
+      <b style="color:var(--accent)">${i+1}.</b> ${esc(r)}</div>`).join('')}
+
+    <div class="sect">Los pases, uno por uno</div>
+    <div class="tw"><table>
+      <thead><tr><th>Pase</th><th>Precio</th><th>Validez</th><th>Incluye</th><th>Análisis</th></tr></thead>
+      <tbody>${EX.passes.opciones.map(p => `<tr class="${/🚫|❌/.test(p.an)?'bad':''}">
+        <td class="b">${esc(p.p)}</td><td class="n">${esc(p.c)}</td><td class="sm">${esc(p.v)}</td>
+        <td class="sm">${esc(p.inc)}</td><td class="sm">${esc(p.an)}</td></tr>`).join('')}</tbody></table></div>
+
+    <div class="sect">Lo que sí ahorra: el calendario gratuito</div>
+    <div class="tw"><table>
+      <thead><tr><th>Día</th><th>Qué es gratis</th><th style="text-align:right">Valor evitado (2 pers.)</th></tr></thead>
+      <tbody>${EX.passes.gratis_valor.map(g => `<tr class="hl"><td class="b">${esc(g.d)}</td>
+        <td>${esc(g.q)}</td><td class="n">${esc(g.v)}</td></tr>`).join('')}</tbody></table></div>
+    <div class="banner ok" style="margin-top:12px">${esc(EX.passes.total_gratis)}</div>
+
+    <div class="sect">Comprar con anticipación</div>
+    ${EX.passes.comprar_ahora.map(x => `<div class="card pad sm" style="margin-bottom:8px">▸ ${esc(x)}</div>`).join('')}
+
+    <div class="sect">Decisiones abiertas</div>
+    ${EX.decisiones.map(d => `<details><summary>${esc(d.t)}</summary><div class="dbody">
+      <p class="sm">${esc(d.d)}</p>
+      <p class="sm"><b>Los números:</b> ${esc(d.num)}</p>
+      <p class="sm" style="margin-bottom:0"><b>Recomendación:</b> ${esc(d.req)}</p></div></details>`).join('')}`;
+}
+
+/* ═══════════ VISTA: TRANSPORTE ═══════════ */
+function rTrans(){
+  const T = EX.transport;
+  const secc = (t) => `
+    <div class="sect">${esc(t.titulo)}</div>
+    <div class="banner ok"><b>Recomendado:</b> ${esc(t.reco)}</div>
+    <div class="tw"><table>
+      <thead><tr><th>Opción</th><th>Costo</th><th>Tiempo</th><th>Detalle</th></tr></thead>
+      <tbody>${t.opciones.map(o => `<tr class="${/✅/.test(o.m)?'hl':(/❌/.test(o.m)?'bad':'')}">
+        <td class="b">${esc(o.m)}</td><td class="n">${esc(o.costo)}</td><td class="sm">${esc(o.tiempo)}</td>
+        <td class="sm">${esc(o.det)}${o.total?` <b>▸ ${esc(o.total)}</b>`:''}</td></tr>`).join('')}</tbody></table></div>
+    ${t.secuencia ? `<div class="banner info" style="margin-top:11px"><b>Secuencia realista:</b> ${esc(t.secuencia)}</div>` : ''}
+    <div class="banner warn">⚠️ ${esc(t.alerta)}</div>`;
+
+  const nj = T.nj_nyc, n = T.nyc_interno;
+  $('#v-trans').innerHTML = secc(T.ewr_llegada) + secc(T.ewr_salida) + `
+    <div class="sect">${esc(nj.titulo)}</div>
+    <div class="banner ok"><b>Recomendado:</b> ${esc(nj.reco)}</div>
+    <div class="banner warn">${esc(nj.hotel)}</div>
+    <div class="tw"><table>
+      <thead><tr><th>Estación</th><th>Distancia del hotel</th><th>Estacionamiento</th><th>Servicio</th></tr></thead>
+      <tbody>${nj.estaciones.map(e => `<tr class="${/✅/.test(e.e)?'hl':(/❌/.test(e.e)?'bad':'')}">
+        <td class="b">${esc(e.e)}</td><td>${esc(e.dist)}</td><td>${esc(e.park)}</td>
+        <td class="sm">${esc(e.serv)}</td></tr>`).join('')}</tbody></table></div>
+    <div class="tw" style="margin-top:11px"><table>
+      <thead><tr><th>Tipo de pasaje</th><th style="text-align:right">Precio</th><th>Nota</th></tr></thead>
+      <tbody>${nj.tarifas.map(f => `<tr class="${/MÁS BARATA/.test(f.nota)?'hl':''}">
+        <td class="b">${esc(f.t)}</td><td class="n">${esc(f.p)}</td>
+        <td class="sm">${esc(f.nota)}</td></tr>`).join('')}</tbody></table></div>
+    <details style="margin-top:11px"><summary>Horarios y trenes directos</summary><div class="dbody">
+      <p class="sm"><b>Horarios:</b> ${esc(nj.horarios)}</p>
+      <p class="sm"><b>One-seat ride:</b> ${esc(nj.oneseat)}</p>
+      <p class="sm" style="margin-bottom:0"><b>Letra chica:</b> ${esc(nj.letra_chica)}</p></div></details>
+    <div class="banner warn" style="margin-top:11px">${esc(nj.aviso_variantes)}</div>
+    <div class="tw"><table>
+      <thead><tr><th>Escenario</th><th>Cálculo</th><th style="text-align:right">Total 4 días</th></tr></thead>
+      <tbody>${nj.comparativa.map(c => `<tr class="${/✅/.test(c.esc)?'hl':(/❌/.test(c.esc)?'bad':'')}">
+        <td class="b">${esc(c.esc)}</td><td class="sm">${esc(c.calc)}</td>
+        <td class="n">${esc(c.tot)}</td></tr>`).join('')}</tbody></table></div>
+    <div class="banner warn" style="margin-top:11px"><b>¿Alquilar auto? NO.</b> ${esc(nj.veredicto_auto)}</div>
+    <div class="banner warn"><b>⚠️ Riesgo:</b> ${esc(nj.riesgo)}</div>
+
+    <div class="sect">${esc(n.titulo)}</div>
+    <div class="banner warn"><b>🔴 CAMBIO CLAVE 2026:</b> ${esc(n.cambio_clave)}</div>
+    <div class="card pad"><dl class="kv">
+      <dt>Tarifa</dt><dd>${esc(n.tarifa)}</dd>
+      <dt>Fare capping</dt><dd>${esc(n.capping)}</dd>
+      <dt>⚠️ Crítico</dt><dd>${esc(n.critico)}</dd>
+      <dt>Su viaje</dt><dd>${esc(n.cuenta)}</dd>
+      ${n.hoteles.map(h => `<dt>${esc(h.h)}</dt><dd>${esc(h.s)}</dd>`).join('')}
+    </dl></div>`;
+}
+
+/* ═══════════ VISTA: RESERVAS ═══════════ */
+function rRes(){
+  /* Las que ya estan compradas (x.hecho, viene del catalogo) bajan al final y cuentan como hechas
+     para todos, no solo para el navegador donde se tildo. */
+  const R = [...EX.reservas].sort((a,b) => (a.hecho?1:0) - (b.hecho?1:0) || b.urg - a.urg);
+  const listo = (x,i) => !!(x.hecho || S.res[i]);
+  const dn = R.filter((x,i) => listo(x,i)).length;
+  $('#v-res').innerHTML = `
+    <div class="banner info"><b>${dn} de ${R.length}</b> reservas hechas. Ordenado por urgencia:
+      lo naranja es lo que se agota o tiene ventana fija; lo verde de abajo ya esta comprado.</div>
+    <div class="card">${R.map((x,i) => `
+      <div class="blk${listo(x,i)?' done':''}" style="${x.urg===3&&!listo(x,i)?'background:#fff7ec':''}">
+        <button class="ck${listo(x,i)?' on':''}" data-r="${i}" style="flex:0 0 23px;margin-top:2px">✓</button>
+        <div class="bbody">
+          <div class="btxt b">${esc(x.q)}</div>
+          <div class="bmeta">
+            <span class="chip ${x.hecho?'g':x.urg===3?'r':'o'}">${x.hecho?'✔ ':''}${esc(x.cuando)}</span>
+            <span class="chip">${esc(x.url)}</span></div>
+          <div class="sm muted" style="margin-top:5px">${esc(x.por)}</div>
+        </div></div>`).join('')}</div>`;
+  $('#v-res').onclick = e => { const b = e.target.closest('[data-r]'); if (!b) return;
+    const i = b.dataset.r; S.res[i] = !S.res[i]; save(); rRes(); };
+}
+
+/* ═══════════ MODALES ═══════════ */
+function sheet(html){ $('#sheet').innerHTML = '<div class="grab"></div>' + html; $('#ov').classList.add('on'); }
+$('#ov').onclick = e => { if (e.target.id === 'ov') $('#ov').classList.remove('on'); };
+function closeSheet(){ $('#ov').classList.remove('on'); }
+
+function showPlace(id){
+  const p = PBY[id]; if (!p) return; const c = CAT[p.cat], i = interest(id);
+  sheet(`<h2 style="font-size:19px;margin-bottom:9px">${esc(p.n)}</h2>
+    <div class="flex" style="margin-bottom:12px">
+      <span class="chip" style="background:${c.c};color:#fff">${esc(p.typ)}</span>
+      <span class="chip" style="background:${c.c}1a;color:${c.c}">${c.n}</span>
+      <span class="chip">${esc(p.hood)}, ${esc(p.boro)}</span>
+      <span class="chip ${p.cost===0?'g':''}">${money(p.cost)}</span>
+      ${p.dur?`<span class="chip">${p.dur} h</span>`:''}
+      ${p.closed?`<span class="chip r">cierra ${esc(p.closed)}</span>`:''}</div>
+    <p style="font-size:14px;line-height:1.6">${esc(p.why)}</p>
+    <dl class="kv" style="margin:14px 0">
+      ${p.costN?`<dt>Costo</dt><dd>${esc(p.costN)}</dd>`:''}
+      ${p.free?`<dt>Gratis</dt><dd style="color:var(--green);font-weight:650">${esc(p.free)}</dd>`:''}
+      ${p.hrs?`<dt>Horario</dt><dd>${esc(horarioSemana(p))}</dd>`:''}
+      ${p.book?`<dt>Reserva</dt><dd>${esc(p.book)}</dd>`:''}
+      <dt>Subte</dt><dd>${esc(p.sub)}</dd>
+      ${p.addr?`<dt>Dirección</dt><dd>${esc(p.addr)}</dd>`:''}</dl>
+    <div class="flex" style="margin-bottom:12px">
+      <span class="iw"><span class="ilab">JP</span>${[0,1,2].map(v=>`<button class="ib v${v}"
+        data-mp="${id}" data-mw="jp" style="${i.jp===v?'':'opacity:.28'}">${v}</button>`).join('')}</span>
+      <span class="iw"><span class="ilab">TH</span>${[0,1,2].map(v=>`<button class="ib v${v}"
+        data-mp="${id}" data-mw="th" style="${i.th===v?'':'opacity:.28'}">${v}</button>`).join('')}</span></div>
+    <a class="btn" style="display:inline-block;text-decoration:none" href="${gmaps(p)}"
+       target="_blank" rel="noopener">Abrir en Google Maps ↗</a>
+    <button class="btn ghost" style="margin-left:7px" onclick="closeSheet();pickDay('${id}')">Agregar a un día</button>`);
+  $('#sheet').onclick = e => { const b = e.target.closest('[data-mp]'); if (!b) return;
+    setInterest(b.dataset.mp, b.dataset.mw, (interest(b.dataset.mp)[b.dataset.mw] + 1) % 3);
+    showPlace(b.dataset.mp); if (S.tab === 'places') rPlaces(); };
+}
+function pickDay(pid){
+  const p = PBY[pid];
+  sheet(`<h2 style="font-size:17px;margin-bottom:4px">Agregar “${esc(p.n)}”</h2>
+    <p class="sm muted" style="margin-bottom:14px">¿A qué día?</p>
+    ${S.itin.map(d => `<button class="opt" data-day="${d.n}">Día ${d.n} — ${d.dow} ${d.date.slice(8)}/${d.date.slice(5,7)}
+      <b>${esc(d.title)} · ${WHO[d.who]}</b></button>`).join('')}`);
+  $('#sheet').onclick = e => { const b = e.target.closest('[data-day]'); if (!b) return;
+    const d = S.itin.find(x => x.n === +b.dataset.day);
+    d.blocks.push({id:'x'+Date.now()+Math.floor(Math.random()*999), t:'—',
+      txt:p.n + ' — ' + p.why.slice(0,120), pid, who:d.who, kind:'', note:'agregado por vos',
+      done:false, mynote:''});
+    save(); closeSheet(); S.day = d.n; go('itin'); };
+}
+/* Hoja de la ruta del día: elegís qué paradas entran y la abrís en Apple Maps.
+   Vienen tildadas las que NO marcaste como hechas, así en la calle la ruta arranca
+   en lo que te falta. Un link lleva UN modo de transporte, por eso hay dos botones. */
+function rutaSheet(dayN){
+  const d = S.itin.find(x => x.n === dayN) || S.itin[0];
+  const paradas = paradasDe(d);
+  if (!paradas.length){
+    sheet(`<h2 style="font-size:17px;margin-bottom:8px">Ruta del día ${dayN}</h2>
+      <p class="sm muted">Este día no tiene bloques con un lugar del catálogo, así que no hay
+      ruta que armar. Los bloques de logística y las comidas sin lugar fijo no cuentan.</p>`);
+    return;
+  }
+  const fecha = d.date.slice(8) + '/' + d.date.slice(5,7);
+  const filas = paradas.map((x,i) => `<label class="opt" style="display:flex;gap:9px;align-items:flex-start;text-align:left">
+      <input type="checkbox" data-rp="${i}" ${x.b.done ? '' : 'checked'} style="margin-top:3px;flex:none">
+      <span style="flex:1">${esc(x.b.t)} · ${esc(x.p.n)}
+        <b>${esc(x.p.hood || '')}${x.p.aprox ? ' · 📍 dirección sin verificar' : ''}${x.b.done ? ' · ya lo hiciste' : ''}</b></span>
+    </label>`).join('');
+  sheet(`<h2 style="font-size:17px;margin-bottom:4px">Ruta del día ${dayN} · ${esc(d.dow)} ${fecha}</h2>
+    <p class="sm muted" style="margin-bottom:9px">Arranca <b>desde donde estés</b>. El Watch toma la
+    navegación del iPhone solo.</p>
+    <div id="raviso"></div>
+    <div class="flex" style="margin-bottom:4px">
+      <span class="chip b" style="flex:none">Apple Maps</span>
+      <a class="btn sm" id="rw" href="#" target="_blank" rel="noopener">A pie</a>
+      <a class="btn ghost sm" id="rt" href="#" target="_blank" rel="noopener">En transporte</a>
+    </div>
+    <p class="sm muted" style="margin-bottom:10px">Necesita iOS 18.4 · watchOS 11.4.</p>
+    <div style="border-top:1px solid var(--ln);padding-top:11px">
+      <div class="flex" style="margin-bottom:4px">
+        <span class="chip" style="flex:none">Plan B · Google Maps</span>
+      </div>
+      <p class="sm muted" style="margin-bottom:8px">Google toma pocas paradas por link: va
+      <b>en tramos</b>. Cada uno arranca donde estés.</p>
+      <div id="rgm"></div>
+    </div>
+    <div style="border-top:1px solid var(--ln);margin-top:13px;padding-top:11px">
+      <p class="sm muted" style="margin-bottom:7px">Las <b>${paradas.length} paradas</b> del día.
+      Vienen tildadas las que no marcaste como hechas — destildá lo que quieras saltear.</p>
+      <div id="rlist">${filas}</div>
+      <p class="sm muted" style="margin-top:9px">Maps puede reordenar o recortar paradas si la ruta no
+      le cierra: mirá la lista antes de arrancar.</p>
+    </div>`);
+
+  const sel = () => Array.from($('#rlist').querySelectorAll('[data-rp]'))
+    .filter(c => c.checked).map(c => paradas[+c.dataset.rp].p);
+  const pinta = () => {
+    const ps = sel();
+    const links = {rw:'walking', rt:'transit'};
+    Object.keys(links).forEach(id => {
+      const a = $('#' + id), url = ps.length ? amRuta(ps, links[id]) : '';
+      if (url){ a.href = url; a.removeAttribute('aria-disabled'); a.style.opacity = ''; }
+      else { a.href = '#'; a.setAttribute('aria-disabled','true'); a.style.opacity = '.45'; }
+    });
+    const avisos = [];
+    if (!ps.length) avisos.push('Elegí al menos una parada.');
+    else if (ps.length === 1) avisos.push('Una sola parada: Maps va a darte la ruta directa hasta ahí.');
+    if (ps.length > AM_MAX) avisos.push('Maps toma hasta ' + AM_MAX + ' paradas por ruta: se van a usar las primeras ' +
+      AM_MAX + ' y quedan ' + (ps.length - AM_MAX) + ' afuera.');
+    if (ps.some(x => x.aprox)) avisos.push('Hay paradas con 📍: la dirección no está verificada y Maps las busca por nombre.');
+    $('#raviso').innerHTML = avisos.length
+      ? '<div class="banner warn sm">' + avisos.map(esc).join(' ') + '</div>' : '';
+
+    const grupos = enTramos(ps, GM_PARADAS);
+    $('#rgm').innerHTML = !grupos.length
+      ? '<p class="sm muted">Elegí paradas arriba.</p>'
+      : grupos.map((g, i) => `<div class="flex" style="margin-bottom:7px;align-items:center">
+          <span class="chip" style="flex:none">${grupos.length > 1 ? 'Tramo ' + (i+1) + '/' + grupos.length : 'Ruta'}</span>
+          <span class="sm muted" style="flex:1;min-width:90px;white-space:nowrap;overflow:hidden;
+            text-overflow:ellipsis" title="${esc(g.map(amNombre).join(' → '))}">${esc(g.map(amNombre).join(' → '))}</span>
+          <a class="chip b" href="${gmRuta(g,'walking')}" target="_blank" rel="noopener">a pie</a>
+          <a class="chip b" href="${gmRuta(g,'transit')}" target="_blank" rel="noopener">transporte</a>
+        </div>`).join('');
+  };
+  $('#rlist').onchange = pinta;
+  ['rw','rt'].forEach(id => $('#' + id).onclick = e => {
+    if ($('#' + id).getAttribute('aria-disabled')){ e.preventDefault(); toast('Elegí al menos una parada.'); }
+  });
+  pinta();
+}
+function pickPlace(dayN){
+  sheet(`<h2 style="font-size:17px;margin-bottom:4px">Agregar al día ${dayN}</h2>
+    <p class="sm muted" style="margin-bottom:11px">Buscá y tocá para agregar.</p>
+    <input class="search" id="ps" placeholder="Buscar…" style="width:100%;margin-bottom:11px">
+    <div id="pl"></div>`);
+  const draw = q => { const list = PLACES.filter(p =>
+      !q || (p.n+' '+p.hood+' '+p.why).toLowerCase().includes(q.toLowerCase())).slice(0,45);
+    $('#pl').innerHTML = list.map(p => `<button class="opt" data-pp="${p.id}">${esc(p.n)}
+      <b>${esc(p.typ)} · ${esc(p.hood)} · ${money(p.cost)}</b></button>`).join('') ||
+      '<p class="sm muted">Nada coincide.</p>'; };
+  draw('');
+  $('#ps').oninput = e => draw(e.target.value); $('#ps').focus();
+  $('#pl').onclick = e => { const b = e.target.closest('[data-pp]'); if (!b) return;
+    const p = PBY[b.dataset.pp], d = S.itin.find(x => x.n === dayN);
+    d.blocks.push({id:'x'+Date.now()+Math.floor(Math.random()*999), t:'—',
+      txt:p.n + ' — ' + p.why.slice(0,120), pid:p.id, who:d.who, kind:'', note:'agregado por vos',
+      done:false, mynote:''});
+    save(); closeSheet(); rItin(); };
+}
+function addFree(dayN){
+  sheet(`<h2 style="font-size:17px;margin-bottom:11px">Nota libre — día ${dayN}</h2>
+    <input class="search" id="nt" placeholder="Hora (ej. 15:30)" style="width:110px;margin-bottom:9px">
+    <textarea class="bnote" id="nx" placeholder="Qué hacer…" style="min-height:80px;width:100%"></textarea>
+    <button class="btn" id="nok" style="margin-top:11px">Agregar</button>`);
+  $('#nok').onclick = () => {
+    const t = $('#nt').value.trim() || '—', x = $('#nx').value.trim(); if (!x) return;
+    S.itin.find(d => d.n === dayN).blocks.push({id:'x'+Date.now(), t, txt:x, pid:'',
+      who:'both', kind:'', note:'', done:false, mynote:''});
+    save(); closeSheet(); rItin(); };
+}
+
+/* ═══════════ HEADER ═══════════ */
+$('#bWho').onclick = () => {
+  sheet(`<h2 style="font-size:17px;margin-bottom:11px">Ver el itinerario de…</h2>
+    ${[['all','Todo','Todos los bloques de todos los días'],
+       ['both','Solo lo de a dos','Bloques marcados “Ambos”'],
+       ['jp','Juan Pablo','Bloques de JP + los de a dos'],
+       ['th','Thais','Solo lo que hace Thais por su cuenta']].map(([k,l,d]) =>
+      `<button class="opt" data-w="${k}"${S.whoF===k?' style="border-color:var(--navy);border-width:2px"':''}>${l}<b>${d}</b></button>`).join('')}`);
+  $('#sheet').onclick = e => { const b = e.target.closest('[data-w]'); if (!b) return;
+    S.whoF = b.dataset.w; save(); closeSheet(); if (S.tab === 'itin') rItin(); };
+};
+$('#bMenu').onclick = () => {
+  sheet(`<h2 style="font-size:17px;margin-bottom:11px">Datos</h2>
+    <button class="opt" id="oExp">Exportar mi plan (JSON)<b>Guardá tus cambios en un archivo. Sirve de backup y para pasar de la compu al celular.</b></button>
+    <button class="opt" id="oImp">Importar plan (JSON)<b>Cargar un archivo exportado antes.</b></button>
+    <button class="opt" id="oCsv">Exportar lugares (CSV)<b>Abrilo en Excel o Google Sheets.</b></button>
+    <button class="opt" id="oPrn">Imprimir / PDF<b>Imprime la pestaña que estés viendo.</b></button>
+    <button class="opt" id="oRst" style="color:var(--red)">Volver al plan original<b>Borra TODOS tus cambios. No se puede deshacer.</b></button>
+    <p class="xs muted" style="margin-top:14px">Tus cambios se guardan en este navegador.
+    Si abrís el plan en otro dispositivo, empieza del plan original: usá Exportar / Importar para pasarlo.</p>
+    <p class="xs muted" style="margin-top:10px;padding-top:10px;border-top:1px solid var(--line)">
+      <b>Versión del plan:</b> ${esc(VER)} <span style="opacity:.6">· ${esc(VERID)}</span><br>
+      Si Juan y Thais ven versiones distintas, el que tenga la vieja recarga la página.
+      <button class="chip b" id="oVer" style="margin-top:7px;cursor:pointer;border:0">Buscar versión nueva</button></p>`);
+  $('#oVer').onclick = async e => { e.target.textContent = 'Buscando…';
+    const r = await hayVersionNueva();
+    e.target.textContent = r === true ? '⚠️ Hay una más nueva: recargá'
+                        : r === false ? '✓ Estás en la última' : 'No pude verificar';
+  };
+  $('#oExp').onclick = doExport;
+  $('#oCsv').onclick = doCsv;
+  /* Los bloques plegados no tienen el texto completo EN EL DOM: imprimir así
+     saldría recortado. Se despliegan todos, se imprime, y se vuelve a como estaba. */
+  $('#oPrn').onclick = () => { closeSheet();
+    const antes = new Set(OPEN_BLK);
+    if (S.tab === 'itin'){ S.itin.forEach(x => x.blocks.forEach(z => OPEN_BLK.add(z.id))); rItin(); }
+    setTimeout(() => {
+      window.print();
+      OPEN_BLK.clear(); antes.forEach(x => OPEN_BLK.add(x));
+      if (S.tab === 'itin') rItin();
+    }, 250); };
+  $('#oRst').onclick = () => { if (confirm('¿Borrar todos tus cambios y volver al plan original?')){
+    S = fresh(); save(); closeSheet(); go('itin'); } };
+  $('#oImp').onclick = () => {
+    closeSheet();
+    const cargar = txt => {
+      try { const o = JSON.parse(txt);
+        if (!o || !o.itin) throw 0;
+        S = hydrate(o); save(); document.getElementById('planSheet')?.remove(); go('itin');
+        toast('Plan importado'); }
+      catch(e){ toast('Ese texto no es un plan válido. Copiá TODO lo que te dio Exportar.'); }
+    };
+    planSheet('Importar plan',
+      'Pegá el texto que te dio <b>Exportar</b> en el otro dispositivo, o cargá el archivo .json.',
+      '', [{t:'Importar', f: cargar},
+           {t:'Desde archivo', f: () => {
+              const f = document.createElement('input'); f.type = 'file'; f.accept = '.json,application/json';
+              f.onchange = () => { const r = new FileReader(); r.onload = () => cargar(r.result); r.readAsText(f.files[0]); };
+              f.click(); }}], true); };
+};
+/* Aviso breve al pie: confirma o explica lo que acaba de pasar. */
+/* ¿El servidor tiene una versión más nueva que la que este navegador cargó?
+   Solo funciona servido por http(s); con archivo local devuelve null. */
+async function hayVersionNueva(){
+  try {
+    const r = await fetch(location.pathname + '?v=' + Date.now(), {cache: 'reload'});
+    if (!r.ok) return null;
+    const t = await r.text();
+    const m = t.match(/"verId":"([a-f0-9]{6})"/);
+    return m ? m[1] !== VERID : null;
+  } catch(e){ return null; }
+}
+/* Al abrir, avisa una sola vez si quedó una versión vieja cacheada. */
+async function avisarSiHayVersionNueva(){
+  if (location.protocol === 'file:') return;
+  if (await hayVersionNueva() === true)
+    toast('Hay una versión más nueva del plan. Recargá la página para verla.');
+}
+function toast(msg){
+  let t = document.getElementById('toast');
+  if (!t){ t = document.createElement('div'); t.id = 'toast'; document.body.appendChild(t); }
+  t.textContent = msg; t.classList.add('on');
+  clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('on'), 4200);
+}
+const HOSTED = (() => { try { return window.self !== window.top; } catch(e){ return true; } })();
+const puedeBajar = () => !HOSTED || !!DLNS;
+let DLNS;   // namespace de descargas del visor (solo existe en el sitio publicado)
+(async () => { try { DLNS = window.claude && await window.claude.use('downloads'); } catch(e){} })();
+async function dl(name, text, type){
+  if (DLNS){                                   // sitio publicado: lo guarda el visor, con confirmación
+    try { await DLNS.save({ filename: name, data: new TextEncoder().encode(text) }); return true; }
+    catch(e){
+      if (e && e.code === 'declined') return false;
+      toast('No se pudo descargar' + (e && e.code ? ' (' + e.code + ')' : '') + '. Copiá el plan a mano o abrí el archivo en la compu.');
+      return false;
+    }
+  }
+  const b = new Blob([text], {type}); const u = URL.createObjectURL(b);   // archivo local
+  const a = document.createElement('a'); a.href = u; a.download = name; a.click();
+  setTimeout(() => URL.revokeObjectURL(u), 2000);
+  return true;
+}
+async function doExport(){
+  closeSheet();
+  const txt = JSON.stringify(S, null, 1);
+  planSheet('Exportar mi plan',
+    'Copiá este texto y pegalo en el otro dispositivo con <b>Importar plan</b>. También podés bajarlo como archivo.',
+    txt, [{t:'Copiar', f: async () => {
+        try { await navigator.clipboard.writeText(txt); toast('Plan copiado al portapapeles'); }
+        catch(e){ const a = document.getElementById('planTxt'); a.select(); document.execCommand('copy'); toast('Plan copiado'); }
+      }},
+      ...(puedeBajar() ? [{t:'Bajar archivo', f: async () => {
+        if (await dl('nyc2026-plan.json', txt, 'application/json')) toast('Plan exportado'); }}] : [])]);
+}
+/* Panel simple con un textarea y botones: sirve para exportar (texto listo para copiar)
+   y para importar (pegar el texto del otro dispositivo). */
+function planSheet(titulo, ayuda, valor, acciones, alPegar){
+  const w = document.createElement('div');
+  w.id = 'planSheet';
+  w.innerHTML = `<div class="psBack"></div><div class="psBox" role="dialog" aria-modal="true" aria-label="${esc(titulo)}">
+    <h3 style="margin:0 0 4px">${esc(titulo)}</h3>
+    <p class="sm muted" style="margin:0 0 10px">${ayuda}</p>
+    <textarea id="planTxt" spellcheck="false" ${alPegar ? 'placeholder="Pegá acá el texto exportado en el otro dispositivo"' : ''}>${esc(valor)}</textarea>
+    <div class="flex" style="margin-top:11px;justify-content:flex-end">
+      ${acciones.map((a, i) => `<button class="btn" data-a="${i}">${esc(a.t)}</button>`).join('')}
+      <button class="btn" data-a="x">Cerrar</button></div></div>`;
+  document.body.appendChild(w);
+  w.querySelector('.psBack').onclick = () => w.remove();
+  w.onclick = e => { const b = e.target.closest('[data-a]'); if (!b) return;
+    if (b.dataset.a === 'x') { w.remove(); return; }
+    acciones[+b.dataset.a].f(document.getElementById('planTxt').value); };
+  if (alPegar) setTimeout(() => document.getElementById('planTxt').focus(), 50);
+}
+function doCsv(){
+  const q = s => '"' + String(s == null ? '' : s).replace(/"/g,'""') + '"';
+  const head = ['Lugar','Categoria','Tipo','Barrio','Borough','JP','Thais','USD','Horas','Turistico',
+                'Cierra','Gratis/PWYW','Reserva','Subte','PorQue','Direccion'];
+  const rows = PLACES.map(p => { const i = interest(p.id);
+    return [p.n, CAT[p.cat].n, p.typ, p.hood, p.boro, i.jp, i.th, p.cost, p.dur,
+            p.main?'SI':'no', p.closed, p.free, p.book, p.sub, p.why, p.addr].map(q).join(','); });
+  const csv = head.map(q).join(',') + '\n' + rows.join('\n');
+  closeSheet();
+  if (puedeBajar()){ dl('nyc2026-lugares.csv', '\ufeff' + csv, 'text/csv;charset=utf-8'); return; }
+  planSheet('Lugares en CSV',
+    'Copiá este texto y pegalo en una hoja de cálculo: Excel y Google Sheets separan las columnas solos.',
+    csv, [{t:'Copiar', f: async () => {
+      try { await navigator.clipboard.writeText(csv); toast('CSV copiado'); }
+      catch(e){ const a = document.getElementById('planTxt'); a.select(); document.execCommand('copy'); toast('CSV copiado'); } }}]);
+}
+$('#bExp').onclick = doExport;
+$('#bSave').onclick = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); dirty = false; setStat();
+  $('#bSave').textContent = '¡Listo!'; setTimeout(setStat, 900); } catch(e){ alert('No se pudo guardar en este navegador. Usá Exportar.'); } };
+
+$('#bAhora').onclick = irAhora;
+
+/* ── Cambiar de día deslizando ────────────────────────────────────────────────
+   Cambiar de día es lo que más se hace, y la tira de días está arriba de todo:
+   con una mano y el celular grande, no se llega. El gesto tiene que ser claramente
+   horizontal (más del doble que el vertical) para no comerse el scroll, y no cuenta
+   si arrancó adentro de algo que ya scrollea solo. */
+(function(){
+  let x0 = null, y0 = null, ok = false;
+  const v = $('#v-itin');
+  v.addEventListener('touchstart', e => {
+    if (e.touches.length !== 1){ ok = false; return; }
+    const t = e.target;
+    ok = !t.closest('.days, .tw, .tools, input, textarea, select, .leaflet-container, .bmeta, .aca, .paso, .hood');
+    x0 = e.touches[0].clientX; y0 = e.touches[0].clientY;
+  }, {passive:true});
+  v.addEventListener('touchend', e => {
+    if (!ok || x0 == null) return;
+    const t = e.changedTouches[0], dx = t.clientX - x0, dy = t.clientY - y0;
+    x0 = null;
+    if (Math.abs(dx) < 65 || Math.abs(dx) < Math.abs(dy) * 2.2) return;
+    const i = S.itin.findIndex(z => z.n === S.day);
+    const j = dx < 0 ? i + 1 : i - 1;
+    if (j < 0 || j >= S.itin.length){ toast(dx < 0 ? 'Es el último día.' : 'Es el primer día.'); return; }
+    S.day = S.itin[j].n; save(); rItin(); window.scrollTo({top:0});
+  }, {passive:true});
+})();
+
+/* ── El reloj corre ──────────────────────────────────────────────────────────
+   Cada 30 s se repinta SOLO la tarjeta "Ahora". El día entero se re-renderiza
+   nada más cuando cambia el bloque actual, y nunca mientras alguien escribe. */
+let ULT_I = null;
+setInterval(() => {
+  const t = hoyStr(), cambioDia = t !== TODAY;
+  TODAY = t;
+  if (S.tab !== 'itin') return;
+  pintarAhora();
+  const d = S.itin.find(x => x.n === S.day);
+  const i = idxAhora(d);
+  const escribiendo = /^(INPUT|TEXTAREA)$/.test((document.activeElement || {}).tagName || '');
+  if ((i !== ULT_I || cambioDia) && !escribiendo){ ULT_I = i; rItin(); }
+  else ULT_I = i;
+}, 30000);
+
+/* ═══════════ ARRANQUE ═══════════ */
+(function(){
+  const t = S.itin.find(d => d.date === TODAY);
+  if (t) { S.day = t.n; $('#hsub').textContent = 'hoy · día ' + t.n + ' · ' + t.dow.toLowerCase() + ' ' + (+t.date.slice(8)) + '/' + t.date.slice(5,7); }
+  else   { $('#hsub').textContent = '29 ago – 6 sep · JP & Thais'; }
+  ULT_I = idxAhora(S.itin.find(x => x.n === S.day));
+  go(S.tab || 'itin'); setStat();
+  $('#hsub').title = 'Versión del plan: ' + VER + ' · ' + VERID;
+  setTimeout(avisarSiHayVersionNueva, 2500);   // aviso si el navegador cargó una versión cacheada
+})();
+</script>
+</body>
+</html>
