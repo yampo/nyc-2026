@@ -4,6 +4,39 @@ Lo más nuevo va arriba. Está escrito para leerse desde el celular, sin tecnici
 
 ---
 
+## 1 de septiembre de 2026 · el miércoles, rearmado en pleno viaje
+
+**Juan ya no vuelve a New Jersey.** Se queda en el JGStay SoHo hasta el jueves y de ahí lleva el
+equipaje directo a The Beacon. Eso cambia dos días:
+
+**El miércoles 2** queda así, con lo que pidió:
+
+| | |
+|---|---|
+| 07:00 | **High Line al amanecer** — abre 7:00 y a esa hora está vacío |
+| 08:40 | Little Island, que abre a las 6 y queda en el camino |
+| 09:15 | desayuno en Hudson Yards |
+| 10:00 | **The Vessel** — abre 10:00 en punto |
+| 11:30 | Historia Natural |
+| 15:40 | **MoMA**, que había quedado pendiente del lunes |
+| 19:00 | SummerStage: McBride + Samara Joy |
+
+**Y ahora el SummerStage se ve entero**: ya no hay tren a New Jersey que atrapar a las 22:48, que
+era lo que obligaba a salir corriendo. Se vuelve a SoHo sin apuro.
+
+**El jueves 3 arranca a las 7:30 en vez de a las 6:20**, con desayuno incluido en el hotel en vez
+de un Uber en Branchburg a oscuras. Hora y media más de sueño, un Uber menos y un tren menos.
+
+**Lo que se cae: el Frick.** Hoy era su única ventana a voluntad de la semana (13:30 a 17:30) y el
+día quedó lleno. Fuera de esa ventana son 30 dólares por cabeza.
+
+**Y una para decidir juntos el viernes**: Juan hace el High Line, Little Island y el Vessel el
+miércoles solo, pero los tres siguen en el plan del viernes porque **Thais no los vio** — el
+Vessel además es imprescindible para los dos. Si Juan la acompaña igual, no se pierde nada; si
+prefieren no repetir, esa mañana libera de 9:15 a 13:00.
+
+---
+
 ## 27 de agosto de 2026
 
 **Nuevo: lugares "de paso", para desviarse un poco si pinta.**

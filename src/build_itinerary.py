@@ -145,38 +145,45 @@ day(4, "2026-09-01", "Martes", "jp", "JGStay SoHo",
         "El Tenement Museum quedó afuera: los dos lo bajaron a 'quizás'.")
 
 # ═══════════════ DÍA 5 · MIÉ 2 SEP · JP SOLO ═══════════════
-day(5, "2026-09-02", "Miércoles", "jp", "JGStay SoHo → New Jersey (la ÚNICA vuelta nocturna)",
-    "JP solo · Historia Natural, Frick gratis y McBride en Central Park",
-    "Thais trabaja en New Jersey hasta mañana, así que sigue siendo día de JP solo, y se aprovecha para lo que ella marcó 0: "
-    "el Museo de Historia Natural y el Frick. El miércoles el Frick es "
-    "pay-what-you-wish de 13:30 a 17:30, así que sale casi nada. Cierra el MET, pero hoy no hace falta: ya se hizo ayer. "
-    "El teleférico a Roosevelt Island se fue al domingo: lo marcaron 2 los dos, así que corresponde a un día de a dos. "
-    "⚠️ OJO CON LA NOCHE: hoy es LA ÚNICA vuelta a New Jersey que quedó en el viaje (para volver mañana con las maletas), y mañana se madruga 5:45. Cenar TEMPRANO y no perder el tren de las 22:48.",
+day(5, "2026-09-02", "Miércoles", "jp", "JGStay SoHo (YA NO se vuelve a New Jersey)",
+    "JP solo · High Line al amanecer, Vessel, Historia Natural, MoMA y McBride en Central Park",
+    "REARMADO EL 1/9 con dos cambios de Juan. UNO: ya no vuelve a New Jersey — se queda en el JGStay SoHo hasta el "
+    "jueves y de ahí lleva las maletas a The Beacon. Eso borra la única vuelta nocturna del viaje, o sea que hoy NO hay "
+    "tren que atrapar: el SummerStage se ve entero y sin mirar el reloj, y mañana se arranca a las 7:30 desde SoHo en vez "
+    "de a las 5:45 desde Branchburg. DOS: Juan quiere el HIGH LINE A LAS 7 DE LA MAÑANA, cuando abre y está vacío. "
+    "⚠️ EL ENGANCHE QUE NO CIERRA SOLO: el Vessel abre a las 10:00, así que entre el final del High Line y el Vessel hay "
+    "un hueco de una hora larga — se llena con el desayuno en Hudson Yards, que además reemplaza al del hotel (7-9 AM), "
+    "que hoy se pierde por salir temprano. Y entra el MoMA, que quedó pendiente del lunes: cierra 17:30 y encaja justo "
+    "antes del SummerStage. CERRADOS hoy: el MET (por eso fue ayer) y el Frick pierde su ventana a voluntad — ver alternativas.",
     [
-     b("08:15", "Desayuno incluido en el JGStay y CHECKOUT: el bolso queda en la CONSIGNA — se retira a la tarde, en el hueco libre del día.", "jgstay", "jp", "comida"),
-     b("09:15", "Subte A o C desde Canal St hasta 81 St-Museum of Natural History (~30 min).", "", "jp", "logistica"),
-     b("10:00", "★ AMERICAN MUSEUM OF NATURAL HISTORY — dinosaurios, la ballena azul y el Gilder Center nuevo de Studio Gang. $37. Thais lo marcó 0: es de hoy.", "amnh", "jp", "destacado"),
-     b("12:45", "Almuerzo y cruzar Central Park de oeste a este (20 min a pie).", "", "jp", "comida"),
-     b("13:45", "★ THE FRICK COLLECTION — pay-what-you-wish los miércoles 13:30-17:30, y ESA VENTANA ES TODA: fuera de ahí son $30. Vermeer, Rembrandt y Bellini colgados como en una casa, porque era una casa. Online el mínimo es $5 y CONVIENE RESERVAR: el cupo en puerta existe pero no está garantizado. Llegar 13:45 como está planeado deja las cuatro horas justas.", "frick", "jp", "destacado"),
-     b("16:30", "El hueco libre ahora tiene una función: subte 6 desde 68 St hasta Canal St, RETIRAR EL BOLSO de la consigna del JGStay, y 6 de vuelta hasta 68 St (~1h10 el circuito completo). El bolso viaja esta noche a New Jersey. La cena temprana de las 17:45 sigue en pie.", "jgstay", "jp", "logistica"),
-     b("17:45", "Subte 6 al sur. Cena TEMPRANA cerca de Central Park: hoy no hay cena tardía posible, el tren manda.", "", "jp", "comida"),
-     b("18:45", "Entrar a Rumsey Playfield. Puertas 18:00 y con este cartel se llena: cuanto antes, mejor lugar.", "", "jp", "logistica"),
-     b("19:00", "★★ SUMMERSTAGE: Christian McBride + SAMARA JOY + Mei Semones — Verve 70 aniversario y Getz/Gilberto. GRATIS, sin ticket, Rumsey Playfield, 19:00-22:00.", "summerstage", "jp", "destacado"),
-     b("22:00", "Salir del parque por la 72 y subte 1/2/3 hasta 34 St-Penn Station. Son 25-30 min puerta a puerta: llegás a Penn 22:25-22:30, con 18-23 min de colchón.", "", "jp", "logistica"),
-     b("22:48", "NJ Transit DIRECTO Penn → Raritan (tren 5197), llega 00:04. $18,50. ⚠️ ES EL TREN CRÍTICO: si lo perdés, la próxima llegada a Raritan es 01:31.", "", "jp", "logistica"),
-     b("00:15", "Uber Raritan → Residence Inn (pedirlo antes de subir al tren). Mañana: despertador 5:45 para el tren de las 6:55 con las maletas.", "residenceinn", "jp", "logistica")],
-    alt="Si el AMNH es demasiado museo dos días seguidos (ayer fueron el MET y The Cloisters), salteálo y usá la mañana para "
-        "Inwood Hill Park o para caminar el Upper West Side sin plan. El Frick y el SummerStage son los dos anclas del día: "
-        "uno es casi gratis solo hoy, el otro pasa una sola vez. "
-        "// ⚠️ LA DECISIÓN DE LA NOCHE, con los horarios ya verificados: el directo de las 21:48 llega a Raritan 23:10 y al hotel ~23:30, "
-        "o sea UNA HORA MÁS DE SUEÑO antes de un jueves que arranca 5:45 con maletas. Pero para tomarlo hay que salir del SummerStage a las 21:05 "
-        "— el colchón es de 3 a 8 minutos, no hay margen — y te perdés el final de Christian McBride y Samara Joy, que es el plato fuerte y pasa una sola vez. "
-        "Mi recomendación: quedate hasta el final y tomá el de las 22:48. La hora de sueño no convierte el jueves en un día fácil, y el show no se repite.")
+     b("06:40", "Salir del JGStay. Subte 1 desde Canal St hasta Christopher St, o A/C/E hasta 14 St (~12 min). Hoy se pierde el desayuno incluido del hotel (7-9 AM): se desayuna a media mañana en Hudson Yards.", "jgstay", "jp", "logistica"),
+     b("07:00", "★★ THE HIGH LINE AL AMANECER — abre 7:00 y esta es LA hora: vacío, con el sol bajo entre los edificios y sin las hordas de la tarde. Entrar por Gansevoort St (extremo SUR) y caminar los 2,3 km hacia el norte, sin apuro. Incluye el Buda de arenisca de 9 metros de Tuan Andrew Nguyen.", "highline", "jp", "destacado"),
+     b("08:40", "Little Island — el parque flotante de Heatherwick sobre 132 macetas de hormigón, a la altura de la calle 13. Abre 6:00, así que a esta hora también está vacío. Media hora y se sigue al norte.", "littleisland", "jp", "paseo"),
+     b("09:15", "Desayuno en Hudson Yards, al pie del Vessel — acá se llena el hueco hasta que abra. The Shops tiene opciones rápidas; si prefieren algo mejor, Mercado Little Spain de José Andrés está en la planta baja.", "hudsonyards", "jp", "comida"),
+     b("10:00", "★ THE VESSEL — abre 10:00 EN PUNTO y conviene ser de los primeros: la escalera infinita de Heatherwick, 154 tramos y 2.500 escalones, $10. Reabierto con redes; hay ascensor cada 15 min. Subir es la única forma de entenderla.", "vessel", "jp", "destacado"),
+     b("10:50", "Subte a Historia Natural: 7 desde 34 St-Hudson Yards hasta Times Sq y 1/2/3 hasta 79 St, o A/C desde 34 St-Penn hasta 81 St (~30 min).", "", "jp", "logistica"),
+     b("11:30", "★ AMERICAN MUSEUM OF NATURAL HISTORY — dinosaurios, la ballena azul y el Gilder Center nuevo de Studio Gang. $37. Abre 10-17:30. Thais lo marcó 0: es de hoy.", "amnh", "jp", "destacado"),
+     b("14:15", "Almuerzo en el Upper West Side, saliendo del museo. Amsterdam o Columbus tienen de todo; Gray\'s Papaya está en Broadway y 72 si quieren el pancho de parado.", "", "jp", "comida"),
+     b("15:15", "Subte B/C o D desde 81 St hasta 7 Av / 47-50 Sts (~15 min). Caminar al MoMA.", "", "jp", "logistica"),
+     b("15:40", "★ MoMA — QUEDÓ PENDIENTE DEL LUNES y hoy es el día: cierra 17:30, así que entrando 15:40 quedan casi dos horas, que alcanzan para las salas de arriba. Van Gogh, Picasso, Rothko, Warhol. QUÉ HAY AHORA: «Frida and Diego: The Last Dream», que cierra el 12 de septiembre. El cine está incluido en la entrada. $30.", "moma", "jp", "destacado"),
+     b("17:35", "Del MoMA a Rumsey Playfield: subte F desde 57 St hasta 63 St-Lexington y caminar, o los 20 minutos a pie por la Quinta y entrando por la 69. Con el cartel de hoy conviene estar temprano.", "", "jp", "logistica"),
+     b("18:10", "Entrar a Rumsey Playfield y buscar lugar. Puertas 18:00 y con este cartel se llena: cuanto antes, mejor lugar. Comer algo acá o de camino — hoy la cena es lo que se consiga.", "", "jp", "comida"),
+     b("19:00", "★★ SUMMERSTAGE: Christian McBride + SAMARA JOY + Mei Semones — Verve 70 aniversario y Getz/Gilberto. GRATIS, sin ticket, Rumsey Playfield, 19:00-22:00. Y AHORA SE VE ENTERO: ya no hay tren a New Jersey que atrapar, que era lo que obligaba a salir corriendo.", "summerstage", "jp", "destacado"),
+     b("22:05", "Al JGStay sin apuro: subte B/C desde 72 St hasta W 4 St y caminar, o 1 hasta Canal (~35 min). Dormir en SoHo y no en Branchburg cambia el jueves entero.", "jgstay", "jp", "logistica")],
+    alt="EL FRICK SE CAE, y hay que decirlo: hoy era su ventana pay-what-you-wish de 13:30 a 17:30, la única de la semana, y "
+        "el día quedó lleno con el High Line temprano, el Vessel y el MoMA pendiente. Si lo quieren recuperar, la única "
+        "forma es soltar el MoMA o el AMNH — el Frick fuera de esa ventana son $30 por cabeza. // SI PREFIEREN EL TOP OF "
+        "THE ROCK EN VEZ DEL MoMA: abre 8:00-24:00, así que entra en el mismo hueco de las 15:40. PERO su gracia es el "
+        "atardecer (hoy ~19:26) y a esa hora están en el SummerStage, así que sería subir con luz plana. El MoMA cierra "
+        "17:30 y hoy es su única chance del viaje; el Top of the Rock, en cambio, compite con el SUMMIT del viernes, que "
+        "ya tiene el atardecer reservado y es mejor mirador. Por eso el plan pone el MoMA. // Si el High Line a las 7 "
+        "resulta demasiado madrugón después de anoche, se puede entrar 8:30 y correr todo una hora: el Vessel abre 10:00 "
+        "igual y el resto del día no se mueve.")
 
 # ═══════════════ DÍA 6 · JUE 3 SEP · JP SOLO → ambos ═══════════════
-day(6, "2026-09-03", "Jueves", "jp", "New Jersey → The Beacon",
+day(6, "2026-09-03", "Jueves", "jp", "JGStay SoHo → The Beacon",
     "Traslado + World Trade Center completo + ferry con Thais",
-    "La mañana y la primera tarde son el World Trade Center completo — memorial, museo y One World Observatory en una "
+    "REARMADO EL 1/9: Juan ya no duerme en New Jersey, así que el día arranca en el JGStay SoHo a las 7:30 con desayuno incluido en vez de a las 6:20 en Branchburg — hora y media más de sueño, un Uber menos y un tren menos. Las maletas van en el subte 1, directo de Canal St a 72 St, y quedan en el bell desk del Beacon antes de las 9. La mañana y la primera tarde son el World Trade Center completo — memorial, museo y One World Observatory en una "
     "sola bajada. OJO: One World es EL MIRADOR DE DÍA a propósito — su vista es el puerto y el agua, que de noche es negra; "
     "los arcos de atardecer van en Top of the Rock (lunes) y SUMMIT (viernes). "
     "THAIS ESTÁ EN NYC CON SU EQUIPO este jueves y SE LIBERA A LAS 16:00: se encuentran por Manhattan y se van juntos al "
@@ -184,11 +191,10 @@ day(6, "2026-09-03", "Jueves", "jp", "New Jersey → The Beacon",
     "RECUPERADO. El día cierra con check-in, cena y Dizzy's. "
     "Siguen afuera MoMA PS1, Astoria y Gantry (no hay hueco), y el Staten Island Ferry pasó a la alternativa nocturna de hoy. ENTRA STONE ST, que era imprescindible y no estaba en ningún día: el almuerzo se corre de Brookfield Place a la calle adoquinada, a 10 minutos del museo y 12 de One World. Se pagan 22 minutos de caminata y quedan 38 para comer — alcanza para un mediodía, aunque su mejor hora sea el after office de 5 a 8 y no la del almuerzo.",
     [
-     b("06:20", "Uber desde el Residence Inn a la estación Raritan (~20 min, $14-20). PEDIRLO LA NOCHE ANTERIOR: Branchburg es semi-rural y a esa hora puede no haber autos.", "residenceinn", "jp", "logistica"),
-     b("06:55", "NJ Transit Raritan → NY Penn Station. Llega 8:20. $18,50. Con maletas, ir al vagón con espacio de equipaje.", "", "jp", "logistica"),
-     b("08:30", "Subte 1/2/3 desde 34 St-Penn Station hasta 72 St. Diez minutos, directo.", "", "jp", "logistica"),
-     b("08:45", "★ THE BEACON — dejar las maletas en el bell desk. El check-in formal es a la tarde, con Thais, pero el equipaje se puede dejar desde temprano. Confirmalo por mail antes de viajar.", "beacon", "jp", "destacado"),
-     b("09:15", "Subte 1 directo desde 72 St hasta WTC Cortlandt (~30 min). Alternativa: 2/3 express hasta Chambers St y 5 min a pie.", "", "jp", "logistica"),
+     b("07:30", "Desayuno incluido en el JGStay (7-9 AM) y CHECKOUT con las maletas. Hoy ya no se madruga a las 5:45 en Branchburg: se duerme en SoHo y se sale a las 7:30. Una hora y media más de sueño y un tren menos.", "jgstay", "jp", "comida"),
+     b("08:05", "Subte 1 desde Canal St derecho hasta 72 St (~25 min). Con maletas, el 1 es el que conviene: es directo y no hay que hacer transbordo.", "", "jp", "logistica"),
+     b("08:35", "★ THE BEACON — dejar las maletas en el bell desk. El check-in formal es a la tarde, con Thais, pero el equipaje se recibe desde temprano. Confirmalo por mail.", "beacon", "jp", "destacado"),
+     b("09:05", "Subte 1 directo desde 72 St hasta WTC Cortlandt (~30 min), otra vez sin transbordo. Alternativa: 2/3 express hasta Chambers St y 5 min a pie.", "", "jp", "logistica"),
      b("09:50", "★ 9/11 MEMORIAL (la plaza) — las dos fuentes en las huellas de las torres y el Survivor Tree. Gratis, abierto desde las 8:00. Verlo ANTES del museo ordena la visita.", "", "jp", "destacado"),
      b("10:30", "★★ 9/11 MEMORIAL MUSEUM — $36, TIMED TICKET OBLIGATORIO comprado online antes (el museo no vende en puerta sin reserva). 2 horas largas; es duro y muy bien hecho. Thais lo marcó 0: por eso va en la mañana de JP solo.", "911museum", "jp", "destacado"),
      b("12:45", "★ ALMUERZO EN STONE ST — 10 min a pie desde el museo, hacia el sureste. Calle adoquinada peatonal de 1660, la traza holandesa que sobrevivió al fuego de 1835: mesas afuera, sin autos, entre edificios de piedra. Se come rápido y se sigue: One World es a las 13:45 y son 12 min de vuelta. Plan B si llueve o no hay mesa: Hudson Eats o Le District en Brookfield Place, cruzando West St.", "stonest", "jp", "comida"),
@@ -243,7 +249,7 @@ day(7, "2026-09-04", "Viernes", "both", "The Beacon",
      b("20:50", "Cena en el West Village, a cinco minutos del club. El Vanguard NO sirve NADA de comida (lo dicen así: 'ni un maní') y no se permite entrar comida: lo que no cenen ahora, no se cena. 40 minutos alcanzan.", "", "both", "comida"),
      b("21:30", "EN LA PUERTA DEL VANGUARD a las 21:30 EN PUNTO: el acomodo del segundo set arranca a esa hora y los asientos son POR ORDEN DE LLEGADA — la entrada es General Admission, no numerada. Con 123 asientos, los diez minutos de diferencia son estar frente al piano o contra la columna. El ticket lo dice: el acomodo tardío, con entrada o sin ella, queda a criterio del encargado.", "", "both", "logistica"),
      b("22:00", "★★ VILLAGE VANGUARD — JOHN PATITUCCI TRIO con Chris Potter y Brian Blade, SET DE LAS 22:00. Movido acá desde el martes para que vayan LOS DOS (pedido de Juan). El sótano triangular de 1935, 123 asientos, la acústica que grabó a Coltrane. ✔ ENTRADAS COMPRADAS el 26/8: 2 × General Admission $45 (#18741454 y #18741456), a nombre de Juan Pablo Garicoïts. Falta solo el mínimo de UNA CONSUMICIÓN por cabeza en la mesa (vale gaseosa, jugo o agua) — se paga ahí, aceptan tarjeta.", "vanguard", "both", "destacado")],
-    alt="EL CANJE DE ESTA NOCHE: para meter el Vanguard con Thais, SALIÓ BILL'S PLACE. No hay otra noche donde entre "
+    alt="⚠️ OJO CON LA MAÑANA, y es nuevo: Juan hizo el HIGH LINE, LITTLE ISLAND y el VESSEL el miércoles temprano, solo. Los tres siguen en el plan de hoy porque THAIS NO LOS VIO —el Vessel además lo tienen 2/2 y es imprescindible— así que sacarlos la perjudica a ella. Decidan en el momento: si Juan la acompaña igual, el High Line de día con ella es otro paseo y no se pierde nada; si prefieren no repetir, esa mañana libera de 9:15 a 13:00 y ahí entran las galerías de Chelsea con calma, o el Whitney, que hoy es gratis de 17 a 22 pero abre 10:30. // EL CANJE DE ESTA NOCHE: para meter el Vanguard con Thais, SALIÓ BILL'S PLACE. No hay otra noche donde entre "
         "(Bill Saxton toca solo viernes y sábado, y el sábado está tomado por Peter Luger + el play + el Café Wha). "
         "Con las entradas ya compradas y sin cambios ni transferencias, el canje quedó CERRADO: Bill's Place sale del viaje. // EL WHITNEY, con los números verificados el 27/8: gratis todos los viernes de 17:00 a 22:00 (normal $30), y hoy pasan por Meatpacking, que es donde está. Coincide barrio, día y franja. El problema es el reloj y es serio: la Morgan también es hoy 17:00-20:00 y el SUMMIT entra 18:10. Meter el Whitney obliga a recortar el High Line o a soltar la Morgan, que ustedes tienen en 2 y el Whitney en 'quizás'. Si igual lo prefieren, el ticket gratis es OBLIGATORIO y hay que sacarlo antes. "
         "Si igual lo prefieren, el ticket gratis es OBLIGATORIO y el Whitney ahora cierra los martes. "
