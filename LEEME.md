@@ -7,33 +7,59 @@ Lo más nuevo va arriba. Está escrito para leerse desde el celular, sin tecnici
 ## 1 de septiembre de 2026 · el miércoles, rearmado en pleno viaje
 
 **Juan ya no vuelve a New Jersey.** Se queda en el JGStay SoHo hasta el jueves y de ahí lleva el
-equipaje directo a The Beacon. Eso cambia dos días:
+equipaje directo a The Beacon. Eso cambia dos días.
 
-**El miércoles 2** queda así, con lo que pidió:
+### El miércoles 2: entran los tres museos
+
+Sacando el Vessel —del High Line Juan quiere **solo la caminata**— se liberaron casi dos horas, y
+con eso entra todo lo que no se podía soltar:
 
 | | |
 |---|---|
-| 07:00 | **High Line al amanecer** — abre 7:00 y a esa hora está vacío |
-| 08:40 | Little Island, que abre a las 6 y queda en el camino |
-| 09:15 | desayuno en Hudson Yards |
-| 10:00 | **The Vessel** — abre 10:00 en punto |
-| 11:30 | Historia Natural |
+| 07:00 | **High Line al amanecer** — abre 7:00 y a esa hora está vacío. Casi dos horas para hacerlo lento |
+| 09:20 | desayuno en el Upper West Side, al lado del museo |
+| 10:00 | **Historia Natural**, entrando a la apertura |
+| 12:45 | almuerzo de parado cruzando Central Park |
+| 13:30 | **El Frick, a voluntad** — su única ventana de la semana |
 | 15:40 | **MoMA**, que había quedado pendiente del lunes |
-| 19:00 | SummerStage: McBride + Samara Joy |
+| 19:00 | **SummerStage**: McBride + Samara Joy |
 
-**Y ahora el SummerStage se ve entero**: ya no hay tren a New Jersey que atrapar a las 22:48, que
-era lo que obligaba a salir corriendo. Se vuelve a SoHo sin apuro.
+> ### ⚠️ Hay una cosa para hacer hoy antes de dormir
+>
+> **Comprar el ticket del Frick para mañana a las 13:30.** Son **5 dólares** —el mínimo de la
+> entrada a voluntad— y es lo único que **garantiza el lugar**. Se puede pagar menos yendo en
+> persona, pero sin garantía, y las 13:30 de un miércoles es la hora más pedida de la única
+> ventana semanal. Por 5 dólares no vale el riesgo de quedarse afuera.
 
-**El jueves 3 arranca a las 7:30 en vez de a las 6:20**, con desayuno incluido en el hotel en vez
-de un Uber en Branchburg a oscuras. Hora y media más de sueño, un Uber menos y un tren menos.
+**El almuerzo se resigna**, como pidió Juan: se come algo de parado cruzando el parque entre un
+museo y el otro. Esa media hora es exactamente la que hace entrar los tres.
 
-**Lo que se cae: el Frick.** Hoy era su única ventana a voluntad de la semana (13:30 a 17:30) y el
-día quedó lleno. Fuera de esa ventana son 30 dólares por cabeza.
+**El día no tiene colchón.** Historia Natural abre 10:00, el Frick a voluntad abre 13:30 y el MoMA
+cierra 17:30: los tres horarios encastran sin margen. Si algo se estira, **el que se achica es el
+MoMA**, porque es el último. Y si el madrugón no cierra después del Birdland, se puede entrar al
+High Line a las 8:30 y arrancar directo en el museo — no se mueve nada más, solo se acorta el
+desayuno.
 
-**Y una para decidir juntos el viernes**: Juan hace el High Line, Little Island y el Vessel el
-miércoles solo, pero los tres siguen en el plan del viernes porque **Thais no los vio** — el
-Vessel además es imprescindible para los dos. Si Juan la acompaña igual, no se pierde nada; si
-prefieren no repetir, esa mañana libera de 9:15 a 13:00.
+**El Vessel no se pierde: está el viernes con Thais**, que lo tiene como imprescindible, junto con
+el High Line y Little Island. Hoy Juan hace solo la caminata, que es lo que quería.
+
+**Y el SummerStage se ve entero**: ya no hay tren a New Jersey que atrapar a las 22:48, que era lo
+que obligaba a salir corriendo. Se vuelve a SoHo sin apuro.
+
+**Lo único que ya no entra en ningún lado es el Top of the Rock.** Su gracia es el atardecer, y el
+viernes el SUMMIT —que es mejor mirador— ya lo tiene reservado.
+
+### El jueves 3
+
+**Arranca a las 7:30 en vez de a las 6:20**, con desayuno incluido en el hotel en vez de un Uber en
+Branchburg a oscuras. Hora y media más de sueño, un Uber menos y un tren menos. Las maletas van en
+el subte 1, directo de Canal St a la 72, y quedan en el Beacon antes de las 9.
+
+### Una para decidir juntos, para el viernes
+
+El High Line, Little Island y el Vessel siguen en el plan del viernes porque **Thais no los vio**.
+Si Juan la acompaña igual, no se pierde nada; si prefieren no repetir, esa mañana libera de 9:15 a
+13:00.
 
 ---
 

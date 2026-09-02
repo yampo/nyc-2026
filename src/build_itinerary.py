@@ -146,39 +146,49 @@ day(4, "2026-09-01", "Martes", "jp", "JGStay SoHo",
 
 # ═══════════════ DÍA 5 · MIÉ 2 SEP · JP SOLO ═══════════════
 day(5, "2026-09-02", "Miércoles", "jp", "JGStay SoHo (YA NO se vuelve a New Jersey)",
-    "JP solo · High Line al amanecer, Vessel, Historia Natural, MoMA y McBride en Central Park",
-    "REARMADO EL 1/9 con dos cambios de Juan. UNO: ya no vuelve a New Jersey — se queda en el JGStay SoHo hasta el "
-    "jueves y de ahí lleva las maletas a The Beacon. Eso borra la única vuelta nocturna del viaje, o sea que hoy NO hay "
-    "tren que atrapar: el SummerStage se ve entero y sin mirar el reloj, y mañana se arranca a las 7:30 desde SoHo en vez "
-    "de a las 5:45 desde Branchburg. DOS: Juan quiere el HIGH LINE A LAS 7 DE LA MAÑANA, cuando abre y está vacío. "
-    "⚠️ EL ENGANCHE QUE NO CIERRA SOLO: el Vessel abre a las 10:00, así que entre el final del High Line y el Vessel hay "
-    "un hueco de una hora larga — se llena con el desayuno en Hudson Yards, que además reemplaza al del hotel (7-9 AM), "
-    "que hoy se pierde por salir temprano. Y entra el MoMA, que quedó pendiente del lunes: cierra 17:30 y encaja justo "
-    "antes del SummerStage. CERRADOS hoy: el MET (por eso fue ayer) y el Frick pierde su ventana a voluntad — ver alternativas.",
+    "JP solo · High Line al amanecer, Historia Natural, Frick a voluntad, MoMA y McBride en Central Park",
+    "REARMADO EL 1/9, SEGUNDA PASADA. Juan sacó el Vessel (del High Line quiere SOLO la caminata) y con eso se "
+    "liberaron casi dos horas: ahora entran los TRES museos que no se podían soltar. El día pasó de apretado a "
+    "encastrado, y el que lo hace posible es el Vessel que se fue. "
+    "LA LLAVE DEL DÍA es la ventana pay-what-you-wish del FRICK, miércoles 13:30-17:30, la única de la semana: el "
+    "plan la toma a las 13:30 EN PUNTO, apenas abre, y de ahí sale con tiempo para el MoMA antes de que cierre a "
+    "las 17:30. Los tres horarios encajan sin margen para improvisar: AMNH abre 10:00, Frick a voluntad 13:30, MoMA "
+    "cierra 17:30. Correrse media hora en el primero se paga en el último. "
+    "⚠️ HAY QUE COMPRAR EL TICKET DEL FRICK HOY: online el mínimo son $5 y GARANTIZA la entrada; en persona se puede "
+    "pagar menos pero sin garantía de lugar, y un miércoles de septiembre a las 13:30 es la hora pico de la ventana. "
+    "Por $5 no vale el riesgo de quedarse afuera. "
+    "EL ALMUERZO SE RESIGNA, por decisión de Juan: se come algo de parado cruzando Central Park entre el museo y el "
+    "Frick. Es la media hora que hace entrar todo. "
+    "EL VESSEL NO SE PIERDE: está el viernes con Thais, que lo tiene 2/2 — sacarlo hoy lo mueve, no lo borra. "
+    "Y como ya no hay tren a New Jersey, el SummerStage se ve entero. CERRADO hoy: el MET (por eso fue ayer).",
     [
-     b("06:40", "Salir del JGStay. Subte 1 desde Canal St hasta Christopher St, o A/C/E hasta 14 St (~12 min). Hoy se pierde el desayuno incluido del hotel (7-9 AM): se desayuna a media mañana en Hudson Yards.", "jgstay", "jp", "logistica"),
-     b("07:00", "★★ THE HIGH LINE AL AMANECER — abre 7:00 y esta es LA hora: vacío, con el sol bajo entre los edificios y sin las hordas de la tarde. Entrar por Gansevoort St (extremo SUR) y caminar los 2,3 km hacia el norte, sin apuro. Incluye el Buda de arenisca de 9 metros de Tuan Andrew Nguyen.", "highline", "jp", "destacado"),
-     b("08:40", "Little Island — el parque flotante de Heatherwick sobre 132 macetas de hormigón, a la altura de la calle 13. Abre 6:00, así que a esta hora también está vacío. Media hora y se sigue al norte.", "littleisland", "jp", "paseo"),
-     b("09:15", "Desayuno en Hudson Yards, al pie del Vessel — acá se llena el hueco hasta que abra. The Shops tiene opciones rápidas; si prefieren algo mejor, Mercado Little Spain de José Andrés está en la planta baja.", "hudsonyards", "jp", "comida"),
-     b("10:00", "★ THE VESSEL — abre 10:00 EN PUNTO y conviene ser de los primeros: la escalera infinita de Heatherwick, 154 tramos y 2.500 escalones, $10. Reabierto con redes; hay ascensor cada 15 min. Subir es la única forma de entenderla.", "vessel", "jp", "destacado"),
-     b("10:50", "Subte a Historia Natural: 7 desde 34 St-Hudson Yards hasta Times Sq y 1/2/3 hasta 79 St, o A/C desde 34 St-Penn hasta 81 St (~30 min).", "", "jp", "logistica"),
-     b("11:30", "★ AMERICAN MUSEUM OF NATURAL HISTORY — dinosaurios, la ballena azul y el Gilder Center nuevo de Studio Gang. $37. Abre 10-17:30. Thais lo marcó 0: es de hoy.", "amnh", "jp", "destacado"),
-     b("14:15", "Almuerzo en el Upper West Side, saliendo del museo. Amsterdam o Columbus tienen de todo; Gray\'s Papaya está en Broadway y 72 si quieren el pancho de parado.", "", "jp", "comida"),
-     b("15:15", "Subte B/C o D desde 81 St hasta 7 Av / 47-50 Sts (~15 min). Caminar al MoMA.", "", "jp", "logistica"),
-     b("15:40", "★ MoMA — QUEDÓ PENDIENTE DEL LUNES y hoy es el día: cierra 17:30, así que entrando 15:40 quedan casi dos horas, que alcanzan para las salas de arriba. Van Gogh, Picasso, Rothko, Warhol. QUÉ HAY AHORA: «Frida and Diego: The Last Dream», que cierra el 12 de septiembre. El cine está incluido en la entrada. $30.", "moma", "jp", "destacado"),
-     b("17:35", "Del MoMA a Rumsey Playfield: subte F desde 57 St hasta 63 St-Lexington y caminar, o los 20 minutos a pie por la Quinta y entrando por la 69. Con el cartel de hoy conviene estar temprano.", "", "jp", "logistica"),
-     b("18:10", "Entrar a Rumsey Playfield y buscar lugar. Puertas 18:00 y con este cartel se llena: cuanto antes, mejor lugar. Comer algo acá o de camino — hoy la cena es lo que se consiga.", "", "jp", "comida"),
-     b("19:00", "★★ SUMMERSTAGE: Christian McBride + SAMARA JOY + Mei Semones — Verve 70 aniversario y Getz/Gilberto. GRATIS, sin ticket, Rumsey Playfield, 19:00-22:00. Y AHORA SE VE ENTERO: ya no hay tren a New Jersey que atrapar, que era lo que obligaba a salir corriendo.", "summerstage", "jp", "destacado"),
+     b("06:40", "Salir del JGStay. Subte 1 desde Canal St hasta Christopher St, o A/C/E hasta 14 St (~12 min). Hoy se pierde el desayuno incluido del hotel (7-9 AM): se desayuna a media mañana en el Upper West Side, antes de que abra el museo.", "jgstay", "jp", "logistica"),
+     b("07:00", "★★ THE HIGH LINE AL AMANECER — abre 7:00 y esta es LA hora: vacío, con el sol bajo entre los edificios y sin las hordas de la tarde. Entrar por Gansevoort St (extremo SUR) y caminar los 2,3 km hacia el norte, sin apuro: hoy hay casi dos horas para hacerlo lento. Incluye el Buda de arenisca de 9 metros de Tuan Andrew Nguyen. SI QUIERE SUMAR 20 MINUTOS: Little Island está a 5 min de la entrada de Gansevoort y también abre temprano (6:00).", "highline", "jp", "destacado"),
+     b("08:50", "Subte al Upper West Side: A/C desde 34 St-Penn Station hasta 81 St-Museum of Natural History, directo y sin transbordo (~20 min). El High Line termina justo ahí arriba.", "", "jp", "logistica"),
+     b("09:20", "Desayuno en el Upper West Side, sobre Amsterdam o Columbus, a metros del museo. Acá se llena el hueco hasta que abra el AMNH y se recupera el desayuno del hotel que se perdió por madrugar.", "", "jp", "comida"),
+     b("10:00", "★ AMERICAN MUSEUM OF NATURAL HISTORY — ENTRAR A LA APERTURA, 10:00 en punto: son 2h45 y el día no da más. Dinosaurios (4º piso, lo mejor), la ballena azul y el Gilder Center nuevo de Studio Gang. $37. Thais lo marcó 0: es de hoy o no es. A las 12:45 hay que estar saliendo.", "amnh", "jp", "destacado"),
+     b("12:45", "ALMUERZO DE PARADO cruzando Central Park — 1,3 km a pie, unos 18 min: bajar por Central Park West hasta la 72, cruzar el parque por Terrace Drive y salir a la Quinta. Comprar algo antes de entrar (hay carritos en CPW, o el café del propio museo) y comerlo caminando: esta media hora es la que hace entrar los tres museos. Al Frick no se entra con comida.", "", "jp", "comida"),
+     b("13:30", "★ THE FRICK COLLECTION, A VOLUNTAD — 13:30 EN PUNTO, cuando arranca la ventana pay-what-you-wish de los miércoles, la única de la semana. Reabrió en 2025 tras cinco años de obra: Vermeer, Rembrandt y Bellini colgados en la mansión del magnate, como en una casa. Es el museo más placentero de NYC. TICKET COMPRADO ONLINE ($5 mínimo, garantiza la entrada). 1h45 alcanza bien: es chico a propósito.", "frick", "jp", "destacado"),
+     b("15:15", "Del Frick al MoMA: 1,4 km bajando por la Quinta Avenida, ~18 min a pie, con el Central Park a la derecha y las vidrieras a la izquierda. Es de los mejores paseos de Manhattan y va cuesta abajo. Alternativa si están las piernas cansadas: subte 6 desde 68 St hasta 51 St.", "", "jp", "logistica"),
+     b("15:40", "★ MoMA — QUEDÓ PENDIENTE DEL LUNES y hoy es su última chance del viaje: cierra 17:30, así que son 1h50. SIN VUELTAS, DERECHO AL 5º PISO: ahí están la noche estrellada de Van Gogh, Les Demoiselles d'Avignon y los Monet grandes. Si sobra tiempo, el 4º (Warhol, Rothko). QUÉ HAY AHORA: «Frida and Diego: The Last Dream», que cierra el 12 de septiembre. $30. (El viernes gratis de UNIQLO es SOLO para residentes del Estado de NY: no aplica.)", "moma", "jp", "destacado"),
+     b("17:35", "Del MoMA a Rumsey Playfield: 1,3 km, ~16 min a pie subiendo por la Quinta y entrando al parque por la 69. Con el cartel de hoy conviene estar temprano.", "", "jp", "logistica"),
+     b("18:10", "Entrar a Rumsey Playfield y buscar lugar. Puertas 18:00 y con este cartel se llena: cuanto antes, mejor lugar. LA CENA ES ACÁ — hoy el almuerzo fue de parado, así que esta es la comida de verdad del día: hay puestos adentro, o se compra algo en el camino por la Quinta.", "", "jp", "comida"),
+     b("19:00", "★★ SUMMERSTAGE: Christian McBride + SAMARA JOY + Mei Semones — Verve 70 aniversario y Getz/Gilberto. GRATIS, sin ticket, Rumsey Playfield, 19:00-22:00. Y SE VE ENTERO: ya no hay tren a New Jersey que atrapar, que era lo que obligaba a salir corriendo.", "summerstage", "jp", "destacado"),
      b("22:05", "Al JGStay sin apuro: subte B/C desde 72 St hasta W 4 St y caminar, o 1 hasta Canal (~35 min). Dormir en SoHo y no en Branchburg cambia el jueves entero.", "jgstay", "jp", "logistica")],
-    alt="EL FRICK SE CAE, y hay que decirlo: hoy era su ventana pay-what-you-wish de 13:30 a 17:30, la única de la semana, y "
-        "el día quedó lleno con el High Line temprano, el Vessel y el MoMA pendiente. Si lo quieren recuperar, la única "
-        "forma es soltar el MoMA o el AMNH — el Frick fuera de esa ventana son $30 por cabeza. // SI PREFIEREN EL TOP OF "
-        "THE ROCK EN VEZ DEL MoMA: abre 8:00-24:00, así que entra en el mismo hueco de las 15:40. PERO su gracia es el "
-        "atardecer (hoy ~19:26) y a esa hora están en el SummerStage, así que sería subir con luz plana. El MoMA cierra "
-        "17:30 y hoy es su única chance del viaje; el Top of the Rock, en cambio, compite con el SUMMIT del viernes, que "
-        "ya tiene el atardecer reservado y es mejor mirador. Por eso el plan pone el MoMA. // Si el High Line a las 7 "
-        "resulta demasiado madrugón después de anoche, se puede entrar 8:30 y correr todo una hora: el Vessel abre 10:00 "
-        "igual y el resto del día no se mueve.")
+    alt="LO QUE HAY QUE HACER HOY, ANTES DE DORMIR: comprar el ticket del Frick para mañana 13:30. Son $5 (el mínimo "
+        "online del pay-what-you-wish) y es lo único que garantiza la entrada. Sin eso, hay que hacer la cola en "
+        "persona y jugarse a que haya lugar en la hora más pedida de la única ventana semanal. // EL DÍA NO TIENE "
+        "COLCHÓN, y conviene saber dónde se corta si algo se estira: el que se achica es el MoMA, porque es el "
+        "último y cierra a las 17:30 pase lo que pase. Salir del AMNH 12:45 no es negociable; salir del Frick 15:15 "
+        "tampoco. Si el High Line a las 7 resulta demasiado madrugón después de anoche, se puede entrar 8:30 y "
+        "empezar el día en el museo: el AMNH abre 10:00 igual y nada se mueve — lo único que se acorta es el "
+        "desayuno. // EL VESSEL SE FUE DE HOY y está bien que así sea: Thais lo tiene 2/2 y está en el plan del "
+        "viernes, con el High Line y Little Island. Hoy Juan hace solo la caminata, que es lo que quería. // TOP OF "
+        "THE ROCK: ya no entra en ningún lado. Su gracia es el atardecer y el viernes el SUMMIT —mejor mirador— ya "
+        "lo tiene reservado. Si igual lo quieren, la única forma es soltar el MoMA de hoy, y el MoMA no tiene otra "
+        "fecha. // Si el Frick resulta corto y sobran 20 minutos, el Guggenheim está 14 cuadras al norte por la "
+        "Quinta — pero OJO, la rotonda está en montaje hasta el 17 de septiembre: es entrar a ver el edificio a "
+        "medio armar.")
 
 # ═══════════════ DÍA 6 · JUE 3 SEP · JP SOLO → ambos ═══════════════
 day(6, "2026-09-03", "Jueves", "jp", "JGStay SoHo → The Beacon",

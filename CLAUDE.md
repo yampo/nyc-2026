@@ -363,8 +363,16 @@ Versión visible en la app en **⋯ → Versión del plan**.
      Robertson Plaza del 2 al 7/9 a las 20:00 (jue 3: Tristan und Isolde II y III), y **despejan
      la plaza desde las 18:00** para armar 2.500 sillas. El bloque del jueves 19:55 ya lo dice.
    - ❌ **Neue Galerie**: cerrada por renovación hasta el 12/11. Sacada del catálogo.
-   - Pendientes todavía: alertas de NJ Transit (noche del 2/9 y mañana del 3/9), AirTrain y el
-     ticket con horario del Studio Museum.
+   - Pendientes todavía: AirTrain y el ticket con horario del Studio Museum. Las alertas de NJ
+     Transit **ya no aplican**: desde el 1/9 Juan no vuelve a New Jersey.
+4. **ACCIÓN ABIERTA para la noche del 1/9**: comprar online el ticket del **Frick** para el
+   miércoles 2 a las 13:30. Mínimo $5 en la ventana pay-what-you-wish y es lo único que garantiza
+   la entrada; en persona se paga menos pero sin garantía de lugar, y 13:30 es la hora pico de la
+   única ventana semanal (mié 13:30-17:30). Sin ese ticket, el miércoles se cae el Frick otra vez.
+5. **El Top of the Rock quedó fuera del viaje.** Su única chance era la tarde del miércoles, que
+   ahora es del MoMA. Compite con el SUMMIT del viernes, que ya tiene el atardecer.
+6. **A decidir con Thais**: High Line, Little Island y Vessel siguen el viernes porque ella no los
+   vio (Vessel es 2/2 ★). Si no repiten, libera 9:15-13:00 de ese día.
 
 ---
 
