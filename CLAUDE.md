@@ -339,11 +339,16 @@ intermedia, `destination` y `mode` (`walking`/`transit`/`driving`/`cycling`).
 
 Versión visible en la app en **⋯ → Versión del plan**.
 
-- **210 lugares** · 63 en las dos listas, 71 solo de Google Maps, 76 solo nuestros.
-- **34 ★ imprescindibles**, 33 de ellos ya en el itinerario.
-- **9 días, 142 bloques**, 32 ítems en el checklist de reservas.
+- **304 lugares** · 63 en las dos listas, 71 solo de Google Maps, el resto nuestros
+  (47 de la tanda de exploración + 40 de la selección de Juan + los pedidos sueltos).
+- **38 ★ imprescindibles**, 35 de ellos en el itinerario. Los 3 que quedan afuera y por qué:
+  **Guggenheim** (fallback deliberado — la rotonda está en montaje hasta el 17/9),
+  **Roosevelt Island** (satisfecho de facto: el tranvía y Four Freedoms están el domingo),
+  **Museum of the Moving Image** (SE PERDIÓ el 2/9 al mover el encuentro con Thais a las 15:30 —
+  su única ventana era el jueves gratis 14-18 y no entra en ningún otro día).
+- **9 días, 145 bloques**, 35 ítems en el checklist de reservas.
 - Anclas fijas ya compradas o con horario cerrado: festival Charlie Parker (sáb 29/8, Marcus Garvey Park, 14-19 h — VERIFICADO 27/8: cierra Joshua Redman),
-  Birdland lun 31/8 20:30, Top of the Rock lun 31/8 ~18:00, día completo del WTC el jue 3/9,
+  Birdland lun 31/8 20:30, día completo del WTC el jue 3/9,
   MO Lounge + Dizzy's jue 3/9, SUMMIT al atardecer vie 4/9 18:10,
   **Village Vanguard vie 4/9 22:00 — entradas compradas**, Peter Luger sáb 5/9 17:00,
   Café Wha sáb 5/9 23:45.
@@ -365,13 +370,20 @@ Versión visible en la app en **⋯ → Versión del plan**.
    - ❌ **Neue Galerie**: cerrada por renovación hasta el 12/11. Sacada del catálogo.
    - Pendientes todavía: AirTrain y el ticket con horario del Studio Museum. Las alertas de NJ
      Transit **ya no aplican**: desde el 1/9 Juan no vuelve a New Jersey.
-4. **ACCIÓN ABIERTA para la noche del 1/9**: comprar online el ticket del **Frick** para el
-   miércoles 2 a las 13:30. Mínimo $5 en la ventana pay-what-you-wish y es lo único que garantiza
-   la entrada; en persona se paga menos pero sin garantía de lugar, y 13:30 es la hora pico de la
-   única ventana semanal (mié 13:30-17:30). Sin ese ticket, el miércoles se cae el Frick otra vez.
+4. **El MoMI se perdió el 2/9** al mover el encuentro con Thais a las 15:30 en Chelsea Market.
+   Es ★ 2/2 y su única ventana era el jueves gratis 14-18. Se buscó en viernes (abre 14-20, pero
+   ese día es Manhattan: galerías, Morgan gratis 17-20, SUMMIT, Vanguard), sábado (11-18, pero es
+   el día de Brooklyn) y domingo (11-18, pero ya tiene el PS1 en Long Island City). Fuera del
+   jueves son $20 por cabeza. Si Juan lo quiere igual, la vía es Chelsea Market → Astoria con la
+   valija a cuestas: está escrita en las alternativas del jueves con su costo real.
 5. **El Top of the Rock quedó fuera del viaje.** Su única chance era la tarde del miércoles, que
-   ahora es del MoMA. Compite con el SUMMIT del viernes, que ya tiene el atardecer.
-6. **A decidir con Thais**: High Line, Little Island y Vessel siguen el viernes porque ella no los
+   ahora es del MoMA. Compite con el SUMMIT del viernes, que ya tiene el atardecer. (El ancla del
+   lunes 31/8 NO se cumplió: Juan no subió.)
+6. **Las salsas de HEATONIST se resuelven el jueves 15:45** en la sucursal de dentro del Chelsea
+   Market. La parada de Williamsburg del sábado 15:15 dejó de ser necesaria.
+7. **Chelsea Market queda dos días seguidos** (jue 15:30 encuentro, vie 14:30 almuerzo grande).
+   Señalado a Juan; el viernes es el fácil de mover si prefiere variar.
+8. **A decidir con Thais**: High Line, Little Island y Vessel siguen el viernes porque ella no los
    vio (Vessel es 2/2 ★). Si no repiten, libera 9:15-13:00 de ese día.
 
 ---

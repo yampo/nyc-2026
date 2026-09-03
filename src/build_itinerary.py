@@ -192,14 +192,23 @@ day(5, "2026-09-02", "Miércoles", "jp", "JGStay SoHo (YA NO se vuelve a New Jer
 
 # ═══════════════ DÍA 6 · JUE 3 SEP · JP SOLO → ambos ═══════════════
 day(6, "2026-09-03", "Jueves", "jp", "JGStay SoHo → The Beacon",
-    "Traslado + World Trade Center completo + ferry con Thais",
-    "REARMADO EL 1/9: Juan ya no duerme en New Jersey, así que el día arranca en el JGStay SoHo a las 7:30 con desayuno incluido en vez de a las 6:20 en Branchburg — hora y media más de sueño, un Uber menos y un tren menos. Las maletas van en el subte 1, directo de Canal St a 72 St, y quedan en el bell desk del Beacon antes de las 9. La mañana y la primera tarde son el World Trade Center completo — memorial, museo y One World Observatory en una "
-    "sola bajada. OJO: One World es EL MIRADOR DE DÍA a propósito — su vista es el puerto y el agua, que de noche es negra; "
-    "los arcos de atardecer van en Top of the Rock (lunes) y SUMMIT (viernes). "
-    "THAIS ESTÁ EN NYC CON SU EQUIPO este jueves y SE LIBERA A LAS 16:00: se encuentran por Manhattan y se van juntos al "
-    "Museum of the Moving Image, que es GRATIS los jueves de 14 a 18 — estaba caído del plan y ustedes lo tienen 2/2: "
-    "RECUPERADO. El día cierra con check-in, cena y Dizzy's. "
-    "Siguen afuera MoMA PS1, Astoria y Gantry (no hay hueco), y el Staten Island Ferry pasó a la alternativa nocturna de hoy. ENTRA STONE ST, que era imprescindible y no estaba en ningún día: el almuerzo se corre de Brookfield Place a la calle adoquinada, a 10 minutos del museo y 12 de One World. Se pagan 22 minutos de caminata y quedan 38 para comer — alcanza para un mediodía, aunque su mejor hora sea el after office de 5 a 8 y no la del almuerzo.",
+    "World Trade Center completo · encuentro con Thais en Chelsea Market · check-in y noche de jazz",
+    "REARMADO EL 2/9 A LA NOCHE: el encuentro con Thais pasa a las 15:30 EN CHELSEA MARKET, y de ahí van juntos a "
+    "dejar la valija de ella en The Beacon. Eso reordena toda la tarde. "
+    "LA MAÑANA NO CAMBIA: Juan sale del JGStay a las 7:30 con desayuno incluido, deja sus maletas en el Beacon antes "
+    "de las 9 y baja al World Trade Center — memorial, museo y One World Observatory en una sola bajada. OJO: One "
+    "World es EL MIRADOR DE DÍA a propósito — su vista es el puerto y el agua, que de noche es negra; los arcos de "
+    "atardecer van en el SUMMIT del viernes. "
+    "⚠️ LO QUE SE CAE, Y HAY QUE DECIRLO: el MUSEUM OF THE MOVING IMAGE. Estaba a las 16:30 porque los jueves es "
+    "gratis de 14 a 18, y era su única ventana del viaje. Desde Chelsea Market son 45 min hasta Astoria y desde el "
+    "Beacon son 50: con el encuentro a las 15:30 y la valija de por medio, llegarían 25 minutos antes de que cierre. "
+    "No hay forma de salvarlo sin arrastrar la valija de Thais toda la tarde. Fuera del jueves cuesta $20 por cabeza "
+    "y no queda otro jueves en el viaje. "
+    "LO QUE SE GANA: el check-in pasa de las 18:55 a las 16:50, y con eso la tarde deja de ser una carrera. Aparecen "
+    "tres horas libres en el Upper West Side, que es exactamente donde estaba el cuello de botella: la cena era "
+    "«rápida y liviana» de 19:15 a 19:55 y ahora es una cena de verdad, con Central Park al atardecer antes. "
+    "Y EL PENDIENTE DE LAS SALSAS SE RESUELVE SOLO: HEATONIST está DENTRO del Chelsea Market, abierto hasta las "
+    "18:45. Se compran en el encuentro, sin desviarse un metro.",
     [
      b("07:30", "Desayuno incluido en el JGStay (7-9 AM) y CHECKOUT con las maletas. Hoy ya no se madruga a las 5:45 en Branchburg: se duerme en SoHo y se sale a las 7:30. Una hora y media más de sueño y un tren menos.", "jgstay", "jp", "comida"),
      b("08:05", "Subte 1 desde Canal St derecho hasta 72 St (~25 min). Con maletas, el 1 es el que conviene: es directo y no hay que hacer transbordo.", "", "jp", "logistica"),
@@ -207,29 +216,33 @@ day(6, "2026-09-03", "Jueves", "jp", "JGStay SoHo → The Beacon",
      b("09:05", "Subte 1 directo desde 72 St hasta WTC Cortlandt (~30 min), otra vez sin transbordo. Alternativa: 2/3 express hasta Chambers St y 5 min a pie.", "", "jp", "logistica"),
      b("09:50", "★ 9/11 MEMORIAL (la plaza) — las dos fuentes en las huellas de las torres y el Survivor Tree. Gratis, abierto desde las 8:00. Verlo ANTES del museo ordena la visita.", "", "jp", "destacado"),
      b("10:30", "★★ 9/11 MEMORIAL MUSEUM — $36, TIMED TICKET OBLIGATORIO comprado online antes (el museo no vende en puerta sin reserva). 2 horas largas; es duro y muy bien hecho. Thais lo marcó 0: por eso va en la mañana de JP solo.", "911museum", "jp", "destacado"),
-     b("12:45", "★ ALMUERZO EN STONE ST — 10 min a pie desde el museo, hacia el sureste. Calle adoquinada peatonal de 1660, la traza holandesa que sobrevivió al fuego de 1835: mesas afuera, sin autos, entre edificios de piedra. Se come rápido y se sigue: One World es a las 13:45 y son 12 min de vuelta. Plan B si llueve o no hay mesa: Hudson Eats o Le District en Brookfield Place, cruzando West St.", "stonest", "jp", "comida"),
-     b("13:45", "★★ ONE WORLD OBSERVATORY — piso 102, el punto más alto del hemisferio occidental, con el puerto y Brooklyn dominando la vista. $44+fee, ventana de entrada de 15 min: sacar el timed ticket online. JP lo subió a 2 en la última pasada.", "owo", "jp", "destacado"),
-     b("15:15", "El Oculus en un VISTAZO (5 min — ya estás ahí, y el tiempo no da para más) y R/W desde Cortlandt St hacia el norte.", "oculus", "jp", "paseo"),
-     b("16:00", "★ ENCUENTRO CON THAIS. Lo que MÁS rinde: verse DIRECTO en la puerta del MoMI a las 16:20 (36-01 35 Ave, N/W hasta 36 Av) — cada uno llega por su lado y el museo gana 10-15 min. Si prefieren encontrarse antes en Manhattan: Lexington Av-59 St 16:00 y N/W juntos (JP puede llegar 16:05-16:10 si el WTC se estiró: avisale que es ±10).", "", "both", "destacado"),
-     b("16:30", "★★ MUSEUM OF THE MOVING IMAGE — GRATIS los jueves 14-18, sus únicas horas del jueves. RECUPERADO: había quedado afuera del plan y ustedes lo tienen 2/2. Una hora y media alcanza para Behind the Screen y los Muppets originales de Jim Henson. Cierra 18:00 EN PUNTO. (N/W hasta 36 Av + 8 min a pie.)", "momi", "both", "destacado"),
-     b("18:05", "Subte N/W desde 36 Av hasta Times Sq y 1/2/3 hasta 72 St (~45 min).", "", "both", "logistica"),
-     b("18:55", "The Beacon: check-in formal y subir las maletas.", "beacon", "both", "logistica"),
-     b("19:15", "Cena RÁPIDA en el Upper West Side, bajando por Broadway o Columbus. Hoy se come temprano y liviano: la noche tiene tres paradas y todas valen.", "", "both", "comida"),
-     b("19:55", "★ LINCOLN CENTER DE NOCHE (gratis, 20 min) — OJO, VERIFICADO el 27/8 y cambia lo que van a encontrar: esta noche la Josie Robertson Plaza NO está tranquila. El Met proyecta Tristan und Isolde (actos II y III) a las 20:00 en pantalla gigante, gratis y sin reserva, y despejan la plaza desde las 18:00 para armar 2.500 sillas. O sea: llegan justo cuando se está llenando. La fuente y los chandeliers siguen ahí, pero con multitud y pantalla. Puede ser mejor que el plan original —hay ambiente de estreno— o puede ser un quilombo: decidan en el momento. Si prefieren el Lincoln Center vacío, el espejo de agua con el Henry Moore está del lado norte, detrás del Vivian Beaumont, y ahí no hay nadie.", "lincolncenter", "both", "destacado"),
+     b("12:45", "★ ALMUERZO EN STONE ST — 10 min a pie desde el museo, hacia el sureste. Calle adoquinada peatonal de 1660, la traza holandesa que sobrevivió al fuego de 1835: mesas afuera, sin autos, entre edificios de piedra. Se come rápido y se sigue. Plan B si llueve o no hay mesa: Hudson Eats o Le District en Brookfield Place, cruzando West St.", "stonest", "jp", "comida"),
+     b("13:45", "★★ ONE WORLD OBSERVATORY — piso 102, el punto más alto del hemisferio occidental, con el puerto y Brooklyn dominando la vista. $44+fee, ventana de entrada de 15 min: sacar el timed ticket online. HOY SON 65 MINUTOS, no más: a las 14:50 hay que estar bajando, porque el encuentro con Thais es a las 15:30 del otro lado de la ciudad.", "owo", "jp", "destacado"),
+     b("14:50", "El Oculus en un VISTAZO (5 min) — está de camino al subte, así que no cuesta nada. Después, subte 1 desde WTC Cortlandt hasta 18 St (~12 min) y cuatro cuadras al oeste hasta la Novena.", "oculus", "jp", "paseo"),
+     b("15:30", "★★ ENCUENTRO CON THAIS — CHELSEA MARKET (75 Ninth Ave, entre las calles 15 y 16). La antigua fábrica de galletitas Nabisco, donde se inventó el Oreo, convertida en mercado techado de ladrillo. Thais llega con su valija: acá se juntan y de acá se van derecho al hotel. Si ella viene sin almorzar, este es el lugar — hay de todo y se come parado.", "chelseamarket", "both", "destacado"),
+     b("15:45", "★ HEATONIST — LAS SALSAS PICANTES, y está DENTRO del Chelsea Market: cero desvío. Es la tienda de las salsas de Hot Ones, con barra de degustación para probar antes de comprar. Abierto hasta 18:45. Este era un pendiente de Juan y se resuelve sin mover un dedo del plan.", "heatonistch", "both", "paseo"),
+     b("16:15", "Al hotel con la valija: caminar cuatro cuadras al este hasta 18 St y subte 1 directo hasta 72 St (~20 min). El 1 es el que conviene con equipaje — directo, sin transbordo, y para a tres cuadras del Beacon.", "", "both", "logistica"),
+     b("16:50", "★ THE BEACON — CHECK-IN FORMAL con Thais, la valija de ella y las maletas de Juan que quedaron a la mañana. Dos horas antes que en el plan viejo: de acá en adelante el día deja de ser una carrera.", "beacon", "both", "destacado"),
+     b("17:20", "★ CENTRAL PARK AL ATARDECER — cuatro cuadras al este y ya estás adentro. Entrar por la 72 y Central Park West: Strawberry Fields (el mosaico IMAGINE, a metros del Dakota donde vivía Lennon), bajar a Bethesda Terrace y el lago con los botes. El sol se pone ~19:24, así que esta es la hora buena. Gratis. SI THAIS LLEGA CANSADA de trabajar todo el día, el hotel está a cuatro cuadras: se corta cuando quieran y se pasa derecho a la cena.", "", "both", "destacado"),
+     b("18:45", "CENA SIN APURO en el Upper West Side, sobre Broadway, Columbus o Amsterdam. HOY SE PUEDE COMER TRANQUILO: en el plan viejo esto eran 40 minutos de trámite antes de salir corriendo. Ahora hay una hora larga y el Lincoln Center está a diez cuadras caminando.", "", "both", "comida"),
+     b("19:55", "★ LINCOLN CENTER DE NOCHE (gratis, 20 min) — OJO, VERIFICADO el 27/8 y cambia lo que van a encontrar: esta noche la Josie Robertson Plaza NO está tranquila. El Met proyecta Tristan und Isolde (actos II y III) a las 20:00 en pantalla gigante, gratis y sin reserva, y despejan la plaza desde las 18:00 para armar 2.500 sillas. Llegan justo cuando arranca. La fuente y los chandeliers siguen ahí, pero con multitud y pantalla. Si prefieren el Lincoln Center vacío, el espejo de agua con el Henry Moore está del lado norte, detrás del Vivian Beaumont, y ahí no hay nadie.", "lincolncenter", "both", "destacado"),
      b("20:20", "Caminar seis cuadras por Broadway hasta Columbus Circle (~8 min).", "", "both", "logistica"),
-     b("20:30", "★★ MO LOUNGE, PISO 35 DEL MANDARIN ORIENTAL (80 Columbus Circle) — el dato del amigo de Juan, con una corrección: es el piso 35, no el 60 (el hotel ocupa del 35 al 54). Ventanales de piso a techo sobre Central Park con la ciudad encendida abajo. Coctel ~$26-32, sin cover. RESERVAR por SevenRooms desde su web. Si prefieren algo más íntimo, en ese MISMO piso está The Bar (ex speakeasy The Office, 45 asientos, mar-sáb 17-1h).", "molounge", "both", "destacado"),
-     b("20:55", "Bajar en ascensor: Dizzy's está EN EL MISMO EDIFICIO (10 Columbus Circle, piso 5). Cero calle, cero frío.", "", "both", "logistica"),
-     b("21:00", "★ Dizzy's Club — ventanales sobre Central Park detrás del escenario, un piso abajo del cóctel. SEAMOS HONESTOS: JP lleva ~17 horas en pie con 5 de sueño. Decidan A LAS 20:00, arriba en el Mandarin: si están enteros, bajan; si no, se quedan con la vista y el trago, que ya es un cierre precioso. El set Late Night (~22:45) cuesta una fracción — variante para valientes.", "dizzys", "both", "musica")],
-    alt="⚠️ EL PROBLEMA DE LA NOCHE ANTERIOR: si JP viaja desde New Jersey el jueves, significa que durmió allá el miércoles — "
-        "y el miércoles el SummerStage termina a las 22:00 en Central Park. Llegando a Penn ~22:25 se toma el directo de las 22:48, "
-        "que deja en Raritan ~0:04, más Uber: llegada al hotel ~0:25 y despertador a las 5:45. Son cinco horas de sueño antes de un día completo. "
-        "Tres salidas: (a) salir del SummerStage a las 21:15, después del set principal; (b) quedarse una noche más en el JGStay "
-        "y que Thais lleve las maletas el jueves (implica tocar la reserva); (c) tomar el tren de las 7:13 en vez del de 6:55 y arrancar 20 minutos más tarde. "
-        "Verificá los horarios exactos de la tarde-noche en njtransit.com: solo tengo confirmado el directo de las 22:48. "
-        "// EL FERRY, SI LES DUELE (lo tienen 2/2): al salir del MoMI, W directo hasta Whitehall (~50 min), ferry ~19:15 — "
-        "el atardecer (~19:22) de ida y la Estatua y el skyline ILUMINADOS de vuelta; check-in ~21:15, cena tarde cerca del hotel, "
-        "y Dizzy's tiene set Late Night los jueves ~22:45 como consuelo. Es MÁS día: elíjanlo solo si llegan enteros. "
-        "// Siguen afuera: MoMA PS1, Astoria y Gantry (sin hueco); ya habían salido Noguchi, Astoria Park y Socrates por interés bajo.")
+     b("20:30", "★★ MO LOUNGE, PISO 35 DEL MANDARIN ORIENTAL (80 Columbus Circle) — el dato del amigo de Juan, con la vista de Central Park entero desde arriba y los cócteles caros que la pagan. Sin reserva se entra, pero temprano es más fácil.", "molounge", "both", "destacado"),
+     b("20:55", "Bajar en ascensor: Dizzy's está EN EL MISMO EDIFICIO (10 Columbus Circle, piso 5). Cero calle, cero subte.", "", "both", "logistica"),
+     b("21:00", "★ Dizzy's Club — ventanales sobre Central Park detrás del escenario, un piso abajo del cóctel. Set de las 21:00, ~$45. Es el cierre perfecto del primer día de Thais en la ciudad.", "dizzys", "both", "musica")],
+    alt="EL MoMI SE PIERDE DEL VIAJE, y conviene tenerlo claro en vez de descubrirlo el sábado. Los jueves es gratis "
+        "de 14 a 18 y hoy era el único jueves; fuera de eso son $20 por cabeza y no hay hueco en viernes, sábado ni "
+        "domingo (el domingo es checkout y vuelo). LA ÚNICA FORMA DE SALVARLO sería ir de Chelsea Market derecho a "
+        "Astoria con la valija de Thais a cuestas: salen 16:15, llegan ~17:00, tienen una hora justa, y después son "
+        "50 minutos más hasta el Beacon para llegar 18:50 sin tiempo de nada antes del MO Lounge. Es posible y es "
+        "feo: cuatro horas de subte con equipaje el primer día de ella. Por eso el plan no lo hace. // SI EL WTC SE "
+        "ESTIRA: lo primero que se recorta es el One World, que hoy tiene 65 minutos en vez de 85. Llegar tarde al "
+        "Chelsea Market es lo único que no se puede hacer. // SI PREFIEREN QUEDARSE A LA ÓPERA: el Met proyecta "
+        "Tristan und Isolde gratis a las 20:00 en la plaza del Lincoln Center, con 2.500 sillas. Verla en serio "
+        "significa soltar el MO Lounge y Dizzy's, que están en el mismo edificio y ya tienen set a las 21:00. El "
+        "plan elige el jazz; la ópera queda como opción si el día viene cansado y prefieren sentarse. // LAS SALSAS "
+        "DE HEATONIST YA ESTÁN RESUELTAS acá dentro, así que la sucursal de Williamsburg deja de ser necesaria: si "
+        "el sábado en Brooklyn no da el tiempo, no se pierde nada.")
 
 # ═══════════════ DÍA 7 · VIE 4 SEP · AMBOS ═══════════════
 day(7, "2026-09-04", "Viernes", "both", "The Beacon",

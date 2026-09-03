@@ -4,6 +4,66 @@ Lo más nuevo va arriba. Está escrito para leerse desde el celular, sin tecnici
 
 ---
 
+## 2 de septiembre de 2026 · el jueves, rearmado por el encuentro con Thais
+
+**Se encuentran a las 15:30 en Chelsea Market** y de ahí van juntos a dejar la valija de Thais en
+The Beacon. Eso reordena toda la tarde del jueves.
+
+**La mañana no cambia**: Juan sale del JGStay a las 7:30 con desayuno incluido, deja sus maletas en
+el Beacon antes de las 9 y baja al World Trade Center — memorial, museo y One World Observatory.
+Lo único que se ajusta es que **el One World tiene 65 minutos en vez de 85**: a las 14:50 hay que
+estar bajando, porque el encuentro es del otro lado de la ciudad.
+
+| | |
+|---|---|
+| 15:30 | **Encuentro en Chelsea Market** (75 Ninth Ave) |
+| 15:45 | **HEATONIST** — las salsas picantes |
+| 16:50 | **The Beacon: check-in** con Thais y la valija |
+| 17:20 | **Central Park al atardecer** — Strawberry Fields, Bethesda, el lago |
+| 18:45 | **cena sin apuro** |
+| 19:55 | Lincoln Center · 20:30 MO Lounge · 21:00 Dizzy's |
+
+### Las salsas picantes ya están resueltas
+
+**HEATONIST está adentro del Chelsea Market** y abre hasta las 18:45. Se compran en el encuentro
+mismo, sin desviarse un metro. Eso quiere decir que **la sucursal de Williamsburg deja de hacer
+falta**: si el sábado en Brooklyn el tiempo no da, no se pierde nada.
+
+### Lo que se gana
+
+**El check-in pasa de las 18:55 a las 16:50**, dos horas antes, y con eso la tarde deja de ser una
+carrera. Aparecen tres horas libres en el Upper West Side, que era justo donde el día se apretaba:
+**la cena era de 40 minutos, "rápida y liviana", y ahora es una cena de verdad**, con Central Park
+al atardecer antes (el sol se pone alrededor de las 19:24).
+
+Y si Thais llega cansada de trabajar todo el día, el hotel está a cuatro cuadras del parque: se
+corta cuando quieran y se pasa derecho a la cena.
+
+### Lo que se pierde: el Museum of the Moving Image
+
+Hay que decirlo con todas las letras porque **es uno de los imprescindibles y lo tienen los dos**.
+
+Estaba a las 16:30 porque **los jueves es gratis de 14 a 18**, y ese era su único hueco del viaje.
+Está en Astoria: desde Chelsea Market son 45 minutos y desde el hotel 50. Con el encuentro a las
+15:30 y la valija de por medio, llegarían 25 minutos antes de que cierre.
+
+**Se buscó lugar en los otros días y no hay**: el viernes abre 14-20 pero ese día es Manhattan
+entero (galerías, Morgan Library gratis a las 17, SUMMIT, Vanguard); el sábado abre 11-18 pero es
+el día de Brooklyn; y el domingo ya tiene el MoMA PS1, que es el último imprescindible del viaje.
+Fuera del jueves cuesta 20 dólares por cabeza.
+
+**La única forma de salvarlo** sería ir de Chelsea Market derecho a Astoria con la valija a
+cuestas, y volver después al hotel: cuatro horas de subte con equipaje el primer día de Thais.
+Está en las alternativas del día por si lo quieren, pero el plan no lo hace.
+
+### Una cosa menor para mirar
+
+**Chelsea Market queda dos días seguidos**: el jueves para el encuentro y el viernes a las 14:30
+como el almuerzo grande del día. Es un mercado grande y no molesta, pero si prefieren variar, el
+viernes es el fácil de cambiar.
+
+---
+
 ## 1 de septiembre de 2026 · el miércoles, rearmado en pleno viaje
 
 **Juan ya no vuelve a New Jersey.** Se queda en el JGStay SoHo hasta el jueves y de ahí lleva el
