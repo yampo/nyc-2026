@@ -1,0 +1,7 @@
+.DS_Store
+.venv/
+# Este repo es SOLO la salida publicada. La fuente (catálogo, itinerario, motor)
+# vive en el taller de viajes; acá no se versiona nada que se pueda regenerar.
+src/
+build/
+*.xlsx

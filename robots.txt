@@ -1,0 +1,6 @@
+# Planificador de viaje personal.
+# GitHub Pages en cuenta gratuita obliga a que el repo sea publico,
+# asi que le pedimos explicitamente a los buscadores que no lo indexen.
+# Ojo: esto NO lo hace privado. Cualquiera con la URL entra.
+User-agent: *
+Disallow: /
